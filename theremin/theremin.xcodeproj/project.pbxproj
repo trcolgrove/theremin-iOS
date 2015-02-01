@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B1D07046291BC940EC75CD40 /* libPods-theremin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8004AE9946D819307EE2E6D8 /* libPods-theremin.a */; };
 		F8BD45811A7EC47000535821 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BD45801A7EC47000535821 /* main.m */; };
 		F8BD45841A7EC47000535821 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BD45831A7EC47000535821 /* AppDelegate.m */; };
 		F8BD45871A7EC47000535821 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BD45861A7EC47000535821 /* ViewController.m */; };
@@ -14,6 +15,7 @@
 		F8BD458C1A7EC47000535821 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8BD458B1A7EC47000535821 /* Images.xcassets */; };
 		F8BD458F1A7EC47000535821 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8BD458D1A7EC47000535821 /* LaunchScreen.xib */; };
 		F8BD459B1A7EC47000535821 /* thereminTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BD459A1A7EC47000535821 /* thereminTests.m */; };
+		F8BD45A51A7EC9C900535821 /* theremin.pd in Resources */ = {isa = PBXBuildFile; fileRef = F8BD45A41A7EC9C900535821 /* theremin.pd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +29,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		386C355754CEC498073BC781 /* Pods-theremin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-theremin.release.xcconfig"; path = "Pods/Target Support Files/Pods-theremin/Pods-theremin.release.xcconfig"; sourceTree = "<group>"; };
+		8004AE9946D819307EE2E6D8 /* libPods-theremin.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-theremin.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9248A05E5AC8D6B8EE1E5BF /* Pods-theremin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-theremin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-theremin/Pods-theremin.debug.xcconfig"; sourceTree = "<group>"; };
 		F8BD457B1A7EC47000535821 /* theremin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = theremin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8BD457F1A7EC47000535821 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F8BD45801A7EC47000535821 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -40,6 +45,7 @@
 		F8BD45941A7EC47000535821 /* thereminTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = thereminTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8BD45991A7EC47000535821 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F8BD459A1A7EC47000535821 /* thereminTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = thereminTests.m; sourceTree = "<group>"; };
+		F8BD45A41A7EC9C900535821 /* theremin.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = theremin.pd; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1D07046291BC940EC75CD40 /* libPods-theremin.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,12 +67,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4AC4B1454749428910D21FC2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8004AE9946D819307EE2E6D8 /* libPods-theremin.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9D8A5E6965B1D74C1F8E26F6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D9248A05E5AC8D6B8EE1E5BF /* Pods-theremin.debug.xcconfig */,
+				386C355754CEC498073BC781 /* Pods-theremin.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		F8BD45721A7EC47000535821 = {
 			isa = PBXGroup;
 			children = (
 				F8BD457D1A7EC47000535821 /* theremin */,
 				F8BD45971A7EC47000535821 /* thereminTests */,
 				F8BD457C1A7EC47000535821 /* Products */,
+				9D8A5E6965B1D74C1F8E26F6 /* Pods */,
+				4AC4B1454749428910D21FC2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -81,6 +107,7 @@
 		F8BD457D1A7EC47000535821 /* theremin */ = {
 			isa = PBXGroup;
 			children = (
+				F8BD45A41A7EC9C900535821 /* theremin.pd */,
 				F8BD45821A7EC47000535821 /* AppDelegate.h */,
 				F8BD45831A7EC47000535821 /* AppDelegate.m */,
 				F8BD45851A7EC47000535821 /* ViewController.h */,
@@ -126,9 +153,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F8BD459E1A7EC47000535821 /* Build configuration list for PBXNativeTarget "theremin" */;
 			buildPhases = (
+				FE6B189283982516952CB4F2 /* Check Pods Manifest.lock */,
 				F8BD45771A7EC47000535821 /* Sources */,
 				F8BD45781A7EC47000535821 /* Frameworks */,
 				F8BD45791A7EC47000535821 /* Resources */,
+				136E6AC7A8C250F5C3CA41BA /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -200,6 +229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8BD458A1A7EC47000535821 /* Main.storyboard in Resources */,
+				F8BD45A51A7EC9C900535821 /* theremin.pd in Resources */,
 				F8BD458F1A7EC47000535821 /* LaunchScreen.xib in Resources */,
 				F8BD458C1A7EC47000535821 /* Images.xcassets in Resources */,
 			);
@@ -213,6 +243,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		136E6AC7A8C250F5C3CA41BA /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-theremin/Pods-theremin-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FE6B189283982516952CB4F2 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F8BD45771A7EC47000535821 /* Sources */ = {
@@ -343,6 +406,7 @@
 		};
 		F8BD459F1A7EC47000535821 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D9248A05E5AC8D6B8EE1E5BF /* Pods-theremin.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = theremin/Info.plist;
@@ -353,6 +417,7 @@
 		};
 		F8BD45A01A7EC47000535821 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 386C355754CEC498073BC781 /* Pods-theremin.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = theremin/Info.plist;
@@ -414,6 +479,7 @@
 				F8BD45A01A7EC47000535821 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F8BD45A11A7EC47000535821 /* Build configuration list for PBXNativeTarget "thereminTests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +488,7 @@
 				F8BD45A31A7EC47000535821 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

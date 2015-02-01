@@ -17,6 +17,19 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    _audioController = [[PdAudioController alloc] init];
+    if ([_audioController configurePlaybackWithSampleRate:44100
+                                           numberChannels:2
+                                             inputEnabled: YES
+                                            mixingEnabled:YES] != PdAudioOK){
+        NSLog(@"Couldn't initialize");
+    }
+    
+    PdDispatcher *dispatcher = [[PdDispatcher alloc] init];
+    [PdBase setDelegate:dispatcher];
+    
+    [PdBase openFile:@"theremin.pd" path:[[NSBundle mainBundle] resourcePath]];
+    
     return YES;
 }
 
@@ -28,6 +41,7 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    _audioController.active = NO;
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -36,6 +50,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    _audioController.active = YES;
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
