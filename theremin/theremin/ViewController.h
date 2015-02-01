@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "theremin-Swift.h"
 
 @interface ViewController : UIViewController
 
+@property GridViewController* gdc;
 
 @end
 
