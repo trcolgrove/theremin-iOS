@@ -11,6 +11,12 @@ import UIKit
 
 class GridViewController: UIViewController {
     
+    // get xy coord
+    // touch on
+    // touch move
+    // touch off
+    // convert to midi
+    
     override func viewDidLoad() {
         println("Nothing to see here")
     }
