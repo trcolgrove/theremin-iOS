@@ -34,7 +34,7 @@
         <!--Grid View Controller-->
         <scene sceneID="S0n-c3-isj">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="ls9-R1-fCC" customClass="GridViewController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="ls9-R1-fCC" customClass="GridViewController" customModule="theremin" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vhb-eo-cbh"/>
                         <viewControllerLayoutGuide type="bottom" id="OHf-hf-gwo"/>

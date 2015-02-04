@@ -12,7 +12,7 @@ import UIKit
 class GridViewController: UIViewController {
     
     override func viewDidLoad() {
-        
+        println("Nothing to see here")
     }
     
 }
