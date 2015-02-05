@@ -18,7 +18,7 @@ class GridViewController: UIViewController {
     // convert to midi
     
     override func viewDidLoad() {
-        println("Nothing to see here")
+        println("Grid View Controller is loaded")
     }
     
 }

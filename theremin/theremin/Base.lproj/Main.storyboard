@@ -16,10 +16,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ogh-Qb-duP">
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ogh-Qb-duP" userLabel="GridView">
                                 <rect key="frame" x="146" y="151" width="732" height="466"/>
                                 <connections>
                                     <segue destination="ls9-R1-fCC" kind="embed" id="0VQ-Te-cu6"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V5Q-9e-heb" userLabel="NoteView">
+                                <rect key="frame" x="146" y="49" width="732" height="104"/>
+                                <connections>
+                                    <segue destination="r6d-R7-VhY" kind="embed" id="KNA-X1-VlG"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GeQ-GH-2Dz" userLabel="KnobView">
+                                <rect key="frame" x="314" y="576" width="240" height="128"/>
+                                <connections>
+                                    <segue destination="wgk-zg-vAu" kind="embed" id="gHe-sg-HLx"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -29,7 +41,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="746" y="915"/>
+            <point key="canvasLocation" x="368" y="857"/>
         </scene>
         <!--Grid View Controller-->
         <scene sceneID="S0n-c3-isj">
@@ -49,6 +61,70 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d3h-QD-YeW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2066" y="937"/>
+        </scene>
+        <!--Note View Controller-->
+        <scene sceneID="BrQ-xj-GlC">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="r6d-R7-VhY" customClass="NoteViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ul8-O8-5qX"/>
+                        <viewControllerLayoutGuide type="bottom" id="jXY-hU-34c"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gPh-tV-OSh">
+                        <rect key="frame" x="0.0" y="0.0" width="732" height="104"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CFb-HQ-OoI">
+                                <rect key="frame" x="-90" y="0.0" width="732" height="104"/>
+                                <connections>
+                                    <segue destination="64o-iy-haI" kind="embed" id="hUz-zd-cH3"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="785-VQ-DQ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1357" y="540"/>
+        </scene>
+        <!--Knob View Controller-->
+        <scene sceneID="eM9-20-EaK">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="wgk-zg-vAu" customClass="KnobViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aW2-dE-Tsk"/>
+                        <viewControllerLayoutGuide type="bottom" id="Jap-dm-zdM"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7vo-qt-NnJ">
+                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ezf-E8-zBK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="zWz-Ww-UNE">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="64o-iy-haI" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GkY-5l-HCz"/>
+                        <viewControllerLayoutGuide type="bottom" id="bE4-c9-4uI"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="6rB-gV-yZW">
+                        <rect key="frame" x="0.0" y="0.0" width="732" height="104"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3y1-5P-8Lx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2365" y="525"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
