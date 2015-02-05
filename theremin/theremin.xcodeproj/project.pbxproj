@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		B1D07046291BC940EC75CD40 /* libPods-theremin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8004AE9946D819307EE2E6D8 /* libPods-theremin.a */; };
+		F84BF2481A83CD7E0007686D /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84BF2471A83CD7E0007686D /* NoteViewController.swift */; };
+		F84BF24A1A83CD990007686D /* KnobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84BF2491A83CD990007686D /* KnobViewController.swift */; };
 		F8BD45811A7EC47000535821 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BD45801A7EC47000535821 /* main.m */; };
 		F8BD45841A7EC47000535821 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BD45831A7EC47000535821 /* AppDelegate.m */; };
 		F8BD45871A7EC47000535821 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BD45861A7EC47000535821 /* ViewController.m */; };
@@ -33,6 +35,8 @@
 		386C355754CEC498073BC781 /* Pods-theremin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-theremin.release.xcconfig"; path = "Pods/Target Support Files/Pods-theremin/Pods-theremin.release.xcconfig"; sourceTree = "<group>"; };
 		8004AE9946D819307EE2E6D8 /* libPods-theremin.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-theremin.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9248A05E5AC8D6B8EE1E5BF /* Pods-theremin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-theremin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-theremin/Pods-theremin.debug.xcconfig"; sourceTree = "<group>"; };
+		F84BF2471A83CD7E0007686D /* NoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
+		F84BF2491A83CD990007686D /* KnobViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnobViewController.swift; sourceTree = "<group>"; };
 		F8BD457B1A7EC47000535821 /* theremin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = theremin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8BD457F1A7EC47000535821 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F8BD45801A7EC47000535821 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -114,9 +118,11 @@
 				F8BD45821A7EC47000535821 /* AppDelegate.h */,
 				F8BD45831A7EC47000535821 /* AppDelegate.m */,
 				F8BD45851A7EC47000535821 /* ViewController.h */,
+				F84BF2471A83CD7E0007686D /* NoteViewController.swift */,
 				F8BD45861A7EC47000535821 /* ViewController.m */,
 				F8BD45881A7EC47000535821 /* Main.storyboard */,
 				F8BD45A71A7ED3BE00535821 /* GridViewController.swift */,
+				F84BF2491A83CD990007686D /* KnobViewController.swift */,
 				F8BD458B1A7EC47000535821 /* Images.xcassets */,
 				F8BD458D1A7EC47000535821 /* LaunchScreen.xib */,
 				F8BD457E1A7EC47000535821 /* Supporting Files */,
@@ -287,9 +293,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F84BF24A1A83CD990007686D /* KnobViewController.swift in Sources */,
 				F8BD45A81A7ED3BE00535821 /* GridViewController.swift in Sources */,
 				F8BD45871A7EC47000535821 /* ViewController.m in Sources */,
 				F8BD45841A7EC47000535821 /* AppDelegate.m in Sources */,
+				F84BF2481A83CD7E0007686D /* NoteViewController.swift in Sources */,
 				F8BD45811A7EC47000535821 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
