@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "PdAudioController.h"
 #import "PdDispatcher.h"
+#import "PdBase.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
