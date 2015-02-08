@@ -17,6 +17,10 @@ class GridViewController: UIViewController {
     var prev_x: CGFloat = 0
     var prev_y: CGFloat = 0
     
+//    override func updateKey(key: NSString) {
+//        
+//    }
+    
     override func viewDidLoad() {
         println("Grid View Controller is loaded");
     }

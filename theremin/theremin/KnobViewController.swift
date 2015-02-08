@@ -11,4 +11,8 @@ import UIKit
 
 class KnobViewController: UIViewController {
     
+    override func viewDidLoad() {
+        println("Knob View Controller is loaded");
+    }
+    
 }
