@@ -10,21 +10,21 @@
 import Foundation
 import UIKit
 
-class NoteViewController: UIViewController {
+class NoteViewController: InstrumentViewController {
     
     var leftmost_note: Int = 0
-    var key: String = ""
-    //var Grid: GridViewController
+    var Grid: GridViewController
     
-    required init(coder aDecoder: NSCoder) {
+    required override init(coder aDecoder: NSCoder) {
+        self.Grid = GridViewController()
         super.init(coder: aDecoder)
     }
     
     override init() {
         self.leftmost_note = 60
-        self.key = "CMajor"
-        //self.Grid = GridViewController()
+        self.Grid = GridViewController()
         super.init()
+        self.key = "CMajor"
     }
     
     override func viewDidLoad() {

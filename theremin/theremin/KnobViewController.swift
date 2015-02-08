@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class KnobViewController: UIViewController {
+class KnobViewController: InstrumentViewController {
     
     override func viewDidLoad() {
         println("Knob View Controller is loaded");

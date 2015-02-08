@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class GridViewController: UIViewController {
+class GridViewController: InstrumentViewController {
     
     var leftmost_note: Int = 0
     var pitch: CGFloat = 60
@@ -23,6 +23,10 @@ class GridViewController: UIViewController {
     
     override func viewDidLoad() {
         println("Grid View Controller is loaded");
+    }
+    
+    func setRange(note: Int) {
+        
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
