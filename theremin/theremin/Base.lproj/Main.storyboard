@@ -74,7 +74,7 @@
         <!--Note View Controller-->
         <scene sceneID="BrQ-xj-GlC">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="r6d-R7-VhY" customClass="NoteViewController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="r6d-R7-VhY" customClass="NoteViewController" customModule="theremin" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ul8-O8-5qX"/>
                         <viewControllerLayoutGuide type="bottom" id="jXY-hU-34c"/>
@@ -101,7 +101,7 @@
         <!--Knob View Controller-->
         <scene sceneID="eM9-20-EaK">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="wgk-zg-vAu" customClass="KnobViewController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="wgk-zg-vAu" customClass="KnobViewController" customModule="theremin" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aW2-dE-Tsk"/>
                         <viewControllerLayoutGuide type="bottom" id="Jap-dm-zdM"/>
