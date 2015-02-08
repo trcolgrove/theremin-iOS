@@ -11,6 +11,8 @@ import UIKit
 
 class GridViewController: UIViewController {
     
+    var leftmost_note: Int = 0
+    
     // get xy coord
     // touch on
     // touch move
@@ -18,7 +20,9 @@ class GridViewController: UIViewController {
     // convert to midi
     
     override func viewDidLoad() {
+        
         println("Grid View Controller is loaded")
+        
     }
     
 }
