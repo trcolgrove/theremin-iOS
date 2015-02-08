@@ -12,13 +12,6 @@ import UIKit
 class GridViewController: UIViewController {
     
     var leftmost_note: Int = 0
-    
-    // get xy coord
-    // touch on
-    // touch move
-    // touch off
-    // convert to midi
-    
     var pitch: CGFloat = 60
     var vel: CGFloat = 10
     var prev_x: CGFloat = 0

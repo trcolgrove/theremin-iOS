@@ -12,9 +12,13 @@
 @interface ViewController : UIViewController
 
 // Sub-Classes
-@property KnobViewController* knobvc;
-@property NoteViewController* notevc;
+//@property KnobViewController* knobvc;
+//@property NoteViewController* notevc;
 @property GridViewController* gridvc;
+
+@property NSString* key;
+
+-(void) updateKey:(NSString *)key;
 
 @end
 
