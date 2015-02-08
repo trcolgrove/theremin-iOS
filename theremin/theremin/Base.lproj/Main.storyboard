@@ -110,7 +110,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="theremin-b2.png" translatesAutoresizingMaskIntoConstraints="NO" id="Rnc-ck-4Mz">
-                                <rect key="frame" x="-480" y="-659" width="1042" height="782"/>
+                                <rect key="frame" x="-480" y="-660" width="1042" height="782"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
