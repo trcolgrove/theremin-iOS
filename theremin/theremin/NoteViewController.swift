@@ -11,6 +11,7 @@ import Foundation
 import UIKit
 
 class NoteViewController {
+    
     var leftmost_note: Int = 0
     var key: String = ""
     var Grid: GridViewController
@@ -21,8 +22,9 @@ class NoteViewController {
         Grid = GridViewController()
     }
     
-    func shiftOctave (){
-        leftmost_note += 8
-        Grid.setRange(leftmost_note)
-    }
+//    func shiftOctave (){
+//        leftmost_note += 8
+//        Grid.setRange(leftmost_note)
+//    }
+    
 }
