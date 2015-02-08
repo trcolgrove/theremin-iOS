@@ -11,7 +11,10 @@
 
 @interface ViewController : UIViewController
 
-@property GridViewController* gdc;
+// Sub-Classes
+@property KnobViewController* knobvc;
+@property NoteViewController* notevc;
+@property GridViewController* gridvc;
 
 @end
 
