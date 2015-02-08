@@ -17,8 +17,12 @@ class NoteViewController {
     
     init(){
         leftmost_note = 60
-        key = "CM"
+        key = "CMajor"
         Grid = GridViewController()
     }
     
+    func shiftOctave (){
+        leftmost_note += 8
+        Grid.setRange(leftmost_note)
+    }
 }
