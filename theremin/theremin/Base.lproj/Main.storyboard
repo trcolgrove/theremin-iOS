@@ -7,6 +7,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
@@ -16,30 +17,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="theremin-b2.png" translatesAutoresizingMaskIntoConstraints="NO" id="BUz-FU-xcH">
+                                <rect key="frame" x="-10" y="-14" width="1042" height="782"/>
+                            </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ogh-Qb-duP" userLabel="GridView">
-                                <rect key="frame" x="146" y="151" width="732" height="466"/>
+                                <rect key="frame" x="77" y="98" width="870" height="547"/>
                                 <connections>
                                     <segue destination="ls9-R1-fCC" kind="embed" id="0VQ-Te-cu6"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V5Q-9e-heb" userLabel="NoteView">
-                                <rect key="frame" x="146" y="49" width="732" height="104"/>
-                                <connections>
-                                    <segue destination="r6d-R7-VhY" kind="embed" id="KNA-X1-VlG"/>
-                                </connections>
-                            </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GeQ-GH-2Dz" userLabel="KnobView">
-                                <rect key="frame" x="314" y="576" width="240" height="128"/>
+                                <rect key="frame" x="470" y="646" width="280" height="76"/>
                                 <connections>
                                     <segue destination="wgk-zg-vAu" kind="embed" id="gHe-sg-HLx"/>
                                 </connections>
                             </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V5Q-9e-heb" userLabel="NoteView">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="100"/>
+                                <connections>
+                                    <segue destination="r6d-R7-VhY" kind="embed" id="KNA-X1-VlG"/>
+                                </connections>
+                            </containerView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="162" y="898"/>
         </scene>
@@ -52,8 +55,13 @@
                         <viewControllerLayoutGuide type="bottom" id="OHf-hf-gwo"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Ctc-ha-SoO">
-                        <rect key="frame" x="0.0" y="0.0" width="732" height="466"/>
+                        <rect key="frame" x="0.0" y="0.0" width="870" height="547"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="theremin-b2.png" translatesAutoresizingMaskIntoConstraints="NO" id="1lq-zq-GgJ">
+                                <rect key="frame" x="-87" y="-111" width="1042" height="782"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
@@ -61,7 +69,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d3h-QD-YeW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2066" y="937"/>
+            <point key="canvasLocation" x="690" y="1022.5"/>
         </scene>
         <!--Note View Controller-->
         <scene sceneID="BrQ-xj-GlC">
@@ -72,7 +80,7 @@
                         <viewControllerLayoutGuide type="bottom" id="jXY-hU-34c"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gPh-tV-OSh">
-                        <rect key="frame" x="0.0" y="0.0" width="732" height="104"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CFb-HQ-OoI">
@@ -88,7 +96,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="785-VQ-DQ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1357" y="540"/>
+            <point key="canvasLocation" x="711" y="355"/>
         </scene>
         <!--Knob View Controller-->
         <scene sceneID="eM9-20-EaK">
@@ -99,14 +107,20 @@
                         <viewControllerLayoutGuide type="bottom" id="Jap-dm-zdM"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7vo-qt-NnJ">
-                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                        <rect key="frame" x="0.0" y="0.0" width="280" height="76"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="theremin-b2.png" translatesAutoresizingMaskIntoConstraints="NO" id="Rnc-ck-4Mz">
+                                <rect key="frame" x="-480" y="-660" width="1042" height="782"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ezf-E8-zBK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-426" y="1281"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="zWz-Ww-UNE">
@@ -125,9 +139,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3y1-5P-8Lx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2365" y="525"/>
+            <point key="canvasLocation" x="711" y="565"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="theremin-b2.png" width="1042" height="782"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

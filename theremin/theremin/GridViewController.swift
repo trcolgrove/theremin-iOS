@@ -11,6 +11,8 @@ import UIKit
 
 class GridViewController: UIViewController {
     
+    var leftmost_note: Int = 0
+    
     // get xy coord
     // touch on
     // touch move
@@ -55,7 +57,6 @@ class GridViewController: UIViewController {
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
         println("touch up")
         PdBase.sendList([1, 60, 0], toReceiver: "pitch-vel")
-
     }
     
 }
