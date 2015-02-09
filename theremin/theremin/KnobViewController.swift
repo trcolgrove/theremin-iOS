@@ -7,3 +7,17 @@
 //
 
 import Foundation
+import UIKit
+
+class KnobViewController: InstrumentViewController {
+    
+    var reverb: Int = 0
+    var chorus: Int = 0
+    var tremolo: Int = 0
+    var gain: Int = 0
+    
+    override func viewDidLoad() {
+        println("Knob View Controller is loaded");
+    }
+    
+}

@@ -24,4 +24,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)updateKey:(NSString *)key {
+    self.key = key;
+}
+
 @end

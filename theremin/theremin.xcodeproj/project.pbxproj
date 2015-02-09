@@ -7,11 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		377751201A88188100D696D8 /* GridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3777511F1A88188100D696D8 /* GridViewController.swift */; };
 		B1D07046291BC940EC75CD40 /* libPods-theremin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8004AE9946D819307EE2E6D8 /* libPods-theremin.a */; };
 		F845813E1A87D86600DCBFEA /* theremin-b1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F845813D1A87D86600DCBFEA /* theremin-b1.jpg */; };
 		F84581411A87E79800DCBFEA /* theremin-b2.png in Resources */ = {isa = PBXBuildFile; fileRef = F84581401A87E79800DCBFEA /* theremin-b2.png */; };
 		F84581431A87EC4700DCBFEA /* wave.png in Resources */ = {isa = PBXBuildFile; fileRef = F84581421A87EC4700DCBFEA /* wave.png */; };
+		F84581451A882C6600DCBFEA /* InstrumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84581441A882C6600DCBFEA /* InstrumentViewController.swift */; };
+		F845814E1A8851F700DCBFEA /* theremin-appicon-40x40.png in Resources */ = {isa = PBXBuildFile; fileRef = F845814D1A8851F700DCBFEA /* theremin-appicon-40x40.png */; };
+		F84581501A88520D00DCBFEA /* theremin-appicon-80x80.png in Resources */ = {isa = PBXBuildFile; fileRef = F845814F1A88520D00DCBFEA /* theremin-appicon-80x80.png */; };
+		F84581521A88528300DCBFEA /* theremin-appicon180x180.png in Resources */ = {isa = PBXBuildFile; fileRef = F84581511A88528300DCBFEA /* theremin-appicon180x180.png */; };
+		F84581541A88528C00DCBFEA /* theremin-appicon-58x58.png in Resources */ = {isa = PBXBuildFile; fileRef = F84581531A88528C00DCBFEA /* theremin-appicon-58x58.png */; };
+		F84581561A88529700DCBFEA /* theremin-appicon-29x29.png in Resources */ = {isa = PBXBuildFile; fileRef = F84581551A88529700DCBFEA /* theremin-appicon-29x29.png */; };
+		F84581581A88543700DCBFEA /* theremin-appicon76x76.png in Resources */ = {isa = PBXBuildFile; fileRef = F84581571A88543700DCBFEA /* theremin-appicon76x76.png */; };
+		F845815A1A88546E00DCBFEA /* theremin-appicon152x152.png in Resources */ = {isa = PBXBuildFile; fileRef = F84581591A88546E00DCBFEA /* theremin-appicon152x152.png */; };
 		F84BF2481A83CD7E0007686D /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84BF2471A83CD7E0007686D /* NoteViewController.swift */; };
 		F84BF24A1A83CD990007686D /* KnobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84BF2491A83CD990007686D /* KnobViewController.swift */; };
 		F8BD45811A7EC47000535821 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BD45801A7EC47000535821 /* main.m */; };
@@ -36,13 +43,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3777511F1A88188100D696D8 /* GridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GridViewController.swift; path = ../../../Desktop/GridViewController.swift; sourceTree = "<group>"; };
 		386C355754CEC498073BC781 /* Pods-theremin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-theremin.release.xcconfig"; path = "Pods/Target Support Files/Pods-theremin/Pods-theremin.release.xcconfig"; sourceTree = "<group>"; };
 		8004AE9946D819307EE2E6D8 /* libPods-theremin.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-theremin.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9248A05E5AC8D6B8EE1E5BF /* Pods-theremin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-theremin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-theremin/Pods-theremin.debug.xcconfig"; sourceTree = "<group>"; };
 		F845813D1A87D86600DCBFEA /* theremin-b1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "theremin-b1.jpg"; sourceTree = "<group>"; };
 		F84581401A87E79800DCBFEA /* theremin-b2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "theremin-b2.png"; sourceTree = "<group>"; };
 		F84581421A87EC4700DCBFEA /* wave.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wave.png; sourceTree = "<group>"; };
+		F84581441A882C6600DCBFEA /* InstrumentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstrumentViewController.swift; sourceTree = "<group>"; };
+		F845814D1A8851F700DCBFEA /* theremin-appicon-40x40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "theremin-appicon-40x40.png"; sourceTree = "<group>"; };
+		F845814F1A88520D00DCBFEA /* theremin-appicon-80x80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "theremin-appicon-80x80.png"; sourceTree = "<group>"; };
+		F84581511A88528300DCBFEA /* theremin-appicon180x180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "theremin-appicon180x180.png"; sourceTree = "<group>"; };
+		F84581531A88528C00DCBFEA /* theremin-appicon-58x58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "theremin-appicon-58x58.png"; sourceTree = "<group>"; };
+		F84581551A88529700DCBFEA /* theremin-appicon-29x29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "theremin-appicon-29x29.png"; sourceTree = "<group>"; };
+		F84581571A88543700DCBFEA /* theremin-appicon76x76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "theremin-appicon76x76.png"; sourceTree = "<group>"; };
+		F84581591A88546E00DCBFEA /* theremin-appicon152x152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "theremin-appicon152x152.png"; sourceTree = "<group>"; };
 		F84BF2471A83CD7E0007686D /* NoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
 		F84BF2491A83CD990007686D /* KnobViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnobViewController.swift; sourceTree = "<group>"; };
 		F8BD457B1A7EC47000535821 /* theremin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = theremin.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,11 +116,31 @@
 		F845813F1A87D87F00DCBFEA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				F84581591A88546E00DCBFEA /* theremin-appicon152x152.png */,
+				F84581571A88543700DCBFEA /* theremin-appicon76x76.png */,
+				F84581551A88529700DCBFEA /* theremin-appicon-29x29.png */,
+				F84581531A88528C00DCBFEA /* theremin-appicon-58x58.png */,
+				F84581511A88528300DCBFEA /* theremin-appicon180x180.png */,
+				F845814D1A8851F700DCBFEA /* theremin-appicon-40x40.png */,
+				F845814F1A88520D00DCBFEA /* theremin-appicon-80x80.png */,
 				F84581401A87E79800DCBFEA /* theremin-b2.png */,
 				F84581421A87EC4700DCBFEA /* wave.png */,
 				F845813D1A87D86600DCBFEA /* theremin-b1.jpg */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		F84581461A88355300DCBFEA /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F8BD45A71A7ED3BE00535821 /* GridViewController.swift */,
+				F84581441A882C6600DCBFEA /* InstrumentViewController.swift */,
+				F84BF2491A83CD990007686D /* KnobViewController.swift */,
+				F8BD45851A7EC47000535821 /* ViewController.h */,
+				F84BF2471A83CD7E0007686D /* NoteViewController.swift */,
+				F8BD45861A7EC47000535821 /* ViewController.m */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 		F8BD45721A7EC47000535821 = {
@@ -136,13 +170,8 @@
 				F8BD45A41A7EC9C900535821 /* theremin.pd */,
 				F8BD45821A7EC47000535821 /* AppDelegate.h */,
 				F8BD45831A7EC47000535821 /* AppDelegate.m */,
-				F8BD45851A7EC47000535821 /* ViewController.h */,
-				F84BF2471A83CD7E0007686D /* NoteViewController.swift */,
-				F8BD45861A7EC47000535821 /* ViewController.m */,
+				F84581461A88355300DCBFEA /* ViewControllers */,
 				F8BD45881A7EC47000535821 /* Main.storyboard */,
-				F8BD45A71A7ED3BE00535821 /* GridViewController.swift */,
-				3777511F1A88188100D696D8 /* GridViewController.swift */,
-				F84BF2491A83CD990007686D /* KnobViewController.swift */,
 				F8BD458B1A7EC47000535821 /* Images.xcassets */,
 				F8BD458D1A7EC47000535821 /* LaunchScreen.xib */,
 				F8BD457E1A7EC47000535821 /* Supporting Files */,
@@ -259,13 +288,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F84581541A88528C00DCBFEA /* theremin-appicon-58x58.png in Resources */,
 				F8BD458A1A7EC47000535821 /* Main.storyboard in Resources */,
 				F84581411A87E79800DCBFEA /* theremin-b2.png in Resources */,
 				F8BD45A51A7EC9C900535821 /* theremin.pd in Resources */,
 				F84581431A87EC4700DCBFEA /* wave.png in Resources */,
 				F845813E1A87D86600DCBFEA /* theremin-b1.jpg in Resources */,
 				F8BD458F1A7EC47000535821 /* LaunchScreen.xib in Resources */,
+				F845815A1A88546E00DCBFEA /* theremin-appicon152x152.png in Resources */,
 				F8BD458C1A7EC47000535821 /* Images.xcassets in Resources */,
+				F84581501A88520D00DCBFEA /* theremin-appicon-80x80.png in Resources */,
+				F845814E1A8851F700DCBFEA /* theremin-appicon-40x40.png in Resources */,
+				F84581581A88543700DCBFEA /* theremin-appicon76x76.png in Resources */,
+				F84581521A88528300DCBFEA /* theremin-appicon180x180.png in Resources */,
+				F84581561A88529700DCBFEA /* theremin-appicon-29x29.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,10 +355,10 @@
 				F84BF24A1A83CD990007686D /* KnobViewController.swift in Sources */,
 				F8BD45A81A7ED3BE00535821 /* GridViewController.swift in Sources */,
 				F8BD45871A7EC47000535821 /* ViewController.m in Sources */,
-				377751201A88188100D696D8 /* GridViewController.swift in Sources */,
 				F8BD45841A7EC47000535821 /* AppDelegate.m in Sources */,
 				F84BF2481A83CD7E0007686D /* NoteViewController.swift in Sources */,
 				F8BD45811A7EC47000535821 /* main.m in Sources */,
+				F84581451A882C6600DCBFEA /* InstrumentViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,6 +483,7 @@
 			baseConfigurationReference = D9248A05E5AC8D6B8EE1E5BF /* Pods-theremin.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = theremin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -461,6 +498,7 @@
 			baseConfigurationReference = 386C355754CEC498073BC781 /* Pods-theremin.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = theremin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

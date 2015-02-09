@@ -23,8 +23,9 @@ class NoteViewController: UIViewController {
     var touch_origin: CGFloat = 0
     
     
+    
     override func viewDidLoad() {
-        println("Note View Controller is loaded");
+        println("Note View Controller is loaded")
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent){
@@ -42,12 +43,11 @@ class NoteViewController: UIViewController {
     }
     
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
-        println("touch up")
         //Grid.shiftRange(note_shift)
+        note_shift = 0;
     }
     
-    func shiftRange (shiftAmount: Int){
-        leftmost_note += shiftAmount
-    }
+  
+    
     
 }

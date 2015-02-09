@@ -9,54 +9,54 @@
 import Foundation
 import UIKit
 
-class GridViewController: UIViewController {
+class GridViewController: InstrumentViewController {
     
-    var leftmost_note: Int = 0
-    
-    // get xy coord
-    // touch on
-    // touch move
-    // touch off
-    // convert to midi
-    
+    let max_volume: Int = 50
+    var leftmost_note: Int = 60
     var pitch: CGFloat = 60
-    var vel: CGFloat = 10
+    var vel: CGFloat = 5
     var prev_x: CGFloat = 0
     var prev_y: CGFloat = 0
+    var w: CGFloat = 0
+    var h: CGFloat = 0
     
     override func viewDidLoad() {
         println("Grid View Controller is loaded");
     }
     
+    override func updateKey(key: String) {
+        
+        self.key = key
+        // additional code for changing grid key
+        
+    }
+    
+    func setRange(note: Int) {
+        self.leftmost_note = note
+        
+    }
+    
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        w = self.view.bounds.width
+        h = self.view.bounds.height
         let touch: AnyObject = touches.allObjects[0]
         let loc = touch.locationInView(self.view)
-        println("touch is at: (\(loc.x), \(loc.y))")
-        pitch = 60
-        prev_x = 0
-        prev_y = 0
-        PdBase.sendList([1, self.pitch, vel], toReceiver: "pitch-vel")
+        pitch = CGFloat(leftmost_note) + (loc.x / w) * 12
+        vel = (loc.y / h) * (CGFloat(max_volume))
+        PdBase.sendList([1, pitch, vel], toReceiver: "pitch-vel")
 
     }
     
     override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
         let touch: AnyObject = touches.allObjects[0]
         let loc = touch.locationInView(self.view)
-        println("touch is at: (\(loc.x), \(loc.y))")
-        
-
-        pitch += (prev_x < loc.x ? 0.05 : -0.05)
-        vel += (prev_y < loc.y ? 1 : (vel > 1 ? -1 : 0))
-       
-        
+        pitch = CGFloat(leftmost_note) + (loc.x / w) * 12
+        vel = (loc.y / h) * (CGFloat(max_volume))
         PdBase.sendList([1, pitch, vel], toReceiver: "pitch-vel")
-        prev_x = loc.x
-        prev_y = loc.y
     }
     
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
-        println("touch up")
-        PdBase.sendList([1, 60, 0], toReceiver: "pitch-vel")
+        PdBase.sendList([1, pitch, 0], toReceiver: "pitch-vel")
     }
     
 }
