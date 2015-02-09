@@ -28,4 +28,8 @@
     self.key = key;
 }
 
+- (IBAction)buttonClicked:(id)sender {
+    NSLog(@"Button pressed: %@", [sender currentTitle]);
+}
+
 @end

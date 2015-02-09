@@ -27,13 +27,13 @@ class GridViewController: InstrumentViewController {
     override func updateKey(key: String) {
         
         self.key = key
+        var map = super.key_map[key]
         // additional code for changing grid key
         
     }
     
     func setRange(note: Int) {
         self.leftmost_note = note
-        
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
