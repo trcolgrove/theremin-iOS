@@ -25,9 +25,19 @@ class InstrumentViewController: UIViewController {
         super.init(coder: aDecoder)
     }
     
+    @IBAction func buttonClicked (sender: AnyObject) {
+        println("Button pressed: " + sender.currentTitle!!);
+        self.updateKey(sender.currentTitle!!)
+    }
+    
     // sets the theremin key
     func updateKey(key: String) {
         self.key = key
+        println("Key changed to " + self.key)
+    }
+    
+    override func viewDidLoad() {
+        println("Instrument View Controller has loaded")
     }
     
 }

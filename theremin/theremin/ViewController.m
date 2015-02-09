@@ -14,6 +14,10 @@
 
 @implementation ViewController
 
++ (void)initialize {
+
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
@@ -24,12 +28,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)updateKey:(NSString *)key {
-    self.key = key;
-}
-
 - (IBAction)buttonClicked:(id)sender {
     NSLog(@"Button pressed: %@", [sender currentTitle]);
+    //instvc.key = "ChangedKey"
 }
 
 @end

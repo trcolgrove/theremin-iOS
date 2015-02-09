@@ -27,7 +27,7 @@ class GridViewController: InstrumentViewController {
     override func updateKey(key: String) {
         
         self.key = key
-        var map = super.key_map[key]
+        //var map = super.key_map[key]
         // additional code for changing grid key
         
     }

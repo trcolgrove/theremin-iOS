@@ -15,14 +15,15 @@ class NoteViewController: InstrumentViewController {
     var leftmost_note: Int = 0
     //var Grid: GridViewController
     
-//    init() {
-//        self.leftmost_note = 60
-//        self.key = "CMajor"
-//        super.init()
-//    }
-//
 //    required init(coder aDecoder: NSCoder) {
 //        super.init(coder: aDecoder)
+//    }
+//    
+//    init() {
+//        self.leftmost_note = 60
+//        //self.Grid = GridViewController()
+//        self.key = "CMajor"
+//        super.init()
 //    }
     
     override func viewDidLoad() {
