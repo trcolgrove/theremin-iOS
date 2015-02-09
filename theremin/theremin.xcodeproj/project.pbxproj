@@ -109,6 +109,19 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
+		F84581461A88355300DCBFEA /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F8BD45A71A7ED3BE00535821 /* GridViewController.swift */,
+				F84581441A882C6600DCBFEA /* InstrumentViewController.swift */,
+				F84BF2491A83CD990007686D /* KnobViewController.swift */,
+				F8BD45851A7EC47000535821 /* ViewController.h */,
+				F84BF2471A83CD7E0007686D /* NoteViewController.swift */,
+				F8BD45861A7EC47000535821 /* ViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
 		F8BD45721A7EC47000535821 = {
 			isa = PBXGroup;
 			children = (
@@ -136,13 +149,8 @@
 				F8BD45A41A7EC9C900535821 /* theremin.pd */,
 				F8BD45821A7EC47000535821 /* AppDelegate.h */,
 				F8BD45831A7EC47000535821 /* AppDelegate.m */,
-				F8BD45851A7EC47000535821 /* ViewController.h */,
-				F84BF2471A83CD7E0007686D /* NoteViewController.swift */,
-				F8BD45861A7EC47000535821 /* ViewController.m */,
+				F84581461A88355300DCBFEA /* ViewControllers */,
 				F8BD45881A7EC47000535821 /* Main.storyboard */,
-				F8BD45A71A7ED3BE00535821 /* GridViewController.swift */,
-				F84581441A882C6600DCBFEA /* InstrumentViewController.swift */,
-				F84BF2491A83CD990007686D /* KnobViewController.swift */,
 				F8BD458B1A7EC47000535821 /* Images.xcassets */,
 				F8BD458D1A7EC47000535821 /* LaunchScreen.xib */,
 				F8BD457E1A7EC47000535821 /* Supporting Files */,

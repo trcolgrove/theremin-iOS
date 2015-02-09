@@ -13,19 +13,17 @@ import UIKit
 class NoteViewController: InstrumentViewController {
     
     var leftmost_note: Int = 0
-    var Grid: GridViewController
+    //var Grid: GridViewController
     
-    required override init(coder aDecoder: NSCoder) {
-        self.Grid = GridViewController()
-        super.init(coder: aDecoder)
-    }
-    
-    override init() {
-        self.leftmost_note = 60
-        self.Grid = GridViewController()
-        super.init()
-        self.key = "CMajor"
-    }
+//    init() {
+//        self.leftmost_note = 60
+//        self.key = "CMajor"
+//        super.init()
+//    }
+//
+//    required init(coder aDecoder: NSCoder) {
+//        super.init(coder: aDecoder)
+//    }
     
     override func viewDidLoad() {
         println("Note View Controller is loaded")

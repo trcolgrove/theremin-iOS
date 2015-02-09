@@ -17,15 +17,19 @@ class GridViewController: InstrumentViewController {
     var prev_x: CGFloat = 0
     var prev_y: CGFloat = 0
     
-//    override func updateKey(key: NSString) {
-//        
-//    }
-    
     override func viewDidLoad() {
         println("Grid View Controller is loaded");
     }
     
+    override func updateKey(key: String) {
+        
+        self.key = key
+        // additional code for changing grid key
+        
+    }
+    
     func setRange(note: Int) {
+        self.leftmost_note = note
         
     }
     
