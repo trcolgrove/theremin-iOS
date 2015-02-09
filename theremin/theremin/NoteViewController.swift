@@ -10,21 +10,44 @@
 import Foundation
 import UIKit
 
-class NoteViewController {
+class NoteViewController: UIViewController {
+
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     var leftmost_note: Int = 0
     var key: String = ""
+    var note_shift: CGFloat = 0
     var Grid: GridViewController
+    var touch_origin: CGFloat = 0
     
-    init(){
-        leftmost_note = 60
-        key = "CMajor"
-        Grid = GridViewController()
+    
+    override func viewDidLoad() {
+        println("Note View Controller is loaded");
     }
     
-//    func shiftOctave (){
-//        leftmost_note += 8
-//        Grid.setRange(leftmost_note)
-//    }
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent){
+        let touch: AnyObject = touches.allObjects[0]
+        let loc =  touch.locationInView(self.view)
+        touch_origin = loc.x
+    }
+    
+    
+    override func touchesMoved(touches: NSSet, withEvent event: UIEvent){
+        let touch: AnyObject = touches.allObjects[0]
+        let loc =  touch.locationInView(self.view)
+        note_shift += (touch_origin < loc.x ? 1 : -1)
+        
+    }
+    
+    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+        println("touch up")
+        //Grid.shiftRange(note_shift)
+    }
+    
+    func shiftRange (shiftAmount: Int){
+        leftmost_note += shiftAmount
+    }
     
 }
