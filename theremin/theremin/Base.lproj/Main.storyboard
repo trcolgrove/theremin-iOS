@@ -94,13 +94,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W6Z-xJ-sWU">
-                                <rect key="frame" x="40" y="0.0" width="944" height="102"/>
+                                <rect key="frame" x="40" y="25" width="944" height="77"/>
                                 <connections>
                                     <segue destination="ztM-Vi-5Wh" kind="embed" id="q68-vQ-nEG"/>
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nDW-oA-h7j">
-                                <rect key="frame" x="7" y="35" width="30" height="30"/>
+                                <rect key="frame" x="7" y="49" width="30" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="&lt;">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -108,7 +108,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SJY-eq-Oiy">
-                                <rect key="frame" x="986" y="35" width="30" height="30"/>
+                                <rect key="frame" x="986" y="49" width="30" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <state key="normal" title="&gt;">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -157,15 +157,29 @@
                         <viewControllerLayoutGuide type="bottom" id="5Ll-5v-G3N"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="0WE-xT-46m">
-                        <rect key="frame" x="0.0" y="0.0" width="944" height="102"/>
+                        <rect key="frame" x="0.0" y="0.0" width="944" height="77"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <view contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8CX-Ft-t44">
+                                <rect key="frame" x="-944" y="-12" width="2508" height="102"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="39" translatesAutoresizingMaskIntoConstraints="NO" id="iRn-Xc-Evg">
+                                        <rect key="frame" x="974" y="-16" width="2284" height="133"/>
+                                        <string key="text">C          D          E    F          G          A          B    C      D E F G A B C D E F G A B C D E F G A B C D E F G A B C D E F G</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="43"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="30G-B6-FZC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1266" y="-299"/>
+            <point key="canvasLocation" x="1295" y="356.5"/>
         </scene>
     </scenes>
     <resources>
