@@ -2,7 +2,7 @@
 //  GridViewController.swift
 //  theremin
 //
-//  Created by McCall Bliss on 2/1/15.
+//  Created by McCall Bliss, Thomas Colgrove, and Dan Defossez on 2/1/15.
 //  Copyright (c) 2015 tufts. All rights reserved.
 //
 
@@ -20,20 +20,32 @@ class GridViewController: InstrumentViewController {
     var w: CGFloat = 0
     var h: CGFloat = 0
     
+    // grid position
+    var grid_origin: CGFloat = 0
+    let grid_width: CGFloat = 50
+    
     override func viewDidLoad() {
         println("Grid View Controller is loaded");
     }
     
-    override func updateKey(key: String) {
-        
-        self.key = key
+    override func updateKey(new_key: String) {
+        key = new_key
         //var map = super.key_map[key]
         // additional code for changing grid key
-        
     }
     
-    func setRange(note: Int) {
-        self.leftmost_note = note
+    func setRange(note: Int, offset: CGFloat) {
+        // moves grid to left based on the offset
+        var note_offset = (offset % grid_width)
+        snapToGrid(note_offset)
+        
+        // sets the leftmost note
+        leftmost_note = note
+    }
+    
+    func snapToGrid(note_offset: CGFloat) {
+        // moves view's origin based on offset
+        grid_origin = note_offset
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
