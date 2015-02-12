@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14B25" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
         <!--Instrument View Controller-->
@@ -151,10 +151,10 @@
             </objects>
             <point key="canvasLocation" x="894" y="1661"/>
         </scene>
-        <!--View Controller-->
+        <!--Note View Controller-->
         <scene sceneID="cjH-Pd-0eI">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="ztM-Vi-5Wh" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="ztM-Vi-5Wh" customClass="NoteViewController" customModule="theremin" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9aq-B3-4Gk"/>
                         <viewControllerLayoutGuide type="bottom" id="5Ll-5v-G3N"/>
@@ -163,29 +163,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="944" height="77"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8CX-Ft-t44">
-                                <rect key="frame" x="-944" y="-12" width="2508" height="102"/>
-                                <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="39" translatesAutoresizingMaskIntoConstraints="NO" id="iRn-Xc-Evg">
-                                        <rect key="frame" x="974" y="-16" width="2284" height="133"/>
-                                        <string key="text">C          D          E    F          G          A          B    C      D E F G A B C D E F G A B C D E F G A B C D E F G A B C D E F G</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="43"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
-                                    </textField>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="39" translatesAutoresizingMaskIntoConstraints="NO" id="iRn-Xc-Evg">
+                                <rect key="frame" x="-670" y="-28" width="2284" height="133"/>
+                                <string key="text">C          D          E    F          G          A          B    C      D E F G A B C D E F G A B C D E F G A B C D E F G A B C D E F G</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="43"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
+                            <imageView clearsContextBeforeDrawing="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="note_slider.png" translatesAutoresizingMaskIntoConstraints="NO" id="lMT-YI-ahD">
+                                <rect key="frame" x="-740" y="-35" width="2052" height="122"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="JBd-vI-nLb" appends="YES" id="XN4-qW-75I"/>
+                        </connections>
                     </view>
                     <toolbarItems/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="30G-B6-FZC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="JBd-vI-nLb">
+                    <connections>
+                        <action selector="handlePan:" destination="ztM-Vi-5Wh" id="HWP-AG-xrY"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1295" y="356.5"/>
         </scene>
     </scenes>
     <resources>
+        <image name="note_slider.png" width="3323" height="144"/>
         <image name="theremin-b2.png" width="1042" height="782"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
