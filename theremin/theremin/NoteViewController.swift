@@ -2,7 +2,7 @@
 //  NoteViewController.swift
 //  theremin
 //
-//  Created by McCall Bliss on 2/5/15.
+//  Created by McCall Bliss, Thomas Colgrove, and Dan Defossez on 2/5/15.
 //  Implemented by Thomas Colgrove
 //  Copyright (c) 2015 tufts. All rights reserved.
 //
@@ -15,7 +15,6 @@ class NoteViewController: InstrumentViewController {
     var leftmost_note: Int = 0
     //var key: String = ""
     var note_shift: CGFloat = 0
-    var Grid = GridViewController()
     var touch_origin: CGFloat = 0
     var pan_view: UIView = UIView()
     

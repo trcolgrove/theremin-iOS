@@ -2,7 +2,7 @@
 //  ViewController.m
 //  theremin
 //
-//  Created by McCall Bliss on 2/1/15.
+//  Created by McCall Bliss, Thomas Colgrove, and Dan Defossez on 2/1/15.
 //  Copyright (c) 2015 tufts. All rights reserved.
 //
 
@@ -14,6 +14,10 @@
 
 @implementation ViewController
 
++ (void)initialize {
+
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
@@ -24,8 +28,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)updateKey:(NSString *)key {
-    self.key = key;
+- (IBAction)buttonClicked:(id)sender {
+    NSLog(@"Button pressed: %@", [sender currentTitle]);
+    //instvc.key = "ChangedKey"
 }
 
 @end

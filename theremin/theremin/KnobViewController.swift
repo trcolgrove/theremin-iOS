@@ -2,7 +2,7 @@
 //  KnobViewController.swift
 //  theremin
 //
-//  Created by McCall Bliss on 2/5/15.
+//  Created by McCall Bliss, Thomas Colgrove, and Dan Defossez on 2/5/15.
 //  Copyright (c) 2015 tufts. All rights reserved.
 //
 
