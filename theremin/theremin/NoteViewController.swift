@@ -10,44 +10,32 @@
 import Foundation
 import UIKit
 
-class NoteViewController: UIViewController {
+class NoteViewController: InstrumentViewController {
 
-    required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     var leftmost_note: Int = 0
-    var key: String = ""
+    //var key: String = ""
     var note_shift: CGFloat = 0
-    var Grid: GridViewController
+    var Grid = GridViewController()
     var touch_origin: CGFloat = 0
+    var pan_view: UIView = UIView()
     
     
     
     override func viewDidLoad() {
-        println("Note View Controller is loaded")
+        super.viewDidLoad()
+        println("Grid View Controller is loaded");
     }
-    
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent){
-        let touch: AnyObject = touches.allObjects[0]
-        let loc =  touch.locationInView(self.view)
-        touch_origin = loc.x
-    }
-    
-    
-    override func touchesMoved(touches: NSSet, withEvent event: UIEvent){
-        let touch: AnyObject = touches.allObjects[0]
-        let loc =  touch.locationInView(self.view)
-        note_shift += (touch_origin < loc.x ? 1 : -1)
+    //implement later
+    /*
+    @IBAction func handleSwipe(recognizer: UISwipeGestureRecognizer) {
         
     }
+    */
     
-    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
-        //Grid.shiftRange(note_shift)
-        note_shift = 0;
+    @IBAction func handlePan(recognizer:UIPanGestureRecognizer) {
+        let translation = recognizer.translationInView(self.view)
+        recognizer.view!.center = CGPoint(x:recognizer.view!.center.x + translation.x,
+            y:recognizer.view!.center.y)
+        recognizer.setTranslation(CGPointZero, inView: self.view)
     }
-    
-  
-    
-    
 }

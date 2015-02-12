@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B1D07046291BC940EC75CD40 /* libPods-theremin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8004AE9946D819307EE2E6D8 /* libPods-theremin.a */; };
+		E90742571A8AD432009088E0 /* note_slider.png in Resources */ = {isa = PBXBuildFile; fileRef = E90742561A8AD432009088E0 /* note_slider.png */; };
 		F845813E1A87D86600DCBFEA /* theremin-b1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F845813D1A87D86600DCBFEA /* theremin-b1.jpg */; };
 		F84581411A87E79800DCBFEA /* theremin-b2.png in Resources */ = {isa = PBXBuildFile; fileRef = F84581401A87E79800DCBFEA /* theremin-b2.png */; };
 		F84581431A87EC4700DCBFEA /* wave.png in Resources */ = {isa = PBXBuildFile; fileRef = F84581421A87EC4700DCBFEA /* wave.png */; };
@@ -46,6 +47,7 @@
 		386C355754CEC498073BC781 /* Pods-theremin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-theremin.release.xcconfig"; path = "Pods/Target Support Files/Pods-theremin/Pods-theremin.release.xcconfig"; sourceTree = "<group>"; };
 		8004AE9946D819307EE2E6D8 /* libPods-theremin.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-theremin.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9248A05E5AC8D6B8EE1E5BF /* Pods-theremin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-theremin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-theremin/Pods-theremin.debug.xcconfig"; sourceTree = "<group>"; };
+		E90742561A8AD432009088E0 /* note_slider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = note_slider.png; sourceTree = "<group>"; };
 		F845813D1A87D86600DCBFEA /* theremin-b1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "theremin-b1.jpg"; sourceTree = "<group>"; };
 		F84581401A87E79800DCBFEA /* theremin-b2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "theremin-b2.png"; sourceTree = "<group>"; };
 		F84581421A87EC4700DCBFEA /* wave.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wave.png; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 			children = (
 				F84581591A88546E00DCBFEA /* theremin-appicon152x152.png */,
 				F84581571A88543700DCBFEA /* theremin-appicon76x76.png */,
+				E90742561A8AD432009088E0 /* note_slider.png */,
 				F84581551A88529700DCBFEA /* theremin-appicon-29x29.png */,
 				F84581531A88528C00DCBFEA /* theremin-appicon-58x58.png */,
 				F84581511A88528300DCBFEA /* theremin-appicon180x180.png */,
@@ -299,6 +302,7 @@
 				F8BD458C1A7EC47000535821 /* Images.xcassets in Resources */,
 				F84581501A88520D00DCBFEA /* theremin-appicon-80x80.png in Resources */,
 				F845814E1A8851F700DCBFEA /* theremin-appicon-40x40.png in Resources */,
+				E90742571A8AD432009088E0 /* note_slider.png in Resources */,
 				F84581581A88543700DCBFEA /* theremin-appicon76x76.png in Resources */,
 				F84581521A88528300DCBFEA /* theremin-appicon180x180.png in Resources */,
 				F84581561A88529700DCBFEA /* theremin-appicon-29x29.png in Resources */,
