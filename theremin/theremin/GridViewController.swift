@@ -21,6 +21,7 @@ class GridViewController: InstrumentViewController {
     var h: CGFloat = 0
     
     // grid position
+    @IBOutlet weak var grid_image: UIImageView!
     var grid_origin: CGFloat = 0
     let grid_width: CGFloat = 50
     
@@ -30,8 +31,8 @@ class GridViewController: InstrumentViewController {
     
     override func updateKey(new_key: String) {
         key = new_key
-        //var map = super.key_map[key]
-        // additional code for changing grid key
+        // get the leftmost note information from the key_map
+        // leftmost_note = super.key_map[key]
     }
     
     func setRange(note: Int, offset: CGFloat) {

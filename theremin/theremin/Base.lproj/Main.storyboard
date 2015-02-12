@@ -68,14 +68,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="870" height="547"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="theremin-b2.png" translatesAutoresizingMaskIntoConstraints="NO" id="1lq-zq-GgJ">
-                                <rect key="frame" x="-87" y="-111" width="1042" height="782"/>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="theremin-b2.png" translatesAutoresizingMaskIntoConstraints="NO" id="qgL-AG-fvm">
+                                <rect key="frame" x="-1" y="7" width="870" height="547"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="nDJ-Dj-0et"/>
+                    <connections>
+                        <outlet property="grid_image" destination="qgL-AG-fvm" id="EbT-TC-zu6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d3h-QD-YeW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
