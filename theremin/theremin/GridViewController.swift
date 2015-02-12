@@ -15,8 +15,6 @@ class GridViewController: InstrumentViewController {
     var leftmost_note: Int = 60
     var pitch: CGFloat = 60
     var vel: CGFloat = 5
-    var prev_x: CGFloat = 0
-    var prev_y: CGFloat = 0
     var w: CGFloat = 0
     var h: CGFloat = 0
     
