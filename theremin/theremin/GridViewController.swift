@@ -24,7 +24,6 @@ class GridViewController: InstrumentViewController {
     @IBOutlet weak var grid_image: UIImageView!
     var grid_origin: CGFloat = 0
     let grid_width: CGFloat = 50
-    
     override func viewDidLoad() {
         println("Grid View Controller is loaded");
     }

@@ -92,11 +92,11 @@
                         <viewControllerLayoutGuide type="top" id="ul8-O8-5qX"/>
                         <viewControllerLayoutGuide type="bottom" id="jXY-hU-34c"/>
                     </layoutGuides>
-                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gPh-tV-OSh">
+                    <view key="view" opaque="NO" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="center" id="gPh-tV-OSh">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W6Z-xJ-sWU">
+                            <containerView opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W6Z-xJ-sWU">
                                 <rect key="frame" x="40" y="25" width="944" height="77"/>
                                 <connections>
                                     <segue destination="ztM-Vi-5Wh" kind="embed" id="q68-vQ-nEG"/>
@@ -159,17 +159,11 @@
                         <viewControllerLayoutGuide type="top" id="9aq-B3-4Gk"/>
                         <viewControllerLayoutGuide type="bottom" id="5Ll-5v-G3N"/>
                     </layoutGuides>
-                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="0WE-xT-46m">
+                    <view key="view" opaque="NO" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="center" id="0WE-xT-46m">
                         <rect key="frame" x="0.0" y="0.0" width="944" height="77"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="39" translatesAutoresizingMaskIntoConstraints="NO" id="iRn-Xc-Evg">
-                                <rect key="frame" x="-670" y="-28" width="2284" height="133"/>
-                                <string key="text">C          D          E    F          G          A          B    C      D E F G A B C D E F G A B C D E F G A B C D E F G A B C D E F G</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="43"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
-                            </textField>
-                            <imageView clearsContextBeforeDrawing="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="note_slider.png" translatesAutoresizingMaskIntoConstraints="NO" id="lMT-YI-ahD">
+                            <imageView clearsContextBeforeDrawing="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="note_slider.png" translatesAutoresizingMaskIntoConstraints="NO" id="lMT-YI-ahD">
                                 <rect key="frame" x="-740" y="-35" width="2052" height="122"/>
                             </imageView>
                         </subviews>
@@ -177,6 +171,7 @@
                         <gestureRecognizers/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="JBd-vI-nLb" appends="YES" id="XN4-qW-75I"/>
+                            <outletCollection property="gestureRecognizers" destination="JBd-vI-nLb" appends="YES" id="khU-Uc-1v8"/>
                         </connections>
                     </view>
                     <toolbarItems/>
