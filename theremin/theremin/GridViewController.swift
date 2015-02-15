@@ -22,7 +22,7 @@ class GridViewController: InstrumentViewController {
     @IBOutlet weak var grid_image: UIImageView!
     var grid_origin: CGFloat = 0
     let grid_width: CGFloat = 50
-    
+
     override func viewDidLoad() {
         println("Grid View Controller is loaded");
     }
@@ -60,8 +60,6 @@ class GridViewController: InstrumentViewController {
         pitch = CGFloat(leftmost_note) + (touch_loc.x / w) * 12
         vel = CGFloat(max_volume)
         PdBase.sendList([1, pitch, vel], toReceiver: "pitch-vel")
-        
-        // Set a random Circle Radius
         
         // Create a new CircleView
         var circleView = CircleView(frame: CGRectMake(touch_loc.x - 0.5 * circle_d, touch_loc.y - 0.5 * circle_d, circle_d, circle_d))

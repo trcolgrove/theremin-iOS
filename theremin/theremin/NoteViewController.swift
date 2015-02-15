@@ -17,11 +17,18 @@ class NoteViewController: InstrumentViewController {
     var note_shift: CGFloat = 0
     var touch_origin: CGFloat = 0
     var pan_view: UIView = UIView()
+    var gridvc: GridViewController?
     
+    required init(coder aDecoder: NSCoder) {
+        gridvc = GridViewController(coder: aDecoder)
+        super.init(coder: aDecoder)
+    }
+
     override func viewDidLoad() {
         println("Note View Controller is loaded");
     }
     
+
     //implement later
     /*
     @IBAction func handleSwipe(recognizer: UISwipeGestureRecognizer) {
@@ -29,10 +36,13 @@ class NoteViewController: InstrumentViewController {
     }
     */
     
+    
+    
     @IBAction func handlePan(recognizer:UIPanGestureRecognizer) {
         let translation = recognizer.translationInView(self.view)
         recognizer.view!.center = CGPoint(x:recognizer.view!.center.x + translation.x,
             y:recognizer.view!.center.y)
         recognizer.setTranslation(CGPointZero, inView: self.view)
     }
+    
 }
