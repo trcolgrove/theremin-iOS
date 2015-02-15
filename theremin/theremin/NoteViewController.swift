@@ -17,15 +17,20 @@ class NoteViewController: InstrumentViewController {
     var note_shift: CGFloat = 0
     var touch_origin: CGFloat = 0
     var pan_view: UIView = UIView()
-    var grid: GridViewController = GridViewController()
+    var gridvc: GridViewController?
     
+    required init(coder aDecoder: NSCoder) {
+        gridvc = GridViewController(coder: aDecoder)
+        super.init(coder: aDecoder)
+    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         println("Grid View Controller is loaded");
     }
     
-    
+
     //implement later
     /*
     @IBAction func handleSwipe(recognizer: UISwipeGestureRecognizer) {

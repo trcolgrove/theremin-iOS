@@ -15,17 +15,14 @@ class GridViewController: InstrumentViewController {
     var leftmost_note: Int = 60
     var pitch: CGFloat = 60
     var vel: CGFloat = 5
-    var prev_x: CGFloat = 0
-    var prev_y: CGFloat = 0
-    var w: CGFloat = 0
-    var h: CGFloat = 0
+    let circle_d = CGFloat(25)
+    var circles: [CircleView] = []
     
     // grid position
     @IBOutlet weak var grid_image: UIImageView!
     var grid_origin: CGFloat = 0
     let grid_width: CGFloat = 50
-    
-   
+
     override func viewDidLoad() {
         println("Grid View Controller is loaded");
     }
@@ -50,27 +47,47 @@ class GridViewController: InstrumentViewController {
         grid_origin = note_offset
     }
     
+    func drawCircle(x: CGFloat, y: CGFloat, context: CGContext) {
+        println("in draw circle")
+        
+    }
+    
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        w = self.view.bounds.width
-        h = self.view.bounds.height
+        let w = self.view.bounds.width
+        let h = self.view.bounds.height
         let touch: AnyObject = touches.allObjects[0]
-        let loc = touch.locationInView(self.view)
-        pitch = CGFloat(leftmost_note) + (loc.x / w) * 12
-        vel = (loc.y / h) * (CGFloat(max_volume))
+        let touch_loc = touch.locationInView(self.view)
+        pitch = CGFloat(leftmost_note) + (touch_loc.x / w) * 12
+        vel = CGFloat(max_volume)
         PdBase.sendList([1, pitch, vel], toReceiver: "pitch-vel")
-
+        
+        // Set a random Circle Radius
+        
+        // Create a new CircleView
+        var circleView = CircleView(frame: CGRectMake(touch_loc.x - 0.5 * circle_d, touch_loc.y - 0.5 * circle_d, circle_d, circle_d))
+        circles.append(circleView);
+        view.addSubview(circleView)
     }
     
     override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
+        let w = self.view.bounds.width
+        let h = self.view.bounds.height
         let touch: AnyObject = touches.allObjects[0]
         let loc = touch.locationInView(self.view)
         pitch = CGFloat(leftmost_note) + (loc.x / w) * 12
         vel = (loc.y / h) * (CGFloat(max_volume))
         PdBase.sendList([1, pitch, vel], toReceiver: "pitch-vel")
+        var last: CircleView = circles.last!
+        last.center.y = loc.y //- circle_d * 0.5
+        last.center.x = loc.x //- circle_d * 0.5
+        
+        
     }
     
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
         PdBase.sendList([1, pitch, 0], toReceiver: "pitch-vel")
+        view.subviews.last?.removeFromSuperview()
+        
     }
     
 }
