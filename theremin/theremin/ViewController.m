@@ -28,9 +28,4 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)buttonClicked:(id)sender {
-    NSLog(@"Button pressed: %@", [sender currentTitle]);
-    //instvc.key = "ChangedKey"
-}
-
 @end
