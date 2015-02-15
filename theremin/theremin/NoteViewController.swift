@@ -23,12 +23,14 @@ class NoteViewController: InstrumentViewController {
         gridvc = GridViewController(coder: aDecoder)
         super.init(coder: aDecoder)
     }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         println("Grid View Controller is loaded");
     }
     
+
     //implement later
     /*
     @IBAction func handleSwipe(recognizer: UISwipeGestureRecognizer) {
@@ -36,10 +38,13 @@ class NoteViewController: InstrumentViewController {
     }
     */
     
+    
+    
     @IBAction func handlePan(recognizer:UIPanGestureRecognizer) {
         let translation = recognizer.translationInView(self.view)
         recognizer.view!.center = CGPoint(x:recognizer.view!.center.x + translation.x,
             y:recognizer.view!.center.y)
         recognizer.setTranslation(CGPointZero, inView: self.view)
     }
+    
 }
