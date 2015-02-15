@@ -37,7 +37,7 @@ class InstrumentViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        println("Instrument View Controller has loaded")
+        println("Instrument View Controller is loaded")
     }
     
 }
