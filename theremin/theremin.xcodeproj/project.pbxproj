@@ -23,6 +23,7 @@
 		F84581621A885AF800DCBFEA /* theremin-appicon152x152.png in Resources */ = {isa = PBXBuildFile; fileRef = F84581611A885AF800DCBFEA /* theremin-appicon152x152.png */; };
 		F84BF2481A83CD7E0007686D /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84BF2471A83CD7E0007686D /* NoteViewController.swift */; };
 		F84BF24A1A83CD990007686D /* KnobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84BF2491A83CD990007686D /* KnobViewController.swift */; };
+		F8548AFB1A9150DD00DDE538 /* theremin-grid.png in Resources */ = {isa = PBXBuildFile; fileRef = F8548AFA1A9150DD00DDE538 /* theremin-grid.png */; };
 		F8BD45811A7EC47000535821 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BD45801A7EC47000535821 /* main.m */; };
 		F8BD45841A7EC47000535821 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BD45831A7EC47000535821 /* AppDelegate.m */; };
 		F8BD45871A7EC47000535821 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BD45861A7EC47000535821 /* ViewController.m */; };
@@ -63,6 +64,7 @@
 		F84581611A885AF800DCBFEA /* theremin-appicon152x152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "theremin-appicon152x152.png"; sourceTree = "<group>"; };
 		F84BF2471A83CD7E0007686D /* NoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
 		F84BF2491A83CD990007686D /* KnobViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnobViewController.swift; sourceTree = "<group>"; };
+		F8548AFA1A9150DD00DDE538 /* theremin-grid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "theremin-grid.png"; sourceTree = "<group>"; };
 		F8BD457B1A7EC47000535821 /* theremin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = theremin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8BD457F1A7EC47000535821 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F8BD45801A7EC47000535821 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 		F845813F1A87D87F00DCBFEA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				F8548AFA1A9150DD00DDE538 /* theremin-grid.png */,
 				E90742561A8AD432009088E0 /* note_slider.png */,
 				F845815F1A885ACB00DCBFEA /* theremin-appicon76x76.png */,
 				F84581551A88529700DCBFEA /* theremin-appicon-29x29.png */,
@@ -297,6 +300,7 @@
 				F84581541A88528C00DCBFEA /* theremin-appicon-58x58.png in Resources */,
 				F8BD458A1A7EC47000535821 /* Main.storyboard in Resources */,
 				F84581411A87E79800DCBFEA /* theremin-b2.png in Resources */,
+				F8548AFB1A9150DD00DDE538 /* theremin-grid.png in Resources */,
 				F84581601A885ACB00DCBFEA /* theremin-appicon76x76.png in Resources */,
 				F845815C1A885AA100DCBFEA /* theremin-appicon-80x80.png in Resources */,
 				F8BD45A51A7EC9C900535821 /* theremin.pd in Resources */,
