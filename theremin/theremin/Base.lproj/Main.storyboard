@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14B25" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
         <!--Instrument View Controller-->
@@ -16,8 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="theremin-b2.png" translatesAutoresizingMaskIntoConstraints="NO" id="BUz-FU-xcH">
-                                <rect key="frame" x="-10" y="-14" width="1042" height="782"/>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="theremin-inst.png" translatesAutoresizingMaskIntoConstraints="NO" id="Qnm-Pt-dmP">
+                                <rect key="frame" x="-10" y="5" width="1042" height="768"/>
                             </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ogh-Qb-duP" userLabel="GridView">
                                 <rect key="frame" x="77" y="98" width="870" height="547"/>
@@ -68,21 +68,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="870" height="547"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="theremin-b2.png" translatesAutoresizingMaskIntoConstraints="NO" id="qgL-AG-fvm">
-                                <rect key="frame" x="-1" y="7" width="870" height="547"/>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="theremin-grid.png" translatesAutoresizingMaskIntoConstraints="NO" id="fI2-Eo-1BI">
+                                <rect key="frame" x="-145" y="-75" width="1160" height="622"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="nDJ-Dj-0et"/>
-                    <connections>
-                        <outlet property="grid_image" destination="qgL-AG-fvm" id="EbT-TC-zu6"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d3h-QD-YeW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="162" y="1906.5"/>
+            <point key="canvasLocation" x="126" y="1906.5"/>
         </scene>
         <!--Note View Controller-->
         <scene sceneID="BrQ-xj-GlC">
@@ -139,8 +136,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="280" height="76"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="theremin-b2.png" translatesAutoresizingMaskIntoConstraints="NO" id="Rnc-ck-4Mz">
-                                <rect key="frame" x="-480" y="-660" width="1042" height="782"/>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="theremin-inst.png" translatesAutoresizingMaskIntoConstraints="NO" id="vbx-2W-PfS">
+                                <rect key="frame" x="-479" y="-641" width="1042" height="768"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -193,7 +190,8 @@
     </scenes>
     <resources>
         <image name="note_slider.png" width="3323" height="144"/>
-        <image name="theremin-b2.png" width="1042" height="782"/>
+        <image name="theremin-grid.png" width="1160" height="622"/>
+        <image name="theremin-inst.png" width="1042" height="768"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
