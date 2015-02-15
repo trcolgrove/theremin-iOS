@@ -60,8 +60,6 @@ class GridViewController: InstrumentViewController {
         vel = CGFloat(max_volume)
         PdBase.sendList([1, pitch, vel], toReceiver: "pitch-vel")
         
-        // Set a random Circle Radius
-        
         // Create a new CircleView
         var circleView = CircleView(frame: CGRectMake(touch_loc.x - 0.5 * circle_d, touch_loc.y - 0.5 * circle_d, circle_d, circle_d))
         circles.append(circleView);
