@@ -37,14 +37,22 @@
                                     <segue destination="r6d-R7-VhY" kind="embed" id="KNA-X1-VlG"/>
                                 </connections>
                             </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Sk-0O-zXo">
-                                <rect key="frame" x="763" y="672" width="30" height="30"/>
-                                <state key="normal" title="Key">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CMajor" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i0b-at-pRQ">
+                                <rect key="frame" x="746" y="679" width="61" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jOY-FE-ASg">
+                                <rect key="frame" x="749" y="667" width="54" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="buttonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Li-0i-5jL"/>
+                                    <segue destination="Box-Cl-Jau" kind="popover" popoverAnchorView="jOY-FE-ASg" id="PBq-Ia-CcA">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
                                 </connections>
                             </button>
                         </subviews>
@@ -54,7 +62,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="85" y="450"/>
+            <point key="canvasLocation" x="85" y="459"/>
         </scene>
         <!--Grid View Controller-->
         <scene sceneID="S0n-c3-isj">
@@ -76,6 +84,9 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="nDJ-Dj-0et"/>
+                    <connections>
+                        <outlet property="grid_image" destination="fI2-Eo-1BI" id="E8D-hl-6U0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d3h-QD-YeW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -123,6 +134,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="785-VQ-DQ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1295" y="135"/>
+        </scene>
+        <!--Key Table View Controller-->
+        <scene sceneID="mTz-fU-zay">
+            <objects>
+                <tableViewController id="Box-Cl-Jau" customClass="KeyTableViewController" customModule="theremin" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="TYC-Df-AiI">
+                        <rect key="frame" x="0.0" y="0.0" width="150" height="200"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="urI-CU-mev">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="urI-CU-mev" id="jFY-FJ-ssK">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Box-Cl-Jau" id="tO0-tI-8dD"/>
+                            <outlet property="delegate" destination="Box-Cl-Jau" id="d1R-3K-zP2"/>
+                        </connections>
+                    </tableView>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="150" height="200"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Heu-D2-4LG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="816" y="693"/>
         </scene>
         <!--Knob View Controller-->
         <scene sceneID="eM9-20-EaK">

@@ -26,6 +26,7 @@
 		F84BF24A1A83CD990007686D /* KnobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84BF2491A83CD990007686D /* KnobViewController.swift */; };
 		F8548AFB1A9150DD00DDE538 /* theremin-grid.png in Resources */ = {isa = PBXBuildFile; fileRef = F8548AFA1A9150DD00DDE538 /* theremin-grid.png */; };
 		F8548AFD1A9155FB00DDE538 /* theremin-inst.png in Resources */ = {isa = PBXBuildFile; fileRef = F8548AFC1A9155FB00DDE538 /* theremin-inst.png */; };
+		F8548AFF1A92774300DDE538 /* KeyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8548AFE1A92774300DDE538 /* KeyTableViewController.swift */; };
 		F8BD45811A7EC47000535821 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BD45801A7EC47000535821 /* main.m */; };
 		F8BD45841A7EC47000535821 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BD45831A7EC47000535821 /* AppDelegate.m */; };
 		F8BD45871A7EC47000535821 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BD45861A7EC47000535821 /* ViewController.m */; };
@@ -69,6 +70,7 @@
 		F84BF2491A83CD990007686D /* KnobViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnobViewController.swift; sourceTree = "<group>"; };
 		F8548AFA1A9150DD00DDE538 /* theremin-grid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "theremin-grid.png"; sourceTree = "<group>"; };
 		F8548AFC1A9155FB00DDE538 /* theremin-inst.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "theremin-inst.png"; sourceTree = "<group>"; };
+		F8548AFE1A92774300DDE538 /* KeyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyTableViewController.swift; sourceTree = "<group>"; };
 		F8BD457B1A7EC47000535821 /* theremin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = theremin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8BD457F1A7EC47000535821 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F8BD45801A7EC47000535821 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 		F84581461A88355300DCBFEA /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				F8548AFE1A92774300DDE538 /* KeyTableViewController.swift */,
 				F8BD45A71A7ED3BE00535821 /* GridViewController.swift */,
 				3703FACD1A8E727C009B8783 /* CircleView.swift */,
 				F84581441A882C6600DCBFEA /* InstrumentViewController.swift */,
@@ -370,6 +373,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8548AFF1A92774300DDE538 /* KeyTableViewController.swift in Sources */,
 				3703FACE1A8E727C009B8783 /* CircleView.swift in Sources */,
 				F84BF24A1A83CD990007686D /* KnobViewController.swift in Sources */,
 				F8BD45A81A7ED3BE00535821 /* GridViewController.swift in Sources */,

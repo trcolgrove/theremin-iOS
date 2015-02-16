@@ -18,6 +18,8 @@ class InstrumentViewController: UIViewController {
     // the current key of the theremin
     var key: String = "CMajor"
     
+    var octave: Int = 5
+    
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -27,16 +29,28 @@ class InstrumentViewController: UIViewController {
         self.updateKey(sender.currentTitle!!)
     }
     
-    // sets the theremin key
-    func updateKey(key: String) {
-        self.key = key
-        println("Key changed to " + self.key)
+    // sets the theremin key if it exists in the key_map dictionary
+    func updateKey(key:String) {
+        if (lookupKey(key) != []) {
+            self.key = key
+        } else {
+            println("Key does not exist")
+        }
+    }
+    
+    // returns key set from key_map dictionary
+    func lookupKey(key: String) -> [String] {
+        var possibleKey = self.key_map[key]
+        if let foundKey = possibleKey {
+            println("Key: \(foundKey)")
+            return foundKey
+        }
+        return []
     }
     
     override func viewDidLoad() {
         println("Instrument View Controller is loaded")
         insertKeysToMap()
-        println(self.key_map[self.key])
     }
     
     func insertKeysToMap() {
