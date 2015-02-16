@@ -28,9 +28,9 @@ class GridViewController: InstrumentViewController {
     }
     
     override func updateKey(new_key: String) {
-        key = new_key
+        self.key = new_key
         // get the leftmost note information from the key_map
-        // leftmost_note = super.key_map[key]
+        //leftmost_note = super.key_map[self.key]
     }
     
     func setRange(note: Int) {
@@ -56,8 +56,6 @@ class GridViewController: InstrumentViewController {
         pitch = CGFloat(leftmost_note) + (touch_loc.x / w) * 12
         vel = CGFloat(max_volume)
         PdBase.sendList([1, pitch, vel], toReceiver: "pitch-vel")
-        
-        // Set a random Circle Radius
         
         // Create a new CircleView
         var circleView = CircleView(frame: CGRectMake(touch_loc.x - 0.5 * circle_d, touch_loc.y - 0.5 * circle_d, circle_d, circle_d))

@@ -23,18 +23,14 @@ class NoteViewController: InstrumentViewController {
         
     }
     
-    
-    
     func setRange(num_semitones:Int)
     {
         leftmost_note += num_semitones;
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        println("\(self.view.bounds)")
-        println("Grid View Controller is loaded");
+        println("Note View Controller is loaded");
     }
     
 
