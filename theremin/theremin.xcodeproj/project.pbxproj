@@ -10,6 +10,7 @@
 		3703FACE1A8E727C009B8783 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3703FACD1A8E727C009B8783 /* CircleView.swift */; };
 		B1D07046291BC940EC75CD40 /* libPods-theremin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8004AE9946D819307EE2E6D8 /* libPods-theremin.a */; };
 		E90742571A8AD432009088E0 /* note_slider.png in Resources */ = {isa = PBXBuildFile; fileRef = E90742561A8AD432009088E0 /* note_slider.png */; };
+		E95F1E0D1A9255610067536B /* RangeViewContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F1E0C1A9255610067536B /* RangeViewContainerController.swift */; };
 		F845813E1A87D86600DCBFEA /* theremin-b1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F845813D1A87D86600DCBFEA /* theremin-b1.jpg */; };
 		F84581411A87E79800DCBFEA /* theremin-b2.png in Resources */ = {isa = PBXBuildFile; fileRef = F84581401A87E79800DCBFEA /* theremin-b2.png */; };
 		F84581431A87EC4700DCBFEA /* wave.png in Resources */ = {isa = PBXBuildFile; fileRef = F84581421A87EC4700DCBFEA /* wave.png */; };
@@ -53,6 +54,7 @@
 		8004AE9946D819307EE2E6D8 /* libPods-theremin.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-theremin.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9248A05E5AC8D6B8EE1E5BF /* Pods-theremin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-theremin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-theremin/Pods-theremin.debug.xcconfig"; sourceTree = "<group>"; };
 		E90742561A8AD432009088E0 /* note_slider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = note_slider.png; sourceTree = "<group>"; };
+		E95F1E0C1A9255610067536B /* RangeViewContainerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeViewContainerController.swift; sourceTree = "<group>"; };
 		F845813D1A87D86600DCBFEA /* theremin-b1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "theremin-b1.jpg"; sourceTree = "<group>"; };
 		F84581401A87E79800DCBFEA /* theremin-b2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "theremin-b2.png"; sourceTree = "<group>"; };
 		F84581421A87EC4700DCBFEA /* wave.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wave.png; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				F8BD45851A7EC47000535821 /* ViewController.h */,
 				F84BF2471A83CD7E0007686D /* NoteViewController.swift */,
 				F8BD45861A7EC47000535821 /* ViewController.m */,
+				E95F1E0C1A9255610067536B /* RangeViewContainerController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 				F84BF2481A83CD7E0007686D /* NoteViewController.swift in Sources */,
 				F8BD45811A7EC47000535821 /* main.m in Sources */,
 				F84581451A882C6600DCBFEA /* InstrumentViewController.swift in Sources */,
+				E95F1E0D1A9255610067536B /* RangeViewContainerController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,46 +1,51 @@
 //
-//  NoteViewController.swift
+//  RangeViewContainer.swift
 //  theremin
 //
-//  Created by McCall Bliss, Thomas Colgrove, and Dan Defossez on 2/5/15.
-//  Implemented by Thomas Colgrove
+//  Created by Thomas Colgrove on 2/16/15.
 //  Copyright (c) 2015 tufts. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-class NoteViewController: InstrumentViewController {
-
+class RangeViewContainerController: InstrumentViewController {
+    
     var leftmost_note: Int = 60
     //var key: String = ""
     var touch_origin: CGFloat = 0
-    var pan_view: UIView = UIView()
-
+    
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         key = "CMajor"
         
     }
     
+    
+    
     func setRange(num_semitones:Int)
     {
         leftmost_note += num_semitones;
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("Note View Controller is loaded");
+        
+        println("\(self.view.bounds)")
+        println("Grid View Controller is loaded");
     }
     
-
+    
     //implement later
     /*
     @IBAction func handleSwipe(recognizer: UISwipeGestureRecognizer) {
-        
+    
     }
     */
     
+    @IBAction func handle_buttonpress(){
+        self.setRange(8)
+    }
     
     
     @IBAction func handlePan(recognizer:UIPanGestureRecognizer) {
