@@ -10,13 +10,18 @@
 import Foundation
 import UIKit
 
-class NoteViewController: InstrumentViewController {
+protocol NoteViewParentDelegate{
+    func setRange(num_semitones: Int)
+}
+
+class RangeSlideController: InstrumentViewController {
 
     var leftmost_note: Int = 60
     //var key: String = ""
     var touch_origin: CGFloat = 0
     var pan_view: UIView = UIView()
-
+   // var container: RangeViewContainerController
+    
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         key = "CMajor"

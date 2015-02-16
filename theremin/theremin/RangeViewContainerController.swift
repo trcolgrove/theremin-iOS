@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 protocol RangeViewDelegate{
-    
+    func setRange(num_semitones: Int)
 }
 
 class RangeViewContainerController: InstrumentViewController{
