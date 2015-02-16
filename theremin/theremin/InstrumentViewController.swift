@@ -18,6 +18,8 @@ class InstrumentViewController: UIViewController {
     // the current key of the theremin
     var key: String = "CMajor"
     
+    var octave: Int = 5
+    
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -40,7 +42,7 @@ class InstrumentViewController: UIViewController {
     func lookupKey(key: String) -> [String] {
         var possibleKey = self.key_map[key]
         if let foundKey = possibleKey {
-            println("Name: \(foundKey)")
+            println("Key: \(foundKey)")
             return foundKey
         }
         return []
@@ -49,7 +51,6 @@ class InstrumentViewController: UIViewController {
     override func viewDidLoad() {
         println("Instrument View Controller is loaded")
         insertKeysToMap()
-        println(self.key_map[self.key])
     }
     
     func insertKeysToMap() {
