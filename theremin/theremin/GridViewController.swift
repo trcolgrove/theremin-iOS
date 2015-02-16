@@ -33,12 +33,8 @@ class GridViewController: InstrumentViewController {
         // leftmost_note = super.key_map[key]
     }
     
-    func setRange(note: Int, offset: CGFloat) {
+    func setRange(note: Int) {
         // moves grid to left based on the offset
-        var note_offset = (offset % grid_width)
-        snapToGrid(note_offset)
-        
-        // sets the leftmost note
         leftmost_note = note
     }
     
