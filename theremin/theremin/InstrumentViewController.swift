@@ -27,10 +27,22 @@ class InstrumentViewController: UIViewController {
         self.updateKey(sender.currentTitle!!)
     }
     
+    func updateKey(key:String) {
+        if (lookupKey(key) != "") {
+            self.key = key
+        } else {
+            println("Key could not be updated")
+        }
+    }
+    
     // sets the theremin key
-    func updateKey(key: String) {
-        self.key = key
-        println("Key changed to " + self.key)
+    func lookupKey(key: String) -> String {
+        var possibleKey = self.key_map[key]
+        if let foundKey = possibleKey {
+            println("Name: \(foundKey)")
+            return key
+        }
+        return ""
     }
     
     override func viewDidLoad() {
