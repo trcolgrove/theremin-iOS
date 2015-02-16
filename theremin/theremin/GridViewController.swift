@@ -28,9 +28,9 @@ class GridViewController: InstrumentViewController {
     }
     
     override func updateKey(new_key: String) {
-        key = new_key
+        self.key = new_key
         // get the leftmost note information from the key_map
-        // leftmost_note = super.key_map[key]
+        //leftmost_note = super.key_map[self.key]
     }
     
     func setRange(note: Int, offset: CGFloat) {

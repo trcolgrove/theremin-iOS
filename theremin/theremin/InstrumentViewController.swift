@@ -11,15 +11,12 @@ import UIKit
 
 class InstrumentViewController: UIViewController {
     
-    // data structure that takes a key and returns
-    // the midi values in that key
-    var key_map = [
-        "CMajor" : [0, 2, 4, 5, 7, 9, 11],
-        "GMajor" : [7, 9, 11, 0, 2, 4, 6]
-    ]
-    
+    // data structure that takes a key and returns 
+    // the label values for the 13 notes possible
+    var key_map = [String:[String]]()
+
     // the current key of the theremin
-    var key: String = ""
+    var key: String = "CMajor"
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -38,6 +35,21 @@ class InstrumentViewController: UIViewController {
     
     override func viewDidLoad() {
         println("Instrument View Controller is loaded")
+        insertKeysToMap()
+        println(self.key_map[self.key])
+    }
+    
+    func insertKeysToMap() {
+        self.key_map = [
+            "CMajor" : ["C", "", "D", "", "E", "F", "", "G", "", "A", "", "B", "C"],
+            "GMajor" : ["G", "", "A", "", "B", "C", "", "D", "", "E", "", "F#", "G"],
+            "DMajor" : ["D", "", "E", "", "F#", "G", "", "A", "", "B", "", "C#", "D"],
+            "AMajor" : ["A", "", "B", "", "C#", "D", "", "E", "", "F#", "", "G#", "A"],
+            "EMajor" : ["E", "", "F#", "", "G#", "A", "", "B", "", "C#", "", "D#", "E"],
+            "BMajor" : ["B", "", "C#", "", "D#", "E", "", "F#", "", "G#", "", "A#", "B"],
+            "F#Major": ["F#", "", "G#", "", "A#", "B", "", "C#", "", "D#", "", "E#", "F#"],
+            "C#Major": ["C#", "", "D#", "", "E#", "F#", "", "G#", "", "A#", "", "B#", "C#"]
+        ]
     }
     
 }
