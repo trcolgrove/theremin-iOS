@@ -21,7 +21,7 @@ class KnobViewController: InstrumentViewController {
     }
     
     @IBAction func changeReverb (sender: UIButton) {
-        println("Changing cur value" + sender.titleLabel!.text!)
+        println("Changing " + sender.titleLabel!.text!)
     }
     
     func updateEffect (effect: String, new_value: Float) {
