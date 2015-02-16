@@ -9,7 +9,11 @@
 import Foundation
 import UIKit
 
-class RangeViewContainerController: InstrumentViewController {
+protocol RangeViewDelegate{
+    
+}
+
+class RangeViewContainerController: InstrumentViewController{
     
     var leftmost_note: Int = 60
     //var key: String = ""
@@ -18,7 +22,6 @@ class RangeViewContainerController: InstrumentViewController {
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         key = "CMajor"
-        
     }
     
     
