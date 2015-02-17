@@ -15,13 +15,10 @@ protocol RangeSlideParentDelegate{
 }
 
 class RangeSlideController: InstrumentViewController {
-
-
-    var leftmost_note: Int = 60
     //var key: String = ""
     var touch_origin: CGFloat = 0
     var pan_view: UIView = UIView()
-    var container_delegate: RangeSlideParentDelegate? = nil
+    var container_delegate: RangeSlideParentDelegate!
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -29,14 +26,14 @@ class RangeSlideController: InstrumentViewController {
         
     }
     
-    func setRange(num_semitones:Int)
+    override func setRange(num_semitones:Int)
     {
-        leftmost_note += num_semitones;
+        container_delegate.setRange(num_semitones)
     }
 
     override func viewDidLoad() {
         //super.viewDidLoad()
-        println("Note View Controller is loaded");
+        println("RangeSlideContoller is loaded");
     }
     
 
@@ -46,6 +43,7 @@ class RangeSlideController: InstrumentViewController {
         
     }
     */
+   
     
     
     
@@ -55,7 +53,12 @@ class RangeSlideController: InstrumentViewController {
         recognizer.view!.center = CGPoint(x:recognizer.view!.center.x + translation.x,
             y:recognizer.view!.center.y)
         recognizer.setTranslation(CGPointZero, inView: self.view)
-        self.setRange(Int(translation.x));
+        if(translation.x < 0){
+        self.setRange(1)
+        }
+        else{
+        self.setRange (-1)
+        }
     }
     
 }
