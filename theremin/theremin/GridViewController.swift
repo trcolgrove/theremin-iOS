@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class GridViewController: InstrumentViewController {
+class GridViewController: InstrumentViewController, RangeViewDelegate {
     
     let max_volume: Int = 50
     var leftmost_note: Int = 60

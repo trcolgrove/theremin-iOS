@@ -9,21 +9,21 @@
 import Foundation
 import UIKit
 
-class RangeViewContainerController: InstrumentViewController {
+protocol RangeViewDelegate{
+    func setRange(num_semitones:Int)
+}
+
+class RangeViewContainerController: InstrumentViewController, RangeSlideParentDelegate{
     
     var leftmost_note: Int = 60
-    //var key: String = ""
     var touch_origin: CGFloat = 0
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         key = "CMajor"
-        
     }
     
-    
-    
-    func setRange(num_semitones:Int)
+    func setRange(num_semitones: Int)
     {
         leftmost_note += num_semitones;
     }
@@ -35,7 +35,13 @@ class RangeViewContainerController: InstrumentViewController {
         println("Grid View Controller is loaded");
     }
     
-    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!){
+        if segue.identifier == "setDelegate"{
+            let range_control = segue.destinationViewController as RangeSlideController
+            range_control.container_delegate = self
+            //println("ContainerDelegationSet")
+        }
+    }
     //implement later
     /*
     @IBAction func handleSwipe(recognizer: UISwipeGestureRecognizer) {

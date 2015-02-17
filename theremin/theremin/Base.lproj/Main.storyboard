@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14B25" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
         <!--Instrument View Controller-->
@@ -90,10 +90,10 @@
             </objects>
             <point key="canvasLocation" x="126" y="1906.5"/>
         </scene>
-        <!--Note View Controller-->
+        <!--Range View Container Controller-->
         <scene sceneID="BrQ-xj-GlC">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="r6d-R7-VhY" customClass="NoteViewController" customModule="theremin" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="r6d-R7-VhY" customClass="RangeViewContainerController" customModule="theremin" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ul8-O8-5qX"/>
                         <viewControllerLayoutGuide type="bottom" id="jXY-hU-34c"/>
@@ -242,10 +242,10 @@
             </objects>
             <point key="canvasLocation" x="894" y="1661"/>
         </scene>
-        <!--Note View Controller-->
+        <!--Range Slide Controller-->
         <scene sceneID="cjH-Pd-0eI">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="ztM-Vi-5Wh" customClass="NoteViewController" customModule="theremin" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="ztM-Vi-5Wh" customClass="RangeSlideController" customModule="theremin" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9aq-B3-4Gk"/>
                         <viewControllerLayoutGuide type="bottom" id="5Ll-5v-G3N"/>
