@@ -117,12 +117,9 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="buttonPressed:" destination="r6d-R7-VhY" eventType="touchUpInside" id="jOh-x8-De7"/>
-                                </connections>
                             </button>
                             <containerView opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W6Z-xJ-sWU">
-                                <rect key="frame" x="40" y="25" width="944" height="77"/>
+                                <rect key="frame" x="28" y="31" width="944" height="77"/>
                                 <connections>
                                     <segue destination="ztM-Vi-5Wh" kind="embed" id="sCH-wJ-GUU"/>
                                 </connections>
@@ -131,9 +128,6 @@
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
-                    <connections>
-                        <outlet property="buttonPressed" destination="nDW-oA-h7j" id="t6n-P2-5jf"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="785-VQ-DQ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

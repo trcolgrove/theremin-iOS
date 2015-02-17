@@ -24,11 +24,6 @@ class RangeViewContainerController: InstrumentViewController, RangeSlideParentDe
         key = "CMajor"
     }
     
-
-    @IBOutlet weak var button: UIButton!
-    
-    @IBAction func buttonPressed(sender: UIButton) {
-    }
     func setRange(num_semitones: Int)
     {
         leftmost_note += num_semitones;
@@ -54,10 +49,6 @@ class RangeViewContainerController: InstrumentViewController, RangeSlideParentDe
     
     }
     */
-    
-    @IBAction func handle_buttonpress(){
-        self.setRange(8)
-    }
     
     
     @IBAction func handlePan(recognizer:UIPanGestureRecognizer) {

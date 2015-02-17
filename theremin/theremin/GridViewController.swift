@@ -34,6 +34,7 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
     
     /*this function sets up delegation/communication between RangeViewContainerController and
     GridViewController at runtime*/
+    /*
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!){
         if segue.identifier == "grid_init"{
             let range_controller = segue.destinationViewController as RangeViewContainerController
@@ -41,7 +42,7 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
             println("Grid-Range-DelegationSet")
         }
     }
-    
+    */
     func setRange(note: Int) {
         // moves grid to left based on the offset
         leftmost_note = note
