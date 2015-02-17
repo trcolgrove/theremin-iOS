@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol RangeViewDelegate{
+protocol RangeViewInstrument{
     func setRange(num_semitones:Int)
 }
 
@@ -17,12 +17,18 @@ class RangeViewContainerController: InstrumentViewController, RangeSlideParentDe
     
     var leftmost_note: Int = 60
     var touch_origin: CGFloat = 0
+    var instrument: RangeViewInstrument? = nil
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         key = "CMajor"
     }
     
+
+    @IBOutlet weak var button: UIButton!
+    
+    @IBAction func buttonPressed(sender: UIButton) {
+    }
     func setRange(num_semitones: Int)
     {
         leftmost_note += num_semitones;
@@ -39,7 +45,7 @@ class RangeViewContainerController: InstrumentViewController, RangeSlideParentDe
         if segue.identifier == "setDelegate"{
             let range_control = segue.destinationViewController as RangeSlideController
             range_control.container_delegate = self
-            //println("ContainerDelegationSet")
+            println("ContainerDelegationSet")
         }
     }
     //implement later

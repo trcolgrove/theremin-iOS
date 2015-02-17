@@ -22,7 +22,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ogh-Qb-duP" userLabel="GridView">
                                 <rect key="frame" x="77" y="98" width="870" height="547"/>
                                 <connections>
-                                    <segue destination="ls9-R1-fCC" kind="embed" id="0VQ-Te-cu6"/>
+                                    <segue destination="ls9-R1-fCC" kind="embed" identifier="grid_init" id="0VQ-Te-cu6"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GeQ-GH-2Dz" userLabel="KnobView">
@@ -90,7 +90,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d3h-QD-YeW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="126" y="1906.5"/>
+            <point key="canvasLocation" x="85" y="1634.5"/>
         </scene>
         <!--Range View Container Controller-->
         <scene sceneID="BrQ-xj-GlC">
@@ -104,12 +104,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W6Z-xJ-sWU">
-                                <rect key="frame" x="40" y="25" width="944" height="77"/>
-                                <connections>
-                                    <segue destination="ztM-Vi-5Wh" kind="embed" id="q68-vQ-nEG"/>
-                                </connections>
-                            </containerView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nDW-oA-h7j">
                                 <rect key="frame" x="7" y="49" width="30" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
@@ -125,11 +119,23 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="r6d-R7-VhY" eventType="touchUpInside" id="jOh-x8-De7"/>
+                                </connections>
                             </button>
+                            <containerView opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W6Z-xJ-sWU">
+                                <rect key="frame" x="40" y="25" width="944" height="77"/>
+                                <connections>
+                                    <segue destination="ztM-Vi-5Wh" kind="embed" id="sCH-wJ-GUU"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
+                    <connections>
+                        <outlet property="buttonPressed" destination="nDW-oA-h7j" id="t6n-P2-5jf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="785-VQ-DQ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -242,7 +248,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ezf-E8-zBK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="894" y="1661"/>
+            <point key="canvasLocation" x="894" y="1385"/>
         </scene>
         <!--Range Slide Controller-->
         <scene sceneID="cjH-Pd-0eI">
@@ -276,7 +282,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1295" y="356.5"/>
+            <point key="canvasLocation" x="1295" y="377.5"/>
         </scene>
     </scenes>
     <resources>

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class GridViewController: InstrumentViewController, RangeViewDelegate {
+class GridViewController: InstrumentViewController, RangeViewInstrument {
     
     let max_volume: Int = 50
     var leftmost_note: Int = 60
@@ -32,6 +32,16 @@ class GridViewController: InstrumentViewController, RangeViewDelegate {
         var notes = super.lookupKey(new_key)
         super.updateKey(new_key)
         println(notes)
+    }
+    
+    /*this function sets up delegation/communication between RangeViewContainerController and
+    GridViewController at runtime*/
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!){
+        if segue.identifier == "grid_init"{
+            let range_controller = segue.destinationViewController as RangeViewContainerController
+            range_controller.instrument = self
+            println("Grid-Range-DelegationSet")
+        }
     }
     
     func setRange(note: Int) {
