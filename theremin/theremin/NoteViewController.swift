@@ -29,7 +29,7 @@ class NoteViewController: InstrumentViewController {
     }
 
     override func viewDidLoad() {
-        super.viewDidLoad()
+        //super.viewDidLoad()
         println("Note View Controller is loaded");
     }
     

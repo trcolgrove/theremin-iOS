@@ -17,6 +17,7 @@ class InstrumentViewController: UIViewController {
 
     // the current key of the theremin
     var key: String = "CMajor"
+    @IBOutlet var key_btn: UIButton?
     
     var octave: Int = 5
     
@@ -24,23 +25,22 @@ class InstrumentViewController: UIViewController {
         super.init(coder: aDecoder)
     }
     
-    @IBAction func buttonClicked (sender: AnyObject) {
-        println("Button pressed: " + sender.currentTitle!!);
-        self.updateKey(sender.currentTitle!!)
-    }
-    
     // sets the theremin key if it exists in the key_map dictionary
-    func updateKey(key:String) {
+    func updateKey(key: String) {
+        key_btn?.setTitle("\(key)", forState: UIControlState.Normal)
         if (lookupKey(key) != []) {
             self.key = key
+            key_btn?.setTitle("\(key)", forState: UIControlState.Normal)
+            // send a message to update the key in both note & grid
+            // update the key value label
         } else {
-            println("Key does not exist")
+            println("Key \(key) does not exist")
         }
     }
     
     // returns key set from key_map dictionary
     func lookupKey(key: String) -> [String] {
-        var possibleKey = self.key_map[key]
+        var possibleKey = key_map[key]
         if let foundKey = possibleKey {
             println("Key: \(foundKey)")
             return foundKey
@@ -64,6 +64,13 @@ class InstrumentViewController: UIViewController {
             "F#Major": ["F#", "", "G#", "", "A#", "B", "", "C#", "", "D#", "", "E#", "F#"],
             "C#Major": ["C#", "", "D#", "", "E#", "F#", "", "G#", "", "A#", "", "B#", "C#"]
         ]
+    }
+    
+    // Debugging function to make sure keys get stored
+    func printKeys() {
+        for (myKey,myValue) in key_map {
+            println("\(myKey) \t \(myValue)")
+        }
     }
     
 }

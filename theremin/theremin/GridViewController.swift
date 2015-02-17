@@ -25,13 +25,11 @@ class GridViewController: InstrumentViewController {
 
     override func viewDidLoad() {
         println("Grid View Controller is loaded");
-        updateKey("GMajor")
     }
     
     override func updateKey(new_key: String) {
         var notes = super.lookupKey(new_key)
         super.updateKey(new_key)
-        println(notes)
     }
     
     func setRange(note: Int) {
