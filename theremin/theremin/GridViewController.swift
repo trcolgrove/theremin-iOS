@@ -43,7 +43,7 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
         }
     }
     */
-    func setRange(note: Int) {
+    override func setRange(note: Int) {
         // moves grid to left based on the offset
         leftmost_note = note
     }

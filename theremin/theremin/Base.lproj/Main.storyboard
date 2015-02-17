@@ -22,7 +22,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ogh-Qb-duP" userLabel="GridView">
                                 <rect key="frame" x="77" y="98" width="870" height="547"/>
                                 <connections>
-                                    <segue destination="ls9-R1-fCC" kind="embed" identifier="grid_init" id="0VQ-Te-cu6"/>
+                                    <segue destination="ls9-R1-fCC" kind="embed" identifier="init_grid" id="0VQ-Te-cu6"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GeQ-GH-2Dz" userLabel="KnobView">
@@ -34,7 +34,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V5Q-9e-heb" userLabel="NoteView">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="100"/>
                                 <connections>
-                                    <segue destination="r6d-R7-VhY" kind="embed" id="KNA-X1-VlG"/>
+                                    <segue destination="r6d-R7-VhY" kind="embed" identifier="init_range" id="KNA-X1-VlG"/>
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jOY-FE-ASg">
@@ -121,7 +121,7 @@
                             <containerView opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W6Z-xJ-sWU">
                                 <rect key="frame" x="28" y="31" width="944" height="77"/>
                                 <connections>
-                                    <segue destination="ztM-Vi-5Wh" kind="embed" id="sCH-wJ-GUU"/>
+                                    <segue destination="ztM-Vi-5Wh" kind="embed" identifier="init_slider" id="sCH-wJ-GUU"/>
                                 </connections>
                             </containerView>
                         </subviews>

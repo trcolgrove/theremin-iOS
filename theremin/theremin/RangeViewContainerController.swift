@@ -17,30 +17,30 @@ class RangeViewContainerController: InstrumentViewController, RangeSlideParentDe
     
     var leftmost_note: Int = 60
     var touch_origin: CGFloat = 0
-    var instrument: RangeViewInstrument? = nil
+    var instrument: InstrumentViewController!
+    
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         key = "CMajor"
     }
     
-    func setRange(num_semitones: Int)
+    override func setRange(num_semitones: Int)
     {
-        leftmost_note += num_semitones;
+        leftmost_note += num_semitones
+        instrument.setRange(leftmost_note)
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        println("\(self.view.bounds)")
-        println("Grid View Controller is loaded");
+        //super.viewDidLoad()
+        println("Range Container is loaded");
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!){
-        if segue.identifier == "setDelegate"{
+        if segue.identifier == "init_slider"{
             let range_control = segue.destinationViewController as RangeSlideController
             range_control.container_delegate = self
-            println("ContainerDelegationSet")
+            println("Container Delegation Set")
         }
     }
     //implement later
@@ -50,14 +50,5 @@ class RangeViewContainerController: InstrumentViewController, RangeSlideParentDe
     }
     */
     
-    
-    @IBAction func handlePan(recognizer:UIPanGestureRecognizer) {
-        //boundschecking here
-        let translation = recognizer.translationInView(self.view)
-        recognizer.view!.center = CGPoint(x:recognizer.view!.center.x + translation.x,
-            y:recognizer.view!.center.y)
-        recognizer.setTranslation(CGPointZero, inView: self.view)
-        self.setRange(Int(translation.x));
-    }
     
 }

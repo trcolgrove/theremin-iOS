@@ -17,12 +17,34 @@ class InstrumentViewController: UIViewController {
 
     // the current key of the theremin
     var key: String = "CMajor"
+    var grid: GridViewController!
+    var range_controller: RangeViewContainerController!
+    
     @IBOutlet var key_btn: UIButton?
     
     var octave: Int = 5
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+     
+    }
+
+    //set up intrument view as a delegate of subcontrollers
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!){
+        if segue.identifier == "init_range"{
+            let range_container = segue.destinationViewController as RangeViewContainerController
+            range_container.instrument = self
+            println("Range Delegation Set")
+        }
+        else if segue.identifier == "init_grid"{
+            let grid = segue.destinationViewController as GridViewController
+            self.grid = grid
+            println("Grid Delegation Set")
+        }
+    }
+    
+    func setRange(leftmost_note: Int){
+        grid.setRange(leftmost_note)
     }
     
     // sets the theremin key if it exists in the key_map dictionary
