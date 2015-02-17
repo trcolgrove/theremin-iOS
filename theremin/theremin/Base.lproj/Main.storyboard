@@ -45,7 +45,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Box-Cl-Jau" kind="popover" popoverAnchorView="jOY-FE-ASg" id="PBq-Ia-CcA">
+                                    <segue destination="Box-Cl-Jau" kind="popover" identifier="key_menu" popoverAnchorView="jOY-FE-ASg" id="PBq-Ia-CcA">
                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                     </segue>
                                 </connections>

@@ -41,6 +41,11 @@ class InstrumentViewController: UIViewController {
             self.grid = grid
             println("Grid Delegation Set")
         }
+        else if segue.identifier == "key_menu"{
+            let key_menu = segue.destinationViewController as KeyTableViewController
+            key_menu.parent = self
+            println("Menu Clicked/Initialized")
+        }
     }
     
     func setRange(leftmost_note: Int){

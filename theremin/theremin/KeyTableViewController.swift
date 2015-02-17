@@ -12,6 +12,7 @@ import UIKit
 class KeyTableViewController: InstrumentViewController, UITableViewDataSource, UITableViewDelegate {
     
     var key_names = ["CMajor", "DMajor", "GMajor", "EMajor", "FMajor", "AMajor", "C#Major"]
+    var parent:InstrumentViewController!
     
     override func viewDidLoad() {
         println("KeyViewController did load")
@@ -35,7 +36,7 @@ class KeyTableViewController: InstrumentViewController, UITableViewDataSource, U
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         println("Change key to \(self.key_names[indexPath.row])")
-        super.updateKey(self.key_names[indexPath.row])
+        parent.updateKey(self.key_names[indexPath.row])
     }
     
 }
