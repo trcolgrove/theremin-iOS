@@ -11,7 +11,7 @@ import UIKit
 
 class GridViewController: InstrumentViewController, RangeViewDelegate {
     
-    let max_volume: Int = 50
+    let default_velocity: Int = 40
     var leftmost_note: Int = 60
     var pitch: CGFloat = 60
     var vel: CGFloat = 5
@@ -42,22 +42,23 @@ class GridViewController: InstrumentViewController, RangeViewDelegate {
         grid_origin = note_offset
     }
     
-    func drawCircle(x: CGFloat, y: CGFloat, context: CGContext) {
-        println("in draw circle")
-        
+    private func calculateAmplification(y: CGFloat, h: CGFloat) -> CGFloat{
+        return 0.5 * y / h
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         let w = self.view.bounds.width
         let h = self.view.bounds.height
         let touch: AnyObject = touches.allObjects[0]
-        let touch_loc = touch.locationInView(self.view)
-        pitch = CGFloat(leftmost_note) + (touch_loc.x / w) * 12
-        vel = CGFloat(max_volume)
-        PdBase.sendList([1, pitch, vel], toReceiver: "pitch-vel")
+        let loc = touch.locationInView(self.view)
         
-        // Create a new CircleView
-        var circleView = CircleView(frame: CGRectMake(touch_loc.x - 0.5 * circle_d, touch_loc.y - 0.5 * circle_d, circle_d, circle_d))
+        //Create current note
+        pitch = CGFloat(leftmost_note) + (loc.x / w) * 12
+        PdBase.sendList([1, pitch, default_velocity], toReceiver: "pitch-vel")
+        PdBase.sendList([1, calculateAmplification(loc.y, h: h)], toReceiver: "amp")
+        
+        // Create a new CircleView for current touch location
+        var circleView = CircleView(frame: CGRectMake(loc.x - 0.5 * circle_d, loc.y - 0.5 * circle_d, circle_d, circle_d))
         circles.append(circleView);
         view.addSubview(circleView)
     }
@@ -67,18 +68,21 @@ class GridViewController: InstrumentViewController, RangeViewDelegate {
         let h = self.view.bounds.height
         let touch: AnyObject = touches.allObjects[0]
         let loc = touch.locationInView(self.view)
+        
+        //Update current note
         pitch = CGFloat(leftmost_note) + (loc.x / w) * 12
-        vel = (loc.y / h) * (CGFloat(max_volume))
-        PdBase.sendList([1, pitch, vel], toReceiver: "pitch-vel")
+        PdBase.sendList([1, pitch, default_velocity], toReceiver: "pitch-vel")
+        PdBase.sendList([1, calculateAmplification(loc.y, h: h)], toReceiver: "amp")
+        
+        //Move highlight
         var last: CircleView = circles.last!
         last.center.y = loc.y //- circle_d * 0.5
         last.center.x = loc.x //- circle_d * 0.5
-        
-        
     }
     
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
         PdBase.sendList([1, pitch, 0], toReceiver: "pitch-vel")
+        PdBase.sendList([1/* index */, 0] /*amp*/, toReceiver: "amp")
         view.subviews.last?.removeFromSuperview()
         
     }
