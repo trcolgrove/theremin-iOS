@@ -88,6 +88,9 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
         } else if (loc.x < 0) {
             PdBase.sendList([1, leftmost_note, default_velocity], toReceiver: "pitch-vel")
             PdBase.sendList([1, calculateAmplification(loc.y, h: h)], toReceiver: "amp")
+        } else if (loc.x >= w) {
+            PdBase.sendList([1, leftmost_note + 12, default_velocity], toReceiver: "pitch-vel")
+            PdBase.sendList([1, calculateAmplification(loc.y, h: h)], toReceiver: "amp")
         } else {
             PdBase.sendList([1, pitch, default_velocity], toReceiver: "pitch-vel")
             PdBase.sendList([1, calculateAmplification(loc.y, h: h)], toReceiver: "amp")
