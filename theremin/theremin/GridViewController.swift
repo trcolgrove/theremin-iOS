@@ -94,15 +94,14 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
         }
         //Move highlight
         var last: CircleView = circles.last!
-        last.center.y = loc.y //- circle_d * 0.5
-        last.center.x = loc.x //- circle_d * 0.5
+        last.center.y = loc.y
+        last.center.x = loc.x
     }
     
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
         PdBase.sendList([1, pitch, 0], toReceiver: "pitch-vel")
-        PdBase.sendList([1/* index */, 0] /*amp*/, toReceiver: "amp")
+        PdBase.sendList([1, 0], toReceiver: "amp")
         view.subviews.last?.removeFromSuperview()
-        
     }
     
 }
