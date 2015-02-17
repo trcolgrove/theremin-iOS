@@ -82,9 +82,16 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
         
         //Update current note
         pitch = CGFloat(leftmost_note) + (loc.x / w) * 12
-        PdBase.sendList([1, pitch, default_velocity], toReceiver: "pitch-vel")
-        PdBase.sendList([1, calculateAmplification(loc.y, h: h)], toReceiver: "amp")
-        
+        if (loc.y < 0) {
+            PdBase.sendList([1, pitch, 0], toReceiver: "pitch-vel")
+            PdBase.sendList([1, 0], toReceiver: "amp")
+        } else if (loc.x < 0) {
+            PdBase.sendList([1, leftmost_note, default_velocity], toReceiver: "pitch-vel")
+            PdBase.sendList([1, calculateAmplification(loc.y, h: h)], toReceiver: "amp")
+        } else {
+            PdBase.sendList([1, pitch, default_velocity], toReceiver: "pitch-vel")
+            PdBase.sendList([1, calculateAmplification(loc.y, h: h)], toReceiver: "amp")
+        }
         //Move highlight
         var last: CircleView = circles.last!
         last.center.y = loc.y //- circle_d * 0.5
