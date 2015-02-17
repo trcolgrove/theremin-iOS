@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class KeyTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class KeyTableViewController: InstrumentViewController, UITableViewDataSource, UITableViewDelegate {
     
     var key_names = ["CMajor", "DMajor", "GMajor", "EMajor", "FMajor", "AMajor", "C#Major"]
     
@@ -22,14 +22,20 @@ class KeyTableViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) ->
-        UITableViewCell {
+                                                                           UITableViewCell {
         let cellIdentifier = "Cell"
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath:
         indexPath) as UITableViewCell
+        
         // Configure the cell...
         cell.textLabel!.text = self.key_names[indexPath.row]
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        println("Change key to \(self.key_names[indexPath.row])")
+        super.updateKey(self.key_names[indexPath.row])
     }
     
 }
