@@ -132,7 +132,6 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
     
     // Creates new note if not touching existing note, otherwise makes that note current
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        println("touches began")
         let touch: AnyObject = touches.allObjects[0]
         var loc: CGPoint
         //if in a circle, don't make a new note, instead just update the one we are touching now
