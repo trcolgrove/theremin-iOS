@@ -9,7 +9,13 @@
 import UIKit
 
 class CircleView: UIView {
-    override init(frame: CGRect) {
+    
+    var index = 0
+    var gvc: GridViewController
+    
+    init(frame: CGRect, i: Int, view_controller: GridViewController) {
+        index = i;
+        gvc = view_controller
         super.init(frame: frame)
         self.backgroundColor = UIColor.clearColor()
     }
@@ -36,5 +42,9 @@ class CircleView: UIView {
         CGContextFillEllipseInRect(context, rectangle)
         CGContextStrokePath(context);
 
+    }
+    
+    func handleDoubleTap(sender: UITapGestureRecognizer!) {
+        gvc.deleteNote(index)
     }
 }
