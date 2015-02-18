@@ -16,13 +16,20 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
     var pitch: CGFloat = 60
     var vel: CGFloat = 5
     let CIRCLE_DIAMETER = CGFloat(25)
+    let MAX_NOTES = 5
     var circles: [CircleView] = []
     var note_count = 0
-    var current_note = 0
+    
+    //invariant: current_note is always the index of current touch, or -1 if no current touch
+    var current_note = -1
     let pan_rec = UIPanGestureRecognizer()
-    let touch2_rec = UITapGestureRecognizer()
+    let double_touch_rec = UITapGestureRecognizer()
+    
     var w: CGFloat = 0
     var h: CGFloat = 0
+    
+    //used as a hack to do moving of sustain notes
+    //TODO make it not hacky
     var no_delete_flag: Bool = false
     
     
@@ -35,18 +42,21 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
         println("Grid View Controller is loaded");
         w = self.view.bounds.width
         h = self.view.bounds.height
+        
         pan_rec.addTarget(self, action: "handlePan:")
         pan_rec.minimumNumberOfTouches = 1
         pan_rec.maximumNumberOfTouches = 1
-        touch2_rec.addTarget(self, action: "handleDoubleTap:")
-        touch2_rec.numberOfTapsRequired = 2
-        touch2_rec.cancelsTouchesInView = true
+        
+        double_touch_rec.addTarget(self, action: "handleDoubleTap:")
+        double_touch_rec.numberOfTapsRequired = 2
+        double_touch_rec.cancelsTouchesInView = true
+        
+        //init 5 circles off screen
         for i in 0...4 {
-            //init off the screen for shits
             circles.append(CircleView(frame: CGRectMake(-500 - 0.5 * CIRCLE_DIAMETER, -500 - 0.5 * CIRCLE_DIAMETER, CIRCLE_DIAMETER, CIRCLE_DIAMETER), i: i, view_controller: self))
         }
         self.view.addGestureRecognizer(pan_rec)
-        self.view.addGestureRecognizer(touch2_rec)
+        self.view.addGestureRecognizer(double_touch_rec)
     }
     
     override func updateKey(new_key: String) {
@@ -74,15 +84,16 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
         grid_origin = note_offset
     }
     
-
-    private func calculateAmplification(y: CGFloat, h: CGFloat) -> CGFloat{
+    // returns amplification level for current y value
+    private func calculateAmplification(y: CGFloat) -> CGFloat{
         return 0.5 * y / h
     }
     
-    //gesture recognizer stuff
+/***************** Touch stuff ******************/
+
+    
+    // Make sustain
     func handleDoubleTap(sender: UITapGestureRecognizer){
-        println("DOUBLE TAP")
-        
         //add gesture recognizer for tap on this circle
         var double_tap_rec = UITapGestureRecognizer(target: circles[current_note], action: "handleDoubleTap:")
         double_tap_rec.numberOfTapsRequired = 2
@@ -90,20 +101,17 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
         circles[current_note].addGestureRecognizer(double_tap_rec)
     }
     
-    
+    // Handles updating sustains and just a normal drag
     func handlePan(sender: UIPanGestureRecognizer){
         var loc: CGPoint
         switch sender.state {
         case UIGestureRecognizerState.Began:
-            println("began")
             loc = sender.locationOfTouch(0, inView: self.view)
             updateNote(loc)
         case UIGestureRecognizerState.Changed:
             loc = sender.locationOfTouch(0, inView: self.view)
-            println("changed")
             updateNote(loc)
         case UIGestureRecognizerState.Ended:
-            println("ended")
             if no_delete_flag == true {
                 no_delete_flag = false
             } else {
@@ -111,22 +119,28 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
             }
         case UIGestureRecognizerState.Cancelled:
             println("cancelled")
-            deleteNote(current_note)
+            if no_delete_flag == true {
+                no_delete_flag = false
+            } else {
+                deleteNote(current_note)
+            }
         default:
-            println("default")
+            println("ERROR: default switch case met")
         }
     }
    
+    
+    // Creates new note if not touching existing note, otherwise makes that note current
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         println("touches began")
         let touch: AnyObject = touches.allObjects[0]
         var loc: CGPoint
-        //if in a circle, don't make a new note, instead just update one we are touching now
+        //if in a circle, don't make a new note, instead just update the one we are touching now
         for c in circles {
             loc = touch.locationInView(c)
             if c.pointInside(loc, withEvent: nil) {
                 current_note = c.index
-                no_delete_flag = true
+                no_delete_flag = true //don't delete circle after touch up
                 return
             }
         }
@@ -136,8 +150,9 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
         createNote(loc)
     }
     
+    // Stop playing the note if it wasn't a drag from a sustain
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
-        println("touches ended")
+        //if no_delete_flag is true, we are dragging a sustain note, so we don't want to delete it
         if no_delete_flag == true {
             no_delete_flag = false
         } else {
@@ -145,33 +160,31 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
         }
     }
     
+    // Deletes note with the given index
     func deleteNote(index: Int) {
         if current_note == -1 {
-            println("trying to delete index -1")
+            println("error: trying to delete index -1")
             return
         }
-        println("deleting note \(index) ")
         PdBase.sendList([index, pitch, 0], toReceiver: "pitch-vel")
         PdBase.sendList([index, 0], toReceiver: "amp")
         circles[index].removeFromSuperview()
         note_count--
-        current_note = -1
+        current_note = -1 //no more current touch
     }
     
+    // Creates a new note based on the location of the touch
     func createNote(loc: CGPoint) {
-        if note_count == 5 {
-            //arbitrary max note count, probs should be global const or something TODO
+        if note_count == MAX_NOTES {
             return
         }
         
-        note_count++
-        current_note = note_count - 1
-        println("creating note \(current_note) ")
-        
         //Create current note
+        current_note = note_count
+        note_count++
         pitch = CGFloat(leftmost_note) + (loc.x / w) * 12
         PdBase.sendList([current_note, pitch, default_velocity], toReceiver: "pitch-vel")
-        PdBase.sendList([current_note, calculateAmplification(loc.y, h: h)], toReceiver: "amp")
+        PdBase.sendList([current_note, calculateAmplification(loc.y)], toReceiver: "amp")
         
         // Create a new CircleView for current touch location
         var new_circle = CircleView(frame: CGRectMake(loc.x - 0.5 * CIRCLE_DIAMETER, loc.y - 0.5 * CIRCLE_DIAMETER, CIRCLE_DIAMETER, CIRCLE_DIAMETER), i: current_note, view_controller: self)
@@ -179,6 +192,7 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
         view.addSubview(new_circle)
     }
     
+    //Updates the note with index current_note to new pitch/volume based on loc
     private func updateNote(loc: CGPoint) {
         if current_note == -1 {
             println("trying to update -1")
@@ -191,13 +205,13 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
             PdBase.sendList([current_note, 0], toReceiver: "amp")
         } else if (loc.x < 0) {
             PdBase.sendList([current_note, leftmost_note, default_velocity], toReceiver: "pitch-vel")
-            PdBase.sendList([current_note, calculateAmplification(loc.y, h: h)], toReceiver: "amp")
+            PdBase.sendList([current_note, calculateAmplification(loc.y)], toReceiver: "amp")
         } else if (loc.x >= w) {
             PdBase.sendList([current_note, leftmost_note + 12, default_velocity], toReceiver: "pitch-vel")
-            PdBase.sendList([current_note, calculateAmplification(loc.y, h: h)], toReceiver: "amp")
+            PdBase.sendList([current_note, calculateAmplification(loc.y)], toReceiver: "amp")
         } else {
             PdBase.sendList([current_note, pitch, default_velocity], toReceiver: "pitch-vel")
-            PdBase.sendList([current_note, calculateAmplification(loc.y, h: h)], toReceiver: "amp")
+            PdBase.sendList([current_note, calculateAmplification(loc.y)], toReceiver: "amp")
         }
         
         //Move highlight
@@ -205,58 +219,6 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
         circle.center.y = loc.y
         circle.center.x = loc.x
     }
-    /*
-
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        let w = self.view.bounds.width
-        let h = self.view.bounds.height
-        let touch: AnyObject = touches.allObjects[0]
-        let loc = touch.locationInView(self.view)
-        
-        //Create current note
-        pitch = CGFloat(leftmost_note) + (loc.x / w) * 12
-        PdBase.sendList([1, pitch, default_velocity], toReceiver: "pitch-vel")
-        PdBase.sendList([1, calculateAmplification(loc.y, h: h)], toReceiver: "amp")
-        
-        // Create a new CircleView for current touch location
-        var circle_view = CircleView(frame: CGRectMake(loc.x - 0.5 * CIRCLE_DIAMETER, loc.y - 0.5 * CIRCLE_DIAMETER, CIRCLE_DIAMETER, CIRCLE_DIAMETER))
-        circles.append(circle_view);
-        view.addSubview(circle_view)
-    }
-    
-    override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
-        let w = self.view.bounds.width
-        let h = self.view.bounds.height
-        let touch: AnyObject = touches.allObjects[0]
-        let loc = touch.locationInView(self.view)
-        
-        //Update current note
-        pitch = CGFloat(leftmost_note) + (loc.x / w) * 12
-        if (loc.y < 0) {
-            PdBase.sendList([1, pitch, 0], toReceiver: "pitch-vel")
-            PdBase.sendList([1, 0], toReceiver: "amp")
-        } else if (loc.x < 0) {
-            PdBase.sendList([1, leftmost_note, default_velocity], toReceiver: "pitch-vel")
-            PdBase.sendList([1, calculateAmplification(loc.y, h: h)], toReceiver: "amp")
-        } else if (loc.x >= w) {
-            PdBase.sendList([1, leftmost_note + 12, default_velocity], toReceiver: "pitch-vel")
-            PdBase.sendList([1, calculateAmplification(loc.y, h: h)], toReceiver: "amp")
-        } else {
-            PdBase.sendList([1, pitch, default_velocity], toReceiver: "pitch-vel")
-            PdBase.sendList([1, calculateAmplification(loc.y, h: h)], toReceiver: "amp")
-        }
-        //Move highlight
-        var last: CircleView = circles.last!
-        last.center.y = loc.y
-        last.center.x = loc.x
-    }
-
-    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
-        PdBase.sendList([1, pitch, 0], toReceiver: "pitch-vel")
-        PdBase.sendList([1, 0], toReceiver: "amp")
-        view.subviews.last?.removeFromSuperview()
-    }
- */
     
 }
 
