@@ -37,6 +37,7 @@ class KeyTableViewController: InstrumentViewController, UITableViewDataSource, U
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         println("Change key to \(self.key_names[indexPath.row])")
         parent.updateKey(self.key_names[indexPath.row])
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
 }
