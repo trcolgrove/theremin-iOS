@@ -46,6 +46,9 @@ class InstrumentViewController: UIViewController {
             key_menu.parent = self
             println("Menu Clicked/Initialized")
         }
+        else{
+            println("unknown id")
+        }
     }
     
     func setRange(leftmost_note: Int){

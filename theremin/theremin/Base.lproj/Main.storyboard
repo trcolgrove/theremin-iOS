@@ -28,7 +28,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GeQ-GH-2Dz" userLabel="KnobView">
                                 <rect key="frame" x="470" y="646" width="280" height="76"/>
                                 <connections>
-                                    <segue destination="wgk-zg-vAu" kind="embed" id="gHe-sg-HLx"/>
+                                    <segue destination="wgk-zg-vAu" kind="embed" identifier="knob_init" id="gHe-sg-HLx"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V5Q-9e-heb" userLabel="NoteView">
