@@ -19,7 +19,6 @@ class RangeViewContainerController: InstrumentViewController, RangeSlideParentDe
     var touch_origin: CGFloat = 0
     var instrument: InstrumentViewController!
     
-    
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         key = "CMajor"
@@ -29,6 +28,11 @@ class RangeViewContainerController: InstrumentViewController, RangeSlideParentDe
     {
         leftmost_note += num_semitones
         instrument.setRange(leftmost_note)
+    }
+    
+    override func updateKey(key: String, notes: [String]) {
+        self.key = key
+        println(notes)
     }
     
     override func viewDidLoad() {

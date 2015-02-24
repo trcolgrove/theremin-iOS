@@ -11,7 +11,9 @@ import UIKit
 
 class KeyTableViewController: InstrumentViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var key_names = ["CMajor", "DMajor", "GMajor", "EMajor", "FMajor", "AMajor", "C#Major"]
+    // choices for key change
+    var key_names = ["CMajor", "CMinor", "C#Minor", "DbMajor", "DMajor", "DMinor", "D#Minor", "EbMajor", "EbMinor", "EMajor", "EMinor", "FMajor", "FMinor", "F#Major", "F#Minor", "GbMajor", "GMajor", "GMinor", "G#Minor", "AbMajor",  "AMajor", "AMinor", "BbMajor", "BbMinor", "BMajor", "BMinor"]
+    
     var parent:InstrumentViewController!
     
     override func viewDidLoad() {
@@ -34,9 +36,9 @@ class KeyTableViewController: InstrumentViewController, UITableViewDataSource, U
         return cell
     }
     
+    // updates the key of the instrument from table selection
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        println("Change key to \(self.key_names[indexPath.row])")
-        parent.updateKey(self.key_names[indexPath.row])
+        parent.updateKey(self.key_names[indexPath.row], notes: [])
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
