@@ -32,7 +32,6 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
     //TODO make it not hacky
     var no_delete_flag: Bool = false
     
-    
     // grid position
     @IBOutlet weak var grid_image: UIImageView!
     var grid_origin: CGFloat = 0
@@ -59,11 +58,6 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
         self.view.addGestureRecognizer(double_touch_rec)
     }
     
-    override func updateKey(new_key: String) {
-        var notes = super.lookupKey(new_key)
-        super.updateKey(new_key)
-    }
-    
     /*this function sets up delegation/communication between RangeViewContainerController and
     GridViewController at runtime*/
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!){
@@ -74,9 +68,20 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
         }
     }
 
+    /* setRange
+     * moves grid image to the left based on note view controller offset
+     */
     override func setRange(note: Int) {
-        // moves grid to left based on the offset
         leftmost_note = note
+        //changes the grid to wherever the new range is
+        //var offset = (grid_origin + note_offset) % grid_width
+        //var new_location = CGPoint(x: (grid_image.center.x + offset), y: grid_image.center.y)
+        //grid_image.center = new_location
+    }
+    
+    override func updateKey(key: String, notes: [String]) {
+        self.key = key
+        println(notes)
     }
     
     func snapToGrid(note_offset: CGFloat) {

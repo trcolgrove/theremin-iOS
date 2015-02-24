@@ -16,16 +16,20 @@ class KnobViewController: InstrumentViewController {
     var tremolo: Float = 0
     var gain: Float = 0
     
+    @IBOutlet var reverb_btn: UIButton?
+    @IBOutlet var chorus_btn: UIButton?
+    @IBOutlet var tremelo_btn: UIButton?
+    @IBOutlet var gain_btn: UIButton?
+    
     override func viewDidLoad() {
         println("Knob View Controller is loaded")
     }
     
-    @IBAction func changeReverb (sender: UIButton) {
-        println("Changing " + sender.titleLabel!.text!)
+    @IBAction func openKnobControls (sender: UIButton) {
+        println("Opening knob controls")
     }
     
     func updateEffect (effect: String, new_value: Float) {
-        
         switch effect{
         case "reverb":
             reverb = new_value
