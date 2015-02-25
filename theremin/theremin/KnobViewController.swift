@@ -16,10 +16,8 @@ class KnobViewController: InstrumentViewController {
     var tremolo: Float = 0
     var gain: Float = 0
     
-    var reverb_knob: Knob!
-    var chorus_knob: Knob!
-    var tremolo_knob: Knob!
-    var gain_knob: Knob!
+    var knobs = [String:Knob]()
+    var knob_ids = ["reverb", "chorus", "tremolo", "gain"]
     
     @IBOutlet var reverb_placeholder: UIView!
     @IBOutlet var chorus_placeholder: UIView!
@@ -33,66 +31,121 @@ class KnobViewController: InstrumentViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        reverb_knob = Knob(frame: reverb_placeholder.bounds)
-        chorus_knob = Knob(frame: chorus_placeholder.bounds)
-        tremolo_knob = Knob(frame: tremolo_placeholder.bounds)
-        gain_knob = Knob(frame: gain_placeholder.bounds)
-        initializeKnob(reverb_knob, placeholder: reverb_placeholder, value: reverb)
-        initializeKnob(chorus_knob, placeholder: chorus_placeholder, value: chorus)
-        initializeKnob(tremolo_knob, placeholder: tremolo_placeholder, value: tremolo)
-        initializeKnob(gain_knob, placeholder: gain_placeholder, value: gain)
-        updateLabel(reverb_knob, label: reverb_value)
-        updateLabel(chorus_knob, label: chorus_value)
-        updateLabel(tremolo_knob, label: tremolo_value)
-        updateLabel(gain_knob, label: gain_value)
+        initializeKnobs()
+        updateLabels()
     }
     
+    /** Creates all knobs specified by the knob ids and gives them all the that id **/
+    func initializeKnobs() {
+        var id = ""
+        for (var i = 0; i < knob_ids.count; i++) {
+            id = knob_ids[i]
+            if let placeholder = getPlaceholder(id) {
+                knobs[id] = Knob(frame: placeholder.bounds)
+                assignID(knobs[id]!, id: id)
+                if let value = getKnobValue(id) {
+                    initializeKnob(knobs[id], placeholder: placeholder , value: value)
+                }
+            }
+        }
+    }
+    
+    /** Initializes an individual knob view and value **/
     func initializeKnob(knob: Knob!, placeholder: UIView!, value: Float) {
         knob.addTarget(self, action: "knobValueChanged:", forControlEvents: .ValueChanged)
         placeholder.addSubview(knob)
         knob.value = value
     }
     
+    /** Assigns the knob an id based on the function of the knob **/
+    func assignID(knob: Knob, id: String) {
+        knob.setID(id)
+    }
+    
+    /** Gets the placeholder view based on the id **/
+    func getPlaceholder(id: String) -> UIView? {
+        switch id {
+            case "reverb":
+                return reverb_placeholder
+            case "chorus":
+                return chorus_placeholder
+            case "tremolo":
+                return tremolo_placeholder
+            case "gain":
+                return gain_placeholder
+            default:
+                return nil
+        }
+    }
+    
+    /** Gets the knob's value based on the id **/
+    func getKnobValue(id: String) -> Float? {
+        switch id {
+            case "reverb":
+                return reverb
+            case "chorus":
+                return chorus
+            case "tremolo":
+                return tremolo
+            case "gain":
+                return gain
+            default:
+                return nil
+        }
+    }
+    
+    /** Gets the knob label based on the id **/
+    func getKnobLabel(id: String) -> UILabel? {
+        switch id {
+            case "reverb":
+                return reverb_value
+            case "chorus":
+                return chorus_value
+            case "tremolo":
+                return tremolo_value
+            case "gain":
+                return gain_value
+            default:
+                return nil
+        }
+    }
+    
     func knobValueChanged(knob: Knob) {
-        //var knob_label =
-        updateLabel(reverb_knob, label: reverb_value)
-        updateLabel(chorus_knob, label: chorus_value)
-        updateLabel(tremolo_knob, label: tremolo_value)
-        updateLabel(gain_knob, label: gain_value)
+        if let knob_label = getKnobLabel(knob.id) {
+            updateLabel(knobs[knob.id], label: knob_label)
+            if let cur_value = getKnobValue(knob.id) {
+                PdBase.sendFloat(cur_value, toReceiver: knob.id)
+            }
+        }
+    }
+    
+    func updateKnobValues(randValue: Float) {
+        var id = ""
+        for (var i = 0; i < knob_ids.count; i++) {
+            id = knob_ids[i]
+            var current_knob = knobs[id]
+            current_knob?.setValue(randValue, animated: false)
+            knobValueChanged(current_knob!)
+        }
     }
     
     @IBAction func randomButtonTouched(button: UIButton) {
         let randomValue = Float(arc4random_uniform(101)) / 100.0
-        reverb_knob.setValue(randomValue, animated: false)
-        
-        updateLabel(reverb_knob, label: reverb_value)
-        updateLabel(chorus_knob, label: chorus_value)
-        updateLabel(tremolo_knob, label: tremolo_value)
-        updateLabel(gain_knob, label: gain_value)
+        updateKnobValues(randomValue)
+    }
+    
+    func updateLabels() {
+        var id = ""
+        for (var i = 0; i < knob_ids.count; i++) {
+            id = knob_ids[i]
+            if let value = getKnobLabel(id) {
+                updateLabel(knobs[id], label: value)
+            }
+        }
     }
     
     func updateLabel(knob: Knob!, label: UILabel) {
         label.text = NSNumberFormatter.localizedStringFromNumber(knob.value, numberStyle: .NoStyle)
-    }
-    
-    func updateEffect (effect: String, new_value: Float) {
-        switch effect{
-        case "reverb":
-            reverb = new_value
-            PdBase.sendFloat(new_value, toReceiver: "reverb")
-        case "chorus":
-            chorus = new_value
-            PdBase.sendFloat(new_value, toReceiver: "chorus")
-        case "tremolo":
-            tremolo = new_value
-            PdBase.sendFloat(new_value, toReceiver: "tremolo")
-        case "gain":
-            gain = new_value
-            PdBase.sendFloat(new_value, toReceiver: "gain")
-        default:
-            println("Not an option to change")
-        }
-        
     }
     
 }

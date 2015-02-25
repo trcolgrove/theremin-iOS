@@ -12,6 +12,20 @@ import UIKit
 public class Knob: UIControl {
     private var backingValue: Float = 0.0
     
+    private var idValue: String = ""
+    
+    /** Sets the id of the knob for later identification **/
+    public var id: String {
+        get { return idValue }
+        set { setID(newValue) }
+    }
+    
+    public func setID(value: String) {
+        if (value != self.idValue) {
+            self.idValue = value
+        }
+    }
+    
     /** Contains the receiver’s current value. */
     public var value: Float {
         get { return backingValue }
