@@ -17,6 +17,9 @@ class KnobViewController: InstrumentViewController {
     var gain: Float = 0
     
     var reverb_knob: Knob!
+    var chorus_knob: Knob!
+    var tremolo_knob: Knob!
+    var gain_knob: Knob!
     
     @IBOutlet var reverb_placeholder: UIView!
     @IBOutlet var chorus_placeholder: UIView!
@@ -28,41 +31,48 @@ class KnobViewController: InstrumentViewController {
     @IBOutlet var tremolo_value: UILabel!
     @IBOutlet var gain_value: UILabel!
     
-    @IBOutlet var valueSlider: UISlider!
-    @IBOutlet var animateSwitch: UISwitch!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         reverb_knob = Knob(frame: reverb_placeholder.bounds)
-        reverb_knob.addTarget(self, action: "knobValueChanged:", forControlEvents: .ValueChanged)
-        reverb_placeholder.addSubview(reverb_knob)
-        reverb_knob.value = valueSlider.value
-        updateLabel()
+        chorus_knob = Knob(frame: chorus_placeholder.bounds)
+        tremolo_knob = Knob(frame: tremolo_placeholder.bounds)
+        gain_knob = Knob(frame: gain_placeholder.bounds)
+        initializeKnob(reverb_knob, placeholder: reverb_placeholder, value: reverb)
+        initializeKnob(chorus_knob, placeholder: chorus_placeholder, value: chorus)
+        initializeKnob(tremolo_knob, placeholder: tremolo_placeholder, value: tremolo)
+        initializeKnob(gain_knob, placeholder: gain_placeholder, value: gain)
+        updateLabel(reverb_knob, label: reverb_value)
+        updateLabel(chorus_knob, label: chorus_value)
+        updateLabel(tremolo_knob, label: tremolo_value)
+        updateLabel(gain_knob, label: gain_value)
+    }
+    
+    func initializeKnob(knob: Knob!, placeholder: UIView!, value: Float) {
+        knob.addTarget(self, action: "knobValueChanged:", forControlEvents: .ValueChanged)
+        placeholder.addSubview(knob)
+        knob.value = value
     }
     
     func knobValueChanged(knob: Knob) {
-        valueSlider.value = knob.value
-        
-        updateLabel()
-    }
-    
-    @IBAction func sliderValueChanged(slider: UISlider) {
-        reverb_knob.value = slider.value
-        
-        updateLabel()
+        //var knob_label =
+        updateLabel(reverb_knob, label: reverb_value)
+        updateLabel(chorus_knob, label: chorus_value)
+        updateLabel(tremolo_knob, label: tremolo_value)
+        updateLabel(gain_knob, label: gain_value)
     }
     
     @IBAction func randomButtonTouched(button: UIButton) {
         let randomValue = Float(arc4random_uniform(101)) / 100.0
-        reverb_knob.setValue(randomValue, animated: animateSwitch.on)
-        valueSlider.setValue(randomValue, animated: animateSwitch.on)
+        reverb_knob.setValue(randomValue, animated: false)
         
-        updateLabel()
+        updateLabel(reverb_knob, label: reverb_value)
+        updateLabel(chorus_knob, label: chorus_value)
+        updateLabel(tremolo_knob, label: tremolo_value)
+        updateLabel(gain_knob, label: gain_value)
     }
     
-    func updateLabel() {
-        reverb_value.text = NSNumberFormatter.localizedStringFromNumber(reverb_knob.value, numberStyle: .NoStyle)
+    func updateLabel(knob: Knob!, label: UILabel) {
+        label.text = NSNumberFormatter.localizedStringFromNumber(knob.value, numberStyle: .NoStyle)
     }
     
     func updateEffect (effect: String, new_value: Float) {

@@ -216,22 +216,40 @@
                             </label>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d3A-ef-QeU" userLabel="Chorus Placeholder">
                                 <rect key="frame" x="81" y="16" width="40" height="40"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lim-u7-AVX">
+                                        <rect key="frame" x="-1" y="9" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </label>
+                                </subviews>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tcg-oX-JnQ" userLabel="Tremolo Placeholder">
                                 <rect key="frame" x="136" y="16" width="40" height="40"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adv-Po-h2O">
+                                        <rect key="frame" x="-1" y="9" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </label>
+                                </subviews>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y4l-cI-Xyr" userLabel="Gain Placeholder">
                                 <rect key="frame" x="188" y="16" width="40" height="40"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="huh-kP-lGE">
+                                        <rect key="frame" x="-1" y="9" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </label>
+                                </subviews>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="128" translatesAutoresizingMaskIntoConstraints="NO" id="ixw-d7-jp8">
-                                <rect key="frame" x="73" y="20" width="118" height="31"/>
-                                <connections>
-                                    <action selector="sliderValueChanged:" destination="wgk-zg-vAu" eventType="valueChanged" id="5IT-Md-dfa"/>
-                                </connections>
-                            </slider>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gxx-ie-zeN" userLabel="Reverb Placeholder">
                                 <rect key="frame" x="27" y="16" width="40" height="40"/>
                                 <subviews>
@@ -250,11 +268,13 @@
                     <toolbarItems/>
                     <connections>
                         <outlet property="chorus_placeholder" destination="d3A-ef-QeU" id="bTc-Zb-D3J"/>
+                        <outlet property="chorus_value" destination="lim-u7-AVX" id="Ren-3V-Wyv"/>
                         <outlet property="gain_placeholder" destination="y4l-cI-Xyr" id="O93-M8-au4"/>
+                        <outlet property="gain_value" destination="huh-kP-lGE" id="SMm-CL-ljQ"/>
                         <outlet property="reverb_placeholder" destination="Gxx-ie-zeN" id="LzQ-Ek-x5U"/>
                         <outlet property="reverb_value" destination="ZdG-wo-6nQ" id="XqW-oE-mw1"/>
                         <outlet property="tremolo_placeholder" destination="tcg-oX-JnQ" id="SMi-SY-3Ro"/>
-                        <outlet property="valueSlider" destination="ixw-d7-jp8" id="uOd-pJ-UjZ"/>
+                        <outlet property="tremolo_value" destination="adv-Po-h2O" id="r9d-qO-9tv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ezf-E8-zBK" userLabel="First Responder" sceneMemberID="firstResponder"/>
