@@ -79,7 +79,7 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
         //grid_image.center = new_location
     }
     
-    override func updateKey(key: String, notes: [String]) {
+    override func updateKey(key: String, notes: [Int]) {
         self.key = key
         println(notes)
     }
