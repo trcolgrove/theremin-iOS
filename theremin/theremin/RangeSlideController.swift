@@ -33,6 +33,15 @@ class RangeSlideController: InstrumentViewController {
 
     override func viewDidLoad() {
         //super.viewDidLoad()
+        println("RangeSlideContoller is loaded", self.view.bounds.height, self.view.bounds.width);
+        self.view.frame.origin = CGPoint(x: 0,y: 0);
+        var label = UILabel(frame: CGRectMake(0, 0, 200, 21))
+        label.font = UIFont(name: "Helvetica-bold", size: 32.00)
+        label.textColor = UIColor(white: 1, alpha: 1)
+        label.center = CGPointMake(self.view.frame.origin.x, self.view.frame.origin.y)
+        //label.textAlignment = NSTextAlignment.Center
+        label.text = "I'am a test label"
+        self.view.addSubview(label)
         println("RangeSlideContoller is loaded");
     }
     
@@ -43,7 +52,12 @@ class RangeSlideController: InstrumentViewController {
         
     }
     */
-   
+    
+    //takes key as a string and updates labels
+    func update_key(key:String)
+    {
+        
+    }
     
     
     
