@@ -30,7 +30,7 @@ class RangeViewContainerController: InstrumentViewController, RangeSlideParentDe
         instrument.setRange(leftmost_note)
     }
     
-    override func updateKey(key: String, notes: [String]) {
+    override func updateKey(key: String, notes: [Int]) {
         self.key = key
         println(notes)
     }

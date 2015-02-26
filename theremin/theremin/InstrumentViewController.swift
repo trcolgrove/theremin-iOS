@@ -13,15 +13,22 @@ class InstrumentViewController: UIViewController {
     
     // data structure that takes a key and returns 
     // the label values for the 13 notes possible
-    var key_map = [String:[String]]()
-
-    // the current key of the theremin
+    var key_map = [String:[Int]]()
+    
+    // choices for key change
+    var note_names = ["C", "C#", "D", "Db", "Eb", "E", "F", "F#", "Gb", "G", "G#", "Ab",  "A", "Bb", "B"]
+    var key_names = ["Major", "Minor"]
+    
+    var key_note: String = "C"
+    var key_type: String = "Major"
     var key: String = "CMajor"
+    
     //var leftmost_note = "C"
     var octave: Int = 5
     var grid: GridViewController!
     var range_controller: RangeViewContainerController!
     
+    @IBOutlet var note_btn: UIButton?
     @IBOutlet var key_btn: UIButton?
     
     required init(coder aDecoder: NSCoder) {
@@ -40,10 +47,19 @@ class InstrumentViewController: UIViewController {
             self.grid = grid
             println("Grid Delegation Set")
         }
-        else if segue.identifier == "key_menu"{
+        else if (segue.identifier == "key_menu") {
             let key_menu = segue.destinationViewController as KeyTableViewController
+            key_menu.table_type = false
+            key_menu.keys = key_names
             key_menu.parent = self
-            println("Menu Clicked/Initialized")
+            println("Key Menu Clicked/Initialized")
+        }
+        else if (segue.identifier == "note_menu") {
+            let note_menu = segue.destinationViewController as KeyTableViewController
+            note_menu.table_type = true
+            note_menu.keys = note_names
+            note_menu.parent = self
+            println("Note Menu Clicked/Initialized")
         }
         else{
             println("unknown id")
@@ -56,17 +72,31 @@ class InstrumentViewController: UIViewController {
     func setRange(leftmost_note: Int){
         grid.setRange(leftmost_note)
     }
+
+    /* updateKey (value, type)
+     * changes the key based on a value and updates key of instrument
+     */
+    func updateKey(value: String, isNote: Bool) {
+        if (isNote) {
+            self.key_note = value
+        } else {
+            self.key_type = value
+        }
+        self.key = "\(self.key_note)" + "\(self.key_type)"
+        updateKey(self.key, notes: [])
+    }
     
-    /* updateKey
+    /* updateKey (key, notes)
      * if a given key exists, sets current key to that value
      * and retrieves the notes for that key
      */
-    func updateKey(key: String, notes: [String]) {
+    func updateKey(key: String, notes: [Int]) {
         var notes = lookupKey(key)
         if (notes != []) {
             self.key = key
             //self.leftmost_note = notes[0]
-            key_btn?.setTitle("\(key)", forState: UIControlState.Normal)
+            note_btn?.setTitle("\(key_note)", forState: UIControlState.Normal)
+            key_btn?.setTitle("\(key_type)", forState: UIControlState.Normal)
             // set range of grid view controller - wants an int but we have a string?
             grid.updateKey(key, notes: notes)
             //range_controller.updateKey(key, notes: notes)
@@ -78,10 +108,9 @@ class InstrumentViewController: UIViewController {
     /* lookupKey
      * returns key set from key_map dictionary
      */
-    func lookupKey(key: String) -> [String] {
+    func lookupKey(key: String) -> [Int] {
         var possibleKey = key_map[key]
         if let foundKey = possibleKey {
-            //println("Key: \(foundKey)")
             return foundKey
         }
         return []
@@ -94,33 +123,33 @@ class InstrumentViewController: UIViewController {
     
     func insertKeysToMap() {
         self.key_map = [
-            "CMajor" : ["C", "", "D", "", "E", "F", "", "G", "", "A", "", "B", "C"],
-            "C#Major": ["C#", "", "D#", "", "E#", "F#", "", "G#", "", "A#", "", "B#", "C#"],
-            "CMinor" : ["C", "", "D", "D#", "", "F", "", "G", "G#", "", "A#", "", "C"],
-            "C#Minor": ["C#", "", "D#", "E", "", "F#", "", "G#", "A", "", "B", "", "C#"],
-            "GMajor" : ["G", "", "A", "", "B", "C", "", "D", "", "E", "", "F#", "G"],
-            "GbMajor": ["Gb"],
-            "GMinor" : ["G"],
-            "G#Minor": ["G#"],
-            "DMajor" : ["D", "", "E", "", "F#", "G", "", "A", "", "B", "", "C#", "D"],
-            "DbMajor": ["Db", "", "Eb", "", "F", "Gb", "", "Ab", "", "Bb", "", "C", "Db"],
-            "DMinor" : ["D"],
-            "D#Minor": ["D#"],
-            "AMajor" : ["A", "", "B", "", "C#", "D", "", "E", "", "F#", "", "G#", "A"],
-            "AbMajor": ["Ab"],
-            "AMinor" : ["A", "", "B", "C", "", "D", "", "E", "F", "", "G", "", "A"],
-            "EMajor" : ["E", "", "F#", "", "G#", "A", "", "B", "", "C#", "", "D#", "E"],
-            "EbMajor": ["Eb"],
-            "EbMinor": ["Eb"],
-            "EMinor" : ["E"],
-            "BMajor" : ["B", "", "C#", "", "D#", "E", "", "F#", "", "G#", "", "A#", "B"],
-            "BbMajor": ["Bb"],
-            "BbMinor": ["Bb"],
-            "BMinor" : ["B"],
-            "F#Major": ["F#", "", "G#", "", "A#", "B", "", "C#", "", "D#", "", "E#", "F#"],
-            "FMajor" : ["F"],
-            "FMinor" : ["F"],
-            "F#Minor": ["F#"],
+            "CMajor" : [0],
+            "C#Major": [0],
+            "CMinor" : [0],
+            "C#Minor": [0],
+            "GMajor" : [],
+            "GbMajor": [],
+            "GMinor" : [],
+            "G#Minor": [],
+            "DMajor" : [],
+            "DbMajor": [],
+            "DMinor" : [],
+            "D#Minor": [],
+            "AMajor" : [],
+            "AbMajor": [],
+            "AMinor" : [],
+            "EMajor" : [],
+            "EbMajor": [],
+            "EbMinor": [],
+            "EMinor" : [],
+            "BMajor" : [],
+            "BbMajor": [],
+            "BbMinor": [],
+            "BMinor" : [],
+            "F#Major": [],
+            "FMajor" : [],
+            "FMinor" : [],
+            "F#Minor": [],
         ]
     }
     
