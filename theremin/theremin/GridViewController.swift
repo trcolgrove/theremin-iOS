@@ -15,7 +15,7 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
     var leftmost_note: CGFloat = 60.0
     var pitch: CGFloat = 60
     var vel: CGFloat = 5
-    let CIRCLE_DIAMETER = CGFloat(25)
+    let CIRCLE_DIAMETER = CGFloat(50)
     let MAX_NOTES = 5
     var circles: [CircleView] = []
     var note_count = 0
