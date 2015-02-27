@@ -16,6 +16,7 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
     let CIRCLE_DIAMETER = CGFloat(50)
     let MAX_NOTES = 5
     var circles: [CircleView] = []
+    var note_count = 0
     @IBOutlet var grid_view: UIView!
     
     //invariant: current_note is always the index of current touch, or -1 if no current touch
@@ -172,7 +173,7 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
             println("error: trying to delete index -1")
             return
         }
-        PdBase.sendList([index, pitch, 0], toReceiver: "pitch-vel")
+        PdBase.sendList([index, 0, 0], toReceiver: "pitch-vel")
         PdBase.sendList([index, 0], toReceiver: "amp")
         circles[index].removeFromSuperview()
         note_count--
@@ -188,7 +189,7 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
         //Create current note
         current_note = note_count
         note_count++
-        pitch = CGFloat(leftmost_note) + (loc.x / w) * 12
+        let pitch = CGFloat(leftmost_note) + (loc.x / w) * 12
         PdBase.sendList([current_note, pitch, default_velocity], toReceiver: "pitch-vel")
         PdBase.sendList([current_note, calculateAmplification(loc.y)], toReceiver: "amp")
         
@@ -207,7 +208,7 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
         
         let clipped_x = loc.x >= w ? w : loc.x < 0 ? 0 : loc.x
         let clipped_y = loc.y >= h ? h : loc.y < 0 ? 0 : loc.y
-        pitch = CGFloat(leftmost_note) + (clipped_x / w) * 12
+        let pitch = CGFloat(leftmost_note) + (clipped_x / w) * 12
         PdBase.sendList([current_note, pitch, default_velocity], toReceiver: "pitch-vel")
         PdBase.sendList([current_note, calculateAmplification(clipped_y)], toReceiver: "amp")
         let circle: CircleView = circles[current_note]
