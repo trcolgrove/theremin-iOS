@@ -13,12 +13,9 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
     
     let default_velocity: Int = 40
     var leftmost_note: CGFloat = 60.0
-    var pitch: CGFloat = 60
-    var vel: CGFloat = 5
     let CIRCLE_DIAMETER = CGFloat(50)
     let MAX_NOTES = 5
     var circles: [CircleView] = []
-    var note_count = 0
     @IBOutlet var grid_view: UIView!
     
     //invariant: current_note is always the index of current touch, or -1 if no current touch
@@ -50,14 +47,17 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
         double_touch_rec.cancelsTouchesInView = true
         
         //init 5 circles off screen
-        for i in 0...4 {
-            circles.append(CircleView(frame: CGRectMake(-500 - 0.5 * CIRCLE_DIAMETER, -500 - 0.5 * CIRCLE_DIAMETER, CIRCLE_DIAMETER, CIRCLE_DIAMETER), i: i, view_controller: self))
-        }
-        
+        initCircles();
         self.view.addGestureRecognizer(pan_rec)
         self.view.addGestureRecognizer(double_touch_rec)
     }
     
+    //initialize all 5 CircleView objects off screen, with indices
+    private func initCircles() {
+        for i in 0...4 {
+            circles.append(CircleView(frame: CGRectMake(-500 - 0.5 * CIRCLE_DIAMETER, -500 - 0.5 * CIRCLE_DIAMETER, CIRCLE_DIAMETER, CIRCLE_DIAMETER), i: i, view_controller: self))
+        }
+    }
     
     override func viewDidAppear(animated: Bool) {
         w = grid_view.frame.size.width
@@ -90,11 +90,6 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
     override func updateKey(key: String, notes: [Int]) {
         self.key = key
         println(notes)
-    }
-    
-    func snapToGrid(note_offset: CGFloat) {
-        // moves view's origin based on offset
-        grid_origin = note_offset
     }
     
     // returns amplification level for current y value
