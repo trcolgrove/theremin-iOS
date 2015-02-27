@@ -10,21 +10,22 @@ import Foundation
 import UIKit
 
 protocol RangeViewInstrument{
-    func setRange(num_semitones:Int)
+    func setRange(num_semitones:CGFloat)
 }
 
 class RangeViewContainerController: InstrumentViewController, RangeSlideParentDelegate{
     
-    var leftmost_note: Int = 60
+    var leftmost_note: CGFloat = 60
     var touch_origin: CGFloat = 0
     var instrument: InstrumentViewController!
+    var range_control: RangeSlideController!
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         key = "CMajor"
     }
     
-    override func setRange(num_semitones: Int)
+    override func setRange(num_semitones: CGFloat)
     {
         leftmost_note += num_semitones
         instrument.setRange(leftmost_note)
@@ -32,6 +33,7 @@ class RangeViewContainerController: InstrumentViewController, RangeSlideParentDe
     
     override func updateKey(key: String, notes: [Int]) {
         self.key = key
+        range_control.updateNoteLabels(key)
         println(notes)
     }
     
@@ -42,7 +44,7 @@ class RangeViewContainerController: InstrumentViewController, RangeSlideParentDe
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!){
         if segue.identifier == "init_slider"{
-            let range_control = segue.destinationViewController as RangeSlideController
+            range_control = segue.destinationViewController as RangeSlideController
             range_control.container_delegate = self
             println("Container Delegation Set")
         }

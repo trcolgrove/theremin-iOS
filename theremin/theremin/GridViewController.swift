@@ -12,7 +12,7 @@ import UIKit
 class GridViewController: InstrumentViewController, RangeViewInstrument {
     
     let default_velocity: Int = 40
-    var leftmost_note: Int = 60
+    var leftmost_note: CGFloat = 60.0
     var pitch: CGFloat = 60
     var vel: CGFloat = 5
     let CIRCLE_DIAMETER = CGFloat(25)
@@ -71,8 +71,9 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
     /* setRange
      * moves grid image to the left based on note view controller offset
      */
-    override func setRange(note: Int) {
+    override func setRange(note: CGFloat) {
         leftmost_note = note
+        println("lmostnote", note)
         //changes the grid to wherever the new range is
         //var offset = (grid_origin + note_offset) % grid_width
         //var new_location = CGPoint(x: (grid_image.center.x + offset), y: grid_image.center.y)
