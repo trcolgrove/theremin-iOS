@@ -19,6 +19,7 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
     let MAX_NOTES = 5
     var circles: [CircleView] = []
     var note_count = 0
+    @IBOutlet var grid_view: UIView!
     
     //invariant: current_note is always the index of current touch, or -1 if no current touch
     var current_note = -1
@@ -39,8 +40,10 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
 
     override func viewDidLoad() {
         println("Grid View Controller is loaded");
-        w = self.view.bounds.width
-        h = self.view.bounds.height
+        /* TODO: not hard code this */
+        w = 870 //grid_view.frame.size.width
+        h = 547 //grid_view.frame.size.height
+        println("w: \(w) h: \(h)")
         
         pan_rec.addTarget(self, action: "handlePan:")
         pan_rec.minimumNumberOfTouches = 1
@@ -54,6 +57,7 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
         for i in 0...4 {
             circles.append(CircleView(frame: CGRectMake(-500 - 0.5 * CIRCLE_DIAMETER, -500 - 0.5 * CIRCLE_DIAMETER, CIRCLE_DIAMETER, CIRCLE_DIAMETER), i: i, view_controller: self))
         }
+        
         self.view.addGestureRecognizer(pan_rec)
         self.view.addGestureRecognizer(double_touch_rec)
     }
@@ -149,9 +153,8 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
                 return
             }
         }
+        //if not in a circle, then go ahead and create new note
         loc = touch.locationInView(self.view)
-        
-        //if not in a circle, then go ahead
         createNote(loc)
     }
     
@@ -205,24 +208,32 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
         }
         //Update current note
         pitch = CGFloat(leftmost_note) + (loc.x / w) * 12
+        var circle: CircleView = circles[current_note]
         if (loc.y < 0) {
             PdBase.sendList([current_note, pitch, 0], toReceiver: "pitch-vel")
             PdBase.sendList([current_note, 0], toReceiver: "amp")
+            circle.center.x = loc.x
         } else if (loc.x < 0) {
             PdBase.sendList([current_note, leftmost_note, default_velocity], toReceiver: "pitch-vel")
             PdBase.sendList([current_note, calculateAmplification(loc.y)], toReceiver: "amp")
+            circle.center.y = loc.y
         } else if (loc.x >= w) {
             PdBase.sendList([current_note, leftmost_note + 12, default_velocity], toReceiver: "pitch-vel")
             PdBase.sendList([current_note, calculateAmplification(loc.y)], toReceiver: "amp")
+            circle.center.y = loc.y
+        } else if (loc.y >= h) {
+            PdBase.sendList([current_note, pitch, default_velocity], toReceiver: "pitch-vel")
+            PdBase.sendList([current_note, calculateAmplification(h)], toReceiver: "amp")
+            circle.center.x = loc.x
         } else {
             PdBase.sendList([current_note, pitch, default_velocity], toReceiver: "pitch-vel")
             PdBase.sendList([current_note, calculateAmplification(loc.y)], toReceiver: "amp")
+            //Move highlight
+            var circle: CircleView = circles[current_note]
+            circle.center.x = loc.x
+            circle.center.y = loc.y
         }
         
-        //Move highlight
-        var circle: CircleView = circles[current_note]
-        circle.center.y = loc.y
-        circle.center.x = loc.x
     }
     
 }
