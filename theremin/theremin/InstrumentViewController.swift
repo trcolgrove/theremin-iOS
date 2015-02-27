@@ -11,12 +11,15 @@ import UIKit
 
 class InstrumentViewController: UIViewController {
     
+    let NAT : Int = 0
+    let FLAT : Int = 1
+    let SHARP : Int = 2
     // data structure that takes a key and returns 
     // the label values for the 13 notes possible
-    var key_map = [String:[Int]]()
+    var key_map : [String:[Int]]!
     
     // choices for key change
-    var note_names = ["C", "C#", "D", "Db", "Eb", "E", "F", "F#", "Gb", "G", "G#", "Ab",  "A", "Bb", "B"]
+    var note_names = ["C", "Cb", "C#", "D", "Db", "D#", "E", "Eb", "E#", "F", "Fb", "F#", "G", "Gb", "G#", "A", "Ab", "A#", "B", "Bb", "B#"]
     var key_names = ["Major", "Minor"]
     
     var key_note: String = "C"
@@ -33,13 +36,14 @@ class InstrumentViewController: UIViewController {
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        insertKeysToMap()
     }
 
     //set up intrument view as a delegate of subcontrollers
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!){
         if segue.identifier == "init_range"{
-            let range_container = segue.destinationViewController as RangeViewContainerController
-            range_container.instrument = self
+            range_controller = segue.destinationViewController as RangeViewContainerController
+            range_controller.instrument = self
             println("Range Delegation Set")
         }
         else if segue.identifier == "init_grid"{
@@ -61,12 +65,15 @@ class InstrumentViewController: UIViewController {
             note_menu.parent = self
             println("Note Menu Clicked/Initialized")
         }
+        else{
+            println("unknown id")
+        }
     }
     
     /* setRange
      * sets the grid range to that of the leftmost note
      */
-    func setRange(leftmost_note: Int){
+    func setRange(leftmost_note: CGFloat){
         grid.setRange(leftmost_note)
     }
 
@@ -96,7 +103,7 @@ class InstrumentViewController: UIViewController {
             key_btn?.setTitle("\(key_type)", forState: UIControlState.Normal)
             // set range of grid view controller - wants an int but we have a string?
             grid.updateKey(key, notes: notes)
-            //range_controller.updateKey(key, notes: notes)
+            range_controller.updateKey(key, notes: notes)
         } else {
             println("Key \(key) does not exist")
         }
@@ -110,25 +117,25 @@ class InstrumentViewController: UIViewController {
         if let foundKey = possibleKey {
             return foundKey
         }
-        return []
+
+        return key_map[key]!
     }
     
     override func viewDidLoad() {
         println("Instrument View Controller is loaded")
-        insertKeysToMap()
     }
     
     func insertKeysToMap() {
         self.key_map = [
-            "CMajor" : [0],
+            "CMajor" : [NAT, NAT, NAT, NAT, NAT , NAT, NAT],
             "C#Major": [0],
             "CMinor" : [0],
             "C#Minor": [0],
-            "GMajor" : [],
+            "GMajor" : [NAT, NAT, NAT, SHARP, NAT , NAT, NAT],
             "GbMajor": [],
             "GMinor" : [],
             "G#Minor": [],
-            "DMajor" : [],
+            "DMajor" : [SHARP, NAT, NAT, SHARP, NAT , NAT, NAT],
             "DbMajor": [],
             "DMinor" : [],
             "D#Minor": [],
