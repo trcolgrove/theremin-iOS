@@ -33,8 +33,8 @@ class CircleView: UIView {
         CGContextSetLineWidth(context, 5.0);
         
         // Set the circle outerline-colour and fill
-        UIColor(white: 0.5, alpha: 0.3).setFill()
-        UIColor(white: 0.5, alpha: 0.3).set()
+        UIColor(white: 1, alpha: 0.6).setFill()
+        UIColor(white: 1, alpha: 0.6).set()
         
         // Draw
         var rectangle = CGRectMake(0, 0, frame.width, frame.height)
