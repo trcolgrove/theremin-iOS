@@ -98,6 +98,12 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="nDJ-Dj-0et"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="870" height="547"/>
+                    <connections>
+                        <outlet property="grid_image" destination="fI2-Eo-1BI" id="E8D-hl-6U0"/>
+                        <outlet property="grid_view" destination="Ctc-ha-SoO" id="VUx-Mz-JBM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d3h-QD-YeW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

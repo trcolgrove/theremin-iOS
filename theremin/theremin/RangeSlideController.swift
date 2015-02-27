@@ -43,12 +43,6 @@ class RangeSlideController: InstrumentViewController {
     }
     
     
-    //implement later
-    /*
-    @IBAction func handleSwipe(recognizer: UISwipeGestureRecognizer) {
-        
-    }
-    */
     func drawSlider(image: UIImage){
         let image = UIImage(named: "note_slider.png")!
         imageView = UIImageView(image: image)
@@ -57,7 +51,7 @@ class RangeSlideController: InstrumentViewController {
         scrollView.contentSize = CGSizeMake(image.size.width,scrollView.frame.size.height)
         
         for var i = 0; i < 100; i++ {
-            var label_loc = imageView.frame.origin.x + CGFloat(i*150)
+            var label_loc = imageView.frame.origin.x + 60 + CGFloat(i*145)
             println(imageView.frame.size.height)
             var label = UILabel(frame: CGRectMake(0, 0, label_loc, imageView.frame.height))
             label.font = UIFont(name: "Helvetica-bold", size: 32.00)
@@ -78,6 +72,7 @@ class RangeSlideController: InstrumentViewController {
     func updateNoteLabels(new_key:String)
     {
         key = new_key
+        imageView.removeFromSuperview()
         drawSlider(UIImage(named: "note_slider.png")!)
     }
     

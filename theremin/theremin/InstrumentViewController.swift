@@ -12,8 +12,8 @@ import UIKit
 class InstrumentViewController: UIViewController {
     
     let NAT : Int = 0
-    let FLAT : Int = 1
-    let SHARP : Int = 2
+    let FLT : Int = 1
+    let SHP : Int = 2
     // data structure that takes a key and returns 
     // the label values for the 13 notes possible
     var key_map : [String:[Int]]!
@@ -127,33 +127,36 @@ class InstrumentViewController: UIViewController {
     
     func insertKeysToMap() {
         self.key_map = [
-            "CMajor" : [NAT, NAT, NAT, NAT, NAT , NAT, NAT],
-            "C#Major": [0],
-            "CMinor" : [0],
-            "C#Minor": [0],
-            "GMajor" : [NAT, NAT, NAT, SHARP, NAT , NAT, NAT],
-            "GbMajor": [],
-            "GMinor" : [],
-            "G#Minor": [],
-            "DMajor" : [SHARP, NAT, NAT, SHARP, NAT , NAT, NAT],
-            "DbMajor": [],
-            "DMinor" : [],
-            "D#Minor": [],
-            "AMajor" : [],
-            "AbMajor": [],
-            "AMinor" : [],
-            "EMajor" : [],
-            "EbMajor": [],
-            "EbMinor": [],
-            "EMinor" : [],
-            "BMajor" : [],
-            "BbMajor": [],
-            "BbMinor": [],
-            "BMinor" : [],
-            "F#Major": [],
-            "FMajor" : [],
-            "FMinor" : [],
-            "F#Minor": [],
+            "CbMajor": [FLT, FLT, FLT, FLT, FLT, FLT, FLT],
+            "AbMinor": [FLT, FLT, FLT, FLT, FLT, FLT, FLT],
+            "GbMajor": [FLT, FLT, FLT, NAT, FLT, FLT, FLT],
+            "EbMinor": [FLT, FLT, FLT, NAT, FLT, FLT, FLT],
+            "DbMajor": [NAT, FLT, FLT, NAT, FLT, FLT, FLT],
+            "BbMinor": [NAT, FLT, FLT, NAT, FLT, FLT, FLT],
+            "AbMajor": [NAT, FLT, FLT, NAT, NAT, FLT, FLT],
+            "FMinor" : [NAT, FLT, FLT, NAT, NAT, FLT, FLT],
+            "EbMajor": [NAT, NAT, FLT, NAT, NAT, FLT, FLT],
+            "CMinor" : [NAT, NAT, FLT, NAT, NAT, FLT, FLT],
+            "BbMajor": [NAT, NAT, FLT, NAT, NAT, NAT, FLT],
+            "GMinor" : [NAT, NAT, FLT, NAT, NAT, NAT, FLT],
+            "FMajor" : [NAT, NAT, NAT, NAT, NAT, NAT, FLT],
+            "DMinor" : [NAT, NAT, NAT, NAT, NAT, NAT, FLT],
+            "CMajor" : [NAT, NAT, NAT, NAT, NAT, NAT, NAT],
+            "AMinor" : [NAT, NAT, NAT, NAT, NAT, NAT, NAT],
+            "GMajor" : [NAT, NAT, NAT, SHP, NAT, NAT, NAT],
+            "EMinor" : [NAT, NAT, NAT, SHP, NAT, NAT, NAT],
+            "DMajor" : [SHP, NAT, NAT, SHP, NAT, NAT, NAT],
+            "BMinor" : [SHP, NAT, NAT, SHP, NAT, NAT, NAT],
+            "AMajor" : [SHP, NAT, NAT, SHP, SHP, NAT, NAT],
+            "F#Minor": [SHP, NAT, NAT, SHP, SHP, NAT, NAT],
+            "EMajor" : [SHP, SHP, NAT, SHP, SHP, NAT, NAT],
+            "C#Minor": [SHP, SHP, NAT, SHP, SHP, NAT, NAT],
+            "BMajor" : [SHP, SHP, NAT, SHP, SHP, SHP, NAT],
+            "G#Minor": [SHP, SHP, NAT, SHP, SHP, SHP, NAT],
+            "F#Major": [SHP, SHP, SHP, SHP, SHP, SHP, NAT],
+            "D#Minor": [SHP, SHP, SHP, SHP, SHP, SHP, NAT],
+            "C#Major": [SHP, SHP, SHP, SHP, SHP, SHP, SHP],
+            "A#Minor": [SHP, SHP, SHP, SHP, SHP, SHP, SHP]
         ]
     }
     
