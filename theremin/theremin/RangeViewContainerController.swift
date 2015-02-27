@@ -49,12 +49,6 @@ class RangeViewContainerController: InstrumentViewController, RangeSlideParentDe
             println("Container Delegation Set")
         }
     }
-    //implement later
-    /*
-    @IBAction func handleSwipe(recognizer: UISwipeGestureRecognizer) {
-    
-    }
-    */
-    
+   
     
 }
