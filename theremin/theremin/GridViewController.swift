@@ -178,6 +178,7 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
         circles[index].removeFromSuperview()
         note_count--
         current_note = -1 //no more current touch
+        no_delete_flag = false
     }
     
     // Creates a new note based on the location of the touch
