@@ -13,8 +13,6 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
     
     let default_velocity: Int = 40
     var leftmost_note: CGFloat = 60.0
-    var pitch: CGFloat = 60
-    var vel: CGFloat = 5
     let CIRCLE_DIAMETER = CGFloat(50)
     let MAX_NOTES = 5
     var circles: [CircleView] = []
@@ -40,10 +38,6 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
 
     override func viewDidLoad() {
         println("Grid View Controller is loaded");
-        /* TODO: not hard code this */
-        w = 870 //grid_view.frame.size.width
-        h = 547 //grid_view.frame.size.height
-        println("w: \(w) h: \(h)")
         
         pan_rec.addTarget(self, action: "handlePan:")
         pan_rec.minimumNumberOfTouches = 1
@@ -54,12 +48,22 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
         double_touch_rec.cancelsTouchesInView = true
         
         //init 5 circles off screen
+        initCircles();
+        self.view.addGestureRecognizer(pan_rec)
+        self.view.addGestureRecognizer(double_touch_rec)
+    }
+    
+    //initialize all 5 CircleView objects off screen, with indices
+    private func initCircles() {
         for i in 0...4 {
             circles.append(CircleView(frame: CGRectMake(-500 - 0.5 * CIRCLE_DIAMETER, -500 - 0.5 * CIRCLE_DIAMETER, CIRCLE_DIAMETER, CIRCLE_DIAMETER), i: i, view_controller: self))
         }
-        
-        self.view.addGestureRecognizer(pan_rec)
-        self.view.addGestureRecognizer(double_touch_rec)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        w = grid_view.frame.size.width
+        h = grid_view.bounds.size.height
+        println("w: \(w) h: \(h)")
     }
     
     /*this function sets up delegation/communication between RangeViewContainerController and
@@ -87,11 +91,6 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
     override func updateKey(key: String, notes: [Int]) {
         self.key = key
         println(notes)
-    }
-    
-    func snapToGrid(note_offset: CGFloat) {
-        // moves view's origin based on offset
-        grid_origin = note_offset
     }
     
     // returns amplification level for current y value
@@ -174,11 +173,12 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
             println("error: trying to delete index -1")
             return
         }
-        PdBase.sendList([index, pitch, 0], toReceiver: "pitch-vel")
+        PdBase.sendList([index, 0, 0], toReceiver: "pitch-vel")
         PdBase.sendList([index, 0], toReceiver: "amp")
         circles[index].removeFromSuperview()
         note_count--
         current_note = -1 //no more current touch
+        no_delete_flag = false
     }
     
     // Creates a new note based on the location of the touch
@@ -190,7 +190,7 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
         //Create current note
         current_note = note_count
         note_count++
-        pitch = CGFloat(leftmost_note) + (loc.x / w) * 12
+        let pitch = CGFloat(leftmost_note) + (loc.x / w) * 12
         PdBase.sendList([current_note, pitch, default_velocity], toReceiver: "pitch-vel")
         PdBase.sendList([current_note, calculateAmplification(loc.y)], toReceiver: "amp")
         
@@ -203,37 +203,18 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
     //Updates the note with index current_note to new pitch/volume based on loc
     private func updateNote(loc: CGPoint) {
         if current_note == -1 {
-            println("trying to update -1")
+            println("Internal error: trying to update -1")
             return
         }
-        //Update current note
-        pitch = CGFloat(leftmost_note) + (loc.x / w) * 12
-        var circle: CircleView = circles[current_note]
-        if (loc.y < 0) {
-            PdBase.sendList([current_note, pitch, 0], toReceiver: "pitch-vel")
-            PdBase.sendList([current_note, 0], toReceiver: "amp")
-            circle.center.x = loc.x
-        } else if (loc.x < 0) {
-            PdBase.sendList([current_note, leftmost_note, default_velocity], toReceiver: "pitch-vel")
-            PdBase.sendList([current_note, calculateAmplification(loc.y)], toReceiver: "amp")
-            circle.center.y = loc.y
-        } else if (loc.x >= w) {
-            PdBase.sendList([current_note, leftmost_note + 12, default_velocity], toReceiver: "pitch-vel")
-            PdBase.sendList([current_note, calculateAmplification(loc.y)], toReceiver: "amp")
-            circle.center.y = loc.y
-        } else if (loc.y >= h) {
-            PdBase.sendList([current_note, pitch, default_velocity], toReceiver: "pitch-vel")
-            PdBase.sendList([current_note, calculateAmplification(h)], toReceiver: "amp")
-            circle.center.x = loc.x
-        } else {
-            PdBase.sendList([current_note, pitch, default_velocity], toReceiver: "pitch-vel")
-            PdBase.sendList([current_note, calculateAmplification(loc.y)], toReceiver: "amp")
-            //Move highlight
-            var circle: CircleView = circles[current_note]
-            circle.center.x = loc.x
-            circle.center.y = loc.y
-        }
         
+        let clipped_x = loc.x >= w ? w : loc.x < 0 ? 0 : loc.x
+        let clipped_y = loc.y >= h ? h : loc.y < 0 ? 0 : loc.y
+        let pitch = CGFloat(leftmost_note) + (clipped_x / w) * 12
+        PdBase.sendList([current_note, pitch, default_velocity], toReceiver: "pitch-vel")
+        PdBase.sendList([current_note, calculateAmplification(clipped_y)], toReceiver: "amp")
+        let circle: CircleView = circles[current_note]
+        circle.center.x = clipped_x
+        circle.center.y = clipped_y
     }
     
 }

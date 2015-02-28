@@ -11,16 +11,20 @@ import UIKit
 
 class InstrumentViewController: UIViewController {
     
-    let NAT : Int = 0
-    let FLT : Int = 1
+    let FLT : Int = 0
+    let NAT : Int = 1
     let SHP : Int = 2
     // data structure that takes a key and returns 
     // the label values for the 13 notes possible
     var key_map : [String:[Int]]!
     
     // choices for key change
-    var note_names = ["C", "Cb", "C#", "D", "Db", "D#", "E", "Eb", "E#", "F", "Fb", "F#", "G", "Gb", "G#", "A", "Ab", "A#", "B", "Bb", "B#"]
+    let note_names = [ "Cb", "C", "C#", "Db", "D", "D#", "Eb", "E", "E#", "Fb", "F", "F#", "Gb", "G", "G#", "Ab", "A", "A#", "Bb", "B", "B#"]
+    let note_positions = ["C" : 0, "C#" : 1, "Db" : 1, "D" : 2, "D#" : 3, "Eb" : 3, "E" : 4, "Fb" : 4, "E#" : 5, "F" : 5, "F#" : 6, "Gb" : 6, "G" : 7, "G#" : 8, "Ab" : 8, "A" : 9, "A#" : 10, "Bb" : 10, "B" : 11, "B#" : 11, "Cb" : 11]
+
+
     var key_names = ["Major", "Minor"]
+    
     
     var key_note: String = "C"
     var key_type: String = "Major"
