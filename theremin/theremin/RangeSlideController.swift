@@ -14,13 +14,14 @@ protocol RangeSlideParentDelegate{
     func setRange(num_semitones: CGFloat)
 }
 
-class RangeSlideController: InstrumentViewController {
+class RangeSlideController: InstrumentViewController, UIScrollViewDelegate {
     var touch_origin: CGFloat = 0
     var pan_view: UIView = UIView()
     var container_delegate: RangeSlideParentDelegate!
     let slider_range : Int = 48
-    let bottom_note : Int = 36
+    let bottom_note : Int = 3
     
+    var prev_offset : CGFloat  = 0
     
     @IBOutlet var scrollView: UIScrollView!
     
@@ -31,6 +32,8 @@ class RangeSlideController: InstrumentViewController {
         key = "CMajor"
     }
     
+    
+    
     override func setRange(num_semitones:CGFloat)
     {
         container_delegate.setRange(num_semitones)
@@ -38,7 +41,7 @@ class RangeSlideController: InstrumentViewController {
 
     override func viewDidLoad() {
         //super.viewDidLoad()
-        println("RangeSlideContoller is loaded \(self.view.frame.size) \(self.view.frame.size)")
+        println("RangeSlideContoller is loaded")
         drawSlider(UIImage(named: "note_slider.png")!)
     }
     
@@ -52,7 +55,8 @@ class RangeSlideController: InstrumentViewController {
         imageView.frame = CGRect(origin: CGPoint(x: 0,y: 0), size: CGSize(width: image.size.width, height: scrollView.frame.size.height))
         scrollView.addSubview(imageView)
         scrollView.contentSize = CGSizeMake(image.size.width,scrollView.frame.size.height)
-        scrollView.contentOffset = CGPoint(x: CGFloat(oct_width), y: 0)
+        scrollView.contentOffset = CGPoint(x: 0, y: 0)
+        scrollView.delegate = self
         
         for var oct = 0; oct < 4; oct++ { //octave
             for var sd = 0; sd < 7; sd++ { //scale degree
@@ -60,8 +64,7 @@ class RangeSlideController: InstrumentViewController {
                 var accidental = keylist[sd]
                 var note_name = note_names[(sd)*3 + accidental]
                 var offset = note_positions[note_name]!
-                var label_loc = imageView.frame.origin.x + 60 + CGFloat(oct*oct_width + offset*hs_width)
-                println(imageView.frame.size.height)
+                var label_loc = imageView.frame.origin.x + 120 + CGFloat(oct*oct_width + offset*hs_width)
                 var label = UILabel(frame: CGRectMake(0, 0, label_loc, imageView.frame.height))
                 label.font = UIFont(name: "Helvetica-bold", size: 32.00)
                 label.textColor = UIColor(white: 1, alpha: 1)
@@ -85,15 +88,8 @@ class RangeSlideController: InstrumentViewController {
     /*changes the range of the instrument when called*/
     
     
-    @IBAction func handlePan(recognizer:UIPanGestureRecognizer) {
-        //boundschecking here
-        let translation = recognizer.translationInView(self.view)
-        recognizer.view!.center = CGPoint(x:recognizer.view!.center.x + translation.x,
-            y:recognizer.view!.center.y)
-       
-        recognizer.setTranslation(CGPointZero, inView: self.view)
-        
-        self.setRange((translation.x/1024.0)*12)
-    
+    @IBAction func scrollViewDidScroll(scrollview: UIScrollView) {
+        setRange(scrollview.contentOffset.x - prev_offset)
+        prev_offset = scrollview.contentOffset.x
     }
 }

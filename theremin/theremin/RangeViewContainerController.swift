@@ -28,7 +28,7 @@ class RangeViewContainerController: InstrumentViewController, RangeSlideParentDe
     override func setRange(num_semitones: CGFloat)
     {
         leftmost_note += num_semitones
-        instrument.setRange(leftmost_note)
+        instrument.setRange(num_semitones)
     }
     
     override func updateKey(key: String, notes: [Int]) {

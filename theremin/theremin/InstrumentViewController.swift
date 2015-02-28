@@ -77,8 +77,8 @@ class InstrumentViewController: UIViewController {
     /* setRange
      * sets the grid range to that of the leftmost note
      */
-    func setRange(leftmost_note: CGFloat){
-        grid.setRange(leftmost_note)
+    func setRange(offset: CGFloat){
+        grid.setRange(offset)
     }
 
     /* updateKey (value, type)
