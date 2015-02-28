@@ -45,26 +45,31 @@ class RangeSlideController: InstrumentViewController {
     
     func drawSlider(image: UIImage){
         let image = UIImage(named: "note_slider.png")!
+        let hs_width = 145 //width of one half step
+        let oct_width = hs_width*12
+        var label_offset = 0
         imageView = UIImageView(image: image)
         imageView.frame = CGRect(origin: CGPoint(x: 0,y: 0), size: CGSize(width: image.size.width, height: scrollView.frame.size.height))
         scrollView.addSubview(imageView)
         scrollView.contentSize = CGSizeMake(image.size.width,scrollView.frame.size.height)
+        scrollView.contentOffset = CGPoint(x: CGFloat(oct_width), y: 0)
         
-        for var i = 0; i < 100; i++ {
-            var label_loc = imageView.frame.origin.x + 60 + CGFloat(i*145)
-            println(imageView.frame.size.height)
-            var label = UILabel(frame: CGRectMake(0, 0, label_loc, imageView.frame.height))
-            label.font = UIFont(name: "Helvetica-bold", size: 32.00)
-            label.textColor = UIColor(white: 1, alpha: 1)
-            label.center = CGPointMake(label_loc, imageView.frame.origin.y + 44)
-            var keylist = key_map[key]!
-            var offset = keylist[i%7]
-            var note_name = note_names[(i%7)*3 + offset]
-            label.text = note_name
-            imageView.addSubview(label)
+        for var oct = 0; oct < 4; oct++ { //octave
+            for var sd = 0; sd < 7; sd++ { //scale degree
+                var keylist = key_map[key]!
+                var accidental = keylist[sd]
+                var note_name = note_names[(sd)*3 + accidental]
+                var offset = note_positions[note_name]!
+                var label_loc = imageView.frame.origin.x + 60 + CGFloat(oct*oct_width + offset*hs_width)
+                println(imageView.frame.size.height)
+                var label = UILabel(frame: CGRectMake(0, 0, label_loc, imageView.frame.height))
+                label.font = UIFont(name: "Helvetica-bold", size: 32.00)
+                label.textColor = UIColor(white: 1, alpha: 1)
+                label.center = CGPointMake(label_loc, imageView.frame.origin.y + 44)
+                label.text = note_name
+                imageView.addSubview(label)
+            }
         }
-        
-        
     }
 
     
