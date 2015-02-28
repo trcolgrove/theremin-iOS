@@ -13,7 +13,7 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
     
     let default_velocity: Int = 40
     var leftmost_note: CGFloat = 60.0
-    let CIRCLE_DIAMETER = CGFloat(50)
+    let CIRCLE_DIAMETER: CGFloat = 50
     let MAX_NOTES = 5
     var circles: [CircleView] = []
     var note_count = 0
@@ -27,8 +27,7 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
     var w: CGFloat = 0
     var h: CGFloat = 0
     
-    //used as a hack to do moving of sustain notes
-    //TODO make it not hacky
+    //used to move sustain notes
     var no_delete_flag: Bool = false
     
     // grid position
@@ -48,7 +47,7 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
         double_touch_rec.cancelsTouchesInView = true
         
         //init 5 circles off screen
-        initCircles();
+        initCircles()
         self.view.addGestureRecognizer(pan_rec)
         self.view.addGestureRecognizer(double_touch_rec)
     }
@@ -56,7 +55,7 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
     //initialize all 5 CircleView objects off screen, with indices
     private func initCircles() {
         for i in 0...4 {
-            circles.append(CircleView(frame: CGRectMake(-500 - 0.5 * CIRCLE_DIAMETER, -500 - 0.5 * CIRCLE_DIAMETER, CIRCLE_DIAMETER, CIRCLE_DIAMETER), i: i, view_controller: self))
+            circles.append(CircleView(frame: CGRectMake(-50000 - 0.5 * CIRCLE_DIAMETER, -50000 - 0.5 * CIRCLE_DIAMETER, CIRCLE_DIAMETER, CIRCLE_DIAMETER), i: i, view_controller: self))
         }
     }
     
@@ -103,11 +102,16 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
     
     // Make sustain
     func handleDoubleTap(sender: UITapGestureRecognizer){
+        if (current_note == -1 || note_count == MAX_NOTES) {
+            return
+        }
         //add gesture recognizer for tap on this circle
         var double_tap_rec = UITapGestureRecognizer(target: circles[current_note], action: "handleDoubleTap:")
         double_tap_rec.numberOfTapsRequired = 2
-        double_tap_rec.cancelsTouchesInView = true
+        //double_tap_rec.cancelsTouchesInView = true
         circles[current_note].addGestureRecognizer(double_tap_rec)
+        current_note = -1
+        no_delete_flag = false
     }
     
     // Handles updating sustains and just a normal drag
@@ -159,6 +163,9 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
     
     // Stop playing the note if it wasn't a drag from a sustain
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+        if (current_note == -1) {
+            return
+        }
         //if no_delete_flag is true, we are dragging a sustain note, so we don't want to delete it
         if no_delete_flag == true {
             no_delete_flag = false
