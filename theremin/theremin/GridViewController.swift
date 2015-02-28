@@ -9,14 +9,16 @@
 import Foundation
 import UIKit
 
-class GridViewController: InstrumentViewController, RangeViewInstrument {
+class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     
     let default_velocity: Int = 40
     var leftmost_note: CGFloat = 60.0
-    let CIRCLE_DIAMETER = CGFloat(50)
+    let CIRCLE_DIAMETER: CGFloat = 50
     let MAX_NOTES = 5
     var circles: [CircleView] = []
     var note_count = 0
+    
+    //var circles_view : UIView!
     @IBOutlet var grid_view: UIView!
     
     //invariant: current_note is always the index of current touch, or -1 if no current touch
@@ -27,12 +29,14 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
     var w: CGFloat = 0
     var h: CGFloat = 0
     
-    //used as a hack to do moving of sustain notes
-    //TODO make it not hacky
+    //used to move sustain notes
     var no_delete_flag: Bool = false
     
     // grid position
     @IBOutlet weak var grid_image: UIImageView!
+    
+    @IBOutlet var slide_view: UIView!
+    
     var grid_origin: CGFloat = 0
     let grid_width: CGFloat = 72.5
 
@@ -48,7 +52,7 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
         double_touch_rec.cancelsTouchesInView = true
         
         //init 5 circles off screen
-        initCircles();
+        initCircles()
         self.view.addGestureRecognizer(pan_rec)
         self.view.addGestureRecognizer(double_touch_rec)
     }
@@ -56,13 +60,15 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
     //initialize all 5 CircleView objects off screen, with indices
     private func initCircles() {
         for i in 0...4 {
-            circles.append(CircleView(frame: CGRectMake(-500 - 0.5 * CIRCLE_DIAMETER, -500 - 0.5 * CIRCLE_DIAMETER, CIRCLE_DIAMETER, CIRCLE_DIAMETER), i: i, view_controller: self))
+            circles.append(CircleView(frame: CGRectMake(-50000 - 0.5 * CIRCLE_DIAMETER, -50000 - 0.5 * CIRCLE_DIAMETER, CIRCLE_DIAMETER, CIRCLE_DIAMETER), i: i, view_controller: self))
         }
     }
     
     override func viewDidAppear(animated: Bool) {
         w = grid_view.frame.size.width
         h = grid_view.bounds.size.height
+        //circles_view = UIView(frame: CGRect(x: 0, y: 0, width: w, height: h))
+        //grid_image.addSubview(circles_view)
         println("w: \(w) h: \(h)")
     }
     
@@ -79,13 +85,12 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
     /* setRange
      * moves grid image to the left based on note view controller offset
      */
-    override func setRange(note: CGFloat) {
-        leftmost_note = note
-        println("lmostnote", note)
-        //changes the grid to wherever the new range is
-        //var offset = (grid_origin + note_offset) % grid_width
-        //var new_location = CGPoint(x: (grid_image.center.x + offset), y: grid_image.center.y)
-        //grid_image.center = new_location
+    override func setRange(note_offset: CGFloat) {
+        
+        println(note_offset)
+        //grid_image.center.x = grid_image.center.x - note_offset
+        grid_image.frame = CGRectMake(grid_image.frame.origin.x - note_offset, grid_image.frame.origin.y, grid_image.frame.width, grid_image.frame.height)
+        leftmost_note = leftmost_note + (note_offset/72.5)
     }
     
     override func updateKey(key: String, notes: [Int]) {
@@ -103,23 +108,31 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
     
     // Make sustain
     func handleDoubleTap(sender: UITapGestureRecognizer){
+        if (current_note == -1 || note_count == MAX_NOTES) {
+            return
+        }
         //add gesture recognizer for tap on this circle
         var double_tap_rec = UITapGestureRecognizer(target: circles[current_note], action: "handleDoubleTap:")
         double_tap_rec.numberOfTapsRequired = 2
-        double_tap_rec.cancelsTouchesInView = true
+        //double_tap_rec.cancelsTouchesInView = true
         circles[current_note].addGestureRecognizer(double_tap_rec)
+        current_note = -1
+        no_delete_flag = false
     }
     
     // Handles updating sustains and just a normal drag
     func handlePan(sender: UIPanGestureRecognizer){
         var loc: CGPoint
+        var img_loc: CGPoint
         switch sender.state {
         case UIGestureRecognizerState.Began:
             loc = sender.locationOfTouch(0, inView: self.view)
-            updateNote(loc)
+            img_loc = sender.locationOfTouch(0, inView: grid_image)
+            updateNote(loc, img_loc: img_loc)
         case UIGestureRecognizerState.Changed:
             loc = sender.locationOfTouch(0, inView: self.view)
-            updateNote(loc)
+            img_loc = sender.locationOfTouch(0, inView: grid_image)
+            updateNote(loc, img_loc: img_loc)
         case UIGestureRecognizerState.Ended:
             if no_delete_flag == true {
                 no_delete_flag = false
@@ -143,6 +156,7 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         let touch: AnyObject = touches.allObjects[0]
         var loc: CGPoint
+        var img_loc: CGPoint
         //if in a circle, don't make a new note, instead just update the one we are touching now
         for c in circles {
             loc = touch.locationInView(c)
@@ -153,12 +167,16 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
             }
         }
         //if not in a circle, then go ahead and create new note
+        img_loc = touch.locationInView(grid_image)
         loc = touch.locationInView(self.view)
-        createNote(loc)
+        createNote(loc, img_loc: img_loc)
     }
     
     // Stop playing the note if it wasn't a drag from a sustain
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+        if (current_note == -1) {
+            return
+        }
         //if no_delete_flag is true, we are dragging a sustain note, so we don't want to delete it
         if no_delete_flag == true {
             no_delete_flag = false
@@ -180,9 +198,10 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
         current_note = -1 //no more current touch
         no_delete_flag = false
     }
+
     
     // Creates a new note based on the location of the touch
-    func createNote(loc: CGPoint) {
+    func createNote(loc: CGPoint, img_loc: CGPoint) {
         if note_count == MAX_NOTES {
             return
         }
@@ -195,26 +214,29 @@ class GridViewController: InstrumentViewController, RangeViewInstrument {
         PdBase.sendList([current_note, calculateAmplification(loc.y)], toReceiver: "amp")
         
         // Create a new CircleView for current touch location
-        var new_circle = CircleView(frame: CGRectMake(loc.x - 0.5 * CIRCLE_DIAMETER, loc.y - 0.5 * CIRCLE_DIAMETER, CIRCLE_DIAMETER, CIRCLE_DIAMETER), i: current_note, view_controller: self)
+        var new_circle = CircleView(frame: CGRectMake(img_loc.x - 0.5 * CIRCLE_DIAMETER, img_loc.y - 0.5 * CIRCLE_DIAMETER, CIRCLE_DIAMETER, CIRCLE_DIAMETER), i: current_note, view_controller: self)
         circles[current_note] = new_circle
-        view.addSubview(new_circle)
+        //println(grid_image.center.x)
+        grid_image.addSubview(new_circle)
+        //println(grid_image.center.y)
     }
     
     //Updates the note with index current_note to new pitch/volume based on loc
-    private func updateNote(loc: CGPoint) {
+    private func updateNote(loc: CGPoint, img_loc: CGPoint) {
         if current_note == -1 {
             println("Internal error: trying to update -1")
             return
         }
-        
         let clipped_x = loc.x >= w ? w : loc.x < 0 ? 0 : loc.x
         let clipped_y = loc.y >= h ? h : loc.y < 0 ? 0 : loc.y
         let pitch = CGFloat(leftmost_note) + (clipped_x / w) * 12
         PdBase.sendList([current_note, pitch, default_velocity], toReceiver: "pitch-vel")
         PdBase.sendList([current_note, calculateAmplification(clipped_y)], toReceiver: "amp")
         let circle: CircleView = circles[current_note]
-        circle.center.x = clipped_x
-        circle.center.y = clipped_y
+        var pt = CGPoint(x: clipped_x, y: clipped_y)
+        pt = grid_image.convertPoint(pt, fromView: self.view)
+        circle.center.x = pt.x
+        circle.center.y = pt.y
     }
     
 }
