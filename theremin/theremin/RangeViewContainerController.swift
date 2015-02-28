@@ -13,7 +13,7 @@ protocol RangeViewInstrument{
     func setRange(num_semitones:CGFloat)
 }
 
-class RangeViewContainerController: InstrumentViewController, RangeSlideParentDelegate{
+class RangeViewContainerController: InstrumentViewController, RangeSlideParentDelegate {
     
     var leftmost_note: CGFloat = 60
     var touch_origin: CGFloat = 0
