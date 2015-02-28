@@ -11,19 +11,23 @@ import UIKit
 
 class KnobViewController: InstrumentViewController {
     
+    /** The current values of each knob **/
     var reverb: Float = 0
     var chorus: Float = 0
     var tremolo: Float = 0
     var gain: Float = 0
     
+    /** All of the **/
     var knobs = [String:Knob]()
     var knob_ids = ["reverb", "chorus", "tremolo", "gain"]
     
+    /** Placeholder Views for knobs **/
     @IBOutlet var reverb_placeholder: UIView!
     @IBOutlet var chorus_placeholder: UIView!
     @IBOutlet var tremolo_placeholder: UIView!
     @IBOutlet var gain_placeholder: UIView!
     
+    /** Labels for the current values of each knob **/
     @IBOutlet var reverb_value: UILabel!
     @IBOutlet var chorus_value: UILabel!
     @IBOutlet var tremolo_value: UILabel!
@@ -114,26 +118,24 @@ class KnobViewController: InstrumentViewController {
         if let knob_label = getKnobLabel(knob.id) {
             updateLabel(knobs[knob.id], label: knob_label)
             if let cur_value = getKnobValue(knob.id) {
-                PdBase.sendFloat(cur_value, toReceiver: knob.id)
+                var index = Double(find(knob_ids, knob.id)!)
+                PdBase.sendList([index, cur_value], toReceiver: "effect")
             }
         }
     }
     
-    func updateKnobValues(randValue: Float) {
+    /** Changes all knob values to a given float **/
+    func updateKnobValues(value: Float) {
         var id = ""
         for (var i = 0; i < knob_ids.count; i++) {
             id = knob_ids[i]
             var current_knob = knobs[id]
-            current_knob?.setValue(randValue, animated: false)
+            current_knob?.setValue(value, animated: false)
             knobValueChanged(current_knob!)
         }
     }
     
-    @IBAction func randomButtonTouched(button: UIButton) {
-        let randomValue = Float(arc4random_uniform(101)) / 100.0
-        updateKnobValues(randomValue)
-    }
-    
+    /** Updates all of the knob labels for values **/
     func updateLabels() {
         var id = ""
         for (var i = 0; i < knob_ids.count; i++) {
@@ -144,6 +146,7 @@ class KnobViewController: InstrumentViewController {
         }
     }
     
+    /** Updates a label for a knob **/
     func updateLabel(knob: Knob!, label: UILabel) {
         label.text = NSNumberFormatter.localizedStringFromNumber(knob.value, numberStyle: .NoStyle)
     }

@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 public class Knob: UIControl {
+    
     private var backingValue: Float = 0.0
     
     private var idValue: String = ""
@@ -20,6 +21,7 @@ public class Knob: UIControl {
         set { setID(newValue) }
     }
     
+    /** Sets the id of the knob **/
     public func setID(value: String) {
         if (value != self.idValue) {
             self.idValue = value
@@ -35,11 +37,10 @@ public class Knob: UIControl {
     /** Sets the receiver’s current value, allowing you to animate the change visually. */
     public func setValue(value: Float, animated: Bool) {
         if(value != self.value) {
-            // Save the value to the backing value
-            // Make sure we limit it to the requested bounds
+            // Save the value to the backing value & limit to requested bounds
             self.backingValue = min(self.maximumValue, max(self.minimumValue, value))
             
-            // Now let's update the knob with the correct angle
+            // Update the knob with the correct angle
             let angleRange = endAngle - startAngle
             let valueRange = CGFloat(maximumValue - minimumValue)
             let angle = CGFloat(value - minimumValue) / valueRange * angleRange + startAngle
