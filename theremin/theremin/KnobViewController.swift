@@ -119,6 +119,7 @@ class KnobViewController: InstrumentViewController {
             updateLabel(knobs[knob.id], label: knob_label)
             if let cur_value = getKnobValue(knob.id) {
                 var index = Double(find(knob_ids, knob.id)!)
+                println(index)
                 PdBase.sendList([index, cur_value], toReceiver: "effect")
             }
         }
