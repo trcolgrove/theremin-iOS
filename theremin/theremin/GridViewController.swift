@@ -87,7 +87,6 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
      */
     override func setRange(note_offset: CGFloat) {
         
-        println(note_offset)
         //grid_image.center.x = grid_image.center.x - note_offset
         grid_image.frame = CGRectMake(grid_image.frame.origin.x - note_offset, grid_image.frame.origin.y, grid_image.frame.width, grid_image.frame.height)
         leftmost_note = leftmost_note + (note_offset/72.5)
@@ -101,6 +100,10 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     // returns amplification level for current y value
     private func calculateAmplification(y: CGFloat) -> CGFloat{
         return 0.5 * y / h
+    }
+    
+    private func calculatePitch(x: CGFloat) -> CGFloat{
+        return leftmost_note + (x / w) * 12
     }
     
 /***************** Touch stuff ******************/
@@ -154,6 +157,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     
     // Creates new note if not touching existing note, otherwise makes that note current
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        (parentViewController as InstrumentViewController).disableScroll()
         let touch: AnyObject = touches.allObjects[0]
         var loc: CGPoint
         var img_loc: CGPoint
@@ -172,6 +176,8 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         createNote(loc, img_loc: img_loc)
     }
     
+
+    
     // Stop playing the note if it wasn't a drag from a sustain
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
         if (current_note == -1) {
@@ -183,6 +189,8 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         } else {
             deleteNote(current_note)
         }
+        
+        (parentViewController as InstrumentViewController).enableScroll()
     }
     
     // Deletes note with the given index
@@ -209,16 +217,14 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         //Create current note
         current_note = note_count
         note_count++
-        let pitch = CGFloat(leftmost_note) + (loc.x / w) * 12
+        let pitch = calculatePitch(loc.x)
         PdBase.sendList([current_note, pitch, default_velocity], toReceiver: "pitch-vel")
         PdBase.sendList([current_note, calculateAmplification(loc.y)], toReceiver: "amp")
         
         // Create a new CircleView for current touch location
         var new_circle = CircleView(frame: CGRectMake(img_loc.x - 0.5 * CIRCLE_DIAMETER, img_loc.y - 0.5 * CIRCLE_DIAMETER, CIRCLE_DIAMETER, CIRCLE_DIAMETER), i: current_note, view_controller: self)
         circles[current_note] = new_circle
-        //println(grid_image.center.x)
         grid_image.addSubview(new_circle)
-        //println(grid_image.center.y)
     }
     
     //Updates the note with index current_note to new pitch/volume based on loc
@@ -229,7 +235,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         }
         let clipped_x = loc.x >= w ? w : loc.x < 0 ? 0 : loc.x
         let clipped_y = loc.y >= h ? h : loc.y < 0 ? 0 : loc.y
-        let pitch = CGFloat(leftmost_note) + (clipped_x / w) * 12
+        let pitch = calculatePitch(clipped_x)
         PdBase.sendList([current_note, pitch, default_velocity], toReceiver: "pitch-vel")
         PdBase.sendList([current_note, calculateAmplification(clipped_y)], toReceiver: "amp")
         let circle: CircleView = circles[current_note]

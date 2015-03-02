@@ -171,4 +171,13 @@ class InstrumentViewController: UIViewController {
         }
     }
     
+    func disableScroll() {
+        var slider = range_controller.range_control.scrollView as UIScrollView
+        slider.setContentOffset(slider.contentOffset, animated: false)
+    }
+    
+    func enableScroll() {
+        var slider = range_controller.range_control.scrollView as UIScrollView
+        slider.setContentOffset(slider.contentOffset, animated: true)
+    }
 }
