@@ -87,11 +87,16 @@ class InstrumentViewController: UIViewController {
     func updateKey(value: String, isNote: Bool) {
         if (isNote) {
             self.key_note = value
+            if(key_map["\(self.key_note)" + "\(self.key_type)"] == nil){
+                self.key_type = (self.key_type == "Major") ? "Minor" : "Major"
+            }
         } else {
-            self.key_type = value
+                self.key_type = value
         }
         self.key = "\(self.key_note)" + "\(self.key_type)"
-        updateKey(self.key, notes: [])
+        if(key_map[self.key] != nil){
+            updateKey(self.key, notes: [])
+        }
     }
     
     /* updateKey (key, notes)

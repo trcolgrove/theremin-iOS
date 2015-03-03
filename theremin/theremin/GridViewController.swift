@@ -227,6 +227,9 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         grid_image.addSubview(new_circle)
     }
     
+    private func drawGridLines(){
+        
+    }
     //Updates the note with index current_note to new pitch/volume based on loc
     private func updateNote(loc: CGPoint, img_loc: CGPoint) {
         if current_note == -1 {

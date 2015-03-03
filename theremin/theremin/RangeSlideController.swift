@@ -15,12 +15,10 @@ protocol RangeSlideParentDelegate{
 }
 
 class RangeSlideController: InstrumentViewController, UIScrollViewDelegate {
-    var touch_origin: CGFloat = 0
-    var pan_view: UIView = UIView()
+    
     var container_delegate: RangeSlideParentDelegate!
     let slider_range : Int = 48
     let bottom_note : Int = 3
-    
     var prev_offset : CGFloat  = 0
     
     @IBOutlet var scrollView: UIScrollView!
