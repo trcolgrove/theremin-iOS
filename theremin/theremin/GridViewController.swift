@@ -12,7 +12,7 @@ import UIKit
 class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     
     let default_velocity: Int = 40
-    var leftmost_note: CGFloat = 60.0
+    var leftmost_note: CGFloat = 59.0
     let CIRCLE_DIAMETER: CGFloat = 50
     let MAX_NOTES = 5
     var circles: [CircleView] = []
