@@ -19,19 +19,15 @@ class KnobViewController: InstrumentViewController {
     
     /** All of the **/
     var knobs = [String:Knob]()
-    var knob_ids = ["vibrato", "chorus", "tremolo", "gain"]
+    var knob_ids = ["vibrato", "tremolo"]
     
     /** Placeholder Views for knobs **/
     @IBOutlet var vibrato_placeholder: UIView!
-    @IBOutlet var chorus_placeholder: UIView!
     @IBOutlet var tremolo_placeholder: UIView!
-    @IBOutlet var gain_placeholder: UIView!
     
     /** Labels for the current values of each knob **/
     @IBOutlet var vibrato_value: UILabel!
-    @IBOutlet var chorus_value: UILabel!
     @IBOutlet var tremolo_value: UILabel!
-    @IBOutlet var gain_value: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,12 +67,8 @@ class KnobViewController: InstrumentViewController {
         switch id {
             case "vibrato":
                 return vibrato_placeholder
-            case "chorus":
-                return chorus_placeholder
             case "tremolo":
                 return tremolo_placeholder
-            case "gain":
-                return gain_placeholder
             default:
                 return nil
         }
@@ -87,12 +79,8 @@ class KnobViewController: InstrumentViewController {
         switch id {
             case "vibrato":
                 return vibrato
-            case "chorus":
-                return chorus
             case "tremolo":
                 return tremolo
-            case "gain":
-                return gain
             default:
                 return nil
         }
@@ -103,12 +91,8 @@ class KnobViewController: InstrumentViewController {
         switch id {
             case "vibrato":
                 return vibrato_value
-            case "chorus":
-                return chorus_value
             case "tremolo":
                 return tremolo_value
-            case "gain":
-                return gain_value
             default:
                 return nil
         }
