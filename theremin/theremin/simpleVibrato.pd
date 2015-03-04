@@ -1,0 +1,34 @@
+#N canvas 45 71 770 635 10;
+#X obj 87 206 vd~ vibrato;
+#X obj 87 144 *~ 1;
+#X obj 87 175 +~ 2;
+#X obj 87 3 delwrite~ vibrato 50;
+#X obj 87 107 osc~ 2;
+#X floatatom 242 201 5 0 0 0 - - -, f 5;
+#X obj 242 179 +;
+#X obj 199 153 * 2;
+#X text 279 202 <-- Maximum length of the delay line (= added latency!)
+;
+#X text 263 123 <-- Depth (change the length of the delay line);
+#X text 151 76 <-- Speed (frequency of the LFO);
+#X obj 87 238 outlet~;
+#X obj 199 122 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 2.5 256;
+#X text 359 77 0 to 5;
+#X obj 87 75 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 0 256;
+#X obj 87 42 r vibrato;
+#X obj 87 -35 inlet~;
+#X connect 0 0 11 0;
+#X connect 1 0 2 0;
+#X connect 2 0 0 0;
+#X connect 4 0 1 0;
+#X connect 6 0 5 0;
+#X connect 7 0 2 1;
+#X connect 7 0 6 0;
+#X connect 12 0 1 1;
+#X connect 12 0 7 0;
+#X connect 12 0 6 1;
+#X connect 14 0 4 0;
+#X connect 15 0 14 0;
+#X connect 16 0 3 0;
