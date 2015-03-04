@@ -28,10 +28,10 @@ class GridLineView: UIView {
         // Get the Graphics Context
         var context = UIGraphicsGetCurrentContext();
         
-        // Set the circle outerline-width
+        // Set the rect outerline-width
         CGContextSetLineWidth(context, 5.0);
         
-        // Set the circle outerline-colour and fill
+        // Set the rekt outerline-colour and fill
         UIColor.blackColor().setFill()
         UIColor.blackColor().set()
         
@@ -42,7 +42,4 @@ class GridLineView: UIView {
         
     }
     
-    func handleDoubleTap(sender: UITapGestureRecognizer!) {
-        gvc.deleteNote(index)
-    }
 }
