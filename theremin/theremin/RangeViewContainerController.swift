@@ -49,6 +49,13 @@ class RangeViewContainerController: InstrumentViewController, RangeSlideParentDe
             println("Container Delegation Set")
         }
     }
-   
     
+    @IBAction func rightOctave(sender: AnyObject) {
+        self.range_control.shiftOctave("right")
+    }
+    
+    @IBAction func leftOctave(sender: AnyObject) {
+        self.range_control.shiftOctave("left")
+    }
+   
 }

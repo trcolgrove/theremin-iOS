@@ -1,14 +1,14 @@
 #N canvas 542 185 450 300 10;
-#X obj 90 67 osc~;
-#X obj 84 117 *~ 1;
-#X obj 121 88 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+#X obj 104 86 osc~;
+#X obj 104 124 *~ 1;
+#X obj 155 89 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
 -262144 -1 -1 0 256;
 #X obj 40 152 *~;
-#X obj 46 185 outlet~;
-#X obj 23 32 inlet~;
-#X obj 95 10 r tremolo;
-#X obj 112 40 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 0 256;
+#X obj 40 185 outlet~;
+#X obj 39 20 inlet~;
+#X obj 104 20 r tremolo;
+#X obj 104 54 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 10 256;
 #X connect 0 0 1 0;
 #X connect 1 0 3 1;
 #X connect 2 0 1 1;

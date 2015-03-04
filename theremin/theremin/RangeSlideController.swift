@@ -30,7 +30,13 @@ class RangeSlideController: InstrumentViewController, UIScrollViewDelegate {
         key = "CMajor"
     }
     
-    
+    func shiftOctave(direction: String) {
+        if (direction == "left") {
+            
+        } else {
+
+        }
+    }
     
     override func setRange(num_semitones:CGFloat)
     {
