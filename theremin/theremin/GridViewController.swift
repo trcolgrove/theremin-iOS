@@ -86,7 +86,6 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
      * moves grid image to the left based on note view controller offset
      */
     override func setRange(note_offset: CGFloat) {
-        
         //grid_image.center.x = grid_image.center.x - note_offset
         grid_image.frame = CGRectMake(grid_image.frame.origin.x - note_offset, grid_image.frame.origin.y, grid_image.frame.width, grid_image.frame.height)
         leftmost_note = leftmost_note + (note_offset/72.5)
@@ -258,7 +257,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
                 var accidental = keylist[sd]
                 var note_name = note_names[(sd)*3 + accidental]
                 var offset : CGFloat = CGFloat(note_positions[note_name]!)
-                var line_loc : CGFloat = CGFloat(74.0) + CGFloat(oct*oct_width + offset*hs_width)
+                var line_loc : CGFloat = CGFloat(72.0) + CGFloat(oct*oct_width + offset*hs_width)
                 var line = GridLineView(frame: CGRectMake(line_loc, grid_image.frame.origin.y, 3, 552), view_controller: self)
                 grid_image.addSubview(line)
                 lines.append(line)

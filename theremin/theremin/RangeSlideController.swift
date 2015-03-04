@@ -31,21 +31,32 @@ class RangeSlideController: InstrumentViewController, UIScrollViewDelegate {
     }
     
     func shiftOctave(direction: String) {
+        let octave_width: CGFloat = (12*72.5)
         if (direction == "left") {
-            
+            if (scrollView.contentOffset.x <= octave_width) {
+                self.scrollView.contentOffset.x = 0
+                self.setRange(-scrollView.contentOffset.x)
+            } else {
+                self.scrollView.contentOffset.x -= octave_width
+                self.setRange(octave_width)
+            }
         } else {
-
+            if (scrollView.contentOffset.x >= (imageView.frame.width - octave_width)) {
+                self.scrollView.contentOffset.x += (imageView.frame.width - octave_width)
+                self.setRange((imageView.frame.width - scrollView.contentOffset.x) - octave_width)
+            } else {
+                self.scrollView.contentOffset.x += octave_width
+                self.setRange(octave_width)
+            }
         }
     }
     
-    override func setRange(num_semitones:CGFloat)
+    override func setRange(num_pixels: CGFloat)
     {
-        container_delegate.setRange(num_semitones)
+        container_delegate.setRange(num_pixels)
     }
 
     override func viewDidLoad() {
-        //super.viewDidLoad()
-        println("RangeSlideContoller is loaded")
         drawSlider(UIImage(named: "note_slider.png")!)
     }
     
@@ -73,12 +84,11 @@ class RangeSlideController: InstrumentViewController, UIScrollViewDelegate {
                 label.font = UIFont(name: "Helvetica-bold", size: 32.00)
                 label.textColor = UIColor(white: 1, alpha: 1)
                 label.center = CGPointMake(label_loc, imageView.frame.origin.y + 44)
-                label.text = note_name
+                label.text = (note_name + String(oct+1))
                 imageView.addSubview(label)
             }
         }
     }
-
     
     //takes key as a string and updates labels
     func updateNoteLabels(new_key:String)
@@ -88,10 +98,7 @@ class RangeSlideController: InstrumentViewController, UIScrollViewDelegate {
         drawSlider(UIImage(named: "note_slider.png")!)
     }
     
-    
     /*changes the range of the instrument when called*/
-    
-    
     @IBAction func scrollViewDidScroll(scrollview: UIScrollView) {
         setRange(scrollview.contentOffset.x - prev_offset)
         prev_offset = scrollview.contentOffset.x
