@@ -22,14 +22,14 @@ class InstrumentViewController: UIViewController {
     let note_names = [ "Cb", "C", "C#", "Db", "D", "D#", "Eb", "E", "E#", "Fb", "F", "F#", "Gb", "G", "G#", "Ab", "A", "A#", "Bb", "B", "B#"]
     let note_positions = ["C" : 0, "C#" : 1, "Db" : 1, "D" : 2, "D#" : 3, "Eb" : 3, "E" : 4, "Fb" : 4, "E#" : 5, "F" : 5, "F#" : 6, "Gb" : 6, "G" : 7, "G#" : 8, "Ab" : 8, "A" : 9, "A#" : 10, "Bb" : 10, "B" : 11, "B#" : 11, "Cb" : 11]
 
-
     var key_names = ["Major", "Minor"]
-    
     
     var key_note: String = "C"
     var key_type: String = "Major"
     var key: String = "CMajor"
     
+    var key_popover: KeyTableViewController?
+
     //var leftmost_note = "C"
     var octave: Int = 5
     var grid: GridViewController!
@@ -57,6 +57,7 @@ class InstrumentViewController: UIViewController {
         }
         else if (segue.identifier == "key_menu") {
             let key_menu = segue.destinationViewController as KeyTableViewController
+            self.key_popover = key_menu
             key_menu.table_type = false
             key_menu.keys = key_names
             key_menu.parent = self
@@ -64,6 +65,7 @@ class InstrumentViewController: UIViewController {
         }
         else if (segue.identifier == "note_menu") {
             let note_menu = segue.destinationViewController as KeyTableViewController
+            self.key_popover = note_menu
             note_menu.table_type = true
             note_menu.keys = note_names
             note_menu.parent = self
@@ -91,12 +93,10 @@ class InstrumentViewController: UIViewController {
                 self.key_type = (self.key_type == "Major") ? "Minor" : "Major"
             }
         } else {
-                self.key_type = value
+            self.key_type = value
         }
         self.key = "\(self.key_note)" + "\(self.key_type)"
-        if(key_map[self.key] != nil){
-            updateKey(self.key, notes: [])
-        }
+        updateKey(self.key, notes: [])
     }
     
     /* updateKey (key, notes)
@@ -104,16 +104,15 @@ class InstrumentViewController: UIViewController {
      * and retrieves the notes for that key
      */
     func updateKey(key: String, notes: [Int]) {
-        var notes = lookupKey(key)
-        if (notes != []) {
+        var found_notes = lookupKey(key)
+        if (found_notes != nil) {
             self.key = key
-            //self.leftmost_note = notes[0]
             note_btn?.setTitle("\(key_note)", forState: UIControlState.Normal)
             key_btn?.setTitle("\(key_type)", forState: UIControlState.Normal)
-            // set range of grid view controller - wants an int but we have a string?
             grid.updateKey(key, notes: notes)
             range_controller.updateKey(key, notes: notes)
         } else {
+            showNoKeyFound()
             println("Key \(key) does not exist")
         }
     }
@@ -121,13 +120,19 @@ class InstrumentViewController: UIViewController {
     /* lookupKey
      * returns key set from key_map dictionary
      */
-    func lookupKey(key: String) -> [Int] {
+    func lookupKey(key: String) -> [Int]? {
         var possibleKey = key_map[key]
         if let foundKey = possibleKey {
             return foundKey
         }
-
-        return key_map[key]!
+        return nil
+    }
+    
+    func showNoKeyFound() {
+        self.key_popover?.dismissViewController()
+        var alert = UIAlertController(title: "Error", message: "Unsupported Key", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
