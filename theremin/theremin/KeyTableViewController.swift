@@ -41,6 +41,10 @@ class KeyTableViewController: InstrumentViewController, UITableViewDataSource, U
     // updates the key of the instrument from table selection
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         parent.updateKey(self.keys[indexPath.row], isNote: table_type)
+        self.dismissViewController()
+    }
+    
+    func dismissViewController() {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
