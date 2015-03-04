@@ -12,23 +12,23 @@ import UIKit
 class KnobViewController: InstrumentViewController {
     
     /** The current values of each knob **/
-    var reverb: Float = 0
+    var vibrato: Float = 0
     var chorus: Float = 0
     var tremolo: Float = 0
     var gain: Float = 0
     
     /** All of the **/
     var knobs = [String:Knob]()
-    var knob_ids = ["reverb", "chorus", "tremolo", "gain"]
+    var knob_ids = ["vibrato", "chorus", "tremolo", "gain"]
     
     /** Placeholder Views for knobs **/
-    @IBOutlet var reverb_placeholder: UIView!
+    @IBOutlet var vibrato_placeholder: UIView!
     @IBOutlet var chorus_placeholder: UIView!
     @IBOutlet var tremolo_placeholder: UIView!
     @IBOutlet var gain_placeholder: UIView!
     
     /** Labels for the current values of each knob **/
-    @IBOutlet var reverb_value: UILabel!
+    @IBOutlet var vibrato_value: UILabel!
     @IBOutlet var chorus_value: UILabel!
     @IBOutlet var tremolo_value: UILabel!
     @IBOutlet var gain_value: UILabel!
@@ -69,8 +69,8 @@ class KnobViewController: InstrumentViewController {
     /** Gets the placeholder view based on the id **/
     func getPlaceholder(id: String) -> UIView? {
         switch id {
-            case "reverb":
-                return reverb_placeholder
+            case "vibrato":
+                return vibrato_placeholder
             case "chorus":
                 return chorus_placeholder
             case "tremolo":
@@ -85,8 +85,8 @@ class KnobViewController: InstrumentViewController {
     /** Gets the knob's value based on the id **/
     func getKnobValue(id: String) -> Float? {
         switch id {
-            case "reverb":
-                return reverb
+            case "vibrato":
+                return vibrato
             case "chorus":
                 return chorus
             case "tremolo":
@@ -101,8 +101,8 @@ class KnobViewController: InstrumentViewController {
     /** Gets the knob label based on the id **/
     func getKnobLabel(id: String) -> UILabel? {
         switch id {
-            case "reverb":
-                return reverb_value
+            case "vibrato":
+                return vibrato_value
             case "chorus":
                 return chorus_value
             case "tremolo":
@@ -118,9 +118,7 @@ class KnobViewController: InstrumentViewController {
         if let knob_label = getKnobLabel(knob.id) {
             updateLabel(knobs[knob.id], label: knob_label)
             if let cur_value = getKnobValue(knob.id) {
-                var index = Double(find(knob_ids, knob.id)!)
-                println(index)
-                PdBase.sendList([index, cur_value], toReceiver: "effect")
+                PdBase.sendFloat(knob.value, toReceiver: knob.id)
             }
         }
     }

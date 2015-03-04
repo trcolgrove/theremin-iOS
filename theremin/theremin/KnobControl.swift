@@ -52,7 +52,7 @@ public class Knob: UIControl {
     public var minimumValue: Float = 0.0
     
     /** Contains the maximum value of the receiver. */
-    public var maximumValue: Float = 128.0
+    public var maximumValue: Float = 10.0
     
     /** Contains a Boolean value indicating whether changes in the sliders value generate continuous update events. */
     public var continuous = true

@@ -212,7 +212,7 @@
                                 <rect key="frame" x="-469" y="-644" width="1042" height="768"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reverb" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="68d-aR-eUZ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vibrato" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="68d-aR-eUZ">
                                 <rect key="frame" x="20" y="53" width="55" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -282,7 +282,7 @@
                                 </subviews>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <view contentMode="scaleToFill" id="Gxx-ie-zeN" userLabel="Reverb Placeholder">
+                            <view contentMode="scaleToFill" id="Gxx-ie-zeN" userLabel="Vibrato Placeholder">
                                 <rect key="frame" x="27" y="16" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -305,10 +305,10 @@
                         <outlet property="chorus_value" destination="lim-u7-AVX" id="Ren-3V-Wyv"/>
                         <outlet property="gain_placeholder" destination="y4l-cI-Xyr" id="O93-M8-au4"/>
                         <outlet property="gain_value" destination="huh-kP-lGE" id="SMm-CL-ljQ"/>
-                        <outlet property="reverb_placeholder" destination="Gxx-ie-zeN" id="LzQ-Ek-x5U"/>
-                        <outlet property="reverb_value" destination="ZdG-wo-6nQ" id="XqW-oE-mw1"/>
                         <outlet property="tremolo_placeholder" destination="tcg-oX-JnQ" id="SMi-SY-3Ro"/>
                         <outlet property="tremolo_value" destination="adv-Po-h2O" id="r9d-qO-9tv"/>
+                        <outlet property="vibrato_placeholder" destination="Gxx-ie-zeN" id="IAJ-vP-t2M"/>
+                        <outlet property="vibrato_value" destination="ZdG-wo-6nQ" id="u99-1P-hEi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ezf-E8-zBK" userLabel="First Responder" sceneMemberID="firstResponder"/>

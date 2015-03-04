@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3703FACE1A8E727C009B8783 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3703FACD1A8E727C009B8783 /* CircleView.swift */; };
+		37842A521AA7AF65002873B6 /* simpleTremolo.pd in Resources */ = {isa = PBXBuildFile; fileRef = 37842A501AA7AF65002873B6 /* simpleTremolo.pd */; };
+		37842A531AA7AF65002873B6 /* simpleVibrato.pd in Resources */ = {isa = PBXBuildFile; fileRef = 37842A511AA7AF65002873B6 /* simpleVibrato.pd */; };
 		B1D07046291BC940EC75CD40 /* libPods-theremin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8004AE9946D819307EE2E6D8 /* libPods-theremin.a */; };
 		E90742571A8AD432009088E0 /* note_slider.png in Resources */ = {isa = PBXBuildFile; fileRef = E90742561A8AD432009088E0 /* note_slider.png */; };
 		E947E1611AA676DE004DAA9B /* GridLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E947E1601AA676DE004DAA9B /* GridLineView.swift */; };
@@ -53,6 +55,8 @@
 
 /* Begin PBXFileReference section */
 		3703FACD1A8E727C009B8783 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		37842A501AA7AF65002873B6 /* simpleTremolo.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = simpleTremolo.pd; sourceTree = "<group>"; };
+		37842A511AA7AF65002873B6 /* simpleVibrato.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = simpleVibrato.pd; sourceTree = "<group>"; };
 		386C355754CEC498073BC781 /* Pods-theremin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-theremin.release.xcconfig"; path = "Pods/Target Support Files/Pods-theremin/Pods-theremin.release.xcconfig"; sourceTree = "<group>"; };
 		8004AE9946D819307EE2E6D8 /* libPods-theremin.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-theremin.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9248A05E5AC8D6B8EE1E5BF /* Pods-theremin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-theremin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-theremin/Pods-theremin.debug.xcconfig"; sourceTree = "<group>"; };
@@ -194,6 +198,8 @@
 			children = (
 				F845813F1A87D87F00DCBFEA /* Images */,
 				F8BD45A41A7EC9C900535821 /* theremin.pd */,
+				37842A501AA7AF65002873B6 /* simpleTremolo.pd */,
+				37842A511AA7AF65002873B6 /* simpleVibrato.pd */,
 				F8BD45821A7EC47000535821 /* AppDelegate.h */,
 				F8BD45831A7EC47000535821 /* AppDelegate.m */,
 				F84581461A88355300DCBFEA /* ViewControllers */,
@@ -320,11 +326,13 @@
 				F84581541A88528C00DCBFEA /* theremin-appicon-58x58.png in Resources */,
 				F8BD458A1A7EC47000535821 /* Main.storyboard in Resources */,
 				F84581411A87E79800DCBFEA /* theremin-b2.png in Resources */,
+				37842A531AA7AF65002873B6 /* simpleVibrato.pd in Resources */,
 				F8548AFB1A9150DD00DDE538 /* theremin-grid.png in Resources */,
 				F84581601A885ACB00DCBFEA /* theremin-appicon76x76.png in Resources */,
 				F8854EC91AA1096B00B312C2 /* theremin-long-grid.png in Resources */,
 				F845815C1A885AA100DCBFEA /* theremin-appicon-80x80.png in Resources */,
 				F8BD45A51A7EC9C900535821 /* theremin.pd in Resources */,
+				37842A521AA7AF65002873B6 /* simpleTremolo.pd in Resources */,
 				F84581431A87EC4700DCBFEA /* wave.png in Resources */,
 				F84581621A885AF800DCBFEA /* theremin-appicon152x152.png in Resources */,
 				F845813E1A87D86600DCBFEA /* theremin-b1.jpg in Resources */,
