@@ -32,23 +32,21 @@ class RangeSlideController: InstrumentViewController, UIScrollViewDelegate {
     
     func shiftOctave(direction: String) {
         let octave_width: CGFloat = (12*72.5)
+        var offset = scrollView.contentOffset
         if (direction == "left") {
             if (scrollView.contentOffset.x <= octave_width) {
-                self.scrollView.contentOffset.x = 0
-                self.setRange(-scrollView.contentOffset.x)
+                offset.x = 0
             } else {
-                self.scrollView.contentOffset.x -= octave_width
-                self.setRange(octave_width)
+                offset.x -= octave_width
             }
         } else {
             if (scrollView.contentOffset.x >= (imageView.frame.width - octave_width)) {
-                self.scrollView.contentOffset.x += (imageView.frame.width - octave_width)
-                self.setRange((imageView.frame.width - scrollView.contentOffset.x) - octave_width)
+                offset.x += (imageView.frame.width - octave_width)
             } else {
-                self.scrollView.contentOffset.x += octave_width
-                self.setRange(octave_width)
+                offset.x += octave_width
             }
         }
+        self.scrollView.setContentOffset(offset, animated: true)
     }
     
     override func setRange(num_pixels: CGFloat)
