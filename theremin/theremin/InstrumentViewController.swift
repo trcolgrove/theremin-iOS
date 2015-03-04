@@ -34,9 +34,22 @@ class InstrumentViewController: UIViewController {
     var octave: Int = 5
     var grid: GridViewController!
     var range_controller: RangeViewContainerController!
+   
     
     @IBOutlet var note_btn: UIButton?
     @IBOutlet var key_btn: UIButton?
+    @IBOutlet weak var grid_switch: UISwitch?
+    
+    
+    
+    @IBAction func switchChanged(sender: UISwitch) {
+        if(sender.on){
+            grid.gridOn()
+        }
+        else{
+            grid.gridOff()
+        }
+    }
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

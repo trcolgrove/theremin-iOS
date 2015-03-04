@@ -10,14 +10,14 @@ import Foundation
 import UIKit
 
 class GridViewController: InstrumentViewController, UIScrollViewDelegate {
-    
     let default_velocity: Int = 40
     var leftmost_note: CGFloat = 59.0
     let CIRCLE_DIAMETER: CGFloat = 50
     let MAX_NOTES = 5
     var circles: [CircleView] = []
     var note_count = 0
-    
+    var lines: [GridLineView] = []
+
     //var circles_view : UIView!
     @IBOutlet var grid_view: UIView!
     
@@ -227,8 +227,37 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         grid_image.addSubview(new_circle)
     }
     
+    func gridOff(){
+        removeGridLines()
+    }
+    
+    func gridOn(){
+        drawGridLines()
+    }
+    
+    private func removeGridLines(){
+        for lineView : GridLineView in lines
+        {
+            lineView.removeFromSuperview()
+        }
+        lines = []
+    }
     private func drawGridLines(){
-        
+        removeGridLines()
+        let hs_width : CGFloat = 72.5 //width of one half step
+        let oct_width = hs_width * 12
+        for var oct : CGFloat = 0; oct < 4; oct++ { //octave
+            for var sd = 0; sd < 7; sd++ { //scale degree
+                var keylist = key_map[key]!
+                var accidental = keylist[sd]
+                var note_name = note_names[(sd)*3 + accidental]
+                var offset : CGFloat = CGFloat(note_positions[note_name]!)
+                var line_loc : CGFloat = CGFloat(74.0) + CGFloat(oct*oct_width + offset*hs_width)
+                var line = GridLineView(frame: CGRectMake(line_loc, grid_image.frame.origin.y, 3, 552), view_controller: self)
+                grid_image.addSubview(line)
+                lines.append(line)
+            }
+        }
     }
     //Updates the note with index current_note to new pitch/volume based on loc
     private func updateNote(loc: CGPoint, img_loc: CGPoint) {

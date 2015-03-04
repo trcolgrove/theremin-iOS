@@ -10,6 +10,7 @@
 		3703FACE1A8E727C009B8783 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3703FACD1A8E727C009B8783 /* CircleView.swift */; };
 		B1D07046291BC940EC75CD40 /* libPods-theremin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8004AE9946D819307EE2E6D8 /* libPods-theremin.a */; };
 		E90742571A8AD432009088E0 /* note_slider.png in Resources */ = {isa = PBXBuildFile; fileRef = E90742561A8AD432009088E0 /* note_slider.png */; };
+		E947E1611AA676DE004DAA9B /* GridLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E947E1601AA676DE004DAA9B /* GridLineView.swift */; };
 		E95F1E0D1A9255610067536B /* RangeViewContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F1E0C1A9255610067536B /* RangeViewContainerController.swift */; };
 		F83822D71A9E3AF700DA84CD /* theremin-inst.png in Resources */ = {isa = PBXBuildFile; fileRef = F83822D61A9E3AF700DA84CD /* theremin-inst.png */; };
 		F83822D91A9E3FEE00DA84CD /* KnobControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83822D81A9E3FEE00DA84CD /* KnobControl.swift */; };
@@ -56,6 +57,7 @@
 		8004AE9946D819307EE2E6D8 /* libPods-theremin.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-theremin.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9248A05E5AC8D6B8EE1E5BF /* Pods-theremin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-theremin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-theremin/Pods-theremin.debug.xcconfig"; sourceTree = "<group>"; };
 		E90742561A8AD432009088E0 /* note_slider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = note_slider.png; sourceTree = "<group>"; };
+		E947E1601AA676DE004DAA9B /* GridLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridLineView.swift; sourceTree = "<group>"; };
 		E95F1E0C1A9255610067536B /* RangeViewContainerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeViewContainerController.swift; sourceTree = "<group>"; };
 		F83822D61A9E3AF700DA84CD /* theremin-inst.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "theremin-inst.png"; sourceTree = "<group>"; };
 		F83822D81A9E3FEE00DA84CD /* KnobControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnobControl.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 			children = (
 				F8548AFE1A92774300DDE538 /* KeyTableViewController.swift */,
 				F8BD45A71A7ED3BE00535821 /* GridViewController.swift */,
+				E947E1601AA676DE004DAA9B /* GridLineView.swift */,
 				3703FACD1A8E727C009B8783 /* CircleView.swift */,
 				F84581441A882C6600DCBFEA /* InstrumentViewController.swift */,
 				F84BF2491A83CD990007686D /* KnobViewController.swift */,
@@ -392,6 +395,7 @@
 				F8BD45811A7EC47000535821 /* main.m in Sources */,
 				F84581451A882C6600DCBFEA /* InstrumentViewController.swift in Sources */,
 				F83822D91A9E3FEE00DA84CD /* KnobControl.swift in Sources */,
+				E947E1611AA676DE004DAA9B /* GridLineView.swift in Sources */,
 				E95F1E0D1A9255610067536B /* RangeViewContainerController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
