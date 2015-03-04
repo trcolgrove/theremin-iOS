@@ -94,6 +94,10 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     
     override func updateKey(key: String, notes: [Int]) {
         self.key = key
+        if(lines != []){
+            drawGridLines()
+        }
+        
         println(notes)
     }
     
@@ -173,6 +177,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         //if not in a circle, then go ahead and create new note
         img_loc = touch.locationInView(grid_image)
         loc = touch.locationInView(self.view)
+        println("creating")
         createNote(loc, img_loc: img_loc)
     }
     
@@ -218,6 +223,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         current_note = note_count
         note_count++
         let pitch = calculatePitch(loc.x)
+        println("pitch ", pitch)
         PdBase.sendList([current_note, pitch, default_velocity], toReceiver: "pitch-vel")
         PdBase.sendList([current_note, calculateAmplification(loc.y)], toReceiver: "amp")
         
