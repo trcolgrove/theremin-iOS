@@ -42,8 +42,7 @@ class RangeSlideController: InstrumentViewController, UIScrollViewDelegate {
         } else {
             // offset remains as old offset, so have to check with (octave_width * 2)
             if (scrollView.contentOffset.x >= (imageView.frame.width - (octave_width * 2))) {
-                // account for extra grid segment by subracting 72.5 from total width
-                offset.x = ((imageView.frame.width-72.5) - octave_width)
+                offset.x = ((imageView.frame.width) - octave_width)
             } else {
                 offset.x += octave_width
             }
