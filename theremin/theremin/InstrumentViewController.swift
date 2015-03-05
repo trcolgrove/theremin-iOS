@@ -61,27 +61,25 @@ class InstrumentViewController: UIViewController {
         if segue.identifier == "init_range"{
             range_controller = segue.destinationViewController as RangeViewContainerController
             range_controller.instrument = self
-        }
-        else if segue.identifier == "init_grid"{
+        } else if segue.identifier == "init_grid"{
             let grid = segue.destinationViewController as GridViewController
             self.grid = grid
-        }
-        else if (segue.identifier == "key_menu") {
+        } else if (segue.identifier == "key_menu") {
             let key_menu = segue.destinationViewController as KeyTableViewController
             self.key_popover = key_menu
             key_menu.table_type = false
             key_menu.keys = key_names
             key_menu.parent = self
-        }
-        else if (segue.identifier == "note_menu") {
+        } else if (segue.identifier == "note_menu") {
             let note_menu = segue.destinationViewController as KeyTableViewController
             self.key_popover = note_menu
             note_menu.table_type = true
             note_menu.keys = note_names
             note_menu.parent = self
-        }
-        else{
-            println("Internal Error: unknown segue.identifier in InstrumentViewController.prepareForSegue")
+        } else if (segue.identifier == "knob_init") {
+            //nothing to do here
+        } else {
+            println("Internal Error: unknown segue.identifier \(segue.identifier) in InstrumentViewController.prepareForSegue")
         }
     }
     
@@ -122,7 +120,6 @@ class InstrumentViewController: UIViewController {
             range_controller.updateKey(key, notes: notes)
         } else {
             showNoKeyFound()
-            println("Key \(key) does not exist")
         }
     }
     
