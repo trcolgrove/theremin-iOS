@@ -195,4 +195,8 @@ class InstrumentViewController: UIViewController {
         var slider = range_controller.range_control.scrollView as UIScrollView
         slider.setContentOffset(slider.contentOffset, animated: true)
     }
+    
+    @IBAction func deleteAllNotes(sender: AnyObject) {
+        grid.deleteAllNotes(sender)
+    }
 }

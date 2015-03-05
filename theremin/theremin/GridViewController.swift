@@ -109,9 +109,17 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         return -1
     }
     
+    override func deleteAllNotes(sender: AnyObject) {
+        for i in 0...4 {
+            if (circle_used[i]) {
+                deleteNote(i)
+            }
+        }
+    }
+    
     // Deletes note with the given index
     func deleteNote(index: Int) {
-        if current_note == -1 {
+        if index == -1 {
             println("Internal error: trying to delete note with index -1")
             return
         }
