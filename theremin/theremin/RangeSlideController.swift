@@ -83,7 +83,7 @@ class RangeSlideController: InstrumentViewController, UIScrollViewDelegate {
                 label.font = UIFont(name: "Helvetica-bold", size: 32.00)
                 label.textColor = UIColor(white: 1, alpha: 1)
                 label.center = CGPointMake(label_loc, imageView.frame.origin.y + 44)
-                label.text = (note_name + String(oct+1))
+                label.text = (note_name + String(oct+3))
                 imageView.addSubview(label)
             }
         }
