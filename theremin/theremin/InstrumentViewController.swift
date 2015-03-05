@@ -145,7 +145,6 @@ class InstrumentViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        println("Instrument View Controller is loaded")
     }
     
     func insertKeysToMap() {
