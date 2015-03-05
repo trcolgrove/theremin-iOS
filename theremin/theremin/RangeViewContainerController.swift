@@ -34,19 +34,16 @@ class RangeViewContainerController: InstrumentViewController, RangeSlideParentDe
     override func updateKey(key: String, notes: [Int]) {
         self.key = key
         range_control.updateNoteLabels(key)
-        println(notes)
     }
     
     override func viewDidLoad() {
         //super.viewDidLoad()
-        println("Range Container is loaded");
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!){
         if segue.identifier == "init_slider"{
             range_control = segue.destinationViewController as RangeSlideController
             range_control.container_delegate = self
-            println("Container Delegation Set")
         }
     }
     

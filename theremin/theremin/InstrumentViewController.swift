@@ -61,12 +61,10 @@ class InstrumentViewController: UIViewController {
         if segue.identifier == "init_range"{
             range_controller = segue.destinationViewController as RangeViewContainerController
             range_controller.instrument = self
-            println("Range Delegation Set")
         }
         else if segue.identifier == "init_grid"{
             let grid = segue.destinationViewController as GridViewController
             self.grid = grid
-            println("Grid Delegation Set")
         }
         else if (segue.identifier == "key_menu") {
             let key_menu = segue.destinationViewController as KeyTableViewController
@@ -74,7 +72,6 @@ class InstrumentViewController: UIViewController {
             key_menu.table_type = false
             key_menu.keys = key_names
             key_menu.parent = self
-            println("Key Menu Clicked/Initialized")
         }
         else if (segue.identifier == "note_menu") {
             let note_menu = segue.destinationViewController as KeyTableViewController
@@ -82,10 +79,9 @@ class InstrumentViewController: UIViewController {
             note_menu.table_type = true
             note_menu.keys = note_names
             note_menu.parent = self
-            println("Note Menu Clicked/Initialized")
         }
         else{
-            println("unknown id")
+            println("Internal Error: unknown segue.identifier in InstrumentViewController.prepareForSegue")
         }
     }
     

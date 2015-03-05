@@ -38,8 +38,6 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     let GRID_WIDTH: CGFloat = 72.5
 
     override func viewDidLoad() {
-        println("Grid View Controller is loaded");
-        
         pan_rec.addTarget(self, action: "handlePan:")
         pan_rec.minimumNumberOfTouches = 1
         pan_rec.maximumNumberOfTouches = 1
@@ -136,7 +134,6 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
                 deleteNote(current_note)
             }
         case UIGestureRecognizerState.Cancelled:
-            println("cancelled")
             if no_delete_flag == true {
                 no_delete_flag = false
             } else {

@@ -18,7 +18,6 @@ class KeyTableViewController: InstrumentViewController, UITableViewDataSource, U
     var parent:InstrumentViewController!
     
     override func viewDidLoad() {
-        println("KeyViewController did load")
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
