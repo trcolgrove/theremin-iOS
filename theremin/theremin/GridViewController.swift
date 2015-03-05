@@ -35,10 +35,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     // grid position
     @IBOutlet weak var grid_image: UIImageView!
     
-    @IBOutlet var slide_view: UIView!
-    
-    var grid_origin: CGFloat = 0
-    let grid_width: CGFloat = 72.5
+    let GRID_WIDTH: CGFloat = 72.5
 
     override func viewDidLoad() {
         println("Grid View Controller is loaded");
@@ -67,9 +64,6 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     override func viewDidAppear(animated: Bool) {
         w = grid_view.frame.size.width
         h = grid_view.bounds.size.height
-        //circles_view = UIView(frame: CGRect(x: 0, y: 0, width: w, height: h))
-        //grid_image.addSubview(circles_view)
-        println("w: \(w) h: \(h)")
     }
     
     /*this function sets up delegation/communication between RangeViewContainerController and
@@ -78,7 +72,6 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         if segue.identifier == "grid_init"{
             let range_controller = segue.destinationViewController as RangeViewContainerController
             range_controller.instrument = self
-            println("Grid-Range-DelegationSet")
         }
     }
 
@@ -86,9 +79,8 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
      * moves grid image to the left based on note view controller offset
      */
     override func setRange(note_offset: CGFloat) {
-        //grid_image.center.x = grid_image.center.x - note_offset
         grid_image.frame = CGRectMake(grid_image.frame.origin.x - note_offset, grid_image.frame.origin.y, grid_image.frame.width, grid_image.frame.height)
-        leftmost_note = leftmost_note + (note_offset/72.5)
+        leftmost_note = leftmost_note + (note_offset/GRID_WIDTH)
     }
     
     override func updateKey(key: String, notes: [Int]) {
@@ -96,8 +88,6 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         if(lines != []){
             drawGridLines()
         }
-        
-        println(notes)
     }
     
     // returns amplification level for current y value
@@ -153,17 +143,20 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
                 deleteNote(current_note)
             }
         default:
-            println("ERROR: default switch case met")
+            println("Internal error: default switch case met in GridViewController.handlePan()")
         }
     }
    
     
     // Creates new note if not touching existing note, otherwise makes that note current
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        //stop scrolling on touch down
         (parentViewController as InstrumentViewController).disableScroll()
+        
         let touch: AnyObject = touches.allObjects[0]
         var loc: CGPoint
         var img_loc: CGPoint
+        
         //if in a circle, don't make a new note, instead just update the one we are touching now
         for c in circles {
             loc = touch.locationInView(c)
@@ -176,7 +169,6 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         //if not in a circle, then go ahead and create new note
         img_loc = touch.locationInView(grid_image)
         loc = touch.locationInView(self.view)
-        println("creating")
         createNote(loc, img_loc: img_loc)
     }
     
@@ -194,16 +186,17 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
             deleteNote(current_note)
         }
         
+        //enable scroll again on touch up
         (parentViewController as InstrumentViewController).enableScroll()
     }
     
     // Deletes note with the given index
     func deleteNote(index: Int) {
         if current_note == -1 {
-            println("error: trying to delete index -1")
+            println("Internal error: trying to delete note with index -1")
             return
         }
-        PdBase.sendList([index, 0, 0], toReceiver: "pitch-vel")
+        PdBase.sendList([index, 0], toReceiver: "pitch")
         PdBase.sendList([index, 0], toReceiver: "amp")
         circles[index].removeFromSuperview()
         note_count--
@@ -221,9 +214,8 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         //Create current note
         current_note = note_count
         note_count++
-        let pitch = calculatePitch(loc.x)
-        println("pitch ", pitch)
-        PdBase.sendList([current_note, pitch, default_velocity], toReceiver: "pitch-vel")
+        
+        PdBase.sendList([current_note, calculatePitch(loc.x)], toReceiver: "pitch")
         PdBase.sendList([current_note, calculateAmplification(loc.y)], toReceiver: "amp")
         
         // Create a new CircleView for current touch location
@@ -249,16 +241,18 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     }
     private func drawGridLines(){
         removeGridLines()
-        let hs_width : CGFloat = 72.5 //width of one half step
+        let hs_width : CGFloat = GRID_WIDTH //width of one half step
         let oct_width = hs_width * 12
         for var oct : CGFloat = 0; oct < 4; oct++ { //octave
             for var sd = 0; sd < 7; sd++ { //scale degree
+                let line_width: CGFloat = 3
+                let line_height: CGFloat = 552
                 var keylist = key_map[key]!
                 var accidental = keylist[sd]
                 var note_name = note_names[(sd)*3 + accidental]
                 var offset : CGFloat = CGFloat(note_positions[note_name]!)
-                var line_loc : CGFloat = CGFloat(72.0) + CGFloat(oct*oct_width + offset*hs_width)
-                var line = GridLineView(frame: CGRectMake(line_loc, grid_image.frame.origin.y, 3, 552), view_controller: self)
+                var line_loc : CGFloat = CGFloat(GRID_WIDTH - line_width) + CGFloat(oct*oct_width + offset*hs_width)
+                var line = GridLineView(frame: CGRectMake(line_loc, grid_image.frame.origin.y, line_width, line_height), view_controller: self)
                 grid_image.addSubview(line)
                 lines.append(line)
             }
@@ -273,7 +267,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         let clipped_x = loc.x >= w ? w : loc.x < 0 ? 0 : loc.x
         let clipped_y = loc.y >= h ? h : loc.y < 0 ? 0 : loc.y
         let pitch = calculatePitch(clipped_x)
-        PdBase.sendList([current_note, pitch, default_velocity], toReceiver: "pitch-vel")
+        PdBase.sendList([current_note, calculatePitch(clipped_x)], toReceiver: "pitch")
         PdBase.sendList([current_note, calculateAmplification(clipped_y)], toReceiver: "amp")
         let circle: CircleView = circles[current_note]
         var pt = CGPoint(x: clipped_x, y: clipped_y)
