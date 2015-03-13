@@ -31,7 +31,9 @@ class InstrumentViewController: UIViewController {
     var key_popover: KeyTableViewController?
 
     //var leftmost_note = "C"
-    var octave: Int = 5
+    let num_oct: Int = 4
+    let bottom_note: Int = 59
+    
     var grid: GridViewController!
     var range_controller: RangeViewContainerController!
    

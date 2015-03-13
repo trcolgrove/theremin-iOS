@@ -17,9 +17,10 @@ protocol RangeSlideParentDelegate{
 class RangeSlideController: InstrumentViewController, UIScrollViewDelegate {
     
     var container_delegate: RangeSlideParentDelegate!
-    let slider_range : Int = 48
-    let bottom_note : Int = 3
-    var prev_offset : CGFloat  = 0
+    
+    //defines the range of the theremin
+    
+    var prev_offset : CGFloat = 0
     
     @IBOutlet var scrollView: UIScrollView!
     
@@ -72,7 +73,7 @@ class RangeSlideController: InstrumentViewController, UIScrollViewDelegate {
         scrollView.contentOffset = CGPoint(x: 0, y: 0)
         scrollView.delegate = self
         
-        for var oct = 0; oct < 4; oct++ { //octave
+        for var oct = 0; oct < num_oct; oct++ { //octave
             for var sd = 0; sd < 7; sd++ { //scale degree
                 var keylist = key_map[key]!
                 var accidental = keylist[sd]
