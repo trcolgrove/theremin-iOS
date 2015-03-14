@@ -83,7 +83,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         leftmost_note = leftmost_note + (note_offset/GRID_WIDTH)
     }
     
-    override func updateKey(key: String, notes: [Int]) {
+    override func updateKey(key: String, notes: [String]) {
         self.key = key
         if(lines != []){
             drawGridLines()
@@ -154,14 +154,17 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         grid_image.addSubview(new_circle)
     }
     
-    func gridOff(){
-        removeGridLines()
-    }
-    
+    //turn the grid on
     func gridOn(){
         drawGridLines()
     }
     
+    //turn the grid off
+    func gridOff(){
+        removeGridLines()
+    }
+    
+    /*remove the grid lines from the gridview*/
     private func removeGridLines(){
         for lineView : GridLineView in lines
         {
@@ -169,6 +172,8 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         }
         lines = []
     }
+    
+    //draws grid lines on the diatonic notes of the scale
     private func drawGridLines(){
         removeGridLines()
         let hs_width : CGFloat = GRID_WIDTH //width of one half step
@@ -177,10 +182,9 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
             for var sd = 0; sd < 7; sd++ { //scale degree
                 let line_width: CGFloat = 3
                 let line_height: CGFloat = 552
-                var keylist = key_map[key]!
-                var accidental = keylist[sd]
-                var note_name = note_names[(sd)*3 + accidental]
-                var offset : CGFloat = CGFloat(note_positions[note_name]!)
+                let notes_in_key = key_map[key]!
+                let note_name = notes_in_key[sd]
+                let offset = CGFloat(note_positions[note_name]!)
                 var line_loc : CGFloat = CGFloat(GRID_WIDTH - line_width) + CGFloat(oct*oct_width + offset*hs_width)
                 var line = GridLineView(frame: CGRectMake(line_loc, grid_image.frame.origin.y, line_width, line_height), view_controller: self)
                 grid_image.addSubview(line)

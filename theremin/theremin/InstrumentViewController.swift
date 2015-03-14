@@ -11,15 +11,18 @@ import UIKit
 
 class InstrumentViewController: UIViewController {
     
+    /*
     let FLT : Int = 0
     let NAT : Int = 1
     let SHP : Int = 2
+    */
     // data structure that takes a key and returns 
     // the label values for the 13 notes possible
-    var key_map : [String:[Int]]!
+    var key_map : [String:[String]]!
     
     // choices for key change
     let note_names = [ "Cb", "C", "C#", "Db", "D", "D#", "Eb", "E", "E#", "Fb", "F", "F#", "Gb", "G", "G#", "Ab", "A", "A#", "Bb", "B", "B#"]
+    
     let note_positions = ["C" : 0, "C#" : 1, "Db" : 1, "D" : 2, "D#" : 3, "Eb" : 3, "E" : 4, "Fb" : 4, "E#" : 5, "F" : 5, "F#" : 6, "Gb" : 6, "G" : 7, "G#" : 8, "Ab" : 8, "A" : 9, "A#" : 10, "Bb" : 10, "B" : 11, "B#" : 11, "Cb" : 11]
 
     var key_names = ["Major", "Minor"]
@@ -112,7 +115,7 @@ class InstrumentViewController: UIViewController {
      * if a given key exists, sets current key to that value
      * and retrieves the notes for that key
      */
-    func updateKey(key: String, notes: [Int]) {
+    func updateKey(key: String, notes: [String]) {
         var found_notes = lookupKey(key)
         if (found_notes != nil) {
             self.key = key
@@ -128,7 +131,7 @@ class InstrumentViewController: UIViewController {
     /* lookupKey
      * returns key set from key_map dictionary
      */
-    func lookupKey(key: String) -> [Int]? {
+    func lookupKey(key: String) -> [String]? {
         var possibleKey = key_map[key]
         if let foundKey = possibleKey {
             return foundKey
@@ -148,36 +151,36 @@ class InstrumentViewController: UIViewController {
     
     func insertKeysToMap() {
         self.key_map = [
-            "CbMajor": [FLT, FLT, FLT, FLT, FLT, FLT, FLT],
-            "AbMinor": [FLT, FLT, FLT, FLT, FLT, FLT, FLT],
-            "GbMajor": [FLT, FLT, FLT, NAT, FLT, FLT, FLT],
-            "EbMinor": [FLT, FLT, FLT, NAT, FLT, FLT, FLT],
-            "DbMajor": [NAT, FLT, FLT, NAT, FLT, FLT, FLT],
-            "BbMinor": [NAT, FLT, FLT, NAT, FLT, FLT, FLT],
-            "AbMajor": [NAT, FLT, FLT, NAT, NAT, FLT, FLT],
-            "FMinor" : [NAT, FLT, FLT, NAT, NAT, FLT, FLT],
-            "EbMajor": [NAT, NAT, FLT, NAT, NAT, FLT, FLT],
-            "CMinor" : [NAT, NAT, FLT, NAT, NAT, FLT, FLT],
-            "BbMajor": [NAT, NAT, FLT, NAT, NAT, NAT, FLT],
-            "GMinor" : [NAT, NAT, FLT, NAT, NAT, NAT, FLT],
-            "FMajor" : [NAT, NAT, NAT, NAT, NAT, NAT, FLT],
-            "DMinor" : [NAT, NAT, NAT, NAT, NAT, NAT, FLT],
-            "CMajor" : [NAT, NAT, NAT, NAT, NAT, NAT, NAT],
-            "AMinor" : [NAT, NAT, NAT, NAT, NAT, NAT, NAT],
-            "GMajor" : [NAT, NAT, NAT, SHP, NAT, NAT, NAT],
-            "EMinor" : [NAT, NAT, NAT, SHP, NAT, NAT, NAT],
-            "DMajor" : [SHP, NAT, NAT, SHP, NAT, NAT, NAT],
-            "BMinor" : [SHP, NAT, NAT, SHP, NAT, NAT, NAT],
-            "AMajor" : [SHP, NAT, NAT, SHP, SHP, NAT, NAT],
-            "F#Minor": [SHP, NAT, NAT, SHP, SHP, NAT, NAT],
-            "EMajor" : [SHP, SHP, NAT, SHP, SHP, NAT, NAT],
-            "C#Minor": [SHP, SHP, NAT, SHP, SHP, NAT, NAT],
-            "BMajor" : [SHP, SHP, NAT, SHP, SHP, SHP, NAT],
-            "G#Minor": [SHP, SHP, NAT, SHP, SHP, SHP, NAT],
-            "F#Major": [SHP, SHP, SHP, SHP, SHP, SHP, NAT],
-            "D#Minor": [SHP, SHP, SHP, SHP, SHP, SHP, NAT],
-            "C#Major": [SHP, SHP, SHP, SHP, SHP, SHP, SHP],
-            "A#Minor": [SHP, SHP, SHP, SHP, SHP, SHP, SHP]
+            "CbMajor": ["Cb", "Db", "Eb", "Fb", "Gb", "Ab", "Bb"],
+            "AbMinor": ["Cb", "Db", "Eb", "Fb", "Gb", "Ab", "Bb"],
+            "GbMajor": ["Cb", "Db", "Eb", "F" , "Gb", "Ab", "Bb"],
+            "EbMinor": ["Cb", "Db", "Eb", "F" , "Gb", "Ab", "Bb"],
+            "DbMajor": ["C" , "Db", "Eb", "F" , "Gb", "Ab", "Bb"],
+            "BbMinor": ["C" , "Db", "Eb", "F" , "Gb", "Ab", "Bb"],
+            "AbMajor": ["C" , "Db", "Eb", "F" , "G" , "Ab", "Bb"],
+            "FMinor" : ["C" , "Db", "Eb", "F" , "G" , "Ab", "Bb"],
+            "EbMajor": ["C" , "D" , "Eb", "F" , "G" , "Ab", "Bb"],
+            "CMinor" : ["C" , "D" , "Eb", "F" , "G" , "Ab", "Bb"],
+            "BbMajor": ["C" , "D" , "Eb", "F" , "G" , "A" , "Bb"],
+            "GMinor" : ["C" , "D" , "Eb", "F" , "G" , "A" , "Bb"],
+            "FMajor" : ["C" , "D" , "E" , "F" , "G" , "A" , "Bb"],
+            "DMinor" : ["C" , "D" , "E" , "F" , "G" , "A" , "Bb"],
+            "CMajor" : ["C" , "D" , "E" , "F" , "G" , "A" , "B" ],
+            "AMinor" : ["C" , "D" , "E" , "F" , "G" , "A" , "B" ],
+            "GMajor" : ["C" , "D" , "E" , "F#", "G" , "A" , "B" ],
+            "EMinor" : ["C" , "D" , "E" , "F#", "G" , "A" , "B" ],
+            "DMajor" : ["C#", "D" , "E" , "F#", "G" , "A" , "B" ],
+            "BMinor" : ["C#", "D" , "E" , "F#", "G" , "A" , "B" ],
+            "AMajor" : ["C#", "D" , "E" , "F#", "G#", "A" , "B" ],
+            "F#Minor": ["C#", "D" , "E" , "F#", "G#", "A" , "B" ],
+            "EMajor" : ["C#", "D#", "E" , "F#", "G#", "A" , "B" ],
+            "C#Minor": ["C#", "D#", "E" , "F#", "G#", "A" , "B" ],
+            "BMajor" : ["C#", "D#", "E" , "F#", "G#", "A#", "B" ],
+            "G#Minor": ["C#", "D#", "E" , "F#", "G#", "A#", "B" ],
+            "F#Major": ["C#", "D#", "E#", "F#", "G#", "A#", "B" ],
+            "D#Minor": ["C#", "D#", "E#", "F#", "G#", "A#", "B" ],
+            "C#Major": ["C#", "D#", "E#", "F#", "G#", "A#", "B#"],
+            "A#Minor": ["C#", "D#", "E#", "F#", "G#", "A#", "B#"],
         ]
     }
     

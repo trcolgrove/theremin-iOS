@@ -31,7 +31,7 @@ class RangeViewContainerController: InstrumentViewController, RangeSlideParentDe
         instrument.setRange(num_semitones)
     }
     
-    override func updateKey(key: String, notes: [Int]) {
+    override func updateKey(key: String, notes: [String]) {
         self.key = key
         range_control.updateNoteLabels(key)
     }

@@ -86,11 +86,10 @@ class RangeSlideController: InstrumentViewController, UIScrollViewDelegate {
     func drawSliderLabels(){
         for var oct = 0; oct < num_oct; oct++ { //octave
             for var sd = 0; sd < 7; sd++ { //scale degree
-                var keylist = key_map[key]!
-                var accidental = keylist[sd]
-                var note_name = note_names[(sd)*3 + accidental]
-                var offset = note_positions[note_name]!
-                var label_loc = imageView.frame.origin.x + 120 + CGFloat(oct*oct_width + offset*halfstep_width)
+                let notes_in_key = key_map[key]!
+                let note_name = notes_in_key[sd]
+                let offset = note_positions[note_name]!
+                let label_loc = imageView.frame.origin.x + 120 + CGFloat(oct*oct_width + offset*halfstep_width)
                 var label = UILabel(frame: CGRectMake(0, 0, label_loc, imageView.frame.height))
                 label.font = UIFont(name: "Helvetica-bold", size: 32.00)
                 label.textColor = UIColor(white: 1, alpha: 1)
