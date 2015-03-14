@@ -28,7 +28,7 @@ class RangeSlideController: InstrumentViewController, UIScrollViewDelegate {
     var note_labels : [UILabel] = []
     @IBOutlet var scrollView: UIScrollView! //View for the slider
     
-    var imageView: UIImageView! //image view for the slider
+    var imageView: UIImageView! //main image view for the slider
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -70,7 +70,7 @@ class RangeSlideController: InstrumentViewController, UIScrollViewDelegate {
         drawSlider()
     }
     
-    
+    /*draws the main slider object*/
     func drawSlider(){
         var label_offset = 0
         imageView = UIImageView(image: image)
@@ -82,7 +82,7 @@ class RangeSlideController: InstrumentViewController, UIScrollViewDelegate {
         drawSliderLabels();
     }
     
-    
+    /*draws Slider note labels based on the current 'key' value*/
     func drawSliderLabels(){
         for var oct = 0; oct < num_oct; oct++ { //octave
             for var sd = 0; sd < 7; sd++ { //scale degree

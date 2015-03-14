@@ -92,7 +92,8 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     
     // returns amplification level for current y value
     private func calculateAmplification(y: CGFloat) -> CGFloat{
-        return 0.5 * y / h
+        println(y)
+        return 0.5 * (h - y) / h
     }
     
     private func calculatePitch(x: CGFloat) -> CGFloat{
