@@ -9,6 +9,11 @@
 import Foundation
 import UIKit
 
+protocol recordingProtocol{
+    func recordNote(pt: CGPoint, command: recData.command)
+    func doneRecording() -> [recData.sample]
+}
+
 class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     let default_velocity: Int = 40
     var leftmost_note: CGFloat = 59.0
@@ -18,7 +23,11 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     var circle_used: [Bool] = []
     var note_count = 0
     var lines: [GridLineView] = []
-
+    var recorder : recordingProtocol?
+    let halfstep_width: CGFloat = 72.5
+    
+    var recording : [recData.sample]?
+    
     //var circles_view : UIView!
     @IBOutlet var grid_view: UIView!
     
@@ -36,8 +45,8 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     // grid position
     @IBOutlet weak var grid_image: UIImageView!
     
-    let GRID_WIDTH: CGFloat = 72.5
 
+    
     override func viewDidLoad() {
         pan_rec.addTarget(self, action: "handlePan:")
         pan_rec.minimumNumberOfTouches = 1
@@ -80,7 +89,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
      */
     override func setRange(note_offset: CGFloat) {
         grid_image.frame = CGRectMake(grid_image.frame.origin.x - note_offset, grid_image.frame.origin.y, grid_image.frame.width, grid_image.frame.height)
-        leftmost_note = leftmost_note + (note_offset/GRID_WIDTH)
+        leftmost_note = leftmost_note + (note_offset/halfstep_width )
     }
     
     override func updateKey(key: String, notes: [String]) {
@@ -92,12 +101,13 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     
     // returns amplification level for current y value
     private func calculateAmplification(y: CGFloat) -> CGFloat{
-        println(y)
+        
         return 0.5 * (h - y) / h
     }
     
     private func calculatePitch(x: CGFloat) -> CGFloat{
-        return leftmost_note + (x / w) * 12
+        //println(x)
+        return bottom_note + (x/halfstep_width)
     }
     
     private func getNextNoteIndex() -> Int {
@@ -135,7 +145,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
 
     
     // Creates a new note based on the location of the touch
-    func createNote(loc: CGPoint, img_loc: CGPoint) {
+    func createNote(loc: CGPoint) {
         if note_count == MAX_NOTES {
             no_delete_flag = true
             return
@@ -149,7 +159,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         PdBase.sendList([current_note, calculateAmplification(loc.y)], toReceiver: "amp")
         
         // Create a new CircleView for current touch location
-        var new_circle = CircleView(frame: CGRectMake(img_loc.x - 0.5 * CIRCLE_DIAMETER, img_loc.y - 0.5 * CIRCLE_DIAMETER, CIRCLE_DIAMETER, CIRCLE_DIAMETER), i: current_note, view_controller: self)
+        var new_circle = CircleView(frame: CGRectMake(loc.x - (CIRCLE_DIAMETER * 0.5), loc.y - (CIRCLE_DIAMETER * 0.5), CIRCLE_DIAMETER, CIRCLE_DIAMETER), i: current_note, view_controller: self)
         circles[current_note] = new_circle
         grid_image.addSubview(new_circle)
     }
@@ -176,8 +186,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     //draws grid lines on the diatonic notes of the scale
     private func drawGridLines(){
         removeGridLines()
-        let hs_width : CGFloat = GRID_WIDTH //width of one half step
-        let oct_width = hs_width * 12
+        let oct_width = halfstep_width * 12
         for var oct : CGFloat = 0; oct < 4; oct++ { //octave
             for var sd = 0; sd < 7; sd++ { //scale degree
                 let line_width: CGFloat = 3
@@ -185,7 +194,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
                 let notes_in_key = key_map[key]!
                 let note_name = notes_in_key[sd]
                 let offset = CGFloat(note_positions[note_name]!)
-                var line_loc : CGFloat = CGFloat(GRID_WIDTH - line_width) + CGFloat(oct*oct_width + offset*hs_width)
+                var line_loc : CGFloat = CGFloat(halfstep_width - line_width) + CGFloat(oct*oct_width + offset*halfstep_width)
                 var line = GridLineView(frame: CGRectMake(line_loc, grid_image.frame.origin.y, line_width, line_height), view_controller: self)
                 grid_image.addSubview(line)
                 lines.append(line)
@@ -193,21 +202,24 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         }
     }
     //Updates the note with index current_note to new pitch/volume based on loc
-    private func updateNote(loc: CGPoint, img_loc: CGPoint) {
+    private func updateNote(loc: CGPoint) {
         if current_note == -1 {
             println("Internal error: trying to update -1")
             return
         }
-        let clipped_x = loc.x >= w ? w : loc.x < 0 ? 0 : loc.x
-        let clipped_y = loc.y >= h ? h : loc.y < 0 ? 0 : loc.y
-        let pitch = calculatePitch(clipped_x)
-        PdBase.sendList([current_note, calculatePitch(clipped_x)], toReceiver: "pitch")
-        PdBase.sendList([current_note, calculateAmplification(clipped_y)], toReceiver: "amp")
+        var pt = CGPoint(x: loc.x, y: loc.y)
+        pt = grid_view.convertPoint(pt, fromView: grid_image) //convert to grid controller view to find main "bounds" of view
+        let clipped_x = pt.x >= w ? w : loc.x < 0 ? 0 : loc.x
+        let clipped_y = pt.y >= h ? h : loc.y < 0 ? 0 : loc.y
+        let pitch = calculatePitch(loc.x)
+        PdBase.sendList([current_note, calculatePitch(loc.x)], toReceiver: "pitch")
+        PdBase.sendList([current_note, calculateAmplification(loc.y)], toReceiver: "amp")
         let circle: CircleView = circles[current_note]
-        var pt = CGPoint(x: clipped_x, y: clipped_y)
-        pt = grid_image.convertPoint(pt, fromView: self.view)
-        circle.center.x = pt.x
-        circle.center.y = pt.y
+        //pt = grid_image.convertPoint(pt, fromView: grid_image)
+        circle.center.x = loc.x
+        circle.center.y = loc.y
+        
+        recorder?.recordNote(loc, command: recData.command.HOLD)
     }
     
 
@@ -230,17 +242,17 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     
     // Handles updating sustains and just a normal drag
     func handlePan(sender: UIPanGestureRecognizer){
+        println("panning")
         var loc: CGPoint
         var img_loc: CGPoint
         switch sender.state {
         case UIGestureRecognizerState.Began:
-            loc = sender.locationOfTouch(0, inView: self.view)
-            img_loc = sender.locationOfTouch(0, inView: grid_image)
-            updateNote(loc, img_loc: img_loc)
+            loc = sender.locationInView(grid_image)
+            updateNote(loc)
         case UIGestureRecognizerState.Changed:
-            loc = sender.locationOfTouch(0, inView: self.view)
-            img_loc = sender.locationOfTouch(0, inView: grid_image)
-            updateNote(loc, img_loc: img_loc)
+            loc = sender.locationInView(grid_image)
+            println(loc.x)
+            updateNote(loc)
         case UIGestureRecognizerState.Ended:
             if no_delete_flag == true {
                 no_delete_flag = false
@@ -278,9 +290,8 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
             }
         }
         //if not in a circle, then go ahead and create new note
-        img_loc = touch.locationInView(grid_image)
-        loc = touch.locationInView(self.view)
-        createNote(loc, img_loc: img_loc)
+        loc = touch.locationInView(grid_image)
+        createNote(loc)
     }
     
 
@@ -301,4 +312,34 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         (parentViewController as InstrumentViewController).enableScroll()
     }
     
+    /*recording functions*/
+    func beginRecording(){
+        recorder = record()
+    }
+    
+    func stopRecording(){
+        
+        recording = recorder?.doneRecording()
+        recorder = nil
+    }
+    
+    func playRecording(){
+        for s in recording!{
+            if(s.cmd == recData.command.ON){
+                createNote(s.note_loc)
+            }
+            else if(s.cmd == recData.command.OFF){
+            }
+            else if(s.cmd == recData.command.HOLD){
+                createNote(s.note_loc)
+            }
+            else if(s.cmd == recData.command.SUS){
+                
+            }
+        }
+        
+    }
 }
+
+
+
