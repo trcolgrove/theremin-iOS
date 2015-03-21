@@ -340,6 +340,12 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         let pt = CGPoint(x: userInfo["x"] as CGFloat,y: userInfo["y"] as CGFloat)
         createNote(pt)
     }
+    func deleteNoteWithIndex(timer: NSTimer){
+        var userInfo = timer.userInfo as NSDictionary
+        let to_delete = userInfo["index"] as Int
+        deleteNote(to_delete)
+    }
+
     
     func playRecording(){
         
@@ -350,7 +356,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
                 timer = NSTimer.scheduledTimerWithTimeInterval(s.elapsed_time, target: self, selector : Selector("createNoteWithIndex:"), userInfo: params, repeats: false)
             }
             else if(s.cmd == recData.command.OFF){
-                deleteNote(s.note_index)
+                timer = NSTimer.scheduledTimerWithTimeInterval(s.elapsed_time, target: self, selector : Selector("deleteNoteWithIndex:"), userInfo: params, repeats: false)
             }
             else if(s.cmd == recData.command.HOLD){
                 timer = NSTimer.scheduledTimerWithTimeInterval(s.elapsed_time, target: self, selector : Selector("updateNoteWithIndex:"), userInfo: params, repeats: false)
