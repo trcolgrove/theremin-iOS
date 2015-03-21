@@ -163,6 +163,8 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         var new_circle = CircleView(frame: CGRectMake(loc.x - (CIRCLE_DIAMETER * 0.5), loc.y - (CIRCLE_DIAMETER * 0.5), CIRCLE_DIAMETER, CIRCLE_DIAMETER), i: current_note, view_controller: self)
          circles[current_note] = new_circle
          grid_image.addSubview(new_circle)
+        
+        recorder?.recordNote(loc, command: recData.command.ON, note_index: current_note)
     }
     
     //turn the grid on
@@ -332,20 +334,25 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         updateNote(pt)
     }
     
+    func createNoteWithIndex(timer: NSTimer){
+        var userInfo = timer.userInfo as NSDictionary
+        current_note = userInfo["index"] as Int
+        let pt = CGPoint(x: userInfo["x"] as CGFloat,y: userInfo["y"] as CGFloat)
+        createNote(pt)
+    }
+    
     func playRecording(){
         
         for s in recording!{
+            let params = ["index" : s.note_index, "x" : s.note_loc.x, "y" : s.note_loc.y]
+            var timer = NSTimer()
             if(s.cmd == recData.command.ON){
-                createNote(s.note_loc)
+                timer = NSTimer.scheduledTimerWithTimeInterval(s.elapsed_time, target: self, selector : Selector("createNoteWithIndex:"), userInfo: params, repeats: false)
             }
             else if(s.cmd == recData.command.OFF){
                 deleteNote(s.note_index)
             }
             else if(s.cmd == recData.command.HOLD){
-                var timer = NSTimer()
-                println("what up g")
-                println(s.elapsed_time)
-                let params = ["index" : s.note_index, "x" : s.note_loc.x, "y" : s.note_loc.y]
                 timer = NSTimer.scheduledTimerWithTimeInterval(s.elapsed_time, target: self, selector : Selector("updateNoteWithIndex:"), userInfo: params, repeats: false)
             }
             else if(s.cmd == recData.command.SUS){
