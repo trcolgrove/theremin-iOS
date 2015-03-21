@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 protocol recordingProtocol{
-    func recordNote(pt: CGPoint, command: recData.command)
+    func recordNote(pt: CGPoint, command: recData.command, note_index: Int)
     func doneRecording() -> [recData.sample]
 }
 
@@ -141,6 +141,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         note_count--
         current_note = -1 //no more current touch
         no_delete_flag = false
+        recorder?.recordNote( CGPoint(x: 0,y: 0), command: recData.command.OFF, note_index: index)
     }
 
     
@@ -160,8 +161,8 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         
         // Create a new CircleView for current touch location
         var new_circle = CircleView(frame: CGRectMake(loc.x - (CIRCLE_DIAMETER * 0.5), loc.y - (CIRCLE_DIAMETER * 0.5), CIRCLE_DIAMETER, CIRCLE_DIAMETER), i: current_note, view_controller: self)
-        circles[current_note] = new_circle
-        grid_image.addSubview(new_circle)
+         circles[current_note] = new_circle
+         grid_image.addSubview(new_circle)
     }
     
     //turn the grid on
@@ -208,18 +209,18 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
             return
         }
         var pt = CGPoint(x: loc.x, y: loc.y)
+        println(loc)
         pt = grid_view.convertPoint(pt, fromView: grid_image) //convert to grid controller view to find main "bounds" of view
-        let clipped_x = pt.x >= w ? w : loc.x < 0 ? 0 : loc.x
-        let clipped_y = pt.y >= h ? h : loc.y < 0 ? 0 : loc.y
+        // let clipped_x = pt.x >= w ? w : loc.x < 0 ? 0 : loc.x
+        //let clipped_y = pt.y >= h ? h : loc.y < 0 ? 0 : loc.y
         let pitch = calculatePitch(loc.x)
         PdBase.sendList([current_note, calculatePitch(loc.x)], toReceiver: "pitch")
         PdBase.sendList([current_note, calculateAmplification(loc.y)], toReceiver: "amp")
         let circle: CircleView = circles[current_note]
-        //pt = grid_image.convertPoint(pt, fromView: grid_image)
+        pt = grid_image.convertPoint(pt, fromView: grid_image)
         circle.center.x = loc.x
         circle.center.y = loc.y
-        
-        recorder?.recordNote(loc, command: recData.command.HOLD)
+        recorder?.recordNote(loc, command: recData.command.HOLD, note_index: current_note)
     }
     
 
@@ -318,20 +319,34 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     }
     
     func stopRecording(){
-        
+        println("hey")
         recording = recorder?.doneRecording()
+        println(recording)
         recorder = nil
     }
     
+    func updateNoteWithIndex(timer: NSTimer){
+        var userInfo = timer.userInfo as NSDictionary
+        current_note = userInfo["index"] as Int
+        let pt = CGPoint(x: userInfo["x"] as CGFloat,y: userInfo["y"] as CGFloat)
+        updateNote(pt)
+    }
+    
     func playRecording(){
+        
         for s in recording!{
             if(s.cmd == recData.command.ON){
                 createNote(s.note_loc)
             }
             else if(s.cmd == recData.command.OFF){
+                deleteNote(s.note_index)
             }
             else if(s.cmd == recData.command.HOLD){
-                createNote(s.note_loc)
+                var timer = NSTimer()
+                println("what up g")
+                println(s.elapsed_time)
+                let params = ["index" : s.note_index, "x" : s.note_loc.x, "y" : s.note_loc.y]
+                timer = NSTimer.scheduledTimerWithTimeInterval(s.elapsed_time, target: self, selector : Selector("updateNoteWithIndex:"), userInfo: params, repeats: false)
             }
             else if(s.cmd == recData.command.SUS){
                 

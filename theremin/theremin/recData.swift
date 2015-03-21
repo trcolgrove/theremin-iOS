@@ -21,6 +21,7 @@ class recData{
         var elapsed_time: NSTimeInterval
         var note_loc: CGPoint
         var cmd: command
+        var note_index: Int
     }
     
 }
