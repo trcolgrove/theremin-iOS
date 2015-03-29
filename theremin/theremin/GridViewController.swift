@@ -348,8 +348,8 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
 
     
     func playRecording(){
-        
-        for s in recording!{
+        //dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
+        for s in self.recording!{
             let params = ["index" : s.note_index, "x" : s.note_loc.x, "y" : s.note_loc.y]
             var timer = NSTimer()
             if(s.cmd == recData.command.ON){
@@ -365,8 +365,9 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
                 
             }
         }
-        
     }
+        
+    //}
 }
 
 
