@@ -210,18 +210,20 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
             println("Internal error: trying to update -1")
             return
         }
-        var pt = CGPoint(x: loc.x, y: loc.y)
+        var gv_pt = CGPoint(x: loc.x, y: loc.y)
         println(loc)
-        pt = grid_view.convertPoint(pt, fromView: grid_image) //convert to grid controller view to find main "bounds" of view
-        // let clipped_x = pt.x >= w ? w : loc.x < 0 ? 0 : loc.x
-        //let clipped_y = pt.y >= h ? h : loc.y < 0 ? 0 : loc.y
-        let pitch = calculatePitch(loc.x)
-        PdBase.sendList([current_note, calculatePitch(loc.x)], toReceiver: "pitch")
-        PdBase.sendList([current_note, calculateAmplification(loc.y)], toReceiver: "amp")
+        gv_pt = grid_view.convertPoint(gv_pt, fromView: grid_image) //convert to grid controller view to find main "bounds" of view
+        
+        //clipping bounds
+        gv_pt.x = gv_pt.x >= w ? w : gv_pt.x < 0 ? 0 : gv_pt.x
+        gv_pt.y = gv_pt.y >= h ? h : gv_pt.y < 0 ? 0 : gv_pt.y
+        let gi_pt = grid_image.convertPoint(gv_pt, fromView: grid_view)
+        let pitch = calculatePitch(gi_pt.x)
+        PdBase.sendList([current_note, calculatePitch(gi_pt.x)], toReceiver: "pitch")
+        PdBase.sendList([current_note, calculateAmplification(gi_pt.y)], toReceiver: "amp")
         let circle: CircleView = circles[current_note]
-        pt = grid_image.convertPoint(pt, fromView: grid_image)
-        circle.center.x = loc.x
-        circle.center.y = loc.y
+        circle.center.x = gi_pt.x
+        circle.center.y = gi_pt.y
         recorder?.recordNote(loc, command: recData.command.HOLD, note_index: current_note)
     }
     
