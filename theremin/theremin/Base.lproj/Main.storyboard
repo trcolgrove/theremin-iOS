@@ -1,348 +1,348 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="BYZ-38-t0r">
-    <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
-    </dependencies>
-    <scenes>
-        <!--Instrument View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="InstrumentViewController" customModule="theremin" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="theremin-inst.png" id="3fv-NX-x3b">
-                                <rect key="frame" x="10" y="4" width="1024" height="765"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <containerView opaque="NO" contentMode="scaleToFill" id="Ogh-Qb-duP" userLabel="GridView">
-                                <rect key="frame" x="77" y="98" width="870" height="547"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <segue destination="ls9-R1-fCC" kind="embed" identifier="init_grid" id="0VQ-Te-cu6"/>
-                                </connections>
-                            </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" id="GeQ-GH-2Dz" userLabel="KnobView">
-                                <rect key="frame" x="470" y="646" width="265" height="76"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <segue destination="wgk-zg-vAu" kind="embed" identifier="knob_init" id="gHe-sg-HLx"/>
-                                </connections>
-                            </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" id="V5Q-9e-heb" userLabel="NoteView">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <segue destination="r6d-R7-VhY" kind="embed" identifier="init_range" id="KNA-X1-VlG"/>
-                                </connections>
-                            </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jOY-FE-ASg">
-                                <rect key="frame" x="743" y="668" width="26" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.41943617724867721" green="0.41943617724867721" blue="0.41943617724867721" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <state key="normal" title="C">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="Box-Cl-Jau" kind="popover" identifier="note_menu" popoverAnchorView="jOY-FE-ASg" id="PBq-Ia-CcA">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="RPa-NE-PSi">
-                                <rect key="frame" x="769" y="668" width="51" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.41943617719999998" green="0.41943617719999998" blue="0.41943617719999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <state key="normal" title="Major">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="Box-Cl-Jau" kind="popover" identifier="key_menu" popoverAnchorView="RPa-NE-PSi" id="2E3-kX-41e">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
-                                </connections>
-                            </button>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="0ll-Ky-Wim">
-                                <rect key="frame" x="643" y="668" width="51" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" red="0.53731052229929377" green="0.86972331187782759" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="switchChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="OfA-XZ-EWH"/>
-                                </connections>
-                            </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grid Lines" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FSp-RE-AaC">
-                                <rect key="frame" x="628" y="699" width="79" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="F4g-Tp-FRp">
-                                <rect key="frame" x="348" y="668" width="99" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Clear Notes">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="deleteAllNotes:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YtJ-xf-BU4"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gAN-cL-WHO">
-                                <rect key="frame" x="16" y="675" width="63" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Record">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="recStart:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iXH-qy-Jwp"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PvO-6E-hGd">
-                                <rect key="frame" x="32" y="712" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Play">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="playButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YOJ-38-2Hz"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                    <connections>
-                        <outlet property="grid_switch" destination="0ll-Ky-Wim" id="pmX-Yq-oQV"/>
-                        <outlet property="key_btn" destination="RPa-NE-PSi" id="USD-HO-tuy"/>
-                        <outlet property="note_btn" destination="jOY-FE-ASg" id="IYS-aA-4sr"/>
-                        <outlet property="rec_play" destination="PvO-6E-hGd" id="ZNg-eU-COI"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="90" y="452"/>
-        </scene>
-        <!--Grid View Controller-->
-        <scene sceneID="S0n-c3-isj">
-            <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="ls9-R1-fCC" customClass="GridViewController" customModule="theremin" sceneMemberID="viewController">
-                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Ctc-ha-SoO">
-                        <rect key="frame" x="0.0" y="0.0" width="870" height="547"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="theremin-mid-grid.png" id="fXl-ej-vLK">
-                                <rect key="frame" x="0.0" y="-2" width="3553" height="622"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="nDJ-Dj-0et"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="870" height="547"/>
-                    <connections>
-                        <outlet property="grid_image" destination="fXl-ej-vLK" id="QQq-Qg-clT"/>
-                        <outlet property="grid_view" destination="Ctc-ha-SoO" id="VUx-Mz-JBM"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="d3h-QD-YeW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="85" y="1634.5"/>
-        </scene>
-        <!--Range View Container Controller-->
-        <scene sceneID="BrQ-xj-GlC">
-            <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="r6d-R7-VhY" customClass="RangeViewContainerController" customModule="theremin" sceneMemberID="viewController">
-                    <view key="view" opaque="NO" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="center" id="gPh-tV-OSh">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="100"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="SJY-eq-Oiy">
-                                <rect key="frame" x="950" y="49" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                <state key="normal" title="&gt;">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="rightOctave:" destination="r6d-R7-VhY" eventType="touchUpInside" id="ySo-2N-ZUb"/>
-                                </connections>
-                            </button>
-                            <containerView opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="W6Z-xJ-sWU">
-                                <rect key="frame" x="77" y="31" width="870" height="77"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <segue destination="ztM-Vi-5Wh" kind="embed" identifier="init_slider" id="sCH-wJ-GUU"/>
-                                </connections>
-                            </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="nDW-oA-h7j">
-                                <rect key="frame" x="39" y="49" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="&lt;">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="leftOctave:" destination="r6d-R7-VhY" eventType="touchUpInside" id="efH-w1-fAM"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <toolbarItems/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="785-VQ-DQ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1295" y="135"/>
-        </scene>
-        <!--Key Table View Controller-->
-        <scene sceneID="mTz-fU-zay">
-            <objects>
-                <tableViewController id="Box-Cl-Jau" customClass="KeyTableViewController" customModule="theremin" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="TYC-Df-AiI">
-                        <rect key="frame" x="0.0" y="0.0" width="150" height="200"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="urI-CU-mev">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="urI-CU-mev" id="jFY-FJ-ssK">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Box-Cl-Jau" id="tO0-tI-8dD"/>
-                            <outlet property="delegate" destination="Box-Cl-Jau" id="d1R-3K-zP2"/>
-                        </connections>
-                    </tableView>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="150" height="200"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Heu-D2-4LG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="816" y="693"/>
-        </scene>
-        <!--Knob View Controller-->
-        <scene sceneID="eM9-20-EaK">
-            <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="wgk-zg-vAu" customClass="KnobViewController" customModule="theremin" sceneMemberID="viewController">
-                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7vo-qt-NnJ">
-                        <rect key="frame" x="0.0" y="0.0" width="265" height="76"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="theremin-inst.png" id="vbx-2W-PfS">
-                                <rect key="frame" x="-469" y="-644" width="1042" height="768"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vibrato" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="68d-aR-eUZ">
-                                <rect key="frame" x="20" y="53" width="55" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tremolo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="j0s-V9-B4M">
-                                <rect key="frame" x="84" y="53" width="55" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </label>
-                            <view contentMode="scaleToFill" id="tcg-oX-JnQ" userLabel="Tremolo Placeholder">
-                                <rect key="frame" x="91" y="16" width="40" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="adv-Po-h2O">
-                                        <rect key="frame" x="-1" y="9" width="42" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    </label>
-                                </subviews>
-                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                            <view contentMode="scaleToFill" id="Gxx-ie-zeN" userLabel="Vibrato Placeholder">
-                                <rect key="frame" x="27" y="16" width="40" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZdG-wo-6nQ">
-                                        <rect key="frame" x="-1" y="9" width="42" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    </label>
-                                </subviews>
-                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <toolbarItems/>
-                    <connections>
-                        <outlet property="tremolo_placeholder" destination="tcg-oX-JnQ" id="SMi-SY-3Ro"/>
-                        <outlet property="tremolo_value" destination="adv-Po-h2O" id="r9d-qO-9tv"/>
-                        <outlet property="vibrato_placeholder" destination="Gxx-ie-zeN" id="IAJ-vP-t2M"/>
-                        <outlet property="vibrato_value" destination="ZdG-wo-6nQ" id="u99-1P-hEi"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ezf-E8-zBK" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="893.5" y="1385"/>
-        </scene>
-        <!--Range Slide Controller-->
-        <scene sceneID="cjH-Pd-0eI">
-            <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="ztM-Vi-5Wh" customClass="RangeSlideController" customModule="theremin" sceneMemberID="viewController">
-                    <view key="view" opaque="NO" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="center" id="0WE-xT-46m">
-                        <rect key="frame" x="0.0" y="0.0" width="870" height="77"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" id="J6I-F7-1j2">
-                                <rect key="frame" x="0.0" y="0.0" width="870" height="77"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <outlet property="delegate" destination="ztM-Vi-5Wh" id="ayU-N8-bb3"/>
-                                </connections>
-                            </scrollView>
-                        </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                        <gestureRecognizers/>
-                    </view>
-                    <toolbarItems/>
-                    <value key="contentSizeForViewInPopover" type="size" width="1500" height="77"/>
-                    <connections>
-                        <outlet property="scrollView" destination="J6I-F7-1j2" id="kr1-DL-hSN"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="30G-B6-FZC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1293.5" y="377.5"/>
-        </scene>
-    </scenes>
-    <resources>
-        <image name="theremin-inst.png" width="1024" height="765"/>
-        <image name="theremin-mid-grid.png" width="3553" height="622"/>
-    </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination"/>
-    </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="PBq-Ia-CcA"/>
-    </inferredMetricsTieBreakers>
-    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+<dependencies>
+<plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+</dependencies>
+<scenes>
+<!--Instrument View Controller-->
+<scene sceneID="tne-QT-ifu">
+<objects>
+<viewController id="BYZ-38-t0r" customClass="InstrumentViewController" customModule="theremin" sceneMemberID="viewController">
+<view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+<rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+<autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+<subviews>
+<imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="theremin-inst.png" id="3fv-NX-x3b">
+<rect key="frame" x="10" y="4" width="1024" height="765"/>
+<autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+</imageView>
+<containerView opaque="NO" contentMode="scaleToFill" id="Ogh-Qb-duP" userLabel="GridView">
+<rect key="frame" x="77" y="98" width="870" height="547"/>
+<autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+<connections>
+<segue destination="ls9-R1-fCC" kind="embed" identifier="init_grid" id="0VQ-Te-cu6"/>
+</connections>
+</containerView>
+<containerView opaque="NO" contentMode="scaleToFill" id="GeQ-GH-2Dz" userLabel="KnobView">
+<rect key="frame" x="470" y="646" width="265" height="76"/>
+<autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+<connections>
+<segue destination="wgk-zg-vAu" kind="embed" identifier="knob_init" id="gHe-sg-HLx"/>
+</connections>
+</containerView>
+<containerView opaque="NO" contentMode="scaleToFill" id="V5Q-9e-heb" userLabel="NoteView">
+<rect key="frame" x="0.0" y="0.0" width="1024" height="100"/>
+<autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+<connections>
+<segue destination="r6d-R7-VhY" kind="embed" identifier="init_range" id="KNA-X1-VlG"/>
+</connections>
+</containerView>
+<button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jOY-FE-ASg">
+<rect key="frame" x="743" y="668" width="26" height="44"/>
+<autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+<color key="backgroundColor" red="0.41943617724867721" green="0.41943617724867721" blue="0.41943617724867721" alpha="1" colorSpace="calibratedRGB"/>
+<fontDescription key="fontDescription" type="system" pointSize="12"/>
+<state key="normal" title="C">
+<color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+<color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+</state>
+<connections>
+<segue destination="Box-Cl-Jau" kind="popover" identifier="note_menu" popoverAnchorView="jOY-FE-ASg" id="PBq-Ia-CcA">
+<popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+</segue>
+</connections>
+</button>
+<button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="RPa-NE-PSi">
+<rect key="frame" x="769" y="668" width="51" height="44"/>
+<autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+<color key="backgroundColor" red="0.41943617719999998" green="0.41943617719999998" blue="0.41943617719999998" alpha="1" colorSpace="calibratedRGB"/>
+<fontDescription key="fontDescription" type="system" pointSize="12"/>
+<state key="normal" title="Major">
+<color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+<color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+</state>
+<connections>
+<segue destination="Box-Cl-Jau" kind="popover" identifier="key_menu" popoverAnchorView="RPa-NE-PSi" id="2E3-kX-41e">
+<popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+</segue>
+</connections>
+</button>
+<switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="0ll-Ky-Wim">
+<rect key="frame" x="643" y="668" width="51" height="31"/>
+<autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+<color key="tintColor" red="0.53731052229929377" green="0.86972331187782759" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+<connections>
+<action selector="switchChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="OfA-XZ-EWH"/>
+</connections>
+</switch>
+<label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grid Lines" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FSp-RE-AaC">
+<rect key="frame" x="628" y="699" width="79" height="21"/>
+<autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+<fontDescription key="fontDescription" type="system" pointSize="12"/>
+<color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+<nil key="highlightedColor"/>
+</label>
+<button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="F4g-Tp-FRp">
+<rect key="frame" x="348" y="668" width="99" height="31"/>
+<autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+<state key="normal" title="Clear Notes">
+<color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+</state>
+<connections>
+<action selector="deleteAllNotes:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YtJ-xf-BU4"/>
+</connections>
+</button>
+<button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gAN-cL-WHO">
+<rect key="frame" x="16" y="675" width="63" height="37"/>
+<autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+<state key="normal" title="Record">
+<color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+<color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+</state>
+<connections>
+<action selector="recStart:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iXH-qy-Jwp"/>
+</connections>
+</button>
+<button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PvO-6E-hGd">
+<rect key="frame" x="32" y="712" width="30" height="30"/>
+<autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+<state key="normal" title="Play">
+<color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+<color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+</state>
+<connections>
+<action selector="playButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YOJ-38-2Hz"/>
+</connections>
+</button>
+</subviews>
+<color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+</view>
+<simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+<connections>
+<outlet property="grid_switch" destination="0ll-Ky-Wim" id="pmX-Yq-oQV"/>
+<outlet property="key_btn" destination="RPa-NE-PSi" id="USD-HO-tuy"/>
+<outlet property="note_btn" destination="jOY-FE-ASg" id="IYS-aA-4sr"/>
+<outlet property="rec_play" destination="PvO-6E-hGd" id="ZNg-eU-COI"/>
+</connections>
+</viewController>
+<placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+</objects>
+<point key="canvasLocation" x="90" y="452"/>
+</scene>
+<!--Grid View Controller-->
+<scene sceneID="S0n-c3-isj">
+<objects>
+<viewController automaticallyAdjustsScrollViewInsets="NO" id="ls9-R1-fCC" customClass="GridViewController" customModule="theremin" sceneMemberID="viewController">
+<view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Ctc-ha-SoO">
+<rect key="frame" x="0.0" y="0.0" width="870" height="547"/>
+<autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+<subviews>
+<imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="theremin-mid-grid.png" id="fXl-ej-vLK">
+<rect key="frame" x="0.0" y="-2" width="3553" height="622"/>
+<autoresizingMask key="autoresizingMask"/>
+</imageView>
+</subviews>
+<color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+</view>
+<toolbarItems/>
+<navigationItem key="navigationItem" id="nDJ-Dj-0et"/>
+<freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+<size key="freeformSize" width="870" height="547"/>
+<connections>
+<outlet property="grid_image" destination="fXl-ej-vLK" id="QQq-Qg-clT"/>
+<outlet property="grid_view" destination="Ctc-ha-SoO" id="VUx-Mz-JBM"/>
+</connections>
+</viewController>
+<placeholder placeholderIdentifier="IBFirstResponder" id="d3h-QD-YeW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+</objects>
+<point key="canvasLocation" x="85" y="1634.5"/>
+</scene>
+<!--Range View Container Controller-->
+<scene sceneID="BrQ-xj-GlC">
+<objects>
+<viewController automaticallyAdjustsScrollViewInsets="NO" id="r6d-R7-VhY" customClass="RangeViewContainerController" customModule="theremin" sceneMemberID="viewController">
+<view key="view" opaque="NO" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="center" id="gPh-tV-OSh">
+<rect key="frame" x="0.0" y="0.0" width="1024" height="100"/>
+<autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+<subviews>
+<button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="SJY-eq-Oiy">
+<rect key="frame" x="950" y="49" width="30" height="30"/>
+<autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+<fontDescription key="fontDescription" type="system" pointSize="32"/>
+<state key="normal" title="&gt;">
+<color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+<color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+</state>
+<connections>
+<action selector="rightOctave:" destination="r6d-R7-VhY" eventType="touchUpInside" id="ySo-2N-ZUb"/>
+</connections>
+</button>
+<containerView opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="W6Z-xJ-sWU">
+<rect key="frame" x="77" y="31" width="870" height="77"/>
+<autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+<connections>
+<segue destination="ztM-Vi-5Wh" kind="embed" identifier="init_slider" id="sCH-wJ-GUU"/>
+</connections>
+</containerView>
+<button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="nDW-oA-h7j">
+<rect key="frame" x="39" y="49" width="30" height="30"/>
+<autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+<fontDescription key="fontDescription" type="system" pointSize="30"/>
+<state key="normal" title="&lt;">
+<color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+<color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+</state>
+<connections>
+<action selector="leftOctave:" destination="r6d-R7-VhY" eventType="touchUpInside" id="efH-w1-fAM"/>
+</connections>
+</button>
+</subviews>
+<color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+</view>
+<toolbarItems/>
+</viewController>
+<placeholder placeholderIdentifier="IBFirstResponder" id="785-VQ-DQ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+</objects>
+<point key="canvasLocation" x="1295" y="135"/>
+</scene>
+<!--Key Table View Controller-->
+<scene sceneID="mTz-fU-zay">
+<objects>
+<tableViewController id="Box-Cl-Jau" customClass="KeyTableViewController" customModule="theremin" sceneMemberID="viewController">
+<tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="TYC-Df-AiI">
+<rect key="frame" x="0.0" y="0.0" width="150" height="200"/>
+<autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+<color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+<prototypes>
+<tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="urI-CU-mev">
+<autoresizingMask key="autoresizingMask"/>
+<tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="urI-CU-mev" id="jFY-FJ-ssK">
+<autoresizingMask key="autoresizingMask"/>
+</tableViewCellContentView>
+</tableViewCell>
+</prototypes>
+<connections>
+<outlet property="dataSource" destination="Box-Cl-Jau" id="tO0-tI-8dD"/>
+<outlet property="delegate" destination="Box-Cl-Jau" id="d1R-3K-zP2"/>
+</connections>
+</tableView>
+<freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+<size key="freeformSize" width="150" height="200"/>
+</tableViewController>
+<placeholder placeholderIdentifier="IBFirstResponder" id="Heu-D2-4LG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+</objects>
+<point key="canvasLocation" x="816" y="693"/>
+</scene>
+<!--Knob View Controller-->
+<scene sceneID="eM9-20-EaK">
+<objects>
+<viewController automaticallyAdjustsScrollViewInsets="NO" id="wgk-zg-vAu" customClass="KnobViewController" customModule="theremin" sceneMemberID="viewController">
+<view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7vo-qt-NnJ">
+<rect key="frame" x="0.0" y="0.0" width="265" height="76"/>
+<autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+<subviews>
+<imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="theremin-inst.png" id="vbx-2W-PfS">
+<rect key="frame" x="-469" y="-644" width="1042" height="768"/>
+<autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+</imageView>
+<label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vibrato" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="68d-aR-eUZ">
+<rect key="frame" x="20" y="53" width="55" height="21"/>
+<autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+<fontDescription key="fontDescription" type="system" pointSize="12"/>
+<color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+<color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+</label>
+<label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tremolo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="j0s-V9-B4M">
+<rect key="frame" x="84" y="53" width="55" height="21"/>
+<autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+<fontDescription key="fontDescription" type="system" pointSize="12"/>
+<color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+<color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+</label>
+<view contentMode="scaleToFill" id="tcg-oX-JnQ" userLabel="Tremolo Placeholder">
+<rect key="frame" x="91" y="16" width="40" height="40"/>
+<autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+<subviews>
+<label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="adv-Po-h2O">
+<rect key="frame" x="-1" y="9" width="42" height="21"/>
+<autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+<fontDescription key="fontDescription" type="system" pointSize="9"/>
+<color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+<color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+</label>
+</subviews>
+<color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+</view>
+<view contentMode="scaleToFill" id="Gxx-ie-zeN" userLabel="Vibrato Placeholder">
+<rect key="frame" x="27" y="16" width="40" height="40"/>
+<autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+<subviews>
+<label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZdG-wo-6nQ">
+<rect key="frame" x="-1" y="9" width="42" height="21"/>
+<autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+<fontDescription key="fontDescription" type="system" pointSize="9"/>
+<color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+<color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+</label>
+</subviews>
+<color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+</view>
+</subviews>
+<color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+</view>
+<toolbarItems/>
+<connections>
+<outlet property="tremolo_placeholder" destination="tcg-oX-JnQ" id="SMi-SY-3Ro"/>
+<outlet property="tremolo_value" destination="adv-Po-h2O" id="r9d-qO-9tv"/>
+<outlet property="vibrato_placeholder" destination="Gxx-ie-zeN" id="IAJ-vP-t2M"/>
+<outlet property="vibrato_value" destination="ZdG-wo-6nQ" id="u99-1P-hEi"/>
+</connections>
+</viewController>
+<placeholder placeholderIdentifier="IBFirstResponder" id="ezf-E8-zBK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+</objects>
+<point key="canvasLocation" x="893.5" y="1385"/>
+</scene>
+<!--Range Slide Controller-->
+<scene sceneID="cjH-Pd-0eI">
+<objects>
+<viewController automaticallyAdjustsScrollViewInsets="NO" id="ztM-Vi-5Wh" customClass="RangeSlideController" customModule="theremin" sceneMemberID="viewController">
+<view key="view" opaque="NO" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="center" id="0WE-xT-46m">
+<rect key="frame" x="0.0" y="0.0" width="870" height="77"/>
+<autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+<subviews>
+<scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" id="J6I-F7-1j2">
+<rect key="frame" x="0.0" y="0.0" width="870" height="77"/>
+<autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+<connections>
+<outlet property="delegate" destination="ztM-Vi-5Wh" id="ayU-N8-bb3"/>
+</connections>
+</scrollView>
+</subviews>
+<color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+<gestureRecognizers/>
+</view>
+<toolbarItems/>
+<value key="contentSizeForViewInPopover" type="size" width="1500" height="77"/>
+<connections>
+<outlet property="scrollView" destination="J6I-F7-1j2" id="kr1-DL-hSN"/>
+</connections>
+</viewController>
+<placeholder placeholderIdentifier="IBFirstResponder" id="30G-B6-FZC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+</objects>
+<point key="canvasLocation" x="1293.5" y="377.5"/>
+</scene>
+</scenes>
+<resources>
+<image name="theremin-inst.png" width="1024" height="765"/>
+<image name="theremin-mid-grid.png" width="3553" height="622"/>
+</resources>
+<simulatedMetricsContainer key="defaultSimulatedMetrics">
+<simulatedStatusBarMetrics key="statusBar"/>
+<simulatedOrientationMetrics key="orientation"/>
+<simulatedScreenMetrics key="destination"/>
+</simulatedMetricsContainer>
+<inferredMetricsTieBreakers>
+<segue reference="PBq-Ia-CcA"/>
+</inferredMetricsTieBreakers>
+<color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>
