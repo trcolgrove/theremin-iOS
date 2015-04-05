@@ -339,7 +339,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     }
     
     /* private wrapper for updateNote, updates current note index for the purpose of recording*/
-    private func updateNoteWithIndex(timer: NSTimer){
+    func updateNoteWithIndex(timer: NSTimer){
         var userInfo = timer.userInfo as NSDictionary
         current_note = userInfo["index"] as Int
         let pt = CGPoint(x: userInfo["x"] as CGFloat,y: userInfo["y"] as CGFloat)
@@ -347,7 +347,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     }
     
     /* private wrapper for createNote, updates current note index for the purpose of recording */
-    private func createNoteWithIndex(timer: NSTimer){
+    func createNoteWithIndex(timer: NSTimer){
         var userInfo = timer.userInfo as NSDictionary
         current_note = userInfo["index"] as Int
         let pt = CGPoint(x: userInfo["x"] as CGFloat,y: userInfo["y"] as CGFloat)
@@ -355,7 +355,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     }
     
     /* private wrapper for deleteNote, updates current note index for the purpose of recording */
-    private func deleteNoteWithIndex(timer: NSTimer){
+    func deleteNoteWithIndex(timer: NSTimer){
         var userInfo = timer.userInfo as NSDictionary
         let to_delete = userInfo["index"] as Int
         deleteNote(to_delete)
