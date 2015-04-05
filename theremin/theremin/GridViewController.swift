@@ -279,7 +279,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     // Creates new note if not touching existing note, otherwise makes that note current
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         //stop scrolling on touch down
-        (parentViewController as InstrumentViewController).disableScroll()
+        //(parentViewController as InstrumentViewController).disableScroll()
         
         let touch: AnyObject = touches.allObjects[0]
         var loc: CGPoint
@@ -317,40 +317,52 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         (parentViewController as InstrumentViewController).enableScroll()
     }
     
-    /*recording functions*/
+/***************** Recording Functions ******************/
+/* These functions interact with a recordingProtocol in */
+/* order to create, and playback a detailed array of    */
+/* samples. Samples are represented by a "sample" type  */
+/* the definition of which can be found in the recData  */
+/* class.                                                */
+
+    
+    /* public function, initiates the recorder object, beginning recording */
     func beginRecording(){
         recorder = record()
     }
     
+    
+    /* stops recording and gets the array of samples representing the current recording */
     func stopRecording(){
-        println("hey")
         recording = recorder?.doneRecording()
         println(recording)
         recorder = nil
     }
     
-    func updateNoteWithIndex(timer: NSTimer){
+    /* private wrapper for updateNote, updates current note index for the purpose of recording*/
+    private func updateNoteWithIndex(timer: NSTimer){
         var userInfo = timer.userInfo as NSDictionary
         current_note = userInfo["index"] as Int
         let pt = CGPoint(x: userInfo["x"] as CGFloat,y: userInfo["y"] as CGFloat)
         updateNote(pt)
     }
     
-    func createNoteWithIndex(timer: NSTimer){
+    /* private wrapper for createNote, updates current note index for the purpose of recording */
+    private func createNoteWithIndex(timer: NSTimer){
         var userInfo = timer.userInfo as NSDictionary
         current_note = userInfo["index"] as Int
         let pt = CGPoint(x: userInfo["x"] as CGFloat,y: userInfo["y"] as CGFloat)
         createNote(pt)
     }
-    func deleteNoteWithIndex(timer: NSTimer){
+    
+    /* private wrapper for deleteNote, updates current note index for the purpose of recording */
+    private func deleteNoteWithIndex(timer: NSTimer){
         var userInfo = timer.userInfo as NSDictionary
         let to_delete = userInfo["index"] as Int
         deleteNote(to_delete)
     }
 
-    
+    /* public function, plays back the current array of recorded samples */
     func playRecording(){
-        //dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.value), 0)) {
         for s in self.recording!{
             let params = ["index" : s.note_index, "x" : s.note_loc.x, "y" : s.note_loc.y]
             var timer = NSTimer()
@@ -366,10 +378,10 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
             else if(s.cmd == recData.command.SUS){
                 
             }
+            NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes) // use this so the NSTimer can execute concurrently with UIChanges
         }
     }
-        
-    //}
+
 }
 
 
