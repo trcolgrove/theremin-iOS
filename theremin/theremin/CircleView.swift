@@ -11,11 +11,13 @@ import UIKit
 class CircleView: UIView {
     
     var index = 0
+    var is_playback: Bool = false
     var gvc: GridViewController
     
-    init(frame: CGRect, i: Int, view_controller: GridViewController) {
-        index = i;
+    init(frame: CGRect, i: Int, view_controller: GridViewController, isPlayback: Bool) {
+        index = i
         gvc = view_controller
+        is_playback = isPlayback
         super.init(frame: frame)
         self.backgroundColor = UIColor.clearColor()
     }
@@ -44,7 +46,10 @@ class CircleView: UIView {
 
     }
     
+    
     func handleDoubleTap(sender: UITapGestureRecognizer!) {
+        println("handling double tap note \(index)")
+        gvc.no_delete_flag[index] = false
         gvc.deleteNote(index)
     }
 }
