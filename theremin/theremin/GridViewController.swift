@@ -99,6 +99,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         return 0.5 * (h - y) / h
     }
     
+    // returns midi pitch note for given x coordinate in grid_image coordinates
     private func calculatePitch(x: CGFloat) -> CGFloat{
         return bottom_note + (x/halfstep_width)
     }
