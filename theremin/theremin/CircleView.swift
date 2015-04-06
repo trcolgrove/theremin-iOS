@@ -48,7 +48,6 @@ class CircleView: UIView {
     
     
     func handleDoubleTap(sender: UITapGestureRecognizer!) {
-        println("handling double tap note \(index)")
         gvc.no_delete_flag[index] = false
         gvc.deleteNote(index)
     }

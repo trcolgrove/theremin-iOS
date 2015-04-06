@@ -173,16 +173,12 @@
 			children = (
 				F8548AFE1A92774300DDE538 /* KeyTableViewController.swift */,
 				F8BD45A71A7ED3BE00535821 /* GridViewController.swift */,
-				E96B543E1AB622D900A4E34F /* record.swift */,
-				E947E1601AA676DE004DAA9B /* GridLineView.swift */,
-				3703FACD1A8E727C009B8783 /* CircleView.swift */,
 				F84581441A882C6600DCBFEA /* InstrumentViewController.swift */,
 				F84BF2491A83CD990007686D /* KnobViewController.swift */,
 				F8BD45851A7EC47000535821 /* ViewController.h */,
 				F84BF2471A83CD7E0007686D /* RangeSlideController.swift */,
 				F8BD45861A7EC47000535821 /* ViewController.m */,
 				E95F1E0C1A9255610067536B /* RangeViewContainerController.swift */,
-				E951EF181ABB6E2100686C57 /* recData.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -216,6 +212,10 @@
 				37842A511AA7AF65002873B6 /* simpleVibrato.pd */,
 				F8BD45821A7EC47000535821 /* AppDelegate.h */,
 				F8BD45831A7EC47000535821 /* AppDelegate.m */,
+				3703FACD1A8E727C009B8783 /* CircleView.swift */,
+				E947E1601AA676DE004DAA9B /* GridLineView.swift */,
+				E96B543E1AB622D900A4E34F /* record.swift */,
+				E951EF181ABB6E2100686C57 /* recData.swift */,
 				F84581461A88355300DCBFEA /* ViewControllers */,
 				F8BD45881A7EC47000535821 /* Main.storyboard */,
 				F83822D81A9E3FEE00DA84CD /* KnobControl.swift */,
