@@ -341,15 +341,15 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     /* private wrapper for updateNote, updates current note index for the purpose of recording*/
     func updateNoteWithIndex(timer: NSTimer){
         var userInfo = timer.userInfo as NSDictionary
-        current_note = userInfo["index"] as Int
+        // current_note = userInfo["index"] as Int
         let pt = CGPoint(x: userInfo["x"] as CGFloat,y: userInfo["y"] as CGFloat)
-        updateNote(current_note, loc: pt)
+        //updateNote(current_note, loc: pt)
     }
     
     /* private wrapper for createNote, updates current note index for the purpose of recording */
     func createNoteWithIndex(timer: NSTimer){
         var userInfo = timer.userInfo as NSDictionary
-        current_note = userInfo["index"] as Int
+        //current_note = userInfo["index"] as Int
         let pt = CGPoint(x: userInfo["x"] as CGFloat,y: userInfo["y"] as CGFloat)
         createNote(pt, isPlayback: true)
     }
