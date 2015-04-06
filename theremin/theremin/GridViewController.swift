@@ -15,13 +15,21 @@ protocol recordingProtocol{
 }
 
 class GridViewController: InstrumentViewController, UIScrollViewDelegate {
-    let default_velocity: Int = 40
-    var leftmost_note: CGFloat = 59.0
     let CIRCLE_DIAMETER: CGFloat = 50
     let MAX_NOTES = 5
+    let default_velocity: Int = 40
     var circles: [CircleView] = []
-    var note_index_used: [Bool] = []
+    
+    // Invariant: If the bool at index i is true if index i is currently being used, otherwise false
+    var note_index_used: [Bool] = [false, false, false, false, false]
+    
+    // Invariant: If the bool at index i is true if note i is a sustain and currently being dragged,
+    //            so we shouldn't delete it on touchesEnded
+    var no_delete_flag: [Bool] = [false, false, false, false, false]
+    
+    // Keeps track of number of notes currently sounding
     var note_count = 0
+    
     var lines: [GridLineView] = []
     var recorder : recordingProtocol?
     let halfstep_width: CGFloat = 72.5
@@ -35,14 +43,10 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     //var circles_view : UIView!
     @IBOutlet var grid_view: UIView!
     
-    //invariant: current_note is always the index of current touch, or -1 if no current touch
-    var current_note = -1
-    
     var w: CGFloat = 0
     var h: CGFloat = 0
     
-    //used to move sustain notes
-    var no_delete_flag: [Bool] = [false, false, false, false, false]
+    // used to move sustain notes on the screen
     
     
     // grid position
@@ -51,8 +55,6 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
 
     
     override func viewDidLoad() {
-        note_dict = [:]
-        
         //init 5 circles off screen
         initCircles()
     }
@@ -61,7 +63,6 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     private func initCircles() {
         for i in 0...4 {
             circles.append(CircleView(frame: CGRectMake(-50000 - 0.5 * CIRCLE_DIAMETER, -50000 - 0.5 * CIRCLE_DIAMETER, CIRCLE_DIAMETER, CIRCLE_DIAMETER), i: i, view_controller: self, isPlayback:false))
-            note_index_used.append(false)
         }
     }
     
@@ -84,7 +85,6 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
      */
     override func setRange(note_offset: CGFloat) {
         grid_image.frame = CGRectMake(grid_image.frame.origin.x - note_offset, grid_image.frame.origin.y, grid_image.frame.width, grid_image.frame.height)
-        leftmost_note = leftmost_note + (note_offset/halfstep_width )
     }
     
     override func updateKey(key: String, notes: [String]) {
