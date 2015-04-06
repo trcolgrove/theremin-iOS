@@ -18,10 +18,10 @@
 		E951EF191ABB6E2100686C57 /* recData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E951EF181ABB6E2100686C57 /* recData.swift */; };
 		E95F1E0D1A9255610067536B /* RangeViewContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F1E0C1A9255610067536B /* RangeViewContainerController.swift */; };
 		E96B543F1AB622D900A4E34F /* record.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96B543E1AB622D900A4E34F /* record.swift */; };
+		F821FD921AD1E3F800D58093 /* theremin-inst2.png in Resources */ = {isa = PBXBuildFile; fileRef = F821FD911AD1E3F800D58093 /* theremin-inst2.png */; };
 		F83822D71A9E3AF700DA84CD /* theremin-inst.png in Resources */ = {isa = PBXBuildFile; fileRef = F83822D61A9E3AF700DA84CD /* theremin-inst.png */; };
 		F83822D91A9E3FEE00DA84CD /* KnobControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83822D81A9E3FEE00DA84CD /* KnobControl.swift */; };
 		F845813E1A87D86600DCBFEA /* theremin-b1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F845813D1A87D86600DCBFEA /* theremin-b1.jpg */; };
-		F84581411A87E79800DCBFEA /* theremin-b2.png in Resources */ = {isa = PBXBuildFile; fileRef = F84581401A87E79800DCBFEA /* theremin-b2.png */; };
 		F84581431A87EC4700DCBFEA /* wave.png in Resources */ = {isa = PBXBuildFile; fileRef = F84581421A87EC4700DCBFEA /* wave.png */; };
 		F84581451A882C6600DCBFEA /* InstrumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84581441A882C6600DCBFEA /* InstrumentViewController.swift */; };
 		F845814E1A8851F700DCBFEA /* theremin-appicon-40x40.png in Resources */ = {isa = PBXBuildFile; fileRef = F845814D1A8851F700DCBFEA /* theremin-appicon-40x40.png */; };
@@ -72,10 +72,10 @@
 		E951EF181ABB6E2100686C57 /* recData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = recData.swift; sourceTree = "<group>"; };
 		E95F1E0C1A9255610067536B /* RangeViewContainerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeViewContainerController.swift; sourceTree = "<group>"; };
 		E96B543E1AB622D900A4E34F /* record.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = record.swift; sourceTree = "<group>"; };
+		F821FD911AD1E3F800D58093 /* theremin-inst2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "theremin-inst2.png"; sourceTree = "<group>"; };
 		F83822D61A9E3AF700DA84CD /* theremin-inst.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "theremin-inst.png"; sourceTree = "<group>"; };
 		F83822D81A9E3FEE00DA84CD /* KnobControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnobControl.swift; sourceTree = "<group>"; };
 		F845813D1A87D86600DCBFEA /* theremin-b1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "theremin-b1.jpg"; sourceTree = "<group>"; };
-		F84581401A87E79800DCBFEA /* theremin-b2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "theremin-b2.png"; sourceTree = "<group>"; };
 		F84581421A87EC4700DCBFEA /* wave.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wave.png; sourceTree = "<group>"; };
 		F84581441A882C6600DCBFEA /* InstrumentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstrumentViewController.swift; sourceTree = "<group>"; };
 		F845814D1A8851F700DCBFEA /* theremin-appicon-40x40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "theremin-appicon-40x40.png"; sourceTree = "<group>"; };
@@ -151,6 +151,7 @@
 				375D15781AA81894004C1100 /* phi hive.png */,
 				F8548AFA1A9150DD00DDE538 /* theremin-grid.png */,
 				F83822D61A9E3AF700DA84CD /* theremin-inst.png */,
+				F821FD911AD1E3F800D58093 /* theremin-inst2.png */,
 				E90742561A8AD432009088E0 /* note_slider.png */,
 				F8B10C231AA7B54F00ED7169 /* theremin-mid-grid.png */,
 				F845815F1A885ACB00DCBFEA /* theremin-appicon76x76.png */,
@@ -161,7 +162,6 @@
 				F84581611A885AF800DCBFEA /* theremin-appicon152x152.png */,
 				F84581511A88528300DCBFEA /* theremin-appicon180x180.png */,
 				F845814D1A8851F700DCBFEA /* theremin-appicon-40x40.png */,
-				F84581401A87E79800DCBFEA /* theremin-b2.png */,
 				F84581421A87EC4700DCBFEA /* wave.png */,
 				F845813D1A87D86600DCBFEA /* theremin-b1.jpg */,
 			);
@@ -341,7 +341,6 @@
 				F8B10C241AA7B54F00ED7169 /* theremin-mid-grid.png in Resources */,
 				F84581541A88528C00DCBFEA /* theremin-appicon-58x58.png in Resources */,
 				F8BD458A1A7EC47000535821 /* Main.storyboard in Resources */,
-				F84581411A87E79800DCBFEA /* theremin-b2.png in Resources */,
 				37842A531AA7AF65002873B6 /* simpleVibrato.pd in Resources */,
 				F8548AFB1A9150DD00DDE538 /* theremin-grid.png in Resources */,
 				F84581601A885ACB00DCBFEA /* theremin-appicon76x76.png in Resources */,
@@ -360,6 +359,7 @@
 				F845814E1A8851F700DCBFEA /* theremin-appicon-40x40.png in Resources */,
 				E90742571A8AD432009088E0 /* note_slider.png in Resources */,
 				F84581521A88528300DCBFEA /* theremin-appicon180x180.png in Resources */,
+				F821FD921AD1E3F800D58093 /* theremin-inst2.png in Resources */,
 				F84581561A88529700DCBFEA /* theremin-appicon-29x29.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
