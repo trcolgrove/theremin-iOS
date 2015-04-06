@@ -62,8 +62,8 @@
 		3703FACD1A8E727C009B8783 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		375D15781AA81894004C1100 /* phi hive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phi hive.png"; sourceTree = "<group>"; };
 		375D157A1AA81A08004C1100 /* phi hive smaller.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phi hive smaller.png"; sourceTree = "<group>"; };
-		37842A501AA7AF65002873B6 /* simpleTremolo.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = simpleTremolo.pd; sourceTree = "<group>"; };
-		37842A511AA7AF65002873B6 /* simpleVibrato.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = simpleVibrato.pd; sourceTree = "<group>"; };
+		37842A501AA7AF65002873B6 /* simpleTremolo.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = simpleTremolo.pd; path = theremin/simpleTremolo.pd; sourceTree = "<group>"; };
+		37842A511AA7AF65002873B6 /* simpleVibrato.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = simpleVibrato.pd; path = theremin/simpleVibrato.pd; sourceTree = "<group>"; };
 		386C355754CEC498073BC781 /* Pods-theremin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-theremin.release.xcconfig"; path = "Pods/Target Support Files/Pods-theremin/Pods-theremin.release.xcconfig"; sourceTree = "<group>"; };
 		8004AE9946D819307EE2E6D8 /* libPods-theremin.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-theremin.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9248A05E5AC8D6B8EE1E5BF /* Pods-theremin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-theremin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-theremin/Pods-theremin.debug.xcconfig"; sourceTree = "<group>"; };
@@ -104,7 +104,7 @@
 		F8BD45941A7EC47000535821 /* thereminTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = thereminTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8BD45991A7EC47000535821 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F8BD459A1A7EC47000535821 /* thereminTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = thereminTests.m; sourceTree = "<group>"; };
-		F8BD45A41A7EC9C900535821 /* theremin.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = theremin.pd; sourceTree = "<group>"; };
+		F8BD45A41A7EC9C900535821 /* theremin.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = theremin.pd; path = theremin/theremin.pd; sourceTree = "<group>"; };
 		F8BD45A61A7ED3BE00535821 /* theremin-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "theremin-Bridging-Header.h"; sourceTree = "<group>"; };
 		F8BD45A71A7ED3BE00535821 /* GridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -128,6 +128,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3723562E1AD304A9004ED2CB /* patches */ = {
+			isa = PBXGroup;
+			children = (
+				F8BD45A41A7EC9C900535821 /* theremin.pd */,
+				37842A501AA7AF65002873B6 /* simpleTremolo.pd */,
+				37842A511AA7AF65002873B6 /* simpleVibrato.pd */,
+			);
+			name = patches;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		4AC4B1454749428910D21FC2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +159,7 @@
 		F845813F1A87D87F00DCBFEA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				375D157A1AA81A08004C1100 /* phi hive smaller.png */,
 				375D15781AA81894004C1100 /* phi hive.png */,
 				F8548AFA1A9150DD00DDE538 /* theremin-grid.png */,
 				F83822D61A9E3AF700DA84CD /* theremin-inst.png */,
@@ -206,24 +218,20 @@
 		F8BD457D1A7EC47000535821 /* theremin */ = {
 			isa = PBXGroup;
 			children = (
+				3723562E1AD304A9004ED2CB /* patches */,
 				F845813F1A87D87F00DCBFEA /* Images */,
-				F8BD45A41A7EC9C900535821 /* theremin.pd */,
-				37842A501AA7AF65002873B6 /* simpleTremolo.pd */,
-				37842A511AA7AF65002873B6 /* simpleVibrato.pd */,
 				F8BD45821A7EC47000535821 /* AppDelegate.h */,
 				F8BD45831A7EC47000535821 /* AppDelegate.m */,
 				3703FACD1A8E727C009B8783 /* CircleView.swift */,
 				E947E1601AA676DE004DAA9B /* GridLineView.swift */,
 				E96B543E1AB622D900A4E34F /* record.swift */,
 				E951EF181ABB6E2100686C57 /* recData.swift */,
+				F83822D81A9E3FEE00DA84CD /* KnobControl.swift */,
 				F84581461A88355300DCBFEA /* ViewControllers */,
 				F8BD45881A7EC47000535821 /* Main.storyboard */,
-				F83822D81A9E3FEE00DA84CD /* KnobControl.swift */,
 				F8BD458B1A7EC47000535821 /* Images.xcassets */,
 				F8BD458D1A7EC47000535821 /* LaunchScreen.xib */,
-				375D157A1AA81A08004C1100 /* phi hive smaller.png */,
 				F8BD457E1A7EC47000535821 /* Supporting Files */,
-				F8BD45A61A7ED3BE00535821 /* theremin-Bridging-Header.h */,
 			);
 			path = theremin;
 			sourceTree = "<group>";
@@ -231,6 +239,7 @@
 		F8BD457E1A7EC47000535821 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F8BD45A61A7ED3BE00535821 /* theremin-Bridging-Header.h */,
 				F8BD457F1A7EC47000535821 /* Info.plist */,
 				F8BD45801A7EC47000535821 /* main.m */,
 			);

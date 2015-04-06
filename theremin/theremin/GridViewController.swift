@@ -273,7 +273,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     override func touchesCancelled(touches: NSSet, withEvent: UIEvent) {
         for touch in touches {
             if let index = note_dict[pointerToString(touch)] {
-                // deleteNote(index)
+                deleteNote(index)
             }
         }
     }
