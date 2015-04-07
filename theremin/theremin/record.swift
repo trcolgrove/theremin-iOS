@@ -25,7 +25,6 @@ class record: recordingProtocol{
     
 
     func doneRecording() -> [recData.sample]{
-        println(samples)
         return samples
     }
 
