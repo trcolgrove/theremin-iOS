@@ -18,6 +18,7 @@
 		E951EF191ABB6E2100686C57 /* recData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E951EF181ABB6E2100686C57 /* recData.swift */; };
 		E95F1E0D1A9255610067536B /* RangeViewContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F1E0C1A9255610067536B /* RangeViewContainerController.swift */; };
 		E96B543F1AB622D900A4E34F /* record.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96B543E1AB622D900A4E34F /* record.swift */; };
+		E9A9B5441AD1E735001060B7 /* sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A9B5431AD1E735001060B7 /* sequence.swift */; };
 		F83822D71A9E3AF700DA84CD /* theremin-inst.png in Resources */ = {isa = PBXBuildFile; fileRef = F83822D61A9E3AF700DA84CD /* theremin-inst.png */; };
 		F83822D91A9E3FEE00DA84CD /* KnobControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83822D81A9E3FEE00DA84CD /* KnobControl.swift */; };
 		F845813E1A87D86600DCBFEA /* theremin-b1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F845813D1A87D86600DCBFEA /* theremin-b1.jpg */; };
@@ -68,9 +69,10 @@
 		D9248A05E5AC8D6B8EE1E5BF /* Pods-theremin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-theremin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-theremin/Pods-theremin.debug.xcconfig"; sourceTree = "<group>"; };
 		E90742561A8AD432009088E0 /* note_slider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = note_slider.png; sourceTree = "<group>"; };
 		E947E1601AA676DE004DAA9B /* GridLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridLineView.swift; sourceTree = "<group>"; };
-		E951EF181ABB6E2100686C57 /* recData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = recData.swift; sourceTree = "<group>"; };
+		E951EF181ABB6E2100686C57 /* recData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = recData.swift; path = theremin/recData.swift; sourceTree = "<group>"; };
 		E95F1E0C1A9255610067536B /* RangeViewContainerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeViewContainerController.swift; sourceTree = "<group>"; };
-		E96B543E1AB622D900A4E34F /* record.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = record.swift; sourceTree = "<group>"; };
+		E96B543E1AB622D900A4E34F /* record.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = record.swift; path = theremin/record.swift; sourceTree = "<group>"; };
+		E9A9B5431AD1E735001060B7 /* sequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sequence.swift; sourceTree = "<group>"; };
 		F83822D61A9E3AF700DA84CD /* theremin-inst.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "theremin-inst.png"; sourceTree = "<group>"; };
 		F83822D81A9E3FEE00DA84CD /* KnobControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnobControl.swift; sourceTree = "<group>"; };
 		F845813D1A87D86600DCBFEA /* theremin-b1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "theremin-b1.jpg"; sourceTree = "<group>"; };
@@ -143,6 +145,17 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		E9A9B5421AD1E573001060B7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E96B543E1AB622D900A4E34F /* record.swift */,
+				E951EF181ABB6E2100686C57 /* recData.swift */,
+				E9A9B5431AD1E735001060B7 /* sequence.swift */,
+			);
+			name = Models;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		F845813F1A87D87F00DCBFEA /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -170,7 +183,6 @@
 			children = (
 				F8548AFE1A92774300DDE538 /* KeyTableViewController.swift */,
 				F8BD45A71A7ED3BE00535821 /* GridViewController.swift */,
-				E96B543E1AB622D900A4E34F /* record.swift */,
 				E947E1601AA676DE004DAA9B /* GridLineView.swift */,
 				3703FACD1A8E727C009B8783 /* CircleView.swift */,
 				F84581441A882C6600DCBFEA /* InstrumentViewController.swift */,
@@ -179,7 +191,6 @@
 				F84BF2471A83CD7E0007686D /* RangeSlideController.swift */,
 				F8BD45861A7EC47000535821 /* ViewController.m */,
 				E95F1E0C1A9255610067536B /* RangeViewContainerController.swift */,
-				E951EF181ABB6E2100686C57 /* recData.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -207,20 +218,21 @@
 		F8BD457D1A7EC47000535821 /* theremin */ = {
 			isa = PBXGroup;
 			children = (
+				F84581461A88355300DCBFEA /* ViewControllers */,
 				F845813F1A87D87F00DCBFEA /* Images */,
+				F8BD457E1A7EC47000535821 /* Supporting Files */,
+				F8BD45A61A7ED3BE00535821 /* theremin-Bridging-Header.h */,
 				F8BD45A41A7EC9C900535821 /* theremin.pd */,
 				37842A501AA7AF65002873B6 /* simpleTremolo.pd */,
 				37842A511AA7AF65002873B6 /* simpleVibrato.pd */,
 				F8BD45821A7EC47000535821 /* AppDelegate.h */,
 				F8BD45831A7EC47000535821 /* AppDelegate.m */,
-				F84581461A88355300DCBFEA /* ViewControllers */,
 				F8BD45881A7EC47000535821 /* Main.storyboard */,
 				F83822D81A9E3FEE00DA84CD /* KnobControl.swift */,
 				F8BD458B1A7EC47000535821 /* Images.xcassets */,
 				F8BD458D1A7EC47000535821 /* LaunchScreen.xib */,
 				375D157A1AA81A08004C1100 /* phi hive smaller.png */,
-				F8BD457E1A7EC47000535821 /* Supporting Files */,
-				F8BD45A61A7ED3BE00535821 /* theremin-Bridging-Header.h */,
+				E9A9B5421AD1E573001060B7 /* Models */,
 			);
 			path = theremin;
 			sourceTree = "<group>";
@@ -420,6 +432,7 @@
 				F84581451A882C6600DCBFEA /* InstrumentViewController.swift in Sources */,
 				F83822D91A9E3FEE00DA84CD /* KnobControl.swift in Sources */,
 				E947E1611AA676DE004DAA9B /* GridLineView.swift in Sources */,
+				E9A9B5441AD1E735001060B7 /* sequence.swift in Sources */,
 				E95F1E0D1A9255610067536B /* RangeViewContainerController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

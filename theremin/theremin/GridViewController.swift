@@ -260,7 +260,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
             updateNote(loc)
         case UIGestureRecognizerState.Ended:
             if no_delete_flag == true {
-                no_delete_flag = false
+            no_delete_flag = false
             } else {
                 deleteNote(current_note)
             }
@@ -322,7 +322,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
 /* order to create, and playback a detailed array of    */
 /* samples. Samples are represented by a "sample" type  */
 /* the definition of which can be found in the recData  */
-/* class.                                                */
+/* class.                                               */
 
     
     /* public function, initiates the recorder object, beginning recording */
