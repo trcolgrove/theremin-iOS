@@ -34,33 +34,37 @@ class InstrumentViewController: UIViewController {
     
     var key_popover: KeyTableViewController?
 
-    //var leftmost_note = "C"
     let num_oct: Int = 4
     let bottom_note: CGFloat = 59.0
     
     var grid: GridViewController!
     var range_controller: RangeViewContainerController!
+    
+    
+    var grid_lines_showing: Bool = false
    
     
     @IBOutlet var note_btn: UIButton?
     @IBOutlet var key_btn: UIButton?
-    @IBOutlet weak var grid_switch: UISwitch?
     @IBOutlet weak var rec_button: UIButton!
     @IBOutlet weak var rec_play: UIButton!
     
     
     
-    @IBAction func playButtonPressed(sender: AnyObject) {
-        grid.playRecording()
+    @IBAction func toggleGridLines(sender: UIButton) {
+        if (grid_lines_showing) {
+            sender.backgroundColor = UIColor(white: 137/255, alpha: 1.0)
+            grid_lines_showing = false
+            grid.removeGridLines()
+        } else {
+            sender.backgroundColor = UIColor(white: 0.3, alpha: 1.0)
+            grid.drawGridLines()
+            grid_lines_showing = true
+        }
     }
     
-    @IBAction func switchChanged(sender: UISwitch) {
-        if(sender.on){
-            grid.gridOn()
-        }
-        else{
-            grid.gridOff()
-        }
+    @IBAction func playButtonPressed(sender: AnyObject) {
+        grid.playRecording()
     }
    
     @IBAction func recStart(sender: AnyObject) {
@@ -80,6 +84,12 @@ class InstrumentViewController: UIViewController {
         insertKeysToMap()
     }
 
+    override func viewDidLoad() {
+        if let y = key_btn? {
+                self.view.bringSubviewToFront(y)
+        }
+    }
+    
     //set up intrument view as a delegate of subcontrollers
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!){
         if segue.identifier == "init_range"{
@@ -140,6 +150,7 @@ class InstrumentViewController: UIViewController {
             self.key = key
             note_btn?.setTitle("\(key_note)", forState: UIControlState.Normal)
             key_btn?.setTitle("\(key_type)", forState: UIControlState.Normal)
+            self.view.bringSubviewToFront(key_btn!)
             grid.updateKey(key, notes: notes)
             range_controller.updateKey(key, notes: notes)
         } else {
@@ -163,9 +174,6 @@ class InstrumentViewController: UIViewController {
         var alert = UIAlertController(title: "Error", message: "Unsupported Key", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
-    }
-    
-    override func viewDidLoad() {
     }
     
     func insertKeysToMap() {

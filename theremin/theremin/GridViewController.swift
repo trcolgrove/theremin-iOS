@@ -279,18 +279,9 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         }
     }
 
-    //turn the grid on
-    func gridOn(){
-        drawGridLines()
-    }
-    
-    //turn the grid off
-    func gridOff(){
-        removeGridLines()
-    }
     
     /*remove the grid lines from the gridview*/
-    private func removeGridLines(){
+    func removeGridLines(){
         for lineView : GridLineView in lines
         {
             lineView.removeFromSuperview()
@@ -299,7 +290,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     }
     
     //draws grid lines on the diatonic notes of the scale
-    private func drawGridLines(){
+    func drawGridLines(){
         removeGridLines()
         let oct_width = halfstep_width * 12
         for var oct : CGFloat = 0; oct < 4; oct++ { //octave

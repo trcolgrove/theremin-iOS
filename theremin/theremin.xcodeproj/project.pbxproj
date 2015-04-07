@@ -8,10 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		3703FACE1A8E727C009B8783 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3703FACD1A8E727C009B8783 /* CircleView.swift */; };
+		3738E6B31AD36D23008CA859 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3738E6B21AD36D23008CA859 /* RecordViewController.swift */; };
+		3738E6B51AD37A9E008CA859 /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3738E6B41AD37A9E008CA859 /* RecordButton.swift */; };
+		3738E6B71AD37DCA008CA859 /* PlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3738E6B61AD37DCA008CA859 /* PlayButton.swift */; };
 		375D15791AA81894004C1100 /* phi hive.png in Resources */ = {isa = PBXBuildFile; fileRef = 375D15781AA81894004C1100 /* phi hive.png */; };
 		375D157B1AA81A08004C1100 /* phi hive smaller.png in Resources */ = {isa = PBXBuildFile; fileRef = 375D157A1AA81A08004C1100 /* phi hive smaller.png */; };
 		37842A521AA7AF65002873B6 /* simpleTremolo.pd in Resources */ = {isa = PBXBuildFile; fileRef = 37842A501AA7AF65002873B6 /* simpleTremolo.pd */; };
 		37842A531AA7AF65002873B6 /* simpleVibrato.pd in Resources */ = {isa = PBXBuildFile; fileRef = 37842A511AA7AF65002873B6 /* simpleVibrato.pd */; };
+		37A4B0B21AD3606800618244 /* theremin-inst-record.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A4B0B11AD3606800618244 /* theremin-inst-record.png */; };
 		B1D07046291BC940EC75CD40 /* libPods-theremin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8004AE9946D819307EE2E6D8 /* libPods-theremin.a */; };
 		E90742571A8AD432009088E0 /* note_slider.png in Resources */ = {isa = PBXBuildFile; fileRef = E90742561A8AD432009088E0 /* note_slider.png */; };
 		E947E1611AA676DE004DAA9B /* GridLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E947E1601AA676DE004DAA9B /* GridLineView.swift */; };
@@ -60,10 +64,14 @@
 
 /* Begin PBXFileReference section */
 		3703FACD1A8E727C009B8783 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		3738E6B21AD36D23008CA859 /* RecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
+		3738E6B41AD37A9E008CA859 /* RecordButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
+		3738E6B61AD37DCA008CA859 /* PlayButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayButton.swift; sourceTree = "<group>"; };
 		375D15781AA81894004C1100 /* phi hive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phi hive.png"; sourceTree = "<group>"; };
 		375D157A1AA81A08004C1100 /* phi hive smaller.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phi hive smaller.png"; sourceTree = "<group>"; };
 		37842A501AA7AF65002873B6 /* simpleTremolo.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = simpleTremolo.pd; path = theremin/simpleTremolo.pd; sourceTree = "<group>"; };
 		37842A511AA7AF65002873B6 /* simpleVibrato.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = simpleVibrato.pd; path = theremin/simpleVibrato.pd; sourceTree = "<group>"; };
+		37A4B0B11AD3606800618244 /* theremin-inst-record.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "theremin-inst-record.png"; sourceTree = "<group>"; };
 		386C355754CEC498073BC781 /* Pods-theremin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-theremin.release.xcconfig"; path = "Pods/Target Support Files/Pods-theremin/Pods-theremin.release.xcconfig"; sourceTree = "<group>"; };
 		8004AE9946D819307EE2E6D8 /* libPods-theremin.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-theremin.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9248A05E5AC8D6B8EE1E5BF /* Pods-theremin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-theremin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-theremin/Pods-theremin.debug.xcconfig"; sourceTree = "<group>"; };
@@ -159,6 +167,7 @@
 		F845813F1A87D87F00DCBFEA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				37A4B0B11AD3606800618244 /* theremin-inst-record.png */,
 				375D157A1AA81A08004C1100 /* phi hive smaller.png */,
 				375D15781AA81894004C1100 /* phi hive.png */,
 				F8548AFA1A9150DD00DDE538 /* theremin-grid.png */,
@@ -184,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				F8548AFE1A92774300DDE538 /* KeyTableViewController.swift */,
+				3738E6B21AD36D23008CA859 /* RecordViewController.swift */,
 				F8BD45A71A7ED3BE00535821 /* GridViewController.swift */,
 				F84581441A882C6600DCBFEA /* InstrumentViewController.swift */,
 				F84BF2491A83CD990007686D /* KnobViewController.swift */,
@@ -223,6 +233,8 @@
 				F8BD45821A7EC47000535821 /* AppDelegate.h */,
 				F8BD45831A7EC47000535821 /* AppDelegate.m */,
 				3703FACD1A8E727C009B8783 /* CircleView.swift */,
+				3738E6B41AD37A9E008CA859 /* RecordButton.swift */,
+				3738E6B61AD37DCA008CA859 /* PlayButton.swift */,
 				E947E1601AA676DE004DAA9B /* GridLineView.swift */,
 				E96B543E1AB622D900A4E34F /* record.swift */,
 				E951EF181ABB6E2100686C57 /* recData.swift */,
@@ -361,6 +373,7 @@
 				F84581431A87EC4700DCBFEA /* wave.png in Resources */,
 				375D15791AA81894004C1100 /* phi hive.png in Resources */,
 				F84581621A885AF800DCBFEA /* theremin-appicon152x152.png in Resources */,
+				37A4B0B21AD3606800618244 /* theremin-inst-record.png in Resources */,
 				F845813E1A87D86600DCBFEA /* theremin-b1.jpg in Resources */,
 				F8BD458F1A7EC47000535821 /* LaunchScreen.xib in Resources */,
 				F8BD458C1A7EC47000535821 /* Images.xcassets in Resources */,
@@ -426,12 +439,15 @@
 				F8BD45A81A7ED3BE00535821 /* GridViewController.swift in Sources */,
 				F8BD45871A7EC47000535821 /* ViewController.m in Sources */,
 				F8BD45841A7EC47000535821 /* AppDelegate.m in Sources */,
+				3738E6B71AD37DCA008CA859 /* PlayButton.swift in Sources */,
 				F84BF2481A83CD7E0007686D /* RangeSlideController.swift in Sources */,
+				3738E6B51AD37A9E008CA859 /* RecordButton.swift in Sources */,
 				E96B543F1AB622D900A4E34F /* record.swift in Sources */,
 				E951EF191ABB6E2100686C57 /* recData.swift in Sources */,
 				F8BD45811A7EC47000535821 /* main.m in Sources */,
 				F84581451A882C6600DCBFEA /* InstrumentViewController.swift in Sources */,
 				F83822D91A9E3FEE00DA84CD /* KnobControl.swift in Sources */,
+				3738E6B31AD36D23008CA859 /* RecordViewController.swift in Sources */,
 				E947E1611AA676DE004DAA9B /* GridLineView.swift in Sources */,
 				E95F1E0D1A9255610067536B /* RangeViewContainerController.swift in Sources */,
 			);

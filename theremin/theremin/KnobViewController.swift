@@ -16,18 +16,22 @@ class KnobViewController: InstrumentViewController {
     var chorus: Float = 0
     var tremolo: Float = 0
     var gain: Float = 0
+    var quantize: Float = 0
     
     /** All of the **/
     var knobs = [String:Knob]()
-    var knob_ids = ["vibrato", "tremolo"]
+    var knob_ids = ["vibrato", "tremolo", "quantize"]
     
     /** Placeholder Views for knobs **/
     @IBOutlet var vibrato_placeholder: UIView!
     @IBOutlet var tremolo_placeholder: UIView!
+    @IBOutlet var quantize_placeholder: UIView!
+
     
     /** Labels for the current values of each knob **/
     @IBOutlet var vibrato_value: UILabel!
     @IBOutlet var tremolo_value: UILabel!
+    @IBOutlet var quantize_value: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,6 +73,8 @@ class KnobViewController: InstrumentViewController {
                 return vibrato_placeholder
             case "tremolo":
                 return tremolo_placeholder
+            case "quantize":
+                return quantize_placeholder
             default:
                 return nil
         }
@@ -81,6 +87,8 @@ class KnobViewController: InstrumentViewController {
                 return vibrato
             case "tremolo":
                 return tremolo
+            case "quantize":
+                return quantize;
             default:
                 return nil
         }
