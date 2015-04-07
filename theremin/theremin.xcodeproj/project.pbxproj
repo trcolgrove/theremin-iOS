@@ -8,10 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		3703FACE1A8E727C009B8783 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3703FACD1A8E727C009B8783 /* CircleView.swift */; };
+		3738E6B31AD36D23008CA859 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3738E6B21AD36D23008CA859 /* RecordViewController.swift */; };
+		3738E6B71AD37DCA008CA859 /* PlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3738E6B61AD37DCA008CA859 /* PlayButton.swift */; };
+		3738E6BA1AD3A11D008CA859 /* play-button-free-record.png in Resources */ = {isa = PBXBuildFile; fileRef = 3738E6B81AD3A11D008CA859 /* play-button-free-record.png */; };
+		3738E6BB1AD3A11D008CA859 /* play-button-looper.png in Resources */ = {isa = PBXBuildFile; fileRef = 3738E6B91AD3A11D008CA859 /* play-button-looper.png */; };
+		3738E6BD1AD3A2F3008CA859 /* record-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 3738E6BC1AD3A2F3008CA859 /* record-button.png */; };
+		3738E6BF1AD3B10D008CA859 /* pause-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 3738E6BE1AD3B10D008CA859 /* pause-button.png */; };
+		3738E6C11AD42817008CA859 /* record-in-progress.png in Resources */ = {isa = PBXBuildFile; fileRef = 3738E6C01AD42817008CA859 /* record-in-progress.png */; };
 		375D15791AA81894004C1100 /* phi hive.png in Resources */ = {isa = PBXBuildFile; fileRef = 375D15781AA81894004C1100 /* phi hive.png */; };
 		375D157B1AA81A08004C1100 /* phi hive smaller.png in Resources */ = {isa = PBXBuildFile; fileRef = 375D157A1AA81A08004C1100 /* phi hive smaller.png */; };
 		37842A521AA7AF65002873B6 /* simpleTremolo.pd in Resources */ = {isa = PBXBuildFile; fileRef = 37842A501AA7AF65002873B6 /* simpleTremolo.pd */; };
 		37842A531AA7AF65002873B6 /* simpleVibrato.pd in Resources */ = {isa = PBXBuildFile; fileRef = 37842A511AA7AF65002873B6 /* simpleVibrato.pd */; };
+		37A4B0B21AD3606800618244 /* theremin-inst-record.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A4B0B11AD3606800618244 /* theremin-inst-record.png */; };
 		B1D07046291BC940EC75CD40 /* libPods-theremin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8004AE9946D819307EE2E6D8 /* libPods-theremin.a */; };
 		E90742571A8AD432009088E0 /* note_slider.png in Resources */ = {isa = PBXBuildFile; fileRef = E90742561A8AD432009088E0 /* note_slider.png */; };
 		E947E1611AA676DE004DAA9B /* GridLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E947E1601AA676DE004DAA9B /* GridLineView.swift */; };
@@ -61,10 +69,18 @@
 
 /* Begin PBXFileReference section */
 		3703FACD1A8E727C009B8783 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		3738E6B21AD36D23008CA859 /* RecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
+		3738E6B61AD37DCA008CA859 /* PlayButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayButton.swift; sourceTree = "<group>"; };
+		3738E6B81AD3A11D008CA859 /* play-button-free-record.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play-button-free-record.png"; sourceTree = "<group>"; };
+		3738E6B91AD3A11D008CA859 /* play-button-looper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play-button-looper.png"; sourceTree = "<group>"; };
+		3738E6BC1AD3A2F3008CA859 /* record-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "record-button.png"; sourceTree = "<group>"; };
+		3738E6BE1AD3B10D008CA859 /* pause-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pause-button.png"; sourceTree = "<group>"; };
+		3738E6C01AD42817008CA859 /* record-in-progress.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "record-in-progress.png"; sourceTree = "<group>"; };
 		375D15781AA81894004C1100 /* phi hive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phi hive.png"; sourceTree = "<group>"; };
 		375D157A1AA81A08004C1100 /* phi hive smaller.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phi hive smaller.png"; sourceTree = "<group>"; };
-		37842A501AA7AF65002873B6 /* simpleTremolo.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = simpleTremolo.pd; sourceTree = "<group>"; };
-		37842A511AA7AF65002873B6 /* simpleVibrato.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = simpleVibrato.pd; sourceTree = "<group>"; };
+		37842A501AA7AF65002873B6 /* simpleTremolo.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = simpleTremolo.pd; path = theremin/simpleTremolo.pd; sourceTree = "<group>"; };
+		37842A511AA7AF65002873B6 /* simpleVibrato.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = simpleVibrato.pd; path = theremin/simpleVibrato.pd; sourceTree = "<group>"; };
+		37A4B0B11AD3606800618244 /* theremin-inst-record.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "theremin-inst-record.png"; sourceTree = "<group>"; };
 		386C355754CEC498073BC781 /* Pods-theremin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-theremin.release.xcconfig"; path = "Pods/Target Support Files/Pods-theremin/Pods-theremin.release.xcconfig"; sourceTree = "<group>"; };
 		8004AE9946D819307EE2E6D8 /* libPods-theremin.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-theremin.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9248A05E5AC8D6B8EE1E5BF /* Pods-theremin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-theremin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-theremin/Pods-theremin.debug.xcconfig"; sourceTree = "<group>"; };
@@ -106,7 +122,7 @@
 		F8BD45941A7EC47000535821 /* thereminTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = thereminTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8BD45991A7EC47000535821 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F8BD459A1A7EC47000535821 /* thereminTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = thereminTests.m; sourceTree = "<group>"; };
-		F8BD45A41A7EC9C900535821 /* theremin.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = theremin.pd; sourceTree = "<group>"; };
+		F8BD45A41A7EC9C900535821 /* theremin.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = theremin.pd; path = theremin/theremin.pd; sourceTree = "<group>"; };
 		F8BD45A61A7ED3BE00535821 /* theremin-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "theremin-Bridging-Header.h"; sourceTree = "<group>"; };
 		F8BD45A71A7ED3BE00535821 /* GridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -130,6 +146,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3723562E1AD304A9004ED2CB /* patches */ = {
+			isa = PBXGroup;
+			children = (
+				F8BD45A41A7EC9C900535821 /* theremin.pd */,
+				37842A501AA7AF65002873B6 /* simpleTremolo.pd */,
+				37842A511AA7AF65002873B6 /* simpleVibrato.pd */,
+			);
+			name = patches;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		4AC4B1454749428910D21FC2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +177,12 @@
 		F845813F1A87D87F00DCBFEA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				3738E6C01AD42817008CA859 /* record-in-progress.png */,
+				3738E6B81AD3A11D008CA859 /* play-button-free-record.png */,
+				3738E6BC1AD3A2F3008CA859 /* record-button.png */,
+				3738E6B91AD3A11D008CA859 /* play-button-looper.png */,
+				37A4B0B11AD3606800618244 /* theremin-inst-record.png */,
+				375D157A1AA81A08004C1100 /* phi hive smaller.png */,
 				375D15781AA81894004C1100 /* phi hive.png */,
 				F8548AFA1A9150DD00DDE538 /* theremin-grid.png */,
 				F83822D61A9E3AF700DA84CD /* theremin-inst.png */,
@@ -161,6 +194,7 @@
 				F84581551A88529700DCBFEA /* theremin-appicon-29x29.png */,
 				F84581531A88528C00DCBFEA /* theremin-appicon-58x58.png */,
 				F845815B1A885AA100DCBFEA /* theremin-appicon-80x80.png */,
+				3738E6BE1AD3B10D008CA859 /* pause-button.png */,
 				F84581611A885AF800DCBFEA /* theremin-appicon152x152.png */,
 				F84581511A88528300DCBFEA /* theremin-appicon180x180.png */,
 				F845814D1A8851F700DCBFEA /* theremin-appicon-40x40.png */,
@@ -174,10 +208,8 @@
 			isa = PBXGroup;
 			children = (
 				F8548AFE1A92774300DDE538 /* KeyTableViewController.swift */,
+				3738E6B21AD36D23008CA859 /* RecordViewController.swift */,
 				F8BD45A71A7ED3BE00535821 /* GridViewController.swift */,
-				E96B543E1AB622D900A4E34F /* record.swift */,
-				E947E1601AA676DE004DAA9B /* GridLineView.swift */,
-				3703FACD1A8E727C009B8783 /* CircleView.swift */,
 				F84581441A882C6600DCBFEA /* InstrumentViewController.swift */,
 				F84BF2491A83CD990007686D /* KnobViewController.swift */,
 				F8BD45851A7EC47000535821 /* ViewController.h */,
@@ -185,7 +217,6 @@
 				F821FD931AD1E75100D58093 /* SettingsViewController.swift */,
 				F8BD45861A7EC47000535821 /* ViewController.m */,
 				E95F1E0C1A9255610067536B /* RangeViewContainerController.swift */,
-				E951EF181ABB6E2100686C57 /* recData.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -213,20 +244,21 @@
 		F8BD457D1A7EC47000535821 /* theremin */ = {
 			isa = PBXGroup;
 			children = (
+				3723562E1AD304A9004ED2CB /* patches */,
 				F845813F1A87D87F00DCBFEA /* Images */,
-				F8BD45A41A7EC9C900535821 /* theremin.pd */,
-				37842A501AA7AF65002873B6 /* simpleTremolo.pd */,
-				37842A511AA7AF65002873B6 /* simpleVibrato.pd */,
 				F8BD45821A7EC47000535821 /* AppDelegate.h */,
 				F8BD45831A7EC47000535821 /* AppDelegate.m */,
+				3703FACD1A8E727C009B8783 /* CircleView.swift */,
+				3738E6B61AD37DCA008CA859 /* PlayButton.swift */,
+				E947E1601AA676DE004DAA9B /* GridLineView.swift */,
+				E96B543E1AB622D900A4E34F /* record.swift */,
+				E951EF181ABB6E2100686C57 /* recData.swift */,
+				F83822D81A9E3FEE00DA84CD /* KnobControl.swift */,
 				F84581461A88355300DCBFEA /* ViewControllers */,
 				F8BD45881A7EC47000535821 /* Main.storyboard */,
-				F83822D81A9E3FEE00DA84CD /* KnobControl.swift */,
 				F8BD458B1A7EC47000535821 /* Images.xcassets */,
 				F8BD458D1A7EC47000535821 /* LaunchScreen.xib */,
-				375D157A1AA81A08004C1100 /* phi hive smaller.png */,
 				F8BD457E1A7EC47000535821 /* Supporting Files */,
-				F8BD45A61A7ED3BE00535821 /* theremin-Bridging-Header.h */,
 			);
 			path = theremin;
 			sourceTree = "<group>";
@@ -234,6 +266,7 @@
 		F8BD457E1A7EC47000535821 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F8BD45A61A7ED3BE00535821 /* theremin-Bridging-Header.h */,
 				F8BD457F1A7EC47000535821 /* Info.plist */,
 				F8BD45801A7EC47000535821 /* main.m */,
 			);
@@ -308,11 +341,11 @@
 				TargetAttributes = {
 					F8BD457A1A7EC47000535821 = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = 678N83CKYU;
+						DevelopmentTeam = 67255TZUTK;
 					};
 					F8BD45931A7EC47000535821 = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = 678N83CKYU;
+						DevelopmentTeam = 67255TZUTK;
 						TestTargetID = F8BD457A1A7EC47000535821;
 					};
 				};
@@ -341,7 +374,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3738E6BA1AD3A11D008CA859 /* play-button-free-record.png in Resources */,
 				F8B10C241AA7B54F00ED7169 /* theremin-mid-grid.png in Resources */,
+				3738E6BF1AD3B10D008CA859 /* pause-button.png in Resources */,
+				3738E6BD1AD3A2F3008CA859 /* record-button.png in Resources */,
 				F84581541A88528C00DCBFEA /* theremin-appicon-58x58.png in Resources */,
 				F8BD458A1A7EC47000535821 /* Main.storyboard in Resources */,
 				37842A531AA7AF65002873B6 /* simpleVibrato.pd in Resources */,
@@ -355,13 +391,16 @@
 				F84581431A87EC4700DCBFEA /* wave.png in Resources */,
 				375D15791AA81894004C1100 /* phi hive.png in Resources */,
 				F84581621A885AF800DCBFEA /* theremin-appicon152x152.png in Resources */,
+				37A4B0B21AD3606800618244 /* theremin-inst-record.png in Resources */,
 				F845813E1A87D86600DCBFEA /* theremin-b1.jpg in Resources */,
 				F8BD458F1A7EC47000535821 /* LaunchScreen.xib in Resources */,
 				F8BD458C1A7EC47000535821 /* Images.xcassets in Resources */,
 				F83822D71A9E3AF700DA84CD /* theremin-inst.png in Resources */,
+				3738E6BB1AD3A11D008CA859 /* play-button-looper.png in Resources */,
 				F845814E1A8851F700DCBFEA /* theremin-appicon-40x40.png in Resources */,
 				E90742571A8AD432009088E0 /* note_slider.png in Resources */,
 				F84581521A88528300DCBFEA /* theremin-appicon180x180.png in Resources */,
+				3738E6C11AD42817008CA859 /* record-in-progress.png in Resources */,
 				F821FD921AD1E3F800D58093 /* theremin-inst2.png in Resources */,
 				F84581561A88529700DCBFEA /* theremin-appicon-29x29.png in Resources */,
 			);
@@ -420,6 +459,7 @@
 				F8BD45A81A7ED3BE00535821 /* GridViewController.swift in Sources */,
 				F8BD45871A7EC47000535821 /* ViewController.m in Sources */,
 				F8BD45841A7EC47000535821 /* AppDelegate.m in Sources */,
+				3738E6B71AD37DCA008CA859 /* PlayButton.swift in Sources */,
 				F84BF2481A83CD7E0007686D /* RangeSlideController.swift in Sources */,
 				E96B543F1AB622D900A4E34F /* record.swift in Sources */,
 				F821FD941AD1E75100D58093 /* SettingsViewController.swift in Sources */,
@@ -427,6 +467,7 @@
 				F8BD45811A7EC47000535821 /* main.m in Sources */,
 				F84581451A882C6600DCBFEA /* InstrumentViewController.swift in Sources */,
 				F83822D91A9E3FEE00DA84CD /* KnobControl.swift in Sources */,
+				3738E6B31AD36D23008CA859 /* RecordViewController.swift in Sources */,
 				E947E1611AA676DE004DAA9B /* GridLineView.swift in Sources */,
 				E95F1E0D1A9255610067536B /* RangeViewContainerController.swift in Sources */,
 			);

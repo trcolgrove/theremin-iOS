@@ -34,22 +34,22 @@ class InstrumentViewController: UIViewController {
     
     var key_popover: KeyTableViewController?
     
-
     @IBOutlet weak var y_effect: UIButton!
     
     //var leftmost_note = "C"
+
     let num_oct: Int = 4
     let bottom_note: CGFloat = 59.0
     
     var grid: GridViewController!
     var range_controller: RangeViewContainerController!
+    
+    
+    var grid_lines_showing: Bool = false
    
     
     @IBOutlet var note_btn: UIButton?
     @IBOutlet var key_btn: UIButton?
-    @IBOutlet weak var grid_switch: UISwitch?
-    @IBOutlet weak var rec_button: UIButton!
-    @IBOutlet weak var rec_play: UIButton!
     
     override func viewDidLoad() {
         y_effect.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI_2));
@@ -59,20 +59,27 @@ class InstrumentViewController: UIViewController {
         
     }
     
-    @IBAction func playButtonPressed(sender: AnyObject) {
+    @IBAction func toggleGridLines(sender: UIButton) {
+        if (grid_lines_showing) {
+            sender.backgroundColor = UIColor(white: 137/255, alpha: 1.0)
+            grid_lines_showing = false
+            grid.removeGridLines()
+        } else {
+            sender.backgroundColor = UIColor(white: 0.3, alpha: 1.0)
+            grid.drawGridLines()
+            grid_lines_showing = true
+        }
+    }
+    
+    func playButtonPressed(sender: UIView) {
         grid.playRecording()
     }
     
-    @IBAction func switchChanged(sender: UISwitch) {
-        if(sender.on){
-            grid.gridOn()
-        }
-        else{
-            grid.gridOff()
-        }
+    func stopButtonPressed(sender: UIView) {
+        grid.stopRecording()
     }
    
-    @IBAction func recStart(sender: AnyObject) {
+    func recordButtonPressed(sender: UIView) {
         if(isRecording){
             isRecording = false
             grid.stopRecording()
@@ -89,7 +96,13 @@ class InstrumentViewController: UIViewController {
         insertKeysToMap()
     }
 
-    //set up intrument view as a delegate of subcontrollers
+    override func viewDidLoad() {
+        if let y = key_btn? {
+                self.view.bringSubviewToFront(y)
+        }
+    }
+    
+    //set up instrument view as a delegate of subcontrollers
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!){
         if segue.identifier == "init_range"{
             range_controller = segue.destinationViewController as RangeViewContainerController
@@ -110,6 +123,8 @@ class InstrumentViewController: UIViewController {
             note_menu.keys = note_names
             note_menu.parent = self
         } else if (segue.identifier == "knob_init") {
+            //nothing to do here
+        } else if (segue.identifier == "record_init") {
             //nothing to do here
         } else {
             println("Internal Error: unknown segue.identifier \(segue.identifier) in InstrumentViewController.prepareForSegue")
@@ -149,6 +164,7 @@ class InstrumentViewController: UIViewController {
             self.key = key
             note_btn?.setTitle("\(key_note)", forState: UIControlState.Normal)
             key_btn?.setTitle("\(key_type)", forState: UIControlState.Normal)
+            self.view.bringSubviewToFront(key_btn!)
             grid.updateKey(key, notes: notes)
             range_controller.updateKey(key, notes: notes)
         } else {
