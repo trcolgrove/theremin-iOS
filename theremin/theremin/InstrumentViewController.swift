@@ -66,7 +66,7 @@ class InstrumentViewController: UIViewController {
     }
     
     func stopButtonPressed(sender: UIView) {
-        //do something
+        grid.stopRecording()
     }
    
     func recordButtonPressed(sender: UIView) {

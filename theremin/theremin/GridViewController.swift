@@ -269,9 +269,11 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     }
     
     override func touchesCancelled(touches: NSSet, withEvent: UIEvent) {
+        // Multitouching gestures got in the way
         if touches.count == 4 || touches.count == 5 {
-            let alert: UIAlertView = UIAlertView(title: "Oops!", message: "Looks like you have multi tasking gestures enabled, which just interfered with your playing.  You can disable them at Settings > General > Multitasking Gestures", delegate: nil, cancelButtonTitle: "OK")
-            alert.show()
+            let alert: UIAlertController = UIAlertController(title: "Oops!", message: "Looks like you have multitasking gestures enabled, and it just interfered with your playing. You can fix this problem by disabling them at Settings > General > Multitasking Gestures", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
         }
         for touch in touches {
             if let index = note_dict[pointerToString(touch)] {

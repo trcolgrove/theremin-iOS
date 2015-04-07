@@ -14,6 +14,7 @@
 		3738E6BB1AD3A11D008CA859 /* play-button-looper.png in Resources */ = {isa = PBXBuildFile; fileRef = 3738E6B91AD3A11D008CA859 /* play-button-looper.png */; };
 		3738E6BD1AD3A2F3008CA859 /* record-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 3738E6BC1AD3A2F3008CA859 /* record-button.png */; };
 		3738E6BF1AD3B10D008CA859 /* pause-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 3738E6BE1AD3B10D008CA859 /* pause-button.png */; };
+		3738E6C11AD42817008CA859 /* record-in-progress.png in Resources */ = {isa = PBXBuildFile; fileRef = 3738E6C01AD42817008CA859 /* record-in-progress.png */; };
 		375D15791AA81894004C1100 /* phi hive.png in Resources */ = {isa = PBXBuildFile; fileRef = 375D15781AA81894004C1100 /* phi hive.png */; };
 		375D157B1AA81A08004C1100 /* phi hive smaller.png in Resources */ = {isa = PBXBuildFile; fileRef = 375D157A1AA81A08004C1100 /* phi hive smaller.png */; };
 		37842A521AA7AF65002873B6 /* simpleTremolo.pd in Resources */ = {isa = PBXBuildFile; fileRef = 37842A501AA7AF65002873B6 /* simpleTremolo.pd */; };
@@ -73,6 +74,7 @@
 		3738E6B91AD3A11D008CA859 /* play-button-looper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play-button-looper.png"; sourceTree = "<group>"; };
 		3738E6BC1AD3A2F3008CA859 /* record-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "record-button.png"; sourceTree = "<group>"; };
 		3738E6BE1AD3B10D008CA859 /* pause-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pause-button.png"; sourceTree = "<group>"; };
+		3738E6C01AD42817008CA859 /* record-in-progress.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "record-in-progress.png"; sourceTree = "<group>"; };
 		375D15781AA81894004C1100 /* phi hive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phi hive.png"; sourceTree = "<group>"; };
 		375D157A1AA81A08004C1100 /* phi hive smaller.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phi hive smaller.png"; sourceTree = "<group>"; };
 		37842A501AA7AF65002873B6 /* simpleTremolo.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = simpleTremolo.pd; path = theremin/simpleTremolo.pd; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 		F845813F1A87D87F00DCBFEA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				3738E6C01AD42817008CA859 /* record-in-progress.png */,
 				3738E6B81AD3A11D008CA859 /* play-button-free-record.png */,
 				3738E6BC1AD3A2F3008CA859 /* record-button.png */,
 				3738E6B91AD3A11D008CA859 /* play-button-looper.png */,
@@ -394,6 +397,7 @@
 				F845814E1A8851F700DCBFEA /* theremin-appicon-40x40.png in Resources */,
 				E90742571A8AD432009088E0 /* note_slider.png in Resources */,
 				F84581521A88528300DCBFEA /* theremin-appicon180x180.png in Resources */,
+				3738E6C11AD42817008CA859 /* record-in-progress.png in Resources */,
 				F821FD921AD1E3F800D58093 /* theremin-inst2.png in Resources */,
 				F84581561A88529700DCBFEA /* theremin-appicon-29x29.png in Resources */,
 			);

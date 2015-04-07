@@ -29,12 +29,14 @@ class RecordViewController : UIViewController {
             record_image.image = UIImage(named: "record-button.png")
         } else {
             currently_recording = true
-            record_image.image = UIImage(named: "pause-button.png")
+            record_image.image = UIImage(named: "record-in-progress.png")
         }
         (parentViewController as InstrumentViewController).recordButtonPressed(sender)
     }
     
     @IBAction func stopButtonPressed(sender: UIView) {
+        record_image.image = UIImage(named: "record-button.png")
+        currently_recording = false
         (parentViewController as InstrumentViewController).stopButtonPressed(sender)
     }
     
