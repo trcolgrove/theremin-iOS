@@ -33,7 +33,10 @@ class InstrumentViewController: UIViewController {
     var key: String = "CMajor"
     
     var key_popover: KeyTableViewController?
+    
 
+    @IBOutlet weak var y_effect: UIButton!
+    
     //var leftmost_note = "C"
     let num_oct: Int = 4
     let bottom_note: CGFloat = 59.0
@@ -48,7 +51,13 @@ class InstrumentViewController: UIViewController {
     @IBOutlet weak var rec_button: UIButton!
     @IBOutlet weak var rec_play: UIButton!
     
+    override func viewDidLoad() {
+        y_effect.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI_2));
+    }
     
+    @IBAction func changeYEffect(sender: AnyObject) {
+        
+    }
     
     @IBAction func playButtonPressed(sender: AnyObject) {
         grid.playRecording()
@@ -163,9 +172,6 @@ class InstrumentViewController: UIViewController {
         var alert = UIAlertController(title: "Error", message: "Unsupported Key", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
-    }
-    
-    override func viewDidLoad() {
     }
     
     func insertKeysToMap() {

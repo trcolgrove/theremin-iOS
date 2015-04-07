@@ -24,7 +24,7 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" id="GeQ-GH-2Dz" userLabel="KnobView">
-                                <rect key="frame" x="470" y="646" width="265" height="76"/>
+                                <rect key="frame" x="608" y="645" width="168" height="77"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <segue destination="wgk-zg-vAu" kind="embed" identifier="knob_init" id="gHe-sg-HLx"/>
@@ -68,7 +68,7 @@
                                 </connections>
                             </button>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="0ll-Ky-Wim">
-                                <rect key="frame" x="643" y="668" width="51" height="31"/>
+                                <rect key="frame" x="843" y="668" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.53731052229929377" green="0.86972331187782759" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
@@ -76,7 +76,7 @@
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grid Lines" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FSp-RE-AaC">
-                                <rect key="frame" x="628" y="699" width="79" height="21"/>
+                                <rect key="frame" x="828" y="701" width="79" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -114,6 +114,24 @@
                                     <action selector="playButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YOJ-38-2Hz"/>
                                 </connections>
                             </button>
+                            <containerView opaque="NO" contentMode="scaleToFill" id="u7m-rv-M7Q">
+                                <rect key="frame" x="334" y="645" width="627" height="77"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="AZs-lZ-Rpy" kind="embed" id="t3J-QQ-wzg"/>
+                                </connections>
+                            </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="I8G-uX-1ga">
+                                <rect key="frame" x="837" y="352" width="223" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Volume">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="changeYEffect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bwY-fx-NuW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -123,11 +141,12 @@
                         <outlet property="key_btn" destination="RPa-NE-PSi" id="USD-HO-tuy"/>
                         <outlet property="note_btn" destination="jOY-FE-ASg" id="IYS-aA-4sr"/>
                         <outlet property="rec_play" destination="PvO-6E-hGd" id="ZNg-eU-COI"/>
+                        <outlet property="y_effect" destination="I8G-uX-1ga" id="svW-4C-iBN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="90" y="452"/>
+            <point key="canvasLocation" x="-158" y="469"/>
         </scene>
         <!--Grid View Controller-->
         <scene sceneID="S0n-c3-isj">
@@ -238,13 +257,9 @@
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="wgk-zg-vAu" customClass="KnobViewController" customModule="theremin" sceneMemberID="viewController">
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7vo-qt-NnJ">
-                        <rect key="frame" x="0.0" y="0.0" width="265" height="76"/>
+                        <rect key="frame" x="0.0" y="0.0" width="168" height="77"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="theremin-inst.png" id="vbx-2W-PfS">
-                                <rect key="frame" x="-469" y="-644" width="1042" height="768"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vibrato" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="68d-aR-eUZ">
                                 <rect key="frame" x="20" y="53" width="55" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -288,7 +303,7 @@
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
                     <connections>
@@ -331,9 +346,93 @@
             </objects>
             <point key="canvasLocation" x="1293.5" y="377.5"/>
         </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="RdO-El-Eaj">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="AZs-lZ-Rpy" customClass="SettingsViewController" customModule="theremin" sceneMemberID="viewController">
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="H3i-CQ-XCo">
+                        <rect key="frame" x="0.0" y="0.0" width="627" height="77"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fuM-cl-V4k">
+                                <rect key="frame" x="135" y="43" width="90" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Clear notes">
+                                    <color key="titleShadowColor" red="0.70703125" green="0.70703125" blue="0.70703125" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="clearAllNotes" destination="AZs-lZ-Rpy" eventType="touchUpInside" id="u57-Py-YrL"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" id="73D-kB-dsZ">
+                                <rect key="frame" x="237" y="11" width="374" height="56"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8qC-kz-tcP">
+                                        <rect key="frame" x="250" y="13" width="38" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Wave">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="changeWave" destination="AZs-lZ-Rpy" eventType="touchUpInside" id="j2t-9B-xxd"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mYT-KC-hHs">
+                                        <rect key="frame" x="195" y="13" width="30" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Key">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="changeKey" destination="AZs-lZ-Rpy" eventType="touchUpInside" id="4Gs-iD-Eam"/>
+                                        </connections>
+                                    </button>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="8Jg-FN-7vr">
+                                        <rect key="frame" x="314" y="5" width="51" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </switch>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Looper" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1tz-yz-iNW">
+                                        <rect key="frame" x="311" y="35" width="55" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="RfN-3g-QbI">
+                                <rect key="frame" x="12" y="11" width="112" height="56"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="zba-Mp-GWf">
+                                <rect key="frame" x="135" y="11" width="90" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Gridlines">
+                                    <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addGridlines" destination="AZs-lZ-Rpy" eventType="touchUpInside" id="TWO-Jm-1fA"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.154245205026455" green="0.154245205026455" blue="0.154245205026455" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <toolbarItems/>
+                    <connections>
+                        <outlet property="loop_toggle" destination="8Jg-FN-7vr" id="c58-05-dHF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="85r-ue-cEW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1300.5" y="1016.5"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="theremin-inst.png" width="1024" height="765"/>
         <image name="theremin-inst2.png" width="1024" height="765"/>
         <image name="theremin-mid-grid.png" width="3553" height="622"/>
     </resources>
