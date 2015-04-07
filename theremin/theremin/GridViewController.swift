@@ -269,6 +269,10 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     }
     
     override func touchesCancelled(touches: NSSet, withEvent: UIEvent) {
+        if touches.count == 4 || touches.count == 5 {
+            let alert: UIAlertView = UIAlertView(title: "Oops!", message: "Looks like you have multi tasking gestures enabled, which just interfered with your playing.  You can disable them at Settings > General > Multitasking Gestures", delegate: nil, cancelButtonTitle: "OK")
+            alert.show()
+        }
         for touch in touches {
             if let index = note_dict[pointerToString(touch)] {
                 deleteNote(index)
