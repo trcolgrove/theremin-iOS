@@ -341,11 +341,11 @@
 				TargetAttributes = {
 					F8BD457A1A7EC47000535821 = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = 67255TZUTK;
+						DevelopmentTeam = 678N83CKYU;
 					};
 					F8BD45931A7EC47000535821 = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = 67255TZUTK;
+						DevelopmentTeam = 678N83CKYU;
 						TestTargetID = F8BD457A1A7EC47000535821;
 					};
 				};

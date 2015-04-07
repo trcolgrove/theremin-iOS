@@ -52,7 +52,11 @@ class InstrumentViewController: UIViewController {
     @IBOutlet var key_btn: UIButton?
     
     override func viewDidLoad() {
-        y_effect.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI_2));
+        //y_effect.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI_2));
+        if let y = key_btn? {
+            self.view.bringSubviewToFront(y)
+        }
+
     }
     
     @IBAction func changeYEffect(sender: AnyObject) {
@@ -76,7 +80,13 @@ class InstrumentViewController: UIViewController {
     }
     
     func stopButtonPressed(sender: UIView) {
-        grid.stopRecording()
+        if(isRecording){
+             isRecording = false
+             grid.stopRecording()
+        }
+        else{
+            grid.stopPlayback()
+        }
     }
    
     func recordButtonPressed(sender: UIView) {
@@ -96,11 +106,6 @@ class InstrumentViewController: UIViewController {
         insertKeysToMap()
     }
 
-    override func viewDidLoad() {
-        if let y = key_btn? {
-                self.view.bringSubviewToFront(y)
-        }
-    }
     
     //set up instrument view as a delegate of subcontrollers
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!){
@@ -243,6 +248,6 @@ class InstrumentViewController: UIViewController {
     }
     
     @IBAction func deleteAllNotes(sender: AnyObject) {
-        grid.deleteAllNotes(sender)
+        grid.deleteAllNotes()
     }
 }

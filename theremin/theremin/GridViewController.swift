@@ -19,7 +19,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     let MAX_NOTES = 5
     let default_velocity: Int = 40
     var circles: [CircleView] = []
-    
+    var playingRecording = false;
     // Invariant: If the bool at index i is true if index i is currently being used, otherwise false
     var note_index_used: [Bool] = [false, false, false, false, false]
     
@@ -37,6 +37,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     var note_dict : Dictionary<String, Int> = [:]
     
 
+    var timers : [NSTimer] = []
     var recording : [recData.sample]?
     var filter_index: Int = -1
     
@@ -111,7 +112,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         return -1
     }
     
-    override func deleteAllNotes(sender: AnyObject) {
+    func deleteAllNotes() {
         for i in 0...4 {
             if (note_index_used[i]) {
                 deleteNote(i)
@@ -354,6 +355,19 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         deleteNote(to_delete)
     }
 
+    
+    func pausePlayback(){
+    
+    }
+    
+    func stopPlayback(){
+        for timer in timers {
+            timer.invalidate()
+            self.deleteAllNotes()
+        }
+    }
+    
+    
     /* public function, plays back the current array of recorded samples */
     func playRecording(){
         for s in self.recording!{
@@ -361,12 +375,15 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
             var timer = NSTimer()
             if(s.cmd == recData.command.ON){
                 timer = NSTimer.scheduledTimerWithTimeInterval(s.elapsed_time, target: self, selector : Selector("createNoteWithIndex:"), userInfo: params, repeats: false)
+                timers.append(timer)
             }
             else if(s.cmd == recData.command.OFF){
                 timer = NSTimer.scheduledTimerWithTimeInterval(s.elapsed_time, target: self, selector : Selector("deleteNoteWithIndex:"), userInfo: params, repeats: false)
+                timers.append(timer)
             }
             else if(s.cmd == recData.command.HOLD){
                 timer = NSTimer.scheduledTimerWithTimeInterval(s.elapsed_time, target: self, selector : Selector("updateNoteWithIndex:"), userInfo: params, repeats: false)
+                timers.append(timer)
             }
             else if(s.cmd == recData.command.SUS){
                 
@@ -374,7 +391,6 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
             NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes) // use this so the NSTimer can execute concurrently with UIChanges
         }
     }
-
 }
 
 
