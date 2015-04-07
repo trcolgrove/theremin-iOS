@@ -10,12 +10,36 @@ import Foundation
 import UIKit
 
 class RecordViewController : UIViewController {
+    
+    @IBOutlet var record_image: UIImageView!
 
+    var currently_recording: Bool = false
+    
     required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
     
-    @IBOutlet var record: UIButton?
+    override func viewDidLoad() {
+        
+    }
     
+    @IBAction func recordButtonPressed(sender: UIView) {
+        if (currently_recording) {
+            currently_recording = false
+            record_image.image = UIImage(named: "record-button.png")
+        } else {
+            currently_recording = true
+            record_image.image = UIImage(named: "pause-button.png")
+        }
+        (parentViewController as InstrumentViewController).recordButtonPressed(sender)
+    }
+    
+    @IBAction func stopButtonPressed(sender: UIView) {
+        (parentViewController as InstrumentViewController).stopButtonPressed(sender)
+    }
+    
+    @IBAction func playButtonPressed(sender: UIView) {
+        (parentViewController as InstrumentViewController).playButtonPressed(sender)
+    }
     
 }

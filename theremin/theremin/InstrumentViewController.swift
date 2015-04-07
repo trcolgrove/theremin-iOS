@@ -46,8 +46,6 @@ class InstrumentViewController: UIViewController {
     
     @IBOutlet var note_btn: UIButton?
     @IBOutlet var key_btn: UIButton?
-    @IBOutlet weak var rec_button: UIButton!
-    @IBOutlet weak var rec_play: UIButton!
     
     
     
@@ -63,11 +61,15 @@ class InstrumentViewController: UIViewController {
         }
     }
     
-    @IBAction func playButtonPressed(sender: AnyObject) {
+    func playButtonPressed(sender: UIView) {
         grid.playRecording()
     }
+    
+    func stopButtonPressed(sender: UIView) {
+        //do something
+    }
    
-    @IBAction func recStart(sender: AnyObject) {
+    func recordButtonPressed(sender: UIView) {
         if(isRecording){
             isRecording = false
             grid.stopRecording()
@@ -90,7 +92,7 @@ class InstrumentViewController: UIViewController {
         }
     }
     
-    //set up intrument view as a delegate of subcontrollers
+    //set up instrument view as a delegate of subcontrollers
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!){
         if segue.identifier == "init_range"{
             range_controller = segue.destinationViewController as RangeViewContainerController
@@ -111,6 +113,8 @@ class InstrumentViewController: UIViewController {
             note_menu.keys = note_names
             note_menu.parent = self
         } else if (segue.identifier == "knob_init") {
+            //nothing to do here
+        } else if (segue.identifier == "record_init") {
             //nothing to do here
         } else {
             println("Internal Error: unknown segue.identifier \(segue.identifier) in InstrumentViewController.prepareForSegue")

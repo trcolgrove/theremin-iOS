@@ -101,6 +101,8 @@ class KnobViewController: InstrumentViewController {
                 return vibrato_value
             case "tremolo":
                 return tremolo_value
+            case "quantize":
+                return quantize_value
             default:
                 return nil
         }

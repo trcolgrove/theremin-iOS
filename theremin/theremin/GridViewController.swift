@@ -40,9 +40,6 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     var recording : [recData.sample]?
     var filter_index: Int = -1
     
-    //var circles_view : UIView!
-    @IBOutlet var grid_view: UIView!
-    
     var w: CGFloat = 0
     var h: CGFloat = 0
     
@@ -67,8 +64,8 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     }
     
     override func viewDidAppear(animated: Bool) {
-        w = grid_view.frame.size.width
-        h = grid_view.bounds.size.height
+        w = self.view.frame.size.width
+        h = self.view.frame.size.height
     }
     
     /*this function sets up delegation/communication between RangeViewContainerController and
@@ -175,14 +172,14 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         }
 
         //convert to grid controller view to find main "bounds" of view
-        var gv_pt = grid_view.convertPoint(CGPoint(x: loc.x, y: loc.y), fromView: grid_image)
+        var gv_pt = self.view.convertPoint(CGPoint(x: loc.x, y: loc.y), fromView: grid_image)
         
         //clipping bounds if not playback note
         if (!circles[index].is_playback) {
             gv_pt.x = gv_pt.x >= w ? w : gv_pt.x < 0 ? 0 : gv_pt.x
             gv_pt.y = gv_pt.y >= h ? h : gv_pt.y < 0 ? 0 : gv_pt.y
         }
-        let gi_pt = grid_image.convertPoint(gv_pt, fromView: grid_view)
+        let gi_pt = grid_image.convertPoint(gv_pt, fromView: self.view)
         let pitch = calculatePitch(gi_pt.x)
         PdBase.sendList([index, calculatePitch(gi_pt.x)], toReceiver: "pitch")
         PdBase.sendList([index, calculateAmplification(gi_pt.y)], toReceiver: "amp")
@@ -332,15 +329,14 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     /* private wrapper for updateNote, updates current note index for the purpose of recording*/
     func updateNoteWithIndex(timer: NSTimer){
         var userInfo = timer.userInfo as NSDictionary
-        // current_note = userInfo["index"] as Int
+        var index = userInfo["index"] as Int
         let pt = CGPoint(x: userInfo["x"] as CGFloat,y: userInfo["y"] as CGFloat)
-        //updateNote(current_note, loc: pt)
+        updateNote(index, loc: pt)
     }
     
     /* private wrapper for createNote, updates current note index for the purpose of recording */
     func createNoteWithIndex(timer: NSTimer){
         var userInfo = timer.userInfo as NSDictionary
-        //current_note = userInfo["index"] as Int
         let pt = CGPoint(x: userInfo["x"] as CGFloat,y: userInfo["y"] as CGFloat)
         createNote(pt, isPlayback: true)
     }

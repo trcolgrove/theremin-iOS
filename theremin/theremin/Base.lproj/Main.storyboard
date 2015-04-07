@@ -75,7 +75,7 @@
                                 <rect key="frame" x="301" y="662" width="149" height="75"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <segue destination="vtu-kk-1RY" kind="embed" id="SMU-Ic-071"/>
+                                    <segue destination="vtu-kk-1RY" kind="embed" identifier="record_init" id="SMU-Ic-071"/>
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jOY-FE-ASg">
@@ -170,7 +170,6 @@
                     <size key="freeformSize" width="870" height="547"/>
                     <connections>
                         <outlet property="grid_image" destination="fXl-ej-vLK" id="QQq-Qg-clT"/>
-                        <outlet property="grid_view" destination="Ctc-ha-SoO" id="VUx-Mz-JBM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d3h-QD-YeW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -334,6 +333,8 @@
                     </view>
                     <toolbarItems/>
                     <connections>
+                        <outlet property="quantize_placeholder" destination="H30-eg-aUA" id="kNN-bJ-ZbA"/>
+                        <outlet property="quantize_value" destination="lDc-zN-F3d" id="GNt-f5-elr"/>
                         <outlet property="tremolo_placeholder" destination="tcg-oX-JnQ" id="SMi-SY-3Ro"/>
                         <outlet property="tremolo_value" destination="adv-Po-h2O" id="r9d-qO-9tv"/>
                         <outlet property="vibrato_placeholder" destination="Gxx-ie-zeN" id="IAJ-vP-t2M"/>
@@ -376,7 +377,7 @@
         <!--Record View Controller-->
         <scene sceneID="FyC-7k-hxD">
             <objects>
-                <viewController id="vtu-kk-1RY" customClass="RecordViewController" sceneMemberID="viewController">
+                <viewController id="vtu-kk-1RY" customClass="RecordViewController" customModule="theremin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jjX-CR-u96">
                         <rect key="frame" x="0.0" y="0.0" width="149" height="75"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -388,12 +389,40 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="record-button.png" id="uQW-pI-o97">
                                         <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" none="YES" button="YES" image="YES"/>
+                                        </accessibility>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="deX-6O-9tX">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="recordButtonPressed:" destination="vtu-kk-1RY" eventType="touchUpInside" id="HoV-5a-F6k"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" none="YES" button="YES"/>
+                                </accessibility>
                             </view>
                             <view contentMode="scaleToFill" id="PCp-EI-skh" userLabel="Stop Button">
                                 <rect key="frame" x="59" y="15" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7h9-Yy-g4l">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="stopButtonPressed:" destination="vtu-kk-1RY" eventType="touchUpInside" id="jck-DO-feM"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" red="0.14901960780000001" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view contentMode="scaleToFill" id="ffh-C3-M0N" userLabel="Play Button" customClass="UIImageView">
@@ -404,6 +433,16 @@
                                         <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="htg-pF-ZP0">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="playButtonPressed:" destination="vtu-kk-1RY" eventType="touchUpInside" id="vhQ-Ta-I6V"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </view>
                         </subviews>
@@ -414,6 +453,9 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
+                    <connections>
+                        <outlet property="record_image" destination="uQW-pI-o97" id="Lvs-pg-Nmf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NxR-3r-hC6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -432,7 +474,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="PBq-Ia-CcA"/>
+        <segue reference="2E3-kX-41e"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>
