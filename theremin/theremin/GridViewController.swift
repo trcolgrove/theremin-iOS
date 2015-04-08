@@ -30,9 +30,11 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     // Keeps track of number of notes currently sounding
     var note_count = 0
     
-    var lines: [GridLineView] = []
+    var lines : [GridLineView] = []
     var recorder : recordingProtocol?
     let halfstep_width: CGFloat = 72.5
+    
+    var recordingIndex = 0;
     
     var note_dict : Dictionary<String, Int> = [:]
     
@@ -339,6 +341,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         var index = userInfo["index"] as Int
         let pt = CGPoint(x: userInfo["x"] as CGFloat,y: userInfo["y"] as CGFloat)
         updateNote(index, loc: pt)
+        recordingIndex++
     }
     
     /* private wrapper for createNote, updates current note index for the purpose of recording */
@@ -346,6 +349,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         var userInfo = timer.userInfo as NSDictionary
         let pt = CGPoint(x: userInfo["x"] as CGFloat,y: userInfo["y"] as CGFloat)
         createNote(pt, isPlayback: true)
+        recordingIndex++
     }
     
     /* private wrapper for deleteNote, updates current note index for the purpose of recording */
@@ -353,6 +357,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         var userInfo = timer.userInfo as NSDictionary
         let to_delete = userInfo["index"] as Int
         deleteNote(to_delete)
+        recordingIndex++
     }
 
     
