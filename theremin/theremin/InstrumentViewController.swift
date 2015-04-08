@@ -24,6 +24,8 @@ class InstrumentViewController: UIViewController {
     let note_names = [ "Cb", "C", "C#", "Db", "D", "D#", "Eb", "E", "E#", "Fb", "F", "F#", "Gb", "G", "G#", "Ab", "A", "A#", "Bb", "B", "B#"]
     
     let note_positions = ["C" : 0, "C#" : 1, "Db" : 1, "D" : 2, "D#" : 3, "Eb" : 3, "E" : 4, "Fb" : 4, "E#" : 5, "F" : 5, "F#" : 6, "Gb" : 6, "G" : 7, "G#" : 8, "Ab" : 8, "A" : 9, "A#" : 10, "Bb" : 10, "B" : 11, "B#" : 11, "Cb" : 11]
+    
+    let yeffects = ["Volume", "Tremolo", "Vibrato"]
 
     var isRecording = false
     var key_names = ["Major", "Minor"]
@@ -35,8 +37,6 @@ class InstrumentViewController: UIViewController {
     var key_popover: KeyTableViewController?
     
     @IBOutlet weak var y_effect: UIButton!
-    
-    //var leftmost_note = "C"
 
     let num_oct: Int = 4
     let bottom_note: CGFloat = 59.0
@@ -44,15 +44,15 @@ class InstrumentViewController: UIViewController {
     var grid: GridViewController!
     var range_controller: RangeViewContainerController!
     
-    
     var grid_lines_showing: Bool = false
-   
     
     @IBOutlet var note_btn: UIButton?
     @IBOutlet var key_btn: UIButton?
     
     override func viewDidLoad() {
-        //y_effect.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI_2));
+        if let y_button = y_effect {
+            y_effect.transform = CGAffineTransformMakeRotation(CGFloat(M_PI_2));
+        }
         if let y = key_btn? {
             self.view.bringSubviewToFront(y)
         }
@@ -123,19 +123,23 @@ class InstrumentViewController: UIViewController {
         } else if (segue.identifier == "key_menu") {
             let key_menu = segue.destinationViewController as KeyTableViewController
             self.key_popover = key_menu
-            key_menu.table_type = false
+            key_menu.isNote = false
             key_menu.keys = key_names
             key_menu.parent = self
         } else if (segue.identifier == "note_menu") {
             let note_menu = segue.destinationViewController as KeyTableViewController
             self.key_popover = note_menu
-            note_menu.table_type = true
+            note_menu.isNote = true
             note_menu.keys = note_names
             note_menu.parent = self
         } else if (segue.identifier == "knob_init") {
             //nothing to do here
         } else if (segue.identifier == "record_init") {
             //nothing to do here
+        } else if (segue.identifier == "yeffect_popover"){
+            let yeffect_menu = segue.destinationViewController as PopoverViewController
+            yeffect_menu.options = yeffects
+            yeffect_menu.parent = self as InstrumentViewController
         } else {
             println("Internal Error: unknown segue.identifier \(segue.identifier) in InstrumentViewController.prepareForSegue")
         }

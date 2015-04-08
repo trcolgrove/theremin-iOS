@@ -30,6 +30,7 @@
 		F821FD941AD1E75100D58093 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F821FD931AD1E75100D58093 /* SettingsViewController.swift */; };
 		F83822D71A9E3AF700DA84CD /* theremin-inst.png in Resources */ = {isa = PBXBuildFile; fileRef = F83822D61A9E3AF700DA84CD /* theremin-inst.png */; };
 		F83822D91A9E3FEE00DA84CD /* KnobControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83822D81A9E3FEE00DA84CD /* KnobControl.swift */; };
+		F83D4B0D1AD5751B00CEEC90 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83D4B0C1AD5751B00CEEC90 /* PopoverViewController.swift */; };
 		F845813E1A87D86600DCBFEA /* theremin-b1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F845813D1A87D86600DCBFEA /* theremin-b1.jpg */; };
 		F84581431A87EC4700DCBFEA /* wave.png in Resources */ = {isa = PBXBuildFile; fileRef = F84581421A87EC4700DCBFEA /* wave.png */; };
 		F84581451A882C6600DCBFEA /* InstrumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84581441A882C6600DCBFEA /* InstrumentViewController.swift */; };
@@ -93,6 +94,7 @@
 		F821FD931AD1E75100D58093 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		F83822D61A9E3AF700DA84CD /* theremin-inst.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "theremin-inst.png"; sourceTree = "<group>"; };
 		F83822D81A9E3FEE00DA84CD /* KnobControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnobControl.swift; sourceTree = "<group>"; };
+		F83D4B0C1AD5751B00CEEC90 /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 		F845813D1A87D86600DCBFEA /* theremin-b1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "theremin-b1.jpg"; sourceTree = "<group>"; };
 		F84581421A87EC4700DCBFEA /* wave.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wave.png; sourceTree = "<group>"; };
 		F84581441A882C6600DCBFEA /* InstrumentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstrumentViewController.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 		F84581461A88355300DCBFEA /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				F83D4B0C1AD5751B00CEEC90 /* PopoverViewController.swift */,
 				F8548AFE1A92774300DDE538 /* KeyTableViewController.swift */,
 				3738E6B21AD36D23008CA859 /* RecordViewController.swift */,
 				F8BD45A71A7ED3BE00535821 /* GridViewController.swift */,
@@ -469,6 +472,7 @@
 				F83822D91A9E3FEE00DA84CD /* KnobControl.swift in Sources */,
 				3738E6B31AD36D23008CA859 /* RecordViewController.swift in Sources */,
 				E947E1611AA676DE004DAA9B /* GridLineView.swift in Sources */,
+				F83D4B0D1AD5751B00CEEC90 /* PopoverViewController.swift in Sources */,
 				E95F1E0D1A9255610067536B /* RangeViewContainerController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

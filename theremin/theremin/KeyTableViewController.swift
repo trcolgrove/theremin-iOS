@@ -11,7 +11,7 @@ import UIKit
 
 class KeyTableViewController: InstrumentViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var table_type: Bool = true
+    var isNote: Bool = true
     
     var keys: [String]!
     
@@ -39,7 +39,7 @@ class KeyTableViewController: InstrumentViewController, UITableViewDataSource, U
     
     // updates the key of the instrument from table selection
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        parent.updateKey(self.keys[indexPath.row], isNote: table_type)
+        parent.updateKey(self.keys[indexPath.row], isNote: isNote)
         self.dismissViewController()
     }
     
