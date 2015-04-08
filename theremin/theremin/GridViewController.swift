@@ -19,10 +19,10 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     let MAX_NOTES = 5
     let default_velocity: Int = 40
     var circles: [CircleView] = []
-    var playingRecording = false;
+    var inPlayback = false;
     // Invariant: If the bool at index i is true if index i is currently being used, otherwise false
     var note_index_used: [Bool] = [false, false, false, false, false]
-    
+   
     // Invariant: If the bool at index i is true if note i is a sustain and currently being dragged,
     //            so we shouldn't delete it on touchesEnded
     var no_delete_flag: [Bool] = [false, false, false, false, false]
@@ -37,11 +37,15 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     var recordingIndex = 0;
     
     var note_dict : Dictionary<String, Int> = [:]
+    var filter_index: Int = -1
     
-
+    var pause_state : [CGPoint] = []
+    var rec_length : Int = 0
     var timers : [NSTimer] = []
     var recording : [recData.sample]?
-    var filter_index: Int = -1
+    var pause_time : NSTimeInterval = 0
+    
+    
     
     var w: CGFloat = 0
     var h: CGFloat = 0
@@ -331,7 +335,6 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     /* stops recording and gets the array of samples representing the current recording */
     func stopRecording(){
         recording = recorder?.doneRecording()
-        println(recording)
         recorder = nil
     }
     
@@ -342,6 +345,11 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         let pt = CGPoint(x: userInfo["x"] as CGFloat,y: userInfo["y"] as CGFloat)
         updateNote(index, loc: pt)
         recordingIndex++
+        if(recordingIndex == rec_length){
+            recordingIndex = 0
+            inPlayback = false
+            pause_time = 0
+        }
     }
     
     /* private wrapper for createNote, updates current note index for the purpose of recording */
@@ -350,6 +358,11 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         let pt = CGPoint(x: userInfo["x"] as CGFloat,y: userInfo["y"] as CGFloat)
         createNote(pt, isPlayback: true)
         recordingIndex++
+        if(recordingIndex == rec_length){
+            recordingIndex = 0
+            inPlayback = false
+            pause_time = 0
+        }
     }
     
     /* private wrapper for deleteNote, updates current note index for the purpose of recording */
@@ -358,36 +371,62 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         let to_delete = userInfo["index"] as Int
         deleteNote(to_delete)
         recordingIndex++
+        if(recordingIndex == rec_length){
+            recordingIndex = 0
+            inPlayback = false
+            pause_time = 0
+        }
     }
 
     
     func pausePlayback(){
-    
+        for timer in timers {
+            timer.invalidate()
+        }
+        for i in 0...4{
+            if note_index_used[i] == true {
+                var loc = circles[i].center
+                pause_state.append(loc)
+            }
+        }
+        timers = []
+        self.deleteAllNotes()
+        inPlayback = false
+        pause_time = recording![recordingIndex].elapsed_time
     }
     
     func stopPlayback(){
         for timer in timers {
             timer.invalidate()
-            self.deleteAllNotes()
         }
+        self.deleteAllNotes()
+        recordingIndex = 0
     }
     
     
     /* public function, plays back the current array of recorded samples */
     func playRecording(){
-        for s in self.recording!{
+        inPlayback = true
+        for loc in pause_state {
+            createNote(loc, isPlayback : true)
+        }
+        pause_state = []
+        rec_length = recording!.count
+        for var i = recordingIndex; i < rec_length; i++ {
+            var s = recording![i];
             let params = ["index" : s.note_index, "x" : s.note_loc.x, "y" : s.note_loc.y]
             var timer = NSTimer()
+            var fireAfter = s.elapsed_time - pause_time
             if(s.cmd == recData.command.ON){
-                timer = NSTimer.scheduledTimerWithTimeInterval(s.elapsed_time, target: self, selector : Selector("createNoteWithIndex:"), userInfo: params, repeats: false)
+                timer = NSTimer.scheduledTimerWithTimeInterval(fireAfter, target: self, selector : Selector("createNoteWithIndex:"), userInfo: params, repeats: false)
                 timers.append(timer)
             }
             else if(s.cmd == recData.command.OFF){
-                timer = NSTimer.scheduledTimerWithTimeInterval(s.elapsed_time, target: self, selector : Selector("deleteNoteWithIndex:"), userInfo: params, repeats: false)
+                timer = NSTimer.scheduledTimerWithTimeInterval(fireAfter, target: self, selector : Selector("deleteNoteWithIndex:"), userInfo: params, repeats: false)
                 timers.append(timer)
             }
             else if(s.cmd == recData.command.HOLD){
-                timer = NSTimer.scheduledTimerWithTimeInterval(s.elapsed_time, target: self, selector : Selector("updateNoteWithIndex:"), userInfo: params, repeats: false)
+                timer = NSTimer.scheduledTimerWithTimeInterval(fireAfter, target: self, selector : Selector("updateNoteWithIndex:"), userInfo: params, repeats: false)
                 timers.append(timer)
             }
             else if(s.cmd == recData.command.SUS){

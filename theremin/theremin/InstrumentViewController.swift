@@ -76,7 +76,12 @@ class InstrumentViewController: UIViewController {
     }
     
     func playButtonPressed(sender: UIView) {
-        grid.playRecording()
+        if(grid.inPlayback){
+            grid.pausePlayback()
+        }
+        else{
+            grid.playRecording()
+        }
     }
     
     func stopButtonPressed(sender: UIView) {

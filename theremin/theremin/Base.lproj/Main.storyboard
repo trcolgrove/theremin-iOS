@@ -454,6 +454,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
+                        <outlet property="play_image" destination="Cod-bc-tJq" id="WjT-QG-gHq"/>
                         <outlet property="record_image" destination="uQW-pI-o97" id="Lvs-pg-Nmf"/>
                     </connections>
                 </viewController>
