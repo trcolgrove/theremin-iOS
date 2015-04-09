@@ -45,6 +45,7 @@ class InstrumentViewController: UIViewController {
     
     var grid: GridViewController!
     var range_controller: RangeViewContainerController!
+    var record_controller: RecordViewController!
     
     var grid_lines_showing: Bool = false
     
@@ -107,6 +108,10 @@ class InstrumentViewController: UIViewController {
         }
 
     }
+    
+    func resetPlayButton(){
+        record_controller.resetPlayButton()
+    }
  
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -138,6 +143,7 @@ class InstrumentViewController: UIViewController {
             //nothing to do here
         } else if (segue.identifier == "record_init") {
             //nothing to do here
+            record_controller = segue.destinationViewController as RecordViewController
         } else if (segue.identifier == "yeffect_popover"){
             let yeffect_menu = segue.destinationViewController as PopoverViewController
             yeffect_menu.options = yeffects

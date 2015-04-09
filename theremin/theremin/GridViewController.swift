@@ -349,6 +349,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
             recordingIndex = 0
             inPlayback = false
             pause_time = 0
+            (parentViewController as InstrumentViewController).resetPlayButton()
         }
     }
     
@@ -362,6 +363,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
             recordingIndex = 0
             inPlayback = false
             pause_time = 0
+            (parentViewController as InstrumentViewController).resetPlayButton()
         }
     }
     
@@ -375,6 +377,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
             recordingIndex = 0
             inPlayback = false
             pause_time = 0
+            (parentViewController as InstrumentViewController).resetPlayButton()
         }
     }
 
@@ -401,6 +404,11 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         }
         self.deleteAllNotes()
         recordingIndex = 0
+    }
+    
+     func resetPlayButton(observer: CFRunLoopObserver!, activity: CFRunLoopActivity) -> (Void) {
+        (parentViewController as InstrumentViewController).resetPlayButton()
+        return
     }
     
     
@@ -433,7 +441,10 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
                 
             }
             NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes) // use this so the NSTimer can execute concurrently with UIChanges
+            
+            
         }
+        
     }
 }
 

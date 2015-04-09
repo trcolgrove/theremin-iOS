@@ -15,7 +15,7 @@ class RecordViewController : UIViewController {
     @IBOutlet weak var play_image: UIImageView!
 
     var currently_recording: Bool = false
-    var inPlayback : Bool = false
+    var in_playback : Bool = false
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -23,6 +23,11 @@ class RecordViewController : UIViewController {
     
     override func viewDidLoad() {
         
+    }
+    
+    func resetPlayButton(){
+        play_image.image = UIImage(named: "play-button-free-record.png")
+        in_playback = false
     }
     
     @IBAction func recordButtonPressed(sender: UIView) {
@@ -43,13 +48,13 @@ class RecordViewController : UIViewController {
     }
     
     @IBAction func playButtonPressed(sender: UIView) {
-        if(inPlayback){
+        if(in_playback){
             play_image.image = UIImage(named: "play-button-free-record.png")
-            inPlayback = false
+            in_playback = false
         }
         else{
             play_image.image = UIImage(named: "pause-button.png")
-            inPlayback = true
+            in_playback = true
         }
         
         (parentViewController as InstrumentViewController).playButtonPressed(sender)
