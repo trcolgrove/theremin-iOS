@@ -16,6 +16,7 @@ protocol recordingProtocol{
 
 class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     let CIRCLE_DIAMETER: CGFloat = 50
+    let MAX_QUANTIZE_LEVEL: CGFloat = 10
     let MAX_NOTES = 5
     let default_velocity: Int = 40
     var circles: [CircleView] = []
@@ -33,6 +34,8 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     var lines : [GridLineView] = []
     var recorder : recordingProtocol?
     let halfstep_width: CGFloat = 72.5
+    var quantize_level: CGFloat = 0
+    var quantize_width: CGFloat = 0
     
     var recordingIndex = 0;
     
@@ -98,14 +101,78 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         }
     }
     
+    override func updateQuantizeLevel(level: Float){
+        quantize_level = CGFloat(level)
+        quantize_width = (quantize_level / MAX_QUANTIZE_LEVEL) * halfstep_width/2
+        if (lines != []) {
+            drawGridLines()
+        }
+    }
+    
     // returns amplification level for current y value
     private func calculateAmplification(y: CGFloat) -> CGFloat{
         return 0.5 * (h - y) / h
     }
     
+    private func getDiatonicNoteAboveX(x: CGFloat) -> CGFloat {
+        var closest_x_above: CGFloat = 1000000
+        let oct_width = halfstep_width * 12
+        for var oct : CGFloat = 3; oct >= 0; oct-- { //octave
+            for var sd = 6; sd >= 0; sd-- { //scale degree
+                let notes_in_key = key_map[key]!
+                let note_name = notes_in_key[sd]
+                let offset = CGFloat(note_positions[note_name]!)
+                let note_x = halfstep_width + CGFloat(oct*oct_width + offset*halfstep_width)
+                
+                if (note_x > x && note_x < closest_x_above) {
+                    closest_x_above = note_x
+                }
+            }
+        }
+        return closest_x_above
+    }
+    
+    private func getDiatonicNoteBelowX(x: CGFloat) -> CGFloat {
+        
+        var closest_x_below: CGFloat = 0.0
+        let oct_width = halfstep_width * 12
+        for var oct : CGFloat = 0; oct < 4; oct++ { //octave
+            for var sd = 0; sd < 7; sd++ { //scale degree
+                let notes_in_key = key_map[key]!
+                let note_name = notes_in_key[sd]
+                let offset = CGFloat(note_positions[note_name]!)
+                let note_x = halfstep_width + CGFloat(oct*oct_width + offset*halfstep_width)
+                
+                if (note_x < x && note_x > closest_x_below) {
+                    closest_x_below = note_x
+                }
+            }
+        }
+        return closest_x_below
+    }
+    
     // returns midi pitch note for given x coordinate in grid_image coordinates
     private func calculatePitch(x: CGFloat) -> CGFloat{
-        return bottom_note + (x/halfstep_width)
+        if quantize_level > 0 {
+            let exact_pitch = bottom_note + x/halfstep_width
+            let x_note_above: CGFloat = getDiatonicNoteAboveX(x)
+            let x_note_below: CGFloat = getDiatonicNoteBelowX(x)
+            
+            if (x - x_note_below <= quantize_width) {
+                return bottom_note + x_note_below/halfstep_width
+            }
+            
+            if (x_note_above - x <= quantize_width) {
+                return bottom_note + x_note_above/halfstep_width
+            }
+            
+            // Calculate pitch based on distance between quantized zones
+            let bend_distance = (x_note_above - quantize_width) - (x_note_below + quantize_width)
+            let bend_note_count = (x_note_above - x_note_below) / halfstep_width
+            return bottom_note + x_note_below/halfstep_width + ((x - (x_note_below + quantize_width)) / bend_distance) * bend_note_count
+        } else {
+            return bottom_note + x/halfstep_width
+        }
     }
     
     private func getNextNoteIndex() -> Int {
@@ -196,6 +263,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         recorder?.recordNote(loc, command: recData.command.HOLD, note_index: index)
     }
     
+    // thx stackoverflow: http://stackoverflow.com/questions/24188405/get-object-pointers-memory-address-as-a-string
     func pointerToString(objRef: AnyObject) -> String {
         let ptr: COpaquePointer =
         Unmanaged<AnyObject>.passUnretained(objRef).toOpaque()
@@ -305,12 +373,12 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         let oct_width = halfstep_width * 12
         for var oct : CGFloat = 0; oct < 4; oct++ { //octave
             for var sd = 0; sd < 7; sd++ { //scale degree
-                let line_width: CGFloat = 3
+                let line_width: CGFloat = 3 + (quantize_width * 2)
                 let line_height: CGFloat = 552
                 let notes_in_key = key_map[key]!
                 let note_name = notes_in_key[sd]
                 let offset = CGFloat(note_positions[note_name]!)
-                var line_loc : CGFloat = CGFloat(halfstep_width - line_width) + CGFloat(oct*oct_width + offset*halfstep_width)
+                var line_loc : CGFloat = CGFloat(halfstep_width - line_width) + CGFloat(oct*oct_width + offset*halfstep_width) + quantize_width + 1.5
                 var line = GridLineView(frame: CGRectMake(line_loc, grid_image.frame.origin.y, line_width, line_height), view_controller: self)
                 grid_image.addSubview(line)
                 lines.append(line)
@@ -318,6 +386,8 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         }
     }
     
+    
+    // MARK - Recording functions
 /***************** Recording Functions ******************/
 /* These functions interact with a recordingProtocol in */
 /* order to create, and playback a detailed array of    */
@@ -440,7 +510,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
             else if(s.cmd == recData.command.SUS){
                 
             }
-            NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes) // use this so the NSTimer can execute concurrently with UIChanges
+            // NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes) // use this so the NSTimer can execute concurrently with UIChanges
             
             
         }

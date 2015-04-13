@@ -268,6 +268,10 @@ class InstrumentViewController: UIViewController {
         slider.setContentOffset(slider.contentOffset, animated: true)
     }
     
+    func updateQuantizeLevel(level: Float) {
+        grid.updateQuantizeLevel(level)
+    }
+    
     @IBAction func deleteAllNotes(sender: AnyObject) {
         grid.deleteAllNotes()
     }

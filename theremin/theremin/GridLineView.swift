@@ -32,13 +32,14 @@ class GridLineView: UIView {
         CGContextSetLineWidth(context, 5.0);
         
         // Set the rekt outerline-colour and fill
-        UIColor.blackColor().setFill()
-        UIColor.blackColor().set()
+        //UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.5).setFill()
+        UIColor(white: 0.5, alpha: 0.5).set()
         
         // Draw
         var rectangle = CGRectMake(0, 0, frame.width, frame.height)
-        CGContextStrokeRect(context, rectangle);
-        CGContextStrokePath(context);
+        CGContextStrokeRect(context, rectangle)
+        CGContextStrokePath(context)
+        CGContextFillRect(context, rectangle)
         
     }
     
