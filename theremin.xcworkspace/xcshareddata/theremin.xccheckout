@@ -10,31 +10,31 @@
 	<string>theremin</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>81E4143E73E1406F65868C02DEF4B7E3202110B2</key>
+		<key>5FAEE40B6296A4BF39C425496714829C81DB9D8E</key>
 		<string>https://github.com/tuftsdev/comp150isw-spring2015-team5.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>theremin/theremin.xcworkspace</string>
+	<string>theremin.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>81E4143E73E1406F65868C02DEF4B7E3202110B2</key>
-		<string>../..</string>
+		<key>5FAEE40B6296A4BF39C425496714829C81DB9D8E</key>
+		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/tuftsdev/comp150isw-spring2015-team5.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>81E4143E73E1406F65868C02DEF4B7E3202110B2</string>
+	<string>5FAEE40B6296A4BF39C425496714829C81DB9D8E</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>81E4143E73E1406F65868C02DEF4B7E3202110B2</string>
+			<string>5FAEE40B6296A4BF39C425496714829C81DB9D8E</string>
 			<key>IDESourceControlWCCName</key>
-			<string>comp150isw-spring2015-team5</string>
+			<string>theremin</string>
 		</dict>
 	</array>
 </dict>
