@@ -82,7 +82,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     GridViewController at runtime*/
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!){
         if segue.identifier == "grid_init"{
-            let range_controller = segue.destinationViewController as RangeViewContainerController
+            let range_controller = segue.destinationViewController as! RangeViewContainerController
             range_controller.instrument = self
         }
     }
@@ -274,12 +274,13 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
 
     
     // Creates new note if not touching existing note, otherwise makes that note current
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         //stop scrolling on touch down
-        (parentViewController as InstrumentViewController).disableScroll()
+        (parentViewController as! InstrumentViewController).disableScroll()
         
         //create notes
-        for touch in touches {
+        for t in touches {
+            let touch = t as! UITouch
             var loc: CGPoint
             var is_sustain: Bool = false
             //if in a sustain, don't make a new note, instead just update the one we are touching now
@@ -307,8 +308,9 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     }
     
    
-    override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
-        for touch in touches {
+    override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
+        for t in touches {
+            let touch = t as! UITouch
             let touch_loc = touch.locationInView(grid_image)
             if let index = note_dict[pointerToString(touch)] {
                 updateNote(index, loc: touch_loc)
@@ -319,8 +321,9 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
 
     
     // Stop playing the note if it wasn't a drag from a sustain
-    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
-        for touch in touches {
+    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
+        for t in touches {
+            let touch = t as! UITouch
             if (touch.tapCount >= 2) {
                 if let index = note_dict[pointerToString(touch)]{
                     let c = circles[index]
@@ -339,11 +342,11 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         }
         //enable scroll again on touch up
         if (event.allTouches()?.count == touches.count) {
-            (parentViewController as InstrumentViewController).enableScroll()
+            (parentViewController as! InstrumentViewController).enableScroll()
         }
     }
     
-    override func touchesCancelled(touches: NSSet, withEvent: UIEvent) {
+    override func touchesCancelled(touches: Set<NSObject>, withEvent: UIEvent) {
         // Multitouching gestures got in the way
         if touches.count == 4 || touches.count == 5 {
             let alert: UIAlertController = UIAlertController(title: "Oops!", message: "Looks like you have multitasking gestures enabled, and it just interfered with your playing. You can fix this problem by disabling them at Settings > General > Multitasking Gestures", preferredStyle: UIAlertControllerStyle.Alert)
@@ -410,44 +413,44 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     
     /* private wrapper for updateNote, updates current note index for the purpose of recording*/
     func updateNoteWithIndex(timer: NSTimer){
-        var userInfo = timer.userInfo as NSDictionary
-        var index = userInfo["index"] as Int
-        let pt = CGPoint(x: userInfo["x"] as CGFloat,y: userInfo["y"] as CGFloat)
+        var userInfo = timer.userInfo as! NSDictionary
+        var index = userInfo["index"] as! Int
+        let pt = CGPoint(x: userInfo["x"] as! CGFloat,y: userInfo["y"] as! CGFloat)
         updateNote(index, loc: pt)
         recordingIndex++
         if(recordingIndex == rec_length){
             recordingIndex = 0
             inPlayback = false
             pause_time = 0
-            (parentViewController as InstrumentViewController).resetPlayButton()
+            (parentViewController as! InstrumentViewController).resetPlayButton()
         }
     }
     
     /* private wrapper for createNote, updates current note index for the purpose of recording */
     func createNoteWithIndex(timer: NSTimer){
-        var userInfo = timer.userInfo as NSDictionary
-        let pt = CGPoint(x: userInfo["x"] as CGFloat,y: userInfo["y"] as CGFloat)
+        var userInfo = timer.userInfo as! NSDictionary
+        let pt = CGPoint(x: userInfo["x"] as! CGFloat,y: userInfo["y"] as! CGFloat)
         createNote(pt, isPlayback: true)
         recordingIndex++
         if(recordingIndex == rec_length){
             recordingIndex = 0
             inPlayback = false
             pause_time = 0
-            (parentViewController as InstrumentViewController).resetPlayButton()
+            (parentViewController as! InstrumentViewController).resetPlayButton()
         }
     }
     
     /* private wrapper for deleteNote, updates current note index for the purpose of recording */
     func deleteNoteWithIndex(timer: NSTimer){
-        var userInfo = timer.userInfo as NSDictionary
-        let to_delete = userInfo["index"] as Int
+        var userInfo = timer.userInfo as! NSDictionary
+        let to_delete = userInfo["index"] as! Int
         deleteNote(to_delete)
         recordingIndex++
         if(recordingIndex == rec_length){
             recordingIndex = 0
             inPlayback = false
             pause_time = 0
-            (parentViewController as InstrumentViewController).resetPlayButton()
+            (parentViewController as! InstrumentViewController).resetPlayButton()
         }
     }
 
@@ -477,7 +480,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     }
     
      func resetPlayButton(observer: CFRunLoopObserver!, activity: CFRunLoopActivity) -> (Void) {
-        (parentViewController as InstrumentViewController).resetPlayButton()
+        (parentViewController as! InstrumentViewController).resetPlayButton()
         return
     }
     

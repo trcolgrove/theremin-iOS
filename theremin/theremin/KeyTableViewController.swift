@@ -29,7 +29,7 @@ class KeyTableViewController: InstrumentViewController, UITableViewDataSource, U
         let cellIdentifier = "Cell"
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath:
-        indexPath) as UITableViewCell
+        indexPath) as! UITableViewCell
         
         // Configure the cell...
         

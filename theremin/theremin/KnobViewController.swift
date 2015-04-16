@@ -114,7 +114,7 @@ class KnobViewController: InstrumentViewController {
             if let cur_value = getKnobValue(knob.id) {
                 switch knob.id {
                 case "quantize":
-                    (parentViewController as InstrumentViewController).updateQuantizeLevel(knob.value)
+                    (parentViewController as! InstrumentViewController).updateQuantizeLevel(knob.value)
                 default:
                     PdBase.sendFloat(knob.value, toReceiver: knob.id)
                 }

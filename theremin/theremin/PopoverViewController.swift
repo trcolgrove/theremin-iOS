@@ -28,7 +28,7 @@ class PopoverViewController: UITableViewController, UITableViewDataSource, UITab
             let cellIdentifier = "Cell"
             tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
             let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath:
-                indexPath) as UITableViewCell
+                indexPath) as! UITableViewCell
             cell.textLabel!.text = self.options[indexPath.row]
             return cell
     }

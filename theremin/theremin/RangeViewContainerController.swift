@@ -42,7 +42,7 @@ class RangeViewContainerController: InstrumentViewController, RangeSlideParentDe
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!){
         if segue.identifier == "init_slider"{
-            range_control = segue.destinationViewController as RangeSlideController
+            range_control = segue.destinationViewController as! RangeSlideController
             range_control.container_delegate = self
         }
     }

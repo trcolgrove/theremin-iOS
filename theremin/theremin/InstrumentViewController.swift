@@ -55,10 +55,10 @@ class InstrumentViewController: UIViewController {
     override func viewDidLoad() {
         if let y_button = y_effect {
             y_effect.transform = CGAffineTransformMakeRotation(CGFloat(M_PI_2));
-        }
+        }/*
         if let y = key_btn? {
             self.view.bringSubviewToFront(y)
-        }
+        }*/
 
     }
     
@@ -122,19 +122,19 @@ class InstrumentViewController: UIViewController {
     //set up instrument view as a delegate of subcontrollers
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!){
         if segue.identifier == "init_range"{
-            range_controller = segue.destinationViewController as RangeViewContainerController
+            range_controller = segue.destinationViewController as! RangeViewContainerController
             range_controller.instrument = self
         } else if segue.identifier == "init_grid"{
-            let grid = segue.destinationViewController as GridViewController
+            let grid = segue.destinationViewController as! GridViewController
             self.grid = grid
         } else if (segue.identifier == "key_menu") {
-            let key_menu = segue.destinationViewController as KeyTableViewController
+            let key_menu = segue.destinationViewController as! KeyTableViewController
             self.key_popover = key_menu
             key_menu.isNote = false
             key_menu.keys = key_names
             key_menu.parent = self
         } else if (segue.identifier == "note_menu") {
-            let note_menu = segue.destinationViewController as KeyTableViewController
+            let note_menu = segue.destinationViewController as! KeyTableViewController
             self.key_popover = note_menu
             note_menu.isNote = true
             note_menu.keys = note_names
@@ -143,13 +143,13 @@ class InstrumentViewController: UIViewController {
             //nothing to do here
         } else if (segue.identifier == "record_init") {
             //nothing to do here
-            record_controller = segue.destinationViewController as RecordViewController
+            record_controller = segue.destinationViewController as! RecordViewController
         } else if (segue.identifier == "yeffect_popover"){
-            let yeffect_menu = segue.destinationViewController as PopoverViewController
+            let yeffect_menu = segue.destinationViewController as! PopoverViewController
             yeffect_menu.options = yeffects
             yeffect_menu.parent = self as InstrumentViewController
         } else if (segue.identifier == "waveform_popover"){
-            let wave_menu = segue.destinationViewController as PopoverViewController
+            let wave_menu = segue.destinationViewController as! PopoverViewController
             wave_menu.options = waveforms
             wave_menu.parent = self as InstrumentViewController
         } else {

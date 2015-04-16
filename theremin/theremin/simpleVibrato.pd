@@ -1,5 +1,5 @@
 #N canvas 118 88 770 635 10;
-#X floatatom 242 201 5 0 0 0 - - -;
+#X floatatom 242 201 5 0 0 0 - - -, f 5;
 #X obj 242 179 +;
 #X obj 199 153 * 2;
 #X text 279 202 <-- Maximum length of the delay line (= added latency!)

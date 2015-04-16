@@ -38,13 +38,13 @@ class RecordViewController : UIViewController {
             currently_recording = true
             record_image.image = UIImage(named: "record-in-progress.png")
         }
-        (parentViewController as InstrumentViewController).recordButtonPressed(sender)
+        (parentViewController as! InstrumentViewController).recordButtonPressed(sender)
     }
     
     @IBAction func stopButtonPressed(sender: UIView) {
         record_image.image = UIImage(named: "record-button.png")
         currently_recording = false
-        (parentViewController as InstrumentViewController).stopButtonPressed(sender)
+        (parentViewController as! InstrumentViewController).stopButtonPressed(sender)
     }
     
     @IBAction func playButtonPressed(sender: UIView) {
@@ -57,7 +57,7 @@ class RecordViewController : UIViewController {
             in_playback = true
         }
         
-        (parentViewController as InstrumentViewController).playButtonPressed(sender)
+        (parentViewController as! InstrumentViewController).playButtonPressed(sender)
     }
     
 }

@@ -114,7 +114,7 @@ public class Knob: UIControl {
     }
     
     func handleRotation(sender: AnyObject) {
-        let gr = sender as RotationGestureRecognizer
+        let gr = sender as! RotationGestureRecognizer
         
         // 1. Mid-point angle
         let midPointAngle = (2.0 * CGFloat(M_PI) + self.startAngle - self.endAngle) / 2.0 + self.endAngle
@@ -153,7 +153,7 @@ public class Knob: UIControl {
 private class KnobRenderer {
     var strokeColor: UIColor {
         get {
-            return UIColor(CGColor: trackLayer.strokeColor)
+            return UIColor(CGColor: trackLayer.strokeColor)!
         }
         
         set(strokeColor) {
@@ -263,20 +263,20 @@ private class RotationGestureRecognizer: UIPanGestureRecognizer {
         maximumNumberOfTouches = 1
     }
     
-    override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
+    override func touchesBegan(touches: Set<NSObject>!, withEvent event: UIEvent!) {
         super.touchesBegan(touches, withEvent: event)
         
         updateRotationWithTouches(touches)
     }
     
-    override func touchesMoved(touches: NSSet!, withEvent event: UIEvent!) {
+    override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent!) {
         super.touchesMoved(touches, withEvent: event)
         
         updateRotationWithTouches(touches)
     }
     
     func updateRotationWithTouches(touches: NSSet!) {
-        let touch = touches.anyObject() as UITouch
+        let touch = touches.anyObject() as! UITouch
         let location = touch.locationInView(self.view)
         self.rotation = rotationForLocation(location)
     }
