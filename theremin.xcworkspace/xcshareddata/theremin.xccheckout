@@ -12,22 +12,46 @@
 	<dict>
 		<key>5FAEE40B6296A4BF39C425496714829C81DB9D8E</key>
 		<string>https://github.com/tuftsdev/comp150isw-spring2015-team5.git</string>
+		<key>81E4143E73E1406F65868C02DEF4B7E3202110B2</key>
+		<string>https://github.com/tuftsdev/comp150isw-spring2015-team5.git</string>
+		<key>C99A26E4EBC8665905113A782DBCD6A7276F69EB</key>
+		<string>https://github.com/cpenny42/Pd-for-LibPd.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>theremin.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>5FAEE40B6296A4BF39C425496714829C81DB9D8E</key>
+		<string>../../theremin</string>
+		<key>81E4143E73E1406F65868C02DEF4B7E3202110B2</key>
 		<string>..</string>
+		<key>C99A26E4EBC8665905113A782DBCD6A7276F69EB</key>
+		<string>../../Pd-for-LibPd</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/tuftsdev/comp150isw-spring2015-team5.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>5FAEE40B6296A4BF39C425496714829C81DB9D8E</string>
+	<string>81E4143E73E1406F65868C02DEF4B7E3202110B2</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>81E4143E73E1406F65868C02DEF4B7E3202110B2</string>
+			<key>IDESourceControlWCCName</key>
+			<string>comp150isw-spring2015-team5</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C99A26E4EBC8665905113A782DBCD6A7276F69EB</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Pd-for-LibPd</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>

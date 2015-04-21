@@ -113,8 +113,6 @@
 		E69EE3E727694153FE44F77F /* PdBase.h in Headers */ = {isa = PBXBuildFile; fileRef = C01F38527A04D3DA0EF02FC5 /* PdBase.h */; };
 		E6D0A9EE918171579F384C55 /* g_graph.c in Sources */ = {isa = PBXBuildFile; fileRef = C0311737B0D473ACAD7208B1 /* g_graph.c */; settings = {COMPILER_FLAGS = "-w -DPD -DUSEAPI_DUMMY -DHAVE_LIBDL -DHAVE_UNISTD_H -fno-objc-arc"; }; };
 		E95F97461AE34EDE00D90BE1 /* argv.c in Sources */ = {isa = PBXBuildFile; fileRef = E95F97441AE34EDE00D90BE1 /* argv.c */; };
-		E95F97491AE3582600D90BE1 /* argv.pd_darwin in Frameworks */ = {isa = PBXBuildFile; fileRef = E95F97481AE3582600D90BE1 /* argv.pd_darwin */; };
-		E95F974A1AE3582600D90BE1 /* argv.pd_darwin in Frameworks */ = {isa = PBXBuildFile; fileRef = E95F97481AE3582600D90BE1 /* argv.pd_darwin */; };
 		EAE5E2203028DDA2E96CB35A /* PdAudioController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EAA2B6136689151B84AA611 /* PdAudioController.h */; };
 		EBEE5C4C6955A7EA9FE9C9C5 /* x_text.c in Sources */ = {isa = PBXBuildFile; fileRef = AEECA77D186D2012EBD60AA5 /* x_text.c */; settings = {COMPILER_FLAGS = "-w -DPD -DUSEAPI_DUMMY -DHAVE_LIBDL -DHAVE_UNISTD_H -fno-objc-arc"; }; };
 		EC2B8EA1098DF01EA640416C /* PdTypes.hpp in Headers */ = {isa = PBXBuildFile; fileRef = F070B8DB008367AAB5E413ED /* PdTypes.hpp */; };
@@ -248,8 +246,7 @@
 		E5740B890E28E0BDDF8C3A37 /* m_memory.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = m_memory.c; path = "pure-data/src/m_memory.c"; sourceTree = "<group>"; };
 		E63866673B72F7904BE04599 /* PdBase.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = PdBase.cpp; path = cpp/PdBase.cpp; sourceTree = "<group>"; };
 		E810D16788991C33E8BF705C /* g_template.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = g_template.c; path = "pure-data/src/g_template.c"; sourceTree = "<group>"; };
-		E95F97441AE34EDE00D90BE1 /* argv.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = argv.c; path = "/Users/Thomas/Desktop/tufts/comp150/v2/comp150isw-spring2015-team5/theremin/../../../../../../Pd-for-LibPd/source/externals/build-for-pd/argv/argv.c"; sourceTree = "<absolute>"; };
-		E95F97481AE3582600D90BE1 /* argv.pd_darwin */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = argv.pd_darwin; path = "../../../../../../../../Pd-for-LibPd/compiled/argv.pd_darwin"; sourceTree = "<group>"; };
+		E95F97441AE34EDE00D90BE1 /* argv.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = argv.c; path = "/Users/Thomas/Desktop/tufts/comp150/v4/comp150isw-spring2015-team5/theremin/argv.c"; sourceTree = "<absolute>"; };
 		E97E0180EDA2BFA9DF6C9E4F /* d_osc.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = d_osc.c; path = "pure-data/src/d_osc.c"; sourceTree = "<group>"; };
 		EDB0B481EB6FD1959F81D27A /* Pods-theremin-libpd.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-theremin-libpd.xcconfig"; sourceTree = "<group>"; };
 		F070B8DB008367AAB5E413ED /* PdTypes.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = PdTypes.hpp; path = cpp/PdTypes.hpp; sourceTree = "<group>"; };
@@ -269,7 +266,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E95F974A1AE3582600D90BE1 /* argv.pd_darwin in Frameworks */,
 				42841851C3764138B7DF0580 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -279,7 +275,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				664BFA4519570DB68C196495 /* Foundation.framework in Frameworks */,
-				E95F97491AE3582600D90BE1 /* argv.pd_darwin in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,7 +384,6 @@
 				C9B8034777DEFA8B8247B571 /* m_pd.c */,
 				024685EE63AA0EEAE96A08A9 /* m_pd.h */,
 				C6A33BF150F35F7C4413D087 /* m_sched.c */,
-				E95F97481AE3582600D90BE1 /* argv.pd_darwin */,
 				9324B3E1846889579565387B /* ringbuffer.c */,
 				3D167D14E1DA45935A713D27 /* ringbuffer.h */,
 				8C1E5FB2B2F380173BDCFFC6 /* s_audio.c */,

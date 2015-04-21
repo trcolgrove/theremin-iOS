@@ -1,1 +1,0 @@
-PODS_THEREMIN_LIBPD_OTHER_LDFLAGS = -framework "Foundation"
