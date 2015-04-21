@@ -21,6 +21,8 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     let MAX_QUANTIZE_LEVEL: CGFloat = 10
     let MAX_NOTES = 5
     let default_velocity: Int = 40
+    let velocity = 100
+    
     var circles: [CircleView] = []
     var inPlayback = false;
     // Invariant: If the bool at index i is true if index i is currently being used, otherwise false
@@ -95,6 +97,11 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
      */
     override func setRange(note_offset: CGFloat) {
         grid_image.frame = CGRectMake(grid_image.frame.origin.x - note_offset, grid_image.frame.origin.y, grid_image.frame.width, grid_image.frame.height)
+        for i in 0...4{
+            if(note_index_used[i]){
+                updateNote(i, loc: CGPoint(x: circles[i].center.x + note_offset, y: circles[i].center.y) , isPlayback: false)
+            }
+        }
     }
     
     override func updateKey(key: String, notes: [String]) {
@@ -211,8 +218,8 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         }
         note_index_used[index] = false
         
-        PdBase.sendList([index, 0], toReceiver: "pitch")
-        PdBase.sendList([index, 0], toReceiver: "amp")
+        PdBase.sendList([index, 60, 0], toReceiver: "note")
+        PdBase.sendList([index, "volume", 0], toReceiver: "note")
         
         circles[index].removeFromSuperview()
         note_count--
@@ -232,8 +239,8 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         var new_index = getNextNoteIndex()
         note_count++
         
-        PdBase.sendList([new_index, calculatePitch(loc.x)], toReceiver: "pitch")
-        PdBase.sendList([new_index, calculateAmplification(loc.y)], toReceiver: "amp")
+        PdBase.sendList([new_index, calculatePitch(loc.x), velocity], toReceiver: "note")
+        PdBase.sendList([new_index, "volume", calculateAmplification(loc.y)], toReceiver: "note")
         
         // Create a new CircleView for current touch location
         var new_circle = CircleView(frame: CGRectMake(loc.x - (CIRCLE_DIAMETER * 0.5), loc.y - (CIRCLE_DIAMETER * 0.5), CIRCLE_DIAMETER, CIRCLE_DIAMETER), i: new_index, view_controller: self, isPlayback: isPlayback)
@@ -262,8 +269,8 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         }
         let gi_pt = grid_image.convertPoint(gv_pt, fromView: self.view)
         let pitch = calculatePitch(gi_pt.x)
-        PdBase.sendList([index, calculatePitch(gi_pt.x)], toReceiver: "pitch")
-        PdBase.sendList([index, calculateAmplification(gi_pt.y)], toReceiver: "amp")
+        PdBase.sendList([index, calculatePitch(gi_pt.x), velocity], toReceiver: "note")
+        PdBase.sendList([index, "volume", calculateAmplification(gi_pt.y)], toReceiver: "note")
         let circle: CircleView = circles[index]
         circle.center.x = gi_pt.x
         circle.center.y = gi_pt.y
@@ -334,20 +341,21 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
         for t in touches {
             let touch = t as! UITouch
-            if (touch.tapCount >= 2) {
+            /*if (touch.tapCount >= 2) {
                 if let index = note_dict[pointerToString(touch)]{
                     let c = circles[index]
-                    var double_tap_rec = UITapGestureRecognizer(target: circles[c.index], action: "handleDoubleTap:")
-                    double_tap_rec.numberOfTapsRequired = 2
-                    c.addGestureRecognizer(double_tap_rec)
+                    //var double_tap_rec = UITapGestureRecognizer(target: circles[c.index], action: "handleDoubleTap:")
+                    //double_tap_rec.numberOfTapsRequired = 2
+                    //c.addGestureRecognizer(double_tap_rec)
                     
                 }
+            */
                 // The view responds to the tap
                 //don't delete
-            } else {
+          //  } else {
                 if let index = note_dict[pointerToString(touch)]{
                     deleteNote(index, isPlayback: false)
-                }
+           //     }
             }
         }
         //enable scroll again on touch up

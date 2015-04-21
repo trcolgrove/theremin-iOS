@@ -14,6 +14,7 @@
 
 @implementation AppDelegate
 
+void argv_setup(void);
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
@@ -24,11 +25,11 @@
                                             mixingEnabled:YES] != PdAudioOK){
         NSLog(@"Couldn't initialize");
     }
-    
+    argv_setup();
     PdDispatcher *dispatcher = [[PdDispatcher alloc] init];
     [PdBase setDelegate:dispatcher];
-    
-    [PdBase openFile:@"theremin.pd" path:[[NSBundle mainBundle] resourcePath]];
+        //[PdBase openFile:@"theremin.pd" path:[[NSBundle mainBundle] resourcePath]];
+    [PdBase openFile:@"thereminpatch.pd" path:[[NSBundle mainBundle] resourcePath]];
     
     return YES;
 }
