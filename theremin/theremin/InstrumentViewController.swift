@@ -24,6 +24,10 @@ class InstrumentViewController: UIViewController {
     let note_names = [ "Cb", "C", "C#", "Db", "D", "D#", "Eb", "E", "E#", "Fb", "F", "F#", "Gb", "G", "G#", "Ab", "A", "A#", "Bb", "B", "B#"]
     
     let note_positions = ["C" : 0, "C#" : 1, "Db" : 1, "D" : 2, "D#" : 3, "Eb" : 3, "E" : 4, "Fb" : 4, "E#" : 5, "F" : 5, "F#" : 6, "Gb" : 6, "G" : 7, "G#" : 8, "Ab" : 8, "A" : 9, "A#" : 10, "Bb" : 10, "B" : 11, "B#" : 11, "Cb" : 11]
+    
+    let yeffects = ["Volume", "Tremolo", "Vibrato"]
+    
+    let waveforms = [""]
 
     var isRecording = false
     var key_names = ["Major", "Minor"]
@@ -35,24 +39,27 @@ class InstrumentViewController: UIViewController {
     var key_popover: KeyTableViewController?
     
     @IBOutlet weak var y_effect: UIButton!
-    
-    //var leftmost_note = "C"
 
     let num_oct: Int = 4
     let bottom_note: CGFloat = 59.0
     
     var grid: GridViewController!
     var range_controller: RangeViewContainerController!
-    
+    var record_controller: RecordViewController!
     
     var grid_lines_showing: Bool = false
-   
     
     @IBOutlet var note_btn: UIButton?
     @IBOutlet var key_btn: UIButton?
     
     override func viewDidLoad() {
-        y_effect.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI_2));
+        if let y_button = y_effect {
+            y_effect.transform = CGAffineTransformMakeRotation(CGFloat(M_PI_2));
+        }/*
+        if let y = key_btn? {
+            self.view.bringSubviewToFront(y)
+        }*/
+
     }
     
     @IBAction func changeYEffect(sender: AnyObject) {
@@ -72,11 +79,22 @@ class InstrumentViewController: UIViewController {
     }
     
     func playButtonPressed(sender: UIView) {
-        grid.playRecording()
+        if(grid.inPlayback){
+            grid.pausePlayback()
+        }
+        else{
+            grid.playRecording()
+        }
     }
     
     func stopButtonPressed(sender: UIView) {
-        grid.stopRecording()
+        if(isRecording){
+             isRecording = false
+             grid.stopRecording()
+        }
+        else{
+            grid.stopPlayback()
+        }
     }
    
     func recordButtonPressed(sender: UIView) {
@@ -90,42 +108,50 @@ class InstrumentViewController: UIViewController {
         }
 
     }
+    
+    func resetPlayButton(){
+        record_controller.resetPlayButton()
+    }
  
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         insertKeysToMap()
     }
 
-    override func viewDidLoad() {
-        if let y = key_btn? {
-                self.view.bringSubviewToFront(y)
-        }
-    }
     
     //set up instrument view as a delegate of subcontrollers
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!){
         if segue.identifier == "init_range"{
-            range_controller = segue.destinationViewController as RangeViewContainerController
+            range_controller = segue.destinationViewController as! RangeViewContainerController
             range_controller.instrument = self
         } else if segue.identifier == "init_grid"{
-            let grid = segue.destinationViewController as GridViewController
+            let grid = segue.destinationViewController as! GridViewController
             self.grid = grid
         } else if (segue.identifier == "key_menu") {
-            let key_menu = segue.destinationViewController as KeyTableViewController
+            let key_menu = segue.destinationViewController as! KeyTableViewController
             self.key_popover = key_menu
-            key_menu.table_type = false
+            key_menu.isNote = false
             key_menu.keys = key_names
             key_menu.parent = self
         } else if (segue.identifier == "note_menu") {
-            let note_menu = segue.destinationViewController as KeyTableViewController
+            let note_menu = segue.destinationViewController as! KeyTableViewController
             self.key_popover = note_menu
-            note_menu.table_type = true
+            note_menu.isNote = true
             note_menu.keys = note_names
             note_menu.parent = self
         } else if (segue.identifier == "knob_init") {
             //nothing to do here
         } else if (segue.identifier == "record_init") {
             //nothing to do here
+            record_controller = segue.destinationViewController as! RecordViewController
+        } else if (segue.identifier == "yeffect_popover"){
+            let yeffect_menu = segue.destinationViewController as! PopoverViewController
+            yeffect_menu.options = yeffects
+            yeffect_menu.parent = self as InstrumentViewController
+        } else if (segue.identifier == "waveform_popover"){
+            let wave_menu = segue.destinationViewController as! PopoverViewController
+            wave_menu.options = waveforms
+            wave_menu.parent = self as InstrumentViewController
         } else {
             println("Internal Error: unknown segue.identifier \(segue.identifier) in InstrumentViewController.prepareForSegue")
         }
@@ -242,7 +268,11 @@ class InstrumentViewController: UIViewController {
         slider.setContentOffset(slider.contentOffset, animated: true)
     }
     
+    func updateQuantizeLevel(level: Float) {
+        grid.updateQuantizeLevel(level)
+    }
+    
     @IBAction func deleteAllNotes(sender: AnyObject) {
-        grid.deleteAllNotes(sender)
+        grid.deleteAllNotes()
     }
 }

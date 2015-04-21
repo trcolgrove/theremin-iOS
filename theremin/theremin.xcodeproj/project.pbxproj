@@ -31,6 +31,7 @@
 		F821FD941AD1E75100D58093 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F821FD931AD1E75100D58093 /* SettingsViewController.swift */; };
 		F83822D71A9E3AF700DA84CD /* theremin-inst.png in Resources */ = {isa = PBXBuildFile; fileRef = F83822D61A9E3AF700DA84CD /* theremin-inst.png */; };
 		F83822D91A9E3FEE00DA84CD /* KnobControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83822D81A9E3FEE00DA84CD /* KnobControl.swift */; };
+		F83D4B0D1AD5751B00CEEC90 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83D4B0C1AD5751B00CEEC90 /* PopoverViewController.swift */; };
 		F845813E1A87D86600DCBFEA /* theremin-b1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F845813D1A87D86600DCBFEA /* theremin-b1.jpg */; };
 		F84581431A87EC4700DCBFEA /* wave.png in Resources */ = {isa = PBXBuildFile; fileRef = F84581421A87EC4700DCBFEA /* wave.png */; };
 		F84581451A882C6600DCBFEA /* InstrumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84581441A882C6600DCBFEA /* InstrumentViewController.swift */; };
@@ -95,6 +96,7 @@
 		F821FD931AD1E75100D58093 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		F83822D61A9E3AF700DA84CD /* theremin-inst.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "theremin-inst.png"; sourceTree = "<group>"; };
 		F83822D81A9E3FEE00DA84CD /* KnobControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnobControl.swift; sourceTree = "<group>"; };
+		F83D4B0C1AD5751B00CEEC90 /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 		F845813D1A87D86600DCBFEA /* theremin-b1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "theremin-b1.jpg"; sourceTree = "<group>"; };
 		F84581421A87EC4700DCBFEA /* wave.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wave.png; sourceTree = "<group>"; };
 		F84581441A882C6600DCBFEA /* InstrumentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstrumentViewController.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 		F84581461A88355300DCBFEA /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				F83D4B0C1AD5751B00CEEC90 /* PopoverViewController.swift */,
 				F8548AFE1A92774300DDE538 /* KeyTableViewController.swift */,
 				3738E6B21AD36D23008CA859 /* RecordViewController.swift */,
 				F8BD45A71A7ED3BE00535821 /* GridViewController.swift */,
@@ -482,6 +485,7 @@
 				3738E6B31AD36D23008CA859 /* RecordViewController.swift in Sources */,
 				E947E1611AA676DE004DAA9B /* GridLineView.swift in Sources */,
 				E9A9B5441AD1E735001060B7 /* sequence.swift in Sources */,
+				F83D4B0D1AD5751B00CEEC90 /* PopoverViewController.swift in Sources */,
 				E95F1E0D1A9255610067536B /* RangeViewContainerController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -541,6 +545,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_ENTITLEMENTS[sdk=*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -583,6 +589,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -609,9 +616,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = theremin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "a6c998df-854f-4a0f-a086-db22aeae4bd4";
 				SWIFT_OBJC_BRIDGING_HEADER = "theremin/theremin-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -624,9 +634,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = theremin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "a6c998df-854f-4a0f-a086-db22aeae4bd4";
 				SWIFT_OBJC_BRIDGING_HEADER = "theremin/theremin-Bridging-Header.h";
 			};
 			name = Release;

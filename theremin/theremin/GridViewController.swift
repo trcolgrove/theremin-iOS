@@ -16,13 +16,14 @@ protocol recordingProtocol{
 
 class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     let CIRCLE_DIAMETER: CGFloat = 50
+    let MAX_QUANTIZE_LEVEL: CGFloat = 10
     let MAX_NOTES = 5
     let default_velocity: Int = 40
     var circles: [CircleView] = []
-    
+    var inPlayback = false;
     // Invariant: If the bool at index i is true if index i is currently being used, otherwise false
     var note_index_used: [Bool] = [false, false, false, false, false]
-    
+   
     // Invariant: If the bool at index i is true if note i is a sustain and currently being dragged,
     //            so we shouldn't delete it on touchesEnded
     var no_delete_flag: [Bool] = [false, false, false, false, false]
@@ -30,15 +31,24 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     // Keeps track of number of notes currently sounding
     var note_count = 0
     
-    var lines: [GridLineView] = []
+    var lines : [GridLineView] = []
     var recorder : recordingProtocol?
     let halfstep_width: CGFloat = 72.5
+    var quantize_level: CGFloat = 0
+    var quantize_width: CGFloat = 0
+    
+    var recordingIndex = 0;
     
     var note_dict : Dictionary<String, Int> = [:]
-    
-
-    var recording : [recData.sample]?
     var filter_index: Int = -1
+    
+    var pause_state : [CGPoint] = []
+    var rec_length : Int = 0
+    var timers : [NSTimer] = []
+    var recording : [recData.sample]?
+    var pause_time : NSTimeInterval = 0
+    
+    
     
     var w: CGFloat = 0
     var h: CGFloat = 0
@@ -72,7 +82,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     GridViewController at runtime*/
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!){
         if segue.identifier == "grid_init"{
-            let range_controller = segue.destinationViewController as RangeViewContainerController
+            let range_controller = segue.destinationViewController as! RangeViewContainerController
             range_controller.instrument = self
         }
     }
@@ -91,14 +101,78 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         }
     }
     
+    override func updateQuantizeLevel(level: Float){
+        quantize_level = CGFloat(level)
+        quantize_width = (quantize_level / MAX_QUANTIZE_LEVEL) * halfstep_width/2
+        if (lines != []) {
+            drawGridLines()
+        }
+    }
+    
     // returns amplification level for current y value
     private func calculateAmplification(y: CGFloat) -> CGFloat{
         return 0.5 * (h - y) / h
     }
     
+    private func getDiatonicNoteAboveX(x: CGFloat) -> CGFloat {
+        var closest_x_above: CGFloat = 1000000
+        let oct_width = halfstep_width * 12
+        for var oct : CGFloat = 3; oct >= 0; oct-- { //octave
+            for var sd = 6; sd >= 0; sd-- { //scale degree
+                let notes_in_key = key_map[key]!
+                let note_name = notes_in_key[sd]
+                let offset = CGFloat(note_positions[note_name]!)
+                let note_x = halfstep_width + CGFloat(oct*oct_width + offset*halfstep_width)
+                
+                if (note_x > x && note_x < closest_x_above) {
+                    closest_x_above = note_x
+                }
+            }
+        }
+        return closest_x_above
+    }
+    
+    private func getDiatonicNoteBelowX(x: CGFloat) -> CGFloat {
+        
+        var closest_x_below: CGFloat = 0.0
+        let oct_width = halfstep_width * 12
+        for var oct : CGFloat = 0; oct < 4; oct++ { //octave
+            for var sd = 0; sd < 7; sd++ { //scale degree
+                let notes_in_key = key_map[key]!
+                let note_name = notes_in_key[sd]
+                let offset = CGFloat(note_positions[note_name]!)
+                let note_x = halfstep_width + CGFloat(oct*oct_width + offset*halfstep_width)
+                
+                if (note_x < x && note_x > closest_x_below) {
+                    closest_x_below = note_x
+                }
+            }
+        }
+        return closest_x_below
+    }
+    
     // returns midi pitch note for given x coordinate in grid_image coordinates
     private func calculatePitch(x: CGFloat) -> CGFloat{
-        return bottom_note + (x/halfstep_width)
+        if quantize_level > 0 {
+            let exact_pitch = bottom_note + x/halfstep_width
+            let x_note_above: CGFloat = getDiatonicNoteAboveX(x)
+            let x_note_below: CGFloat = getDiatonicNoteBelowX(x)
+            
+            if (x - x_note_below <= quantize_width) {
+                return bottom_note + x_note_below/halfstep_width
+            }
+            
+            if (x_note_above - x <= quantize_width) {
+                return bottom_note + x_note_above/halfstep_width
+            }
+            
+            // Calculate pitch based on distance between quantized zones
+            let bend_distance = (x_note_above - quantize_width) - (x_note_below + quantize_width)
+            let bend_note_count = (x_note_above - x_note_below) / halfstep_width
+            return bottom_note + x_note_below/halfstep_width + ((x - (x_note_below + quantize_width)) / bend_distance) * bend_note_count
+        } else {
+            return bottom_note + x/halfstep_width
+        }
     }
     
     private func getNextNoteIndex() -> Int {
@@ -111,7 +185,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         return -1
     }
     
-    override func deleteAllNotes(sender: AnyObject) {
+    func deleteAllNotes() {
         for i in 0...4 {
             if (note_index_used[i]) {
                 deleteNote(i)
@@ -189,6 +263,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         recorder?.recordNote(loc, command: recData.command.HOLD, note_index: index)
     }
     
+    // thx stackoverflow: http://stackoverflow.com/questions/24188405/get-object-pointers-memory-address-as-a-string
     func pointerToString(objRef: AnyObject) -> String {
         let ptr: COpaquePointer =
         Unmanaged<AnyObject>.passUnretained(objRef).toOpaque()
@@ -199,12 +274,13 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
 
     
     // Creates new note if not touching existing note, otherwise makes that note current
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         //stop scrolling on touch down
-        (parentViewController as InstrumentViewController).disableScroll()
+        (parentViewController as! InstrumentViewController).disableScroll()
         
         //create notes
-        for touch in touches {
+        for t in touches {
+            let touch = t as! UITouch
             var loc: CGPoint
             var is_sustain: Bool = false
             //if in a sustain, don't make a new note, instead just update the one we are touching now
@@ -233,8 +309,9 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     
 
    
-    override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
-        for touch in touches {
+    override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
+        for t in touches {
+            let touch = t as! UITouch
             let touch_loc = touch.locationInView(grid_image)
             if let index = note_dict[pointerToString(touch)] {
                 updateNote(index, loc: touch_loc)
@@ -245,8 +322,9 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
 
     
     // Stop playing the note if it wasn't a drag from a sustain
-    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
-        for touch in touches {
+    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
+        for t in touches {
+            let touch = t as! UITouch
             if (touch.tapCount >= 2) {
                 if let index = note_dict[pointerToString(touch)]{
                     let c = circles[index]
@@ -265,11 +343,11 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         }
         //enable scroll again on touch up
         if (event.allTouches()?.count == touches.count) {
-            (parentViewController as InstrumentViewController).enableScroll()
+            (parentViewController as! InstrumentViewController).enableScroll()
         }
     }
     
-    override func touchesCancelled(touches: NSSet, withEvent: UIEvent) {
+    override func touchesCancelled(touches: Set<NSObject>, withEvent: UIEvent) {
         // Multitouching gestures got in the way
         if touches.count == 4 || touches.count == 5 {
             let alert: UIAlertController = UIAlertController(title: "Oops!", message: "Looks like you have multitasking gestures enabled, and it just interfered with your playing. You can fix this problem by disabling them at Settings > General > Multitasking Gestures", preferredStyle: UIAlertControllerStyle.Alert)
@@ -299,12 +377,12 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         let oct_width = halfstep_width * 12
         for var oct : CGFloat = 0; oct < 4; oct++ { //octave
             for var sd = 0; sd < 7; sd++ { //scale degree
-                let line_width: CGFloat = 3
+                let line_width: CGFloat = 3 + (quantize_width * 2)
                 let line_height: CGFloat = 552
                 let notes_in_key = key_map[key]!
                 let note_name = notes_in_key[sd]
                 let offset = CGFloat(note_positions[note_name]!)
-                var line_loc : CGFloat = CGFloat(halfstep_width - line_width) + CGFloat(oct*oct_width + offset*halfstep_width)
+                var line_loc : CGFloat = CGFloat(halfstep_width - line_width) + CGFloat(oct*oct_width + offset*halfstep_width) + quantize_width + 1.5
                 var line = GridLineView(frame: CGRectMake(line_loc, grid_image.frame.origin.y, line_width, line_height), view_controller: self)
                 grid_image.addSubview(line)
                 lines.append(line)
@@ -312,6 +390,8 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         }
     }
     
+    
+    // MARK - Recording functions
 /***************** Recording Functions ******************/
 /* These functions interact with a recordingProtocol in */
 /* order to create, and playback a detailed array of    */
@@ -329,53 +409,117 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     /* stops recording and gets the array of samples representing the current recording */
     func stopRecording(){
         recording = recorder?.doneRecording()
-        println(recording)
         recorder = nil
     }
     
     /* private wrapper for updateNote, updates current note index for the purpose of recording*/
     func updateNoteWithIndex(timer: NSTimer){
-        var userInfo = timer.userInfo as NSDictionary
-        var index = userInfo["index"] as Int
-        let pt = CGPoint(x: userInfo["x"] as CGFloat,y: userInfo["y"] as CGFloat)
+        var userInfo = timer.userInfo as! NSDictionary
+        var index = userInfo["index"] as! Int
+        let pt = CGPoint(x: userInfo["x"] as! CGFloat,y: userInfo["y"] as! CGFloat)
         updateNote(index, loc: pt)
+        recordingIndex++
+        if(recordingIndex == rec_length){
+            recordingIndex = 0
+            inPlayback = false
+            pause_time = 0
+            (parentViewController as! InstrumentViewController).resetPlayButton()
+        }
     }
     
     /* private wrapper for createNote, updates current note index for the purpose of recording */
     func createNoteWithIndex(timer: NSTimer){
-        var userInfo = timer.userInfo as NSDictionary
-        let pt = CGPoint(x: userInfo["x"] as CGFloat,y: userInfo["y"] as CGFloat)
+        var userInfo = timer.userInfo as! NSDictionary
+        let pt = CGPoint(x: userInfo["x"] as! CGFloat,y: userInfo["y"] as! CGFloat)
         createNote(pt, isPlayback: true)
+        recordingIndex++
+        if(recordingIndex == rec_length){
+            recordingIndex = 0
+            inPlayback = false
+            pause_time = 0
+            (parentViewController as! InstrumentViewController).resetPlayButton()
+        }
     }
     
     /* private wrapper for deleteNote, updates current note index for the purpose of recording */
     func deleteNoteWithIndex(timer: NSTimer){
-        var userInfo = timer.userInfo as NSDictionary
-        let to_delete = userInfo["index"] as Int
+        var userInfo = timer.userInfo as! NSDictionary
+        let to_delete = userInfo["index"] as! Int
         deleteNote(to_delete)
+        recordingIndex++
+        if(recordingIndex == rec_length){
+            recordingIndex = 0
+            inPlayback = false
+            pause_time = 0
+            (parentViewController as! InstrumentViewController).resetPlayButton()
+        }
     }
 
+    
+    func pausePlayback(){
+        for timer in timers {
+            timer.invalidate()
+        }
+        for i in 0...4{
+            if note_index_used[i] == true {
+                var loc = circles[i].center
+                pause_state.append(loc)
+            }
+        }
+        timers = []
+        self.deleteAllNotes()
+        inPlayback = false
+        pause_time = recording![recordingIndex].elapsed_time
+    }
+    
+    func stopPlayback(){
+        for timer in timers {
+            timer.invalidate()
+        }
+        self.deleteAllNotes()
+        recordingIndex = 0
+    }
+    
+     func resetPlayButton(observer: CFRunLoopObserver!, activity: CFRunLoopActivity) -> (Void) {
+        (parentViewController as! InstrumentViewController).resetPlayButton()
+        return
+    }
+    
+    
     /* public function, plays back the current array of recorded samples */
     func playRecording(){
-        for s in self.recording!{
+        inPlayback = true
+        for loc in pause_state {
+            createNote(loc, isPlayback : true)
+        }
+        pause_state = []
+        rec_length = recording!.count
+        for var i = recordingIndex; i < rec_length; i++ {
+            var s = recording![i];
             let params = ["index" : s.note_index, "x" : s.note_loc.x, "y" : s.note_loc.y]
             var timer = NSTimer()
+            var fireAfter = s.elapsed_time - pause_time
             if(s.cmd == recData.command.ON){
-                timer = NSTimer.scheduledTimerWithTimeInterval(s.elapsed_time, target: self, selector : Selector("createNoteWithIndex:"), userInfo: params, repeats: false)
+                timer = NSTimer.scheduledTimerWithTimeInterval(fireAfter, target: self, selector : Selector("createNoteWithIndex:"), userInfo: params, repeats: false)
+                timers.append(timer)
             }
             else if(s.cmd == recData.command.OFF){
-                timer = NSTimer.scheduledTimerWithTimeInterval(s.elapsed_time, target: self, selector : Selector("deleteNoteWithIndex:"), userInfo: params, repeats: false)
+                timer = NSTimer.scheduledTimerWithTimeInterval(fireAfter, target: self, selector : Selector("deleteNoteWithIndex:"), userInfo: params, repeats: false)
+                timers.append(timer)
             }
             else if(s.cmd == recData.command.HOLD){
-                timer = NSTimer.scheduledTimerWithTimeInterval(s.elapsed_time, target: self, selector : Selector("updateNoteWithIndex:"), userInfo: params, repeats: false)
+                timer = NSTimer.scheduledTimerWithTimeInterval(fireAfter, target: self, selector : Selector("updateNoteWithIndex:"), userInfo: params, repeats: false)
+                timers.append(timer)
             }
             else if(s.cmd == recData.command.SUS){
                 
             }
-            NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes) // use this so the NSTimer can execute concurrently with UIChanges
+            // NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes) // use this so the NSTimer can execute concurrently with UIChanges
+            
+            
         }
+        
     }
-
 }
 
 
