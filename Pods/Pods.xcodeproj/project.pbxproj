@@ -246,7 +246,7 @@
 		E5740B890E28E0BDDF8C3A37 /* m_memory.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = m_memory.c; path = "pure-data/src/m_memory.c"; sourceTree = "<group>"; };
 		E63866673B72F7904BE04599 /* PdBase.cpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.cpp; name = PdBase.cpp; path = cpp/PdBase.cpp; sourceTree = "<group>"; };
 		E810D16788991C33E8BF705C /* g_template.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = g_template.c; path = "pure-data/src/g_template.c"; sourceTree = "<group>"; };
-		E95F97441AE34EDE00D90BE1 /* argv.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = argv.c; path = "/Users/Thomas/Desktop/tufts/comp150/v4/comp150isw-spring2015-team5/theremin/argv.c"; sourceTree = "<absolute>"; };
+		E95F97441AE34EDE00D90BE1 /* argv.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = argv.c; path = ../../theremin/argv.c; sourceTree = "<group>"; };
 		E97E0180EDA2BFA9DF6C9E4F /* d_osc.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = d_osc.c; path = "pure-data/src/d_osc.c"; sourceTree = "<group>"; };
 		EDB0B481EB6FD1959F81D27A /* Pods-theremin-libpd.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-theremin-libpd.xcconfig"; sourceTree = "<group>"; };
 		F070B8DB008367AAB5E413ED /* PdTypes.hpp */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.h; name = PdTypes.hpp; path = cpp/PdTypes.hpp; sourceTree = "<group>"; };
