@@ -27,9 +27,10 @@ class InstrumentViewController: UIViewController {
     
     let yeffects = ["volume", "tremolo", "vibrato"]
     
-    let waveforms = [""]
+    let waveforms = ["sine", "triangle", "sawtooth", "square", "bright", "ivory", "glass", "clav", "bass 1", "bass 2", "deep", "metallic", "organ 1", "organ 2", "bow 1", "bow 2", "bow 3", "steel", "brass 1", "brass 2", "sax", "trump", "wood 1", "wood 2"]
     
     var bottom_menu: BottomMenuController!
+    var key_popover: KeyTableViewController?
     var isRecording = false
     var key_names = ["Major", "Minor"]
     
@@ -46,7 +47,7 @@ class InstrumentViewController: UIViewController {
     
     var grid: GridViewController!
     var range_controller: RangeViewContainerController!
-    //var record_controller: RecordViewController!
+    var record_controller: RecordViewController!
     
     var grid_lines_showing: Bool = false
     
@@ -74,11 +75,7 @@ class InstrumentViewController: UIViewController {
             grid.drawGridLines()
             grid_lines_showing = true
         }
-
-    @IBAction func changeYEffect(sender: AnyObject) {
-        
     }
-    
     
     func removeGridLines(){
         grid.removeGridLines()
@@ -128,7 +125,8 @@ class InstrumentViewController: UIViewController {
         super.init(coder: aDecoder)
         insertKeysToMap()
     }
-
+        
+    
     
     //set up instrument view as a delegate of subcontrollers
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!){
@@ -154,7 +152,6 @@ class InstrumentViewController: UIViewController {
         } else if (segue.identifier == "knob_init") {
             //nothing to do here
         } else if (segue.identifier == "record_init") {
-            //nothing to do here
             record_controller = segue.destinationViewController as! RecordViewController
         } else if (segue.identifier == "yeffect_popover"){
             let yeffect_menu = segue.destinationViewController as! PopoverViewController
