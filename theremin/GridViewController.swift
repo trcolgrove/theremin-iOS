@@ -24,8 +24,6 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     let default_velocity: Int = 40
     let velocity = 100
     
-    
-    
     var circles: [CircleView] = []
     var inPlayback = false;
     // Invariant: If the bool at index i is true if index i is currently being used, otherwise false
