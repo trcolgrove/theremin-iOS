@@ -25,7 +25,7 @@ class InstrumentViewController: UIViewController {
     
     let note_positions = ["C" : 0, "C#" : 1, "Db" : 1, "D" : 2, "D#" : 3, "Eb" : 3, "E" : 4, "Fb" : 4, "E#" : 5, "F" : 5, "F#" : 6, "Gb" : 6, "G" : 7, "G#" : 8, "Ab" : 8, "A" : 9, "A#" : 10, "Bb" : 10, "B" : 11, "B#" : 11, "Cb" : 11]
     
-    let yeffects = ["Volume", "Tremolo", "Vibrato"]
+    let yeffects = ["volume", "tremolo", "vibrato"]
     
     let waveforms = ["sine", "triangle", "sawtooth", "square", "bright", "ivory", "glass", "clav", "bass 1", "bass 2", "deep", "metallic", "organ 1", "organ 2", "bow 1", "bow 2", "bow 3", "steel", "brass 1", "brass 2", "sax", "trump", "wood 1", "wood 2"]
     
@@ -52,6 +52,8 @@ class InstrumentViewController: UIViewController {
     
   
     
+    var y_axis_string: String = "volume"
+    
     override func viewDidLoad() {
         if let y_button = y_effect {
             y_effect.transform = CGAffineTransformMakeRotation(CGFloat(M_PI_2));
@@ -62,6 +64,17 @@ class InstrumentViewController: UIViewController {
 
     }
     
+    @IBAction func toggleGridLines(sender: UIButton) {
+        if (grid_lines_showing) {
+            sender.backgroundColor = UIColor(white: 137/255, alpha: 1.0)
+            grid_lines_showing = false
+            grid.removeGridLines()
+        } else {
+            sender.backgroundColor = UIColor(white: 0.3, alpha: 1.0)
+            grid.drawGridLines()
+            grid_lines_showing = true
+        }
+
     @IBAction func changeYEffect(sender: AnyObject) {
         
     }
@@ -126,7 +139,33 @@ class InstrumentViewController: UIViewController {
         } else if segue.identifier == "init_grid"{
             let grid = segue.destinationViewController as! GridViewController
             self.grid = grid
-            
+        } else if (segue.identifier == "key_menu") {
+            let key_menu = segue.destinationViewController as! KeyTableViewController
+            self.key_popover = key_menu
+            key_menu.isNote = false
+            key_menu.keys = key_names
+            key_menu.parent = self
+        } else if (segue.identifier == "note_menu") {
+            let note_menu = segue.destinationViewController as! KeyTableViewController
+            self.key_popover = note_menu
+            note_menu.isNote = true
+            note_menu.keys = note_names
+            note_menu.parent = self
+        } else if (segue.identifier == "knob_init") {
+            //nothing to do here
+        } else if (segue.identifier == "record_init") {
+            //nothing to do here
+            record_controller = segue.destinationViewController as! RecordViewController
+        } else if (segue.identifier == "yeffect_popover"){
+            let yeffect_menu = segue.destinationViewController as! PopoverViewController
+            yeffect_menu.options = yeffects
+            yeffect_menu.popoverType = "yeffect"
+            yeffect_menu.parent = self as InstrumentViewController
+        } else if (segue.identifier == "waveform_popover"){
+            let wave_menu = segue.destinationViewController as! PopoverViewController
+            wave_menu.options = waveforms
+            wave_menu.popoverType = "waveform"
+            wave_menu.parent = self as InstrumentViewController
         } else if segue.identifier == "bottom_init"{
             self.bottom_menu = segue.destinationViewController as! BottomMenuController
             bottom_menu.instrument_view = self

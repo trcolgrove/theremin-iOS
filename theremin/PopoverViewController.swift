@@ -13,7 +13,9 @@ class PopoverViewController: UITableViewController, UITableViewDataSource, UITab
     
     var options: [String]!
     
-    var parent: AnyObject!
+    var popoverType: String?
+    
+    var parent: InstrumentViewController!
     
     override func viewDidLoad() {
         
@@ -34,7 +36,12 @@ class PopoverViewController: UITableViewController, UITableViewDataSource, UITab
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        // send data back to parent
+        if popoverType == "yeffect" {
+            parent.grid.y_axis_string = self.options[indexPath.row]
+            parent.y_effect.setTitle(self.options[indexPath.row], forState: UIControlState.Normal)
+        } else {
+            print("thomas... you for writing the waveform as it's own rabbit deap holeeeeee. ily thomas <3");
+        }
         self.dismissViewController()
     }
     

@@ -718,7 +718,7 @@ amount 0 \, noise filter 300 \, filter frequency 2000 \, mix 1 0.5
 #X obj 37 317 *~;
 #X obj 102 317 *~;
 #N canvas 650 411 402 510 README 0;
-#X text 12 123 There are no waveforms in this patch — you need to
+#X text 12 123 There are no waveforms in this patch — you need to
 put your waveforms (aka arrays) in a higher-level patch that you then
 reference in this patch.;
 #X text 10 3 Subtractive Synthesis - like sculpting but with audio.
@@ -729,14 +729,14 @@ filtering object) to have a more flexible filter \, but a lowpass was
 used because it covers 90% of use cases & the implementation is more
 efficient \, which is important if you have multiple instances of the
 patch going at once.;
-#X text 14 304 All parameters are scriptable (at control rates) — this
+#X text 14 304 All parameters are scriptable (at control rates) — this
 helps with presets \, envelopes \, & LFOs \, so long as the envelope/lfo
 is operating at non-signal rates (minimum wavelength = 1 ms => 1000
 hz).;
 #X text 11 21 Start with something harmonically rich \, then subtract
 parts of it. This synth uses two copies of a waveform with a phase
 offset and then subtracts one from the other.;
-#X text 12 66 There are three sound generators — each one is a subtractive
+#X text 12 66 There are three sound generators — each one is a subtractive
 synth on its own. Blend them together or pan them for more complex
 sounds. Each generator can be toggled on & off.;
 #X text 13 368 IMPORTANT: All waveforms are assumed to be 4099 points

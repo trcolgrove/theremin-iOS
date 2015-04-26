@@ -468,6 +468,8 @@
 		F8BD458F1A7EC47000535821 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8BD458D1A7EC47000535821 /* LaunchScreen.xib */; };
 		F8BD459B1A7EC47000535821 /* thereminTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BD459A1A7EC47000535821 /* thereminTests.m */; };
 		F8BD45A81A7ED3BE00535821 /* GridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BD45A71A7ED3BE00535821 /* GridViewController.swift */; };
+		F8F3ABA01AE9A59F004467CD /* thomas_just_bottom_part.png in Resources */ = {isa = PBXBuildFile; fileRef = F8F3AB9F1AE9A59F004467CD /* thomas_just_bottom_part.png */; };
+		F8F3ABA21AE9A6B3004467CD /* theremin-antenna.png in Resources */ = {isa = PBXBuildFile; fileRef = F8F3ABA11AE9A6B3004467CD /* theremin-antenna.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -951,6 +953,8 @@
 		F8BD459A1A7EC47000535821 /* thereminTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = thereminTests.m; sourceTree = "<group>"; };
 		F8BD45A61A7ED3BE00535821 /* theremin-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "theremin-Bridging-Header.h"; sourceTree = "<group>"; };
 		F8BD45A71A7ED3BE00535821 /* GridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridViewController.swift; sourceTree = "<group>"; };
+		F8F3AB9F1AE9A59F004467CD /* thomas_just_bottom_part.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thomas_just_bottom_part.png; sourceTree = "<group>"; };
+		F8F3ABA11AE9A6B3004467CD /* theremin-antenna.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "theremin-antenna.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1416,6 +1420,8 @@
 		F845813F1A87D87F00DCBFEA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				F8F3AB9F1AE9A59F004467CD /* thomas_just_bottom_part.png */,
+				F8F3ABA11AE9A6B3004467CD /* theremin-antenna.png */,
 				E9C57ECC1AE9832A007CF994 /* oscillators.png */,
 				3738E6C01AD42817008CA859 /* record-in-progress.png */,
 				3738E6B81AD3A11D008CA859 /* play-button-free-record.png */,
@@ -1929,6 +1935,7 @@
 				E990F8541AE709BA00B6EE73 /* gate2~-help.pd in Resources */,
 				E990F8341AE709BA00B6EE73 /* csymbol-help.pd in Resources */,
 				E990F91E1AE709BA00B6EE73 /* sec-help.pd in Resources */,
+				F8F3ABA21AE9A6B3004467CD /* theremin-antenna.png in Resources */,
 				E990F9681AE709BA00B6EE73 /* voice~.pd in Resources */,
 				E990F9061AE709BA00B6EE73 /* pitchshifter~-help.pd in Resources */,
 				E990F8301AE709BA00B6EE73 /* csub-help.pd in Resources */,
@@ -2000,6 +2007,7 @@
 				E990F7D81AE709BA00B6EE73 /* <=~.pd in Resources */,
 				E990F84C1AE709BA00B6EE73 /* filt-help.pd in Resources */,
 				E990F8C91AE709BA00B6EE73 /* lfor-help.pd in Resources */,
+				F8F3ABA01AE9A59F004467CD /* thomas_just_bottom_part.png in Resources */,
 				E990F8CF1AE709BA00B6EE73 /* liter-help.pd in Resources */,
 				E990F82F1AE709BA00B6EE73 /* csch~.pd in Resources */,
 				E990F8E51AE709BA00B6EE73 /* lstack-help.pd in Resources */,
