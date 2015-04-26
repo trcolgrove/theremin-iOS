@@ -20,6 +20,7 @@ class RangeViewContainerController: InstrumentViewController, RangeSlideParentDe
     var instrument: InstrumentViewController!
     var range_control: RangeSlideController!
     
+    
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         key = "CMajor"
