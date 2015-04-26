@@ -1585,12 +1585,10 @@
 				TargetAttributes = {
 					F8BD457A1A7EC47000535821 = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = 678N83CKYU;
 					};
 					F8BD45931A7EC47000535821 = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = 678N83CKYU;
-						TestTargetID = F8BD457A1A7EC47000535821;
+						DevelopmentTeam = 67255TZUTK;
 					};
 				};
 			};
@@ -2288,7 +2286,6 @@
 		F8BD45A21A7EC47000535821 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2303,14 +2300,12 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/theremin.app/theremin";
 			};
 			name = Debug;
 		};
 		F8BD45A31A7EC47000535821 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2321,7 +2316,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/theremin.app/theremin";
 			};
 			name = Release;
 		};

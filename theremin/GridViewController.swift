@@ -21,6 +21,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     let CIRCLE_DIAMETER: CGFloat = 50
     let MAX_QUANTIZE_LEVEL: CGFloat = 10
     let MAX_NOTES = 10
+    let TOTAL_NOTES : Int = 28
     let default_velocity: Int = 40
     let velocity = 100
     
@@ -47,6 +48,8 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     var recordingIndex = 0;
     
     var note_dict : Dictionary<String, Int> = [:]
+    var diatonic_note_positions : [CGFloat] = []
+
     var filter_index: Int = -1
     
     var pause_state : [CGPoint] = []
@@ -73,6 +76,23 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
             no_delete_flag.append(false);
         }
         super.init(coder: aDecoder)
+
+        for(var i = 0; i < TOTAL_NOTES; i++) {
+           diatonic_note_positions.append(0)
+        }
+        
+        var i = TOTAL_NOTES - 1
+        let oct_width = halfstep_width * 12
+        for var oct : CGFloat = 3; oct >= 0; oct-- { //octave
+            for var sd = 6; sd >= 0; sd-- { //scale degree
+                let notes_in_key = key_map[key]!
+                let note_name = notes_in_key[sd]
+                let offset = CGFloat(note_positions[note_name]!)
+                let note_x = halfstep_width + CGFloat(oct*oct_width + offset*halfstep_width)
+                diatonic_note_positions[i] = note_x
+                i--
+            }
+        }
     }
     
     override func viewDidLoad() {
@@ -118,6 +138,18 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         if(lines != []){
             drawGridLines()
         }
+        let oct_width = halfstep_width * 12
+        var i = 27 // number of playable diatonic notes
+        for var oct : CGFloat = 3; oct >= 0; oct-- { //octave
+            for var sd = 6; sd >= 0; sd-- { //scale degree
+                let notes_in_key = key_map[key]!
+                let note_name = notes_in_key[sd]
+                let offset = CGFloat(note_positions[note_name]!)
+                let note_x = halfstep_width + CGFloat(oct*oct_width + offset*halfstep_width)
+                diatonic_note_positions[i] = note_x
+                i--
+            }
+        }
     }
     
     override func updateQuantizeLevel(level: Float){
@@ -151,31 +183,44 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         return closest_x_above
     }
     
-    private func getDiatonicNoteBelowX(x: CGFloat) -> CGFloat {
-        
-        var closest_x_below: CGFloat = 0.0
-        let oct_width = halfstep_width * 12
-        for var oct : CGFloat = 0; oct < 4; oct++ { //octave
-            for var sd = 0; sd < 7; sd++ { //scale degree
-                let notes_in_key = key_map[key]!
-                let note_name = notes_in_key[sd]
-                let offset = CGFloat(note_positions[note_name]!)
-                let note_x = halfstep_width + CGFloat(oct*oct_width + offset*halfstep_width)
-                
-                if (note_x < x && note_x > closest_x_below) {
-                    closest_x_below = note_x
+    private func getAdjacentDiatonicNote(x: CGFloat, Above: Bool) -> CGFloat {
+        var i = TOTAL_NOTES / 2
+        var left = 0, right = TOTAL_NOTES - 1
+        // O(log(n))) search, where n is the number of notes
+        while(true) {
+            if diatonic_note_positions[i] < x {
+                if (i + 1 >= right) {
+                    break
                 }
+                left = i
+                i = (left + right) / 2
+            } else {
+                if (i - 1 <= left) {
+                    i--
+                    break
+                }
+                right = i
+                i = (left + right) / 2
             }
         }
-        return closest_x_below
+        if Above {
+            i++
+         
+        }
+        
+        /* not sure if necessary */
+        if (i >= TOTAL_NOTES) {
+            i = TOTAL_NOTES - 1
+        }
+        return diatonic_note_positions[i]
     }
     
     // returns midi pitch note for given x coordinate in grid_image coordinates
     private func calculatePitch(x: CGFloat) -> CGFloat{
         if quantize_level > 0 {
             let exact_pitch = bottom_note + x/halfstep_width
-            let x_note_above: CGFloat = getDiatonicNoteAboveX(x)
-            let x_note_below: CGFloat = getDiatonicNoteBelowX(x)
+            let x_note_above: CGFloat = getAdjacentDiatonicNote(x, Above: true)
+            let x_note_below: CGFloat =  getAdjacentDiatonicNote(x, Above: false)
             
             if (x - x_note_below <= quantize_width) {
                 return bottom_note + x_note_below/halfstep_width
