@@ -25,7 +25,7 @@ class InstrumentViewController: UIViewController {
     
     let note_positions = ["C" : 0, "C#" : 1, "Db" : 1, "D" : 2, "D#" : 3, "Eb" : 3, "E" : 4, "Fb" : 4, "E#" : 5, "F" : 5, "F#" : 6, "Gb" : 6, "G" : 7, "G#" : 8, "Ab" : 8, "A" : 9, "A#" : 10, "Bb" : 10, "B" : 11, "B#" : 11, "Cb" : 11]
     
-    let yeffects = ["Volume", "Tremolo", "Vibrato"]
+    let yeffects = ["volume", "tremolo", "vibrato"]
     
     let waveforms = [""]
 
@@ -52,6 +52,8 @@ class InstrumentViewController: UIViewController {
     @IBOutlet var note_btn: UIButton?
     @IBOutlet var key_btn: UIButton?
     
+    var y_axis_string: String = "volume"
+    
     override func viewDidLoad() {
         if let y_button = y_effect {
             y_effect.transform = CGAffineTransformMakeRotation(CGFloat(M_PI_2));
@@ -60,10 +62,6 @@ class InstrumentViewController: UIViewController {
             self.view.bringSubviewToFront(y)
         }*/
 
-    }
-    
-    @IBAction func changeYEffect(sender: AnyObject) {
-        
     }
     
     @IBAction func toggleGridLines(sender: UIButton) {
@@ -148,10 +146,12 @@ class InstrumentViewController: UIViewController {
         } else if (segue.identifier == "yeffect_popover"){
             let yeffect_menu = segue.destinationViewController as! PopoverViewController
             yeffect_menu.options = yeffects
+            yeffect_menu.popoverType = "yeffect"
             yeffect_menu.parent = self as InstrumentViewController
         } else if (segue.identifier == "waveform_popover"){
             let wave_menu = segue.destinationViewController as! PopoverViewController
             wave_menu.options = waveforms
+            wave_menu.popoverType = "waveform"
             wave_menu.parent = self as InstrumentViewController
         } else {
             println("Internal Error: unknown segue.identifier \(segue.identifier) in InstrumentViewController.prepareForSegue")

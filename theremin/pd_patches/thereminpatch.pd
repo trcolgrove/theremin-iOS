@@ -1,16 +1,16 @@
 #N canvas 151 23 998 707 10;
 #X obj 235 465 channels~;
-#X obj 263 281 uzi 16;
-#X msg 298 391 init \$1 stereo subtractive_synth;
+#X obj 254 282 uzi 16;
+#X msg 288 386 init \$1 stereo subtractive_synth;
 #X obj 496 303 uzi 16;
 #X obj 536 242 t b a;
 #X obj 562 405 list;
 #X obj 562 425 list trim;
-#X floatatom 264 228 5 0 0 0 - - -, f 5;
-#X obj 219 204 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X floatatom 287 229 5 0 0 0 - - -, f 5;
+#X obj 254 168 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 550 152 square_table;
-#X text 260 210 # of voices;
+#X text 337 225 # of voices;
 #N canvas 334 257 450 300 presets 0;
 #X obj 41 156 outlet;
 #X obj 35 41 inlet;
@@ -20,7 +20,7 @@
 3000 \, volume 0.5 \, adsr 0 0 1 0;
 #X connect 1 0 2 0;
 #X connect 2 0 0 0;
-#X restore 416 173 pd presets;
+#X restore 416 164 pd presets;
 #X obj 266 48 loadbang;
 #X msg 287 166 4;
 #X obj 323 58 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
@@ -7964,16 +7964,16 @@
 #X coords 0 1 2051 -1 200 140 1 0 0;
 #X restore 1284 456 graph;
 #X restore 88 85 pd waveforms;
-#X obj 327 170 r voices;
+#X obj 337 165 r voices;
 #X obj 123 376 r note;
 #X obj 170 417 list trim;
 #X text 104 262 Send messages to notes;
 #X msg 324 418 reset;
 #X text 341 79 reset \, set #voices \, initialize \, set square table
 \, initialize preset;
-#X msg 155 147 1 60 0;
+#X msg 185 147 1 60 0;
 #X msg 106 170 1 60 127;
-#X obj 279 336 - 1;
+#X obj 288 324 - 1;
 #X obj 525 353 - 1;
 #X obj 265 83 t b b b b b;
 #X connect 0 0 18 0;
