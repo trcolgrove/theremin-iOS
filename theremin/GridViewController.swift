@@ -160,9 +160,23 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         }
     }
     
+    func calculateYValue(y: CGFloat) ->  CGFloat {
+        var y_axis_value: CGFloat = 0
+        switch y_axis_string {
+        case "volume":
+            return calculateAmplification(y, scale: 0.5)
+        case "tremolo":
+            return calculateAmplification(y, scale: 10)
+        case "vibrato":
+            return calculateAmplification(y, scale: 10)
+        default:
+            return y_axis_value
+        }
+    }
+    
     // returns amplification level for current y value
-    private func calculateAmplification(y: CGFloat) -> CGFloat{
-        return 0.5 * (h - y) / h
+    private func calculateAmplification(y: CGFloat, scale: CGFloat) -> CGFloat{
+        return scale * (h - y) / h
     }
     
     private func getDiatonicNoteAboveX(x: CGFloat) -> CGFloat {
@@ -294,7 +308,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         note_count++
         
         PdBase.sendList([new_index, calculatePitch(loc.x), velocity], toReceiver: "note")
-        PdBase.sendList([new_index, y_axis_string, calculateAmplification(loc.y)], toReceiver: "note")
+        PdBase.sendList([new_index, y_axis_string, calculateYValue(loc.y)], toReceiver: "note")
         
         // Create a new CircleView for current touch location
         var new_circle = CircleView(frame: CGRectMake(loc.x - (CIRCLE_DIAMETER * 0.5), loc.y - (CIRCLE_DIAMETER * 0.5), CIRCLE_DIAMETER, CIRCLE_DIAMETER), i: new_index, view_controller: self, isPlayback: isPlayback)
@@ -324,7 +338,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         let gi_pt = grid_image.convertPoint(gv_pt, fromView: self.view)
         let pitch = calculatePitch(gi_pt.x)
         PdBase.sendList([index, calculatePitch(gi_pt.x), velocity], toReceiver: "note")
-        PdBase.sendList([index, y_axis_string, calculateAmplification(gi_pt.y)], toReceiver: "note")
+        PdBase.sendList([index, y_axis_string, calculateYValue(gi_pt.y)], toReceiver: "note")
         let circle: CircleView = circles[index]
         circle.center.x = gi_pt.x
         circle.center.y = gi_pt.y
