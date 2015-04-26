@@ -1,6 +1,6 @@
-#N canvas 583 161 244 386 10;
+#N canvas 978 462 244 386 10;
 #X obj -9 -2 inlet;
-#N canvas 394 110 534 737 methods 0;
+#N canvas 739 40 534 737 methods 0;
 #X obj -31 4 inlet;
 #X obj -31 647 route semi cent phase set mode on;
 #X obj -31 674 s \$0-osc1.semi;
@@ -99,7 +99,7 @@ pitchbend pan volume;
 #X connect 46 11 47 0;
 #X connect 46 12 38 0;
 #X restore -9 21 pd methods;
-#N canvas 117 177 417 659 osc1 0;
+#N canvas 60 39 417 659 osc1 0;
 #X obj 121 620 outlet~;
 #X obj 121 600 transistor~;
 #X obj -7 -23 r \$0-note;
@@ -549,10 +549,10 @@ pitchbend pan volume;
 #X connect 11 0 2 1;
 #X restore -4 135 pd noise;
 #X obj 37 174 +~;
-#N canvas 809 329 450 300 init 1;
+#N canvas 653 54 450 300 init 1;
 #X obj 38 165 outlet;
 #X obj 38 55 loadbang;
-#X msg 38 88 volume 3 \, osc1 on 1 \, osc2 on 1 \, osc3 on 1 \, osc1
+#X msg 38 88 volume 1 \, osc1 on 1 \, osc2 on 1 \, osc3 on 1 \, osc1
 mode x \, osc2 mode x \, osc3 mode x \, noise adsr 2 100 0 0 \, noise
 amount 0 \, noise filter 300 \, filter frequency 2000 \, mix 1 0.5
 0.5 \, adsr 10 80 0.3 1000 \, pan 0.5 0.5 0.5;

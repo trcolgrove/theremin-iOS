@@ -14,6 +14,9 @@ class SynthViewController: UIViewController{
     var container_view: BottomMenuController!
     var instrument_view: InstrumentViewController!
     
+    var low_index = 0 //the lowest channel being effected by synth change
+    var high_index = 9
+        //highest channel being effected by synth change
     @IBOutlet weak var toSettings: UIButton!
     
     @IBOutlet weak var osc1_mix_temp: UIView!
@@ -40,6 +43,24 @@ class SynthViewController: UIViewController{
     @IBOutlet weak var osc3_phase_label: UILabel!
     @IBOutlet weak var osc3_pitch_label: UILabel!
     
+    @IBOutlet weak var osc1_toggle: UISwitch!
+    @IBOutlet weak var osc2_toggle: UISwitch!
+    @IBOutlet weak var osc3_toggle: UISwitch!
+    
+    @IBAction func switchDidMove(sender: UISwitch!) {
+        var on_off = 0
+        if(sender.on){
+            on_off = 1
+        }
+        if(sender == osc1_toggle){
+            sendToChannelsInRange(low_index, high: high_index, msg: ["osc1", "on", on_off])
+        } else if(sender == osc2_toggle){
+            sendToChannelsInRange(low_index, high: high_index, msg: ["osc2", "on", on_off])
+        } else if(sender == osc3_toggle){
+            sendToChannelsInRange(low_index, high: high_index, msg: ["osc3", "on", on_off])
+        }
+    }
+    
     var osc1 : [Float] = [0, 0, 0]
     var osc2 : [Float] = [0, 0, 0]
     var osc3 : [Float] = [0, 0, 0]
@@ -47,6 +68,7 @@ class SynthViewController: UIViewController{
     var knobs = [String:Knob]()
     var knob_ids = ["mix1", "phase1", "pitch1", "mix2", "phase2", "pitch2", "mix3", "phase3", "pitch3"]
     
+
     required init(coder aDecoder: NSCoder){
         super.init(coder: aDecoder)
     }
@@ -170,14 +192,24 @@ class SynthViewController: UIViewController{
             updateLabel(knobs[knob.id], label: knob_label)
             if let cur_value = getKnobValue(knob.id) {
                 switch knob.id {
-                case "quantize":
-                    (parentViewController as! InstrumentViewController).updateQuantizeLevel(knob.value)
                 default:
-                    PdBase.sendFloat(knob.value, toReceiver: knob.id)
+                    println("Asdf")
                 }
             }
         }
     }
+    
+    
+    /** Send a PdList to a range of Channels **/
+    func sendToChannelsInRange(low: Int, high: Int, msg: [AnyObject]){
+        for i in low...high {
+            var new_msg = msg
+            new_msg.insert(i, atIndex: 0)
+            PdBase.sendList( new_msg, toReceiver: "note")
+        }
+        
+    }
+    
     
     /** Changes all knob values to a given float **/
     func updateKnobValues(value: Float) {

@@ -316,14 +316,23 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="3dX-Fd-S5D">
                                 <rect key="frame" x="22" y="49" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="switchDidMove:" destination="6cY-X0-1F4" eventType="valueChanged" id="hMW-Ud-OHu"/>
+                                </connections>
                             </switch>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="RUf-Eq-Z9w">
                                 <rect key="frame" x="359" y="49" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="switchDidMove:" destination="6cY-X0-1F4" eventType="valueChanged" id="n0a-cy-dTU"/>
+                                </connections>
                             </switch>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="Oga-fH-W00">
                                 <rect key="frame" x="698" y="49" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="switchDidMove:" destination="6cY-X0-1F4" eventType="valueChanged" id="LH0-sy-TwE"/>
+                                </connections>
                             </switch>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="CSr-tO-ABw">
                                 <rect key="frame" x="105" y="50" width="38" height="30"/>
@@ -531,18 +540,21 @@
                         <outlet property="osc1_phase_temp" destination="nb3-vK-1kR" id="Et8-Lj-O2m"/>
                         <outlet property="osc1_pitch_label" destination="cR1-l4-6es" id="GgA-TK-mua"/>
                         <outlet property="osc1_pitch_temp" destination="1DU-cA-dUm" id="hgm-rA-dbG"/>
+                        <outlet property="osc1_toggle" destination="3dX-Fd-S5D" id="aEY-gD-jeJ"/>
                         <outlet property="osc2_mix_label" destination="w81-Er-4Hp" id="Jun-nd-dzb"/>
                         <outlet property="osc2_mix_temp" destination="jBd-Zu-zBe" id="N80-KW-NyQ"/>
                         <outlet property="osc2_phase_label" destination="aC8-Nx-kv7" id="bum-2B-ewQ"/>
                         <outlet property="osc2_phase_temp" destination="Ivc-XX-FRs" id="bWM-55-ycn"/>
                         <outlet property="osc2_pitch_label" destination="7yU-e6-fu1" id="evH-IZ-FX9"/>
                         <outlet property="osc2_pitch_temp" destination="lQ6-eL-YVo" id="PZg-XM-LYK"/>
+                        <outlet property="osc2_toggle" destination="RUf-Eq-Z9w" id="i99-2L-k4c"/>
                         <outlet property="osc3_mix_label" destination="fwB-Zy-2hh" id="qlN-EC-ItE"/>
                         <outlet property="osc3_mix_temp" destination="LB8-EI-gfj" id="9WK-SN-LQI"/>
                         <outlet property="osc3_phase_label" destination="cVi-aS-Sfc" id="Yzx-DC-CG2"/>
                         <outlet property="osc3_phase_temp" destination="eBd-et-MCA" id="M4T-lT-Siq"/>
                         <outlet property="osc3_pitch_label" destination="Vel-DO-0eY" id="eW0-5L-8P0"/>
                         <outlet property="osc3_pitch_temp" destination="5lo-hQ-UPG" id="gL4-9U-tgb"/>
+                        <outlet property="osc3_toggle" destination="Oga-fH-W00" id="WLl-bB-4lZ"/>
                         <outlet property="toSettings" destination="MpM-UF-eqw" id="qJY-aT-bKR"/>
                     </connections>
                 </viewController>
