@@ -176,7 +176,8 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     
     // returns amplification level for current y value
     private func calculateAmplification(y: CGFloat, scale: CGFloat) -> CGFloat{
-        return scale * (h - y) / h
+        var value = (scale * (h - 80 - y) / (h - 80))
+        return value > 0 ? value : 0
     }
     
     private func getDiatonicNoteAboveX(x: CGFloat) -> CGFloat {

@@ -289,6 +289,22 @@
             </objects>
             <point key="canvasLocation" x="-346.5" y="1452.5"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="X50-zE-5ra">
+            <objects>
+                <viewController id="WN0-Df-9rg" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ptM-SA-CEq">
+                        <rect key="frame" x="0.0" y="0.0" width="150" height="200"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="150" height="200"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WaD-KW-TBG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2078" y="1840"/>
+        </scene>
         <!--Synth View Controller-->
         <scene sceneID="mv4-hd-QAT">
             <objects>
@@ -313,6 +329,11 @@
                                         <integer key="value" value="6"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="WN0-Df-9rg" kind="popover" identifier="wave_osc3" popoverAnchorView="YEF-qX-usF" id="3wh-dy-yhH">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="phase" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jfX-KE-Vtp">
                                 <rect key="frame" x="221" y="25" width="47" height="21"/>
@@ -368,6 +389,11 @@
                                         <integer key="value" value="6"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="WN0-Df-9rg" kind="popover" identifier="wave_osc1" popoverAnchorView="CSr-tO-ABw" id="b5t-vx-Qbd">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="HM2-pr-jug">
                                 <rect key="frame" x="442" y="50" width="38" height="30"/>
@@ -381,6 +407,11 @@
                                         <integer key="value" value="6"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="WN0-Df-9rg" kind="popover" identifier="wave_osc2" popoverAnchorView="HM2-pr-jug" id="3Ik-4W-18G">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MpM-UF-eqw">
                                 <rect key="frame" x="978" y="98" width="41" height="30"/>
@@ -877,6 +908,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="a92-CV-UcU"/>
+        <segue reference="3Ik-4W-18G"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>
