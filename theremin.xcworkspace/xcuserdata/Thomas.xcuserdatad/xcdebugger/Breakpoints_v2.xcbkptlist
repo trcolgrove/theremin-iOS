@@ -247,11 +247,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "theremin/BottomMenuController.swift"
-            timestampString = "451711361.640167"
+            timestampString = "451765874.268643"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "displaySynth()"
             landmarkType = "5">
          </BreakpointContent>

@@ -210,7 +210,6 @@ class SynthViewController: UIViewController{
         
     }
     
-    
     /** Changes all knob values to a given float **/
     func updateKnobValues(value: Float) {
         var id = ""
@@ -237,11 +236,4 @@ class SynthViewController: UIViewController{
     func updateLabel(knob: Knob!, label: UILabel) {
         label.text = NSNumberFormatter.localizedStringFromNumber(knob.value, numberStyle: .NoStyle)
     }
-
-
-   
-    
-    
-    
-    
 }

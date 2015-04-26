@@ -46,7 +46,7 @@ class InstrumentViewController: UIViewController {
     
     var grid: GridViewController!
     var range_controller: RangeViewContainerController!
-    var record_controller: RecordViewController!
+    //var record_controller: RecordViewController!
     
     var grid_lines_showing: Bool = false
     
@@ -108,7 +108,7 @@ class InstrumentViewController: UIViewController {
     }
     
     func resetPlayButton(){
-        record_controller.resetPlayButton()
+        bottom_menu.settings_control.record_control.resetPlayButton()
     }
  
     required init(coder aDecoder: NSCoder) {
