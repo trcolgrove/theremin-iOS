@@ -20,7 +20,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     
     let CIRCLE_DIAMETER: CGFloat = 50
     let MAX_QUANTIZE_LEVEL: CGFloat = 10
-    let MAX_NOTES = 32
+    let MAX_NOTES = 10
     let default_velocity: Int = 40
     let velocity = 100
     
@@ -29,13 +29,12 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     var circles: [CircleView] = []
     var inPlayback = false;
     // Invariant: If the bool at index i is true if index i is currently being used, otherwise false
-    var note_index_used: [Bool] = [false, false, false, false, false]
+    var note_index_used: [Bool] = []
    
     var loop_timer : NSTimer?
     // Invariant: If the bool at index i is true if note i is a sustain and currently being dragged,
     //            so we shouldn't delete it on touchesEnded
-    var no_delete_flag: [Bool] = [false, false, false, false, false]
-    
+    var no_delete_flag: [Bool] = []
     // Keeps track of number of notes currently sounding
     var note_count = 0
     
@@ -68,6 +67,13 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     @IBOutlet weak var grid_image: UIImageView!
     
 
+    required init(coder aDecoder: NSCoder) {
+        for i in 0..<MAX_NOTES {
+            note_index_used.append(false);
+            no_delete_flag.append(false);
+        }
+        super.init(coder: aDecoder)
+    }
     
     override func viewDidLoad() {
         //init 5 circles off screen
