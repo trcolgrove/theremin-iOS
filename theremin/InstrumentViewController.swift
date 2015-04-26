@@ -28,7 +28,8 @@ class InstrumentViewController: UIViewController {
     let yeffects = ["Volume", "Tremolo", "Vibrato"]
     
     let waveforms = [""]
-
+    
+    var bottom_menu: BottomMenuController!
     var isRecording = false
     var key_names = ["Major", "Minor"]
     
@@ -36,7 +37,7 @@ class InstrumentViewController: UIViewController {
     var key_type: String = "Major"
     var key: String = "CMajor"
     
-    var key_popover: KeyTableViewController?
+    
     
     @IBOutlet weak var y_effect: UIButton!
 
@@ -49,8 +50,7 @@ class InstrumentViewController: UIViewController {
     
     var grid_lines_showing: Bool = false
     
-    @IBOutlet var note_btn: UIButton?
-    @IBOutlet var key_btn: UIButton?
+  
     
     override func viewDidLoad() {
         if let y_button = y_effect {
@@ -66,16 +66,13 @@ class InstrumentViewController: UIViewController {
         
     }
     
-    @IBAction func toggleGridLines(sender: UIButton) {
-        if (grid_lines_showing) {
-            sender.backgroundColor = UIColor(white: 137/255, alpha: 1.0)
-            grid_lines_showing = false
-            grid.removeGridLines()
-        } else {
-            sender.backgroundColor = UIColor(white: 0.3, alpha: 1.0)
-            grid.drawGridLines()
-            grid_lines_showing = true
-        }
+    
+    func removeGridLines(){
+        grid.removeGridLines()
+    }
+    
+    func drawGridLines(){
+        grid.drawGridLines()
     }
     
     func playButtonPressed(sender: UIView) {
@@ -122,38 +119,19 @@ class InstrumentViewController: UIViewController {
     
     //set up instrument view as a delegate of subcontrollers
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!){
+        
         if segue.identifier == "init_range"{
             range_controller = segue.destinationViewController as! RangeViewContainerController
             range_controller.instrument = self
         } else if segue.identifier == "init_grid"{
             let grid = segue.destinationViewController as! GridViewController
             self.grid = grid
-        } else if (segue.identifier == "key_menu") {
-            let key_menu = segue.destinationViewController as! KeyTableViewController
-            self.key_popover = key_menu
-            key_menu.isNote = false
-            key_menu.keys = key_names
-            key_menu.parent = self
-        } else if (segue.identifier == "note_menu") {
-            let note_menu = segue.destinationViewController as! KeyTableViewController
-            self.key_popover = note_menu
-            note_menu.isNote = true
-            note_menu.keys = note_names
-            note_menu.parent = self
-        } else if (segue.identifier == "knob_init") {
-            //nothing to do here
-        } else if (segue.identifier == "record_init") {
-            //nothing to do here
-            record_controller = segue.destinationViewController as! RecordViewController
-        } else if (segue.identifier == "yeffect_popover"){
-            let yeffect_menu = segue.destinationViewController as! PopoverViewController
-            yeffect_menu.options = yeffects
-            yeffect_menu.parent = self as InstrumentViewController
-        } else if (segue.identifier == "waveform_popover"){
-            let wave_menu = segue.destinationViewController as! PopoverViewController
-            wave_menu.options = waveforms
-            wave_menu.parent = self as InstrumentViewController
-        } else {
+            
+        } else if segue.identifier == "bottom_init"{
+            self.bottom_menu = segue.destinationViewController as! BottomMenuController
+            bottom_menu.instrument_view = self
+        } 
+        else {
             println("Internal Error: unknown segue.identifier \(segue.identifier) in InstrumentViewController.prepareForSegue")
         }
     }
@@ -189,9 +167,10 @@ class InstrumentViewController: UIViewController {
         var found_notes = lookupKey(key)
         if (found_notes != nil) {
             self.key = key
-            note_btn?.setTitle("\(key_note)", forState: UIControlState.Normal)
-            key_btn?.setTitle("\(key_type)", forState: UIControlState.Normal)
-            self.view.bringSubviewToFront(key_btn!)
+            println(key_note)
+            bottom_menu.settings_control.note_button!.setTitle("\(key_note)", forState: UIControlState.Normal)
+            bottom_menu.settings_control.key_button!.setTitle("\(key_type)", forState: UIControlState.Normal)
+            self.view.bringSubviewToFront(bottom_menu.settings_control.key_button!)
             grid.updateKey(key, notes: notes)
             range_controller.updateKey(key, notes: notes)
         } else {
@@ -211,7 +190,7 @@ class InstrumentViewController: UIViewController {
     }
     
     func showNoKeyFound() {
-        self.key_popover?.dismissViewController()
+        bottom_menu.settings_control.key_popover?.dismissViewController()
         var alert = UIAlertController(title: "Error", message: "Unsupported Key", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)

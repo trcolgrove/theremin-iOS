@@ -17,11 +17,14 @@ protocol recordingProtocol{
 }
 
 class GridViewController: InstrumentViewController, UIScrollViewDelegate {
+    
     let CIRCLE_DIAMETER: CGFloat = 50
     let MAX_QUANTIZE_LEVEL: CGFloat = 10
-    let MAX_NOTES = 5
+    let MAX_NOTES = 32
     let default_velocity: Int = 40
     let velocity = 100
+    
+    
     
     var circles: [CircleView] = []
     var inPlayback = false;
@@ -73,7 +76,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     
     //initialize all 5 CircleView objects off screen, with indices
     private func initCircles() {
-        for i in 0...4 {
+        for i in 0..<MAX_NOTES {
             circles.append(CircleView(frame: CGRectMake(-50000 - 0.5 * CIRCLE_DIAMETER, -50000 - 0.5 * CIRCLE_DIAMETER, CIRCLE_DIAMETER, CIRCLE_DIAMETER), i: i, view_controller: self, isPlayback:false))
         }
     }
@@ -97,7 +100,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
      */
     override func setRange(note_offset: CGFloat) {
         grid_image.frame = CGRectMake(grid_image.frame.origin.x - note_offset, grid_image.frame.origin.y, grid_image.frame.width, grid_image.frame.height)
-        for i in 0...4{
+        for i in 0..<MAX_NOTES{
             if(note_index_used[i]){
                 updateNote(i, loc: CGPoint(x: circles[i].center.x + note_offset, y: circles[i].center.y) , isPlayback: false)
             }
@@ -186,7 +189,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     }
     
     private func getNextNoteIndex() -> Int {
-        for i in 0...4 {
+        for i in 0..<MAX_NOTES {
             if (note_index_used[i] == false) {
                 note_index_used[i] = true
                 return i
@@ -196,7 +199,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     }
     
     func deleteAllNotes() {
-        for i in 0...4 {
+        for i in 0..<MAX_NOTES {
             if (note_index_used[i]) {
                 deleteNote(i, isPlayback:true)
             }
@@ -380,7 +383,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
 
     
     /*remove the grid lines from the gridview*/
-    func removeGridLines(){
+    override func removeGridLines(){
         for lineView : GridLineView in lines
         {
             lineView.removeFromSuperview()
@@ -389,7 +392,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     }
     
     //draws grid lines on the diatonic notes of the scale
-    func drawGridLines(){
+    override func drawGridLines(){
         removeGridLines()
         let oct_width = halfstep_width * 12
         for var oct : CGFloat = 0; oct < 4; oct++ { //octave
@@ -492,7 +495,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         for timer in timers {
             timer.invalidate()
         }
-        for i in 0...4{
+        for i in 0..<MAX_NOTES{
             if note_index_used[i] == true {
                 var loc = circles[i].center
                 pause_state.append(loc)

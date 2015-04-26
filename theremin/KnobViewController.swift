@@ -22,6 +22,8 @@ class KnobViewController: InstrumentViewController {
     var knobs = [String:Knob]()
     var knob_ids = ["vibrato", "tremolo", "quantize"]
     
+    var instrument_view: InstrumentViewController!
+    
     /** Placeholder Views for knobs **/
     @IBOutlet var vibrato_placeholder: UIView!
     @IBOutlet var tremolo_placeholder: UIView!
@@ -114,7 +116,7 @@ class KnobViewController: InstrumentViewController {
             if let cur_value = getKnobValue(knob.id) {
                 switch knob.id {
                 case "quantize":
-                    (parentViewController as! InstrumentViewController).updateQuantizeLevel(knob.value)
+                    instrument_view.updateQuantizeLevel(knob.value)
                 default:
                     PdBase.sendFloat(knob.value, toReceiver: knob.id)
                 }
