@@ -273,7 +273,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         note_index_used[index] = false
         
         PdBase.sendList([index, 60, 0], toReceiver: "note")
-        PdBase.sendList([index, "volume", 0], toReceiver: "note")
+        PdBase.sendList([index, y_axis_string, 0], toReceiver: "note")
         
         circles[index].removeFromSuperview()
         note_count--
@@ -294,7 +294,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         note_count++
         
         PdBase.sendList([new_index, calculatePitch(loc.x), velocity], toReceiver: "note")
-        PdBase.sendList([new_index, "volume", calculateAmplification(loc.y)], toReceiver: "note")
+        PdBase.sendList([new_index, y_axis_string, calculateAmplification(loc.y)], toReceiver: "note")
         
         // Create a new CircleView for current touch location
         var new_circle = CircleView(frame: CGRectMake(loc.x - (CIRCLE_DIAMETER * 0.5), loc.y - (CIRCLE_DIAMETER * 0.5), CIRCLE_DIAMETER, CIRCLE_DIAMETER), i: new_index, view_controller: self, isPlayback: isPlayback)
@@ -324,7 +324,8 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         let gi_pt = grid_image.convertPoint(gv_pt, fromView: self.view)
         let pitch = calculatePitch(gi_pt.x)
         PdBase.sendList([index, calculatePitch(gi_pt.x), velocity], toReceiver: "note")
-        PdBase.sendList([index, "volume", calculateAmplification(gi_pt.y)], toReceiver: "note")
+        print(y_axis_string)
+        PdBase.sendList([index, y_axis_string, calculateAmplification(gi_pt.y)], toReceiver: "note")
         let circle: CircleView = circles[index]
         circle.center.x = gi_pt.x
         circle.center.y = gi_pt.y

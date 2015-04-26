@@ -16,6 +16,7 @@ class RecordViewController : UIViewController {
 
     var currently_recording: Bool = false
     var in_playback : Bool = false
+    var instrument_view: InstrumentViewController!
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -38,13 +39,13 @@ class RecordViewController : UIViewController {
             currently_recording = true
             record_image.image = UIImage(named: "record-in-progress.png")
         }
-        (parentViewController as! InstrumentViewController).recordButtonPressed(sender)
+        instrument_view.recordButtonPressed(sender)
     }
     
     @IBAction func stopButtonPressed(sender: UIView) {
         record_image.image = UIImage(named: "record-button.png")
         currently_recording = false
-        (parentViewController as! InstrumentViewController).stopButtonPressed(sender)
+        instrument_view.stopButtonPressed(sender)
     }
     
     @IBAction func playButtonPressed(sender: UIView) {
@@ -57,7 +58,7 @@ class RecordViewController : UIViewController {
             in_playback = true
         }
         
-        (parentViewController as! InstrumentViewController).playButtonPressed(sender)
+        instrument_view.playButtonPressed(sender)
     }
     
 }

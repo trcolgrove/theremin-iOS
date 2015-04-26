@@ -34,9 +34,11 @@ class BottomMenuController: InstrumentViewController{
         settings_control.container_view = self
         synth_control.container_view = self
         
+        //set delgation to the root instrument view controller
         settings_control.instrument_view = instrument_view
         synth_control.instrument_view = instrument_view
         settings_control.knob_menu.instrument_view = instrument_view
+        settings_control.record_control.instrument_view = instrument_view
     }
     
     

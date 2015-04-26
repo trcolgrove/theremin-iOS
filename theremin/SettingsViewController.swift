@@ -15,7 +15,7 @@ class SettingsViewController: InstrumentViewController {
     var instrument_view: InstrumentViewController!
     var key_popover: KeyTableViewController?
     var knob_menu: KnobViewController!
-    
+    var record_control: RecordViewController!
     @IBOutlet weak var grid_lines_btn: UIButton!
     @IBOutlet weak var clear_notes_btn: UIButton!
     
@@ -89,7 +89,7 @@ class SettingsViewController: InstrumentViewController {
             note_menu.parent = instrument_view
         }  else if (segue.identifier == "record_init") {
             //nothing to do here
-            record_controller = segue.destinationViewController as! RecordViewController
+            record_control = segue.destinationViewController as! RecordViewController
         } else if (segue.identifier == "knob_init") {
             knob_menu = segue.destinationViewController as! KnobViewController
         }

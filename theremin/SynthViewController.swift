@@ -14,6 +14,10 @@ class SynthViewController: UIViewController{
     var container_view: BottomMenuController!
     var instrument_view: InstrumentViewController!
     
+    var mix1 : Float = 10
+    var mix2 : Float = 0
+    var mix3 : Float = 0
+    
     var low_index = 0 //the lowest channel being effected by synth change
     var high_index = 9
         //highest channel being effected by synth change
@@ -192,8 +196,14 @@ class SynthViewController: UIViewController{
             updateLabel(knobs[knob.id], label: knob_label)
             if let cur_value = getKnobValue(knob.id) {
                 switch knob.id {
+                case "mix1":
+                    println(cur_value)
+                    mix1 = cur_value/10
+                    println(mix1)
+                    sendToChannelsInRange(low_index, high: high_index, msg: ["mix", mix1, mix2, mix3])
                 default:
-                    println("Asdf")
+                    println("error: unrecognized id")
+                
                 }
             }
         }
@@ -209,7 +219,6 @@ class SynthViewController: UIViewController{
         }
         
     }
-    
     
     /** Changes all knob values to a given float **/
     func updateKnobValues(value: Float) {
@@ -237,11 +246,4 @@ class SynthViewController: UIViewController{
     func updateLabel(knob: Knob!, label: UILabel) {
         label.text = NSNumberFormatter.localizedStringFromNumber(knob.value, numberStyle: .NoStyle)
     }
-
-
-   
-    
-    
-    
-    
 }
