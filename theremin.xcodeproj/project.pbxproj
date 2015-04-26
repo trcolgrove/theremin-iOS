@@ -468,7 +468,6 @@
 		F8BD458F1A7EC47000535821 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8BD458D1A7EC47000535821 /* LaunchScreen.xib */; };
 		F8BD459B1A7EC47000535821 /* thereminTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BD459A1A7EC47000535821 /* thereminTests.m */; };
 		F8BD45A81A7ED3BE00535821 /* GridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BD45A71A7ED3BE00535821 /* GridViewController.swift */; };
-		F8F3ABA01AE9A59F004467CD /* theremin-body.png in Resources */ = {isa = PBXBuildFile; fileRef = F8F3AB9F1AE9A59F004467CD /* theremin-body.png */; };
 		F8F3ABA21AE9A6B3004467CD /* theremin-antenna.png in Resources */ = {isa = PBXBuildFile; fileRef = F8F3ABA11AE9A6B3004467CD /* theremin-antenna.png */; };
 /* End PBXBuildFile section */
 
@@ -1589,7 +1588,7 @@
 		F8BD45731A7EC47000535821 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = tufts;
 				TargetAttributes = {
 					F8BD457A1A7EC47000535821 = {
@@ -2005,7 +2004,6 @@
 				E990F7D81AE709BA00B6EE73 /* <=~.pd in Resources */,
 				E990F84C1AE709BA00B6EE73 /* filt-help.pd in Resources */,
 				E990F8C91AE709BA00B6EE73 /* lfor-help.pd in Resources */,
-				F8F3ABA01AE9A59F004467CD /* theremin-body.png in Resources */,
 				E990F8CF1AE709BA00B6EE73 /* liter-help.pd in Resources */,
 				E990F82F1AE709BA00B6EE73 /* csch~.pd in Resources */,
 				E990F8E51AE709BA00B6EE73 /* lstack-help.pd in Resources */,

@@ -1,4 +1,4 @@
-#N canvas 958 23 998 707 10;
+#N canvas 368 26 998 707 10;
 #X obj 235 465 channels~;
 #X obj 263 281 uzi 16;
 #X msg 298 391 init \$1 stereo subtractive_synth;
@@ -11,13 +11,13 @@
 -1 -1;
 #X obj 550 152 square_table;
 #X text 260 210 # of voices;
-#N canvas -23 75 450 300 presets 1;
+#N canvas 0 75 450 300 presets 1;
 #X obj 41 156 outlet;
 #X obj 35 41 inlet;
 #X msg 36 73 osc1 on 1 \, osc2 on 1 \, osc3 on 1 \, osc3 phase 0.8
 \, pan 0.5 0.5 1 \, mix 0.5 0.5 0.5 \, noise filter 200 \, noise amount
 0 \, osc1 cent 0 \, osc2 cent 0 \, filter frequency 3000 \, volume
-0.5 \, adsr 0 0 1 0;
+0.5 \, adsr 0 0 1 0 \, vibrato 0 \, tremolo 0;
 #X connect 1 0 2 0;
 #X connect 2 0 0 0;
 #X restore 416 173 pd presets;

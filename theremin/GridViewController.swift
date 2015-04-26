@@ -324,7 +324,6 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         let gi_pt = grid_image.convertPoint(gv_pt, fromView: self.view)
         let pitch = calculatePitch(gi_pt.x)
         PdBase.sendList([index, calculatePitch(gi_pt.x), velocity], toReceiver: "note")
-        print(y_axis_string)
         PdBase.sendList([index, y_axis_string, calculateAmplification(gi_pt.y)], toReceiver: "note")
         let circle: CircleView = circles[index]
         circle.center.x = gi_pt.x
