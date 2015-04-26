@@ -13,7 +13,6 @@ class SettingsViewController: InstrumentViewController {
     
     var container_view: BottomMenuController!
     var instrument_view: InstrumentViewController!
-    var key_popover: KeyTableViewController?
     var knob_menu: KnobViewController!
     var record_control: RecordViewController!
     @IBOutlet weak var grid_lines_btn: UIButton!
