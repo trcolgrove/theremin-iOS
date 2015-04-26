@@ -27,7 +27,7 @@ class InstrumentViewController: UIViewController {
     
     let yeffects = ["Volume", "Tremolo", "Vibrato"]
     
-    let waveforms = [""]
+    let waveforms = ["sine", "triangle", "sawtooth", "square", "bright", "ivory", "glass", "clav", "bass 1", "bass 2", "deep", "metallic", "organ 1", "organ 2", "bow 1", "bow 2", "bow 3", "steel", "brass 1", "brass 2", "sax", "trump", "wood 1", "wood 2"]
     
     var bottom_menu: BottomMenuController!
     var isRecording = false

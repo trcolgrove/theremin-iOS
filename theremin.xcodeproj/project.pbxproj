@@ -24,6 +24,7 @@
 		E93FC0DB1AEA213A00E3DBF5 /* theremin-body.png in Resources */ = {isa = PBXBuildFile; fileRef = E93FC0DA1AEA213A00E3DBF5 /* theremin-body.png */; };
 		E947E1611AA676DE004DAA9B /* GridLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E947E1601AA676DE004DAA9B /* GridLineView.swift */; };
 		E94960401ADF8AE3006E23C4 /* looper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E949603F1ADF8AE3006E23C4 /* looper.swift */; };
+		E94F9F751AED6A130071737D /* subsynth.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94F9F741AED6A130071737D /* subsynth.swift */; };
 		E951EF191ABB6E2100686C57 /* recData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E951EF181ABB6E2100686C57 /* recData.swift */; };
 		E95F1E0D1A9255610067536B /* RangeViewContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95F1E0C1A9255610067536B /* RangeViewContainerController.swift */; };
 		E96B543F1AB622D900A4E34F /* record.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96B543E1AB622D900A4E34F /* record.swift */; };
@@ -499,6 +500,7 @@
 		E93FC0DA1AEA213A00E3DBF5 /* theremin-body.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "theremin-body.png"; sourceTree = "<group>"; };
 		E947E1601AA676DE004DAA9B /* GridLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridLineView.swift; sourceTree = "<group>"; };
 		E949603F1ADF8AE3006E23C4 /* looper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = looper.swift; sourceTree = "<group>"; };
+		E94F9F741AED6A130071737D /* subsynth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = subsynth.swift; sourceTree = "<group>"; };
 		E951EF181ABB6E2100686C57 /* recData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = recData.swift; sourceTree = "<group>"; };
 		E95F1E0C1A9255610067536B /* RangeViewContainerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeViewContainerController.swift; sourceTree = "<group>"; };
 		E96B543E1AB622D900A4E34F /* record.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = record.swift; sourceTree = "<group>"; };
@@ -1492,6 +1494,7 @@
 				F8BD45821A7EC47000535821 /* AppDelegate.h */,
 				E949603F1ADF8AE3006E23C4 /* looper.swift */,
 				F8BD45831A7EC47000535821 /* AppDelegate.m */,
+				E94F9F741AED6A130071737D /* subsynth.swift */,
 				3703FACD1A8E727C009B8783 /* CircleView.swift */,
 				3738E6B61AD37DCA008CA859 /* PlayButton.swift */,
 				E947E1601AA676DE004DAA9B /* GridLineView.swift */,
@@ -2126,6 +2129,7 @@
 				F83D4B0D1AD5751B00CEEC90 /* PopoverViewController.swift in Sources */,
 				E94960401ADF8AE3006E23C4 /* looper.swift in Sources */,
 				E95F1E0D1A9255610067536B /* RangeViewContainerController.swift in Sources */,
+				E94F9F751AED6A130071737D /* subsynth.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
