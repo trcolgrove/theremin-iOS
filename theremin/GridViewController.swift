@@ -286,12 +286,13 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         
         PdBase.sendList([index, 60, 0], toReceiver: "note")
         PdBase.sendList([index, y_axis_string, default_y_axis_values[y_axis_string]!], toReceiver: "note")
+        PdBase.sendList([index, "tremolo-phase", 0.0], toReceiver: "note")
         
         circles[index].removeFromSuperview()
         note_count--
         
         if(!isPlayback){
-        recorder?.recordNote( CGPoint(x: 0,y: 0), command: recData.command.OFF, note_index: index)
+            recorder?.recordNote( CGPoint(x: 0,y: 0), command: recData.command.OFF, note_index: index)
         }
     }
 
@@ -342,7 +343,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         circle.center.y = gi_pt.y
         
         if(!isPlayback){
-        recorder?.recordNote(loc, command: recData.command.HOLD, note_index: index)
+            recorder?.recordNote(loc, command: recData.command.HOLD, note_index: index)
         }
     }
     
