@@ -288,7 +288,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         note_index_used[index] = false
         
         PdBase.sendList([index, 60, 0], toReceiver: "note")
-        PdBase.sendList([index, y_axis_string, 0], toReceiver: "note")
+        PdBase.sendList([index, y_axis_string, 60], toReceiver: "note")
         
         circles[index].removeFromSuperview()
         note_count--
