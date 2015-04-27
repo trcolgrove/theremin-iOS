@@ -353,23 +353,6 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         for t in touches {
             let touch = t as! UITouch
             var loc: CGPoint
-            var is_sustain: Bool = false
-            //if in a sustain, don't make a new note, instead just update the one we are touching now
-            for c in circles {
-                loc = touch.locationInView(c)
-                if c.pointInside(loc, withEvent: nil) {
-                    note_dict[pointerToString(touch)] = c.index
-                    is_sustain = true
-                    //don't delete circle on touchup if first tap
-                    no_delete_flag[c.index] = true
-                    
-                    break
-                }
-            }
-            if (is_sustain) {
-                continue
-            }
-            //if not in a sustain, then go ahead and create new note
             loc = touch.locationInView(grid_image)
             let index = createNote(loc, isPlayback: false)
             if (index != -1) {
@@ -395,21 +378,8 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
         for t in touches {
             let touch = t as! UITouch
-            /*if (touch.tapCount >= 2) {
-                if let index = note_dict[pointerToString(touch)]{
-                    let c = circles[index]
-                    //var double_tap_rec = UITapGestureRecognizer(target: circles[c.index], action: "handleDoubleTap:")
-                    //double_tap_rec.numberOfTapsRequired = 2
-                    //c.addGestureRecognizer(double_tap_rec)
-                    
-                }
-            */
-                // The view responds to the tap
-                //don't delete
-          //  } else {
-                if let index = note_dict[pointerToString(touch)]{
-                    deleteNote(index, isPlayback: false)
-           //     }
+            if let index = note_dict[pointerToString(touch)]{
+                deleteNote(index, isPlayback: false)
             }
         }
         //enable scroll again on touch up

@@ -64,18 +64,7 @@ class InstrumentViewController: UIViewController {
         }*/
 
     }
-    
-    @IBAction func toggleGridLines(sender: UIButton) {
-        if (grid_lines_showing) {
-            sender.backgroundColor = UIColor(white: 137/255, alpha: 1.0)
-            grid_lines_showing = false
-            grid.removeGridLines()
-        } else {
-            sender.backgroundColor = UIColor(white: 0.3, alpha: 1.0)
-            grid.drawGridLines()
-            grid_lines_showing = true
-        }
-    }
+     
     
     func removeGridLines(){
         grid.removeGridLines()
@@ -96,8 +85,8 @@ class InstrumentViewController: UIViewController {
     
     func stopButtonPressed(sender: UIView) {
         if(isRecording){
-             isRecording = false
-             grid.stopRecording()
+            isRecording = false
+            grid.stopRecording()
         }
         else{
             grid.stopPlayback()
