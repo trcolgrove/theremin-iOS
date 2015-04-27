@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <scenes>
         <!--Instrument View Controller-->
@@ -289,15 +289,25 @@
             </objects>
             <point key="canvasLocation" x="-346.5" y="1452.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Popover View Controller-->
         <scene sceneID="X50-zE-5ra">
             <objects>
-                <viewController id="WN0-Df-9rg" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ptM-SA-CEq">
+                <viewController id="WN0-Df-9rg" customClass="PopoverViewController" customModule="theremin" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="WII-xX-5j6">
                         <rect key="frame" x="0.0" y="0.0" width="150" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="z9n-hR-Tvx">
+                                <rect key="frame" x="0.0" y="22" width="150" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="z9n-hR-Tvx" id="u6r-KU-6Iu">
+                                    <rect key="frame" x="0.0" y="0.0" width="150" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="150" height="200"/>
                 </viewController>
@@ -318,7 +328,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="YEF-qX-usF">
-                                <rect key="frame" x="785" y="49" width="38" height="30"/>
+                                <rect key="frame" x="760" y="49" width="75" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.090922589250000005" green="0.50478819259999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Wave">
@@ -378,7 +388,7 @@
                                 </connections>
                             </switch>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="CSr-tO-ABw">
-                                <rect key="frame" x="105" y="50" width="38" height="30"/>
+                                <rect key="frame" x="84" y="50" width="75" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.090922589250000005" green="0.50478819259999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Wave">
@@ -396,7 +406,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="HM2-pr-jug">
-                                <rect key="frame" x="442" y="50" width="38" height="30"/>
+                                <rect key="frame" x="423" y="50" width="75" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.090922589250000005" green="0.50478819259999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Wave">
@@ -619,6 +629,9 @@
                         <outlet property="osc3_pitch_temp" destination="5lo-hQ-UPG" id="gL4-9U-tgb"/>
                         <outlet property="osc3_toggle" destination="Oga-fH-W00" id="WLl-bB-4lZ"/>
                         <outlet property="toSettings" destination="MpM-UF-eqw" id="qJY-aT-bKR"/>
+                        <outlet property="wave_button_1" destination="CSr-tO-ABw" id="cqK-DI-Izd"/>
+                        <outlet property="wave_button_2" destination="HM2-pr-jug" id="zYy-EY-mIT"/>
+                        <outlet property="wave_button_3" destination="YEF-qX-usF" id="Qdk-fp-NdO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zdt-0t-SvG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -829,7 +842,7 @@
                                 <rect key="frame" x="474" y="54" width="81" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.54053198749999998" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="Clear Notes">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -846,7 +859,7 @@
                                 <rect key="frame" x="474" y="10" width="81" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.53162650600000005" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <state key="normal" title="Grid Lines">
                                     <color key="titleShadowColor" white="0.53645510699999999" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -860,10 +873,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="c89-3P-ytu">
-                                <rect key="frame" x="854" y="32" width="67" height="30"/>
+                                <rect key="frame" x="847" y="32" width="80" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.090922589254577746" green="0.50478819258286045" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="EditSynth">
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="Edit Synth">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -908,7 +922,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="a92-CV-UcU"/>
-        <segue reference="3Ik-4W-18G"/>
+        <segue reference="3wh-dy-yhH"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

@@ -27,8 +27,6 @@ class InstrumentViewController: UIViewController {
     
     let yeffects = ["volume", "tremolo", "vibrato"]
     
-    let waveforms = ["sine", "triangle", "sawtooth", "square", "bright", "ivory", "glass", "clav", "bass 1", "bass 2", "deep", "metallic", "organ 1", "organ 2", "bow 1", "bow 2", "bow 3", "steel", "brass 1", "brass 2", "sax", "trump", "wood 1", "wood 2"]
-    
     var bottom_menu: BottomMenuController!
     var key_popover: KeyTableViewController?
     var isRecording = false
@@ -146,12 +144,7 @@ class InstrumentViewController: UIViewController {
             let yeffect_menu = segue.destinationViewController as! PopoverViewController
             yeffect_menu.options = yeffects
             yeffect_menu.popoverType = "yeffect"
-            yeffect_menu.parent = self as InstrumentViewController
-        } else if (segue.identifier == "waveform_popover"){
-            let wave_menu = segue.destinationViewController as! PopoverViewController
-            wave_menu.options = waveforms
-            wave_menu.popoverType = "waveform"
-            wave_menu.parent = self as InstrumentViewController
+            yeffect_menu.parent = self
         } else if segue.identifier == "bottom_init"{
             self.bottom_menu = segue.destinationViewController as! BottomMenuController
             bottom_menu.instrument_view = self

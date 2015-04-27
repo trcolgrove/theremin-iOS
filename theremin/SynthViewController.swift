@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class SynthViewController: UIViewController{
+class SynthViewController: UIViewController {
     
     var container_view: BottomMenuController!
     var instrument_view: InstrumentViewController!
@@ -51,6 +51,12 @@ class SynthViewController: UIViewController{
     @IBOutlet weak var osc2_toggle: UISwitch!
     @IBOutlet weak var osc3_toggle: UISwitch!
     
+    let waveforms = ["sine", "triangle", "sawtooth", "square", "bright", "ivory", "glass", "clav", "bass 1", "bass 2", "deep", "metallic", "organ 1", "organ 2", "bow 1", "bow 2", "bow 3", "steel", "brass 1", "brass 2", "sax", "trump", "wood 1", "wood 2"]
+    
+    @IBOutlet weak var wave_button_1: UIButton!
+    @IBOutlet weak var wave_button_2: UIButton!
+    @IBOutlet weak var wave_button_3: UIButton!    
+    
     @IBAction func switchDidMove(sender: UISwitch!) {
         var on_off = 0
         if(sender.on){
@@ -86,6 +92,16 @@ class SynthViewController: UIViewController{
         super.viewDidLoad()
         initializeKnobs()
         updateLabels()
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "wave_osc1" || segue.identifier == "wave_osc2" || segue.identifier == "wave_osc3") {
+            let vc = segue.destinationViewController as! PopoverViewController
+            vc.parent = self
+            vc.options = waveforms
+            vc.popoverType = "wave"
+            vc.segue = segue.identifier
+        }
     }
     
     func initializeKnobs() {
