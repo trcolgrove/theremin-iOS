@@ -22,8 +22,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     let MAX_QUANTIZE_LEVEL: CGFloat = 10
     let MAX_NOTES = 10
     let TOTAL_NOTES : Int = 28
-    let default_velocity: Int = 40
-    let velocity = 100
+    let DEFAULT_VELOCITY: Int = 40
     
     //var highest_index_used: Int = 0
     
@@ -49,6 +48,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     
     var note_dict : Dictionary<String, Int> = [:]
     var diatonic_note_positions : [CGFloat] = []
+    var default_y_axis_values: Dictionary<String, CGFloat> = ["volume":0.4, "vibrato": 0, "tremolo": 0]
 
     var filter_index: Int = -1
     
@@ -278,17 +278,15 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
             println("Internal error: trying to delete note with index -1")
             return
         }
-        if (no_delete_flag[index]) {
-            no_delete_flag[index] = false
-            return
-        }
+        
         if (!note_index_used[index]) {
             return
         }
         note_index_used[index] = false
         
         PdBase.sendList([index, 60, 0], toReceiver: "note")
-        PdBase.sendList([index, y_axis_string, 60], toReceiver: "note")
+        PdBase.sendList([index, y_axis_string, default_y_axis_values[y_axis_string]!], toReceiver: "note")
+
         
         circles[index].removeFromSuperview()
         note_count--
@@ -308,7 +306,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         var new_index = getNextNoteIndex()
         note_count++
         
-        PdBase.sendList([new_index, calculatePitch(loc.x), velocity], toReceiver: "note")
+        PdBase.sendList([new_index, calculatePitch(loc.x), DEFAULT_VELOCITY], toReceiver: "note")
         PdBase.sendList([new_index, y_axis_string, calculateYValue(loc.y)], toReceiver: "note")
         
         // Create a new CircleView for current touch location
@@ -338,7 +336,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         }
         let gi_pt = grid_image.convertPoint(gv_pt, fromView: self.view)
         let pitch = calculatePitch(gi_pt.x)
-        PdBase.sendList([index, calculatePitch(gi_pt.x), velocity], toReceiver: "note")
+        PdBase.sendList([index, calculatePitch(gi_pt.x), DEFAULT_VELOCITY], toReceiver: "note")
         PdBase.sendList([index, y_axis_string, calculateYValue(gi_pt.y)], toReceiver: "note")
         let circle: CircleView = circles[index]
         circle.center.x = gi_pt.x
