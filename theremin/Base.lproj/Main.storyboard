@@ -697,6 +697,7 @@
                     <connections>
                         <outlet property="osc1_mix_label" destination="sDs-OY-qsG" id="4cQ-68-Zzy"/>
                         <outlet property="osc1_mix_temp" destination="CX3-1A-MAJ" id="F74-7r-6X8"/>
+                        <outlet property="osc1_on" destination="eQW-zd-kPR" id="xap-az-bmy"/>
                         <outlet property="osc1_phase_label" destination="CEK-4O-fcv" id="y27-3B-5Wt"/>
                         <outlet property="osc1_phase_temp" destination="nb3-vK-1kR" id="Et8-Lj-O2m"/>
                         <outlet property="osc1_pitch_label" destination="cR1-l4-6es" id="GgA-TK-mua"/>
@@ -704,6 +705,7 @@
                         <outlet property="osc1_toggle" destination="3dX-Fd-S5D" id="aEY-gD-jeJ"/>
                         <outlet property="osc2_mix_label" destination="w81-Er-4Hp" id="Jun-nd-dzb"/>
                         <outlet property="osc2_mix_temp" destination="jBd-Zu-zBe" id="N80-KW-NyQ"/>
+                        <outlet property="osc2_on" destination="8Nz-yp-cpn" id="QpN-YO-Edy"/>
                         <outlet property="osc2_phase_label" destination="aC8-Nx-kv7" id="bum-2B-ewQ"/>
                         <outlet property="osc2_phase_temp" destination="Ivc-XX-FRs" id="bWM-55-ycn"/>
                         <outlet property="osc2_pitch_label" destination="7yU-e6-fu1" id="evH-IZ-FX9"/>
@@ -711,6 +713,7 @@
                         <outlet property="osc2_toggle" destination="RUf-Eq-Z9w" id="i99-2L-k4c"/>
                         <outlet property="osc3_mix_label" destination="fwB-Zy-2hh" id="qlN-EC-ItE"/>
                         <outlet property="osc3_mix_temp" destination="LB8-EI-gfj" id="9WK-SN-LQI"/>
+                        <outlet property="osc3_on" destination="6Wu-wb-8dv" id="Sek-55-BwH"/>
                         <outlet property="osc3_phase_label" destination="cVi-aS-Sfc" id="Yzx-DC-CG2"/>
                         <outlet property="osc3_phase_temp" destination="eBd-et-MCA" id="M4T-lT-Siq"/>
                         <outlet property="osc3_pitch_label" destination="Vel-DO-0eY" id="eW0-5L-8P0"/>
