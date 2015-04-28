@@ -34,7 +34,7 @@ class BottomMenuController: InstrumentViewController{
         settings_control.container_view = self
         synth_control.container_view = self
         
-        //set delgation to the root instrument view controller
+        //set delegation to the root instrument view controller
         settings_control.instrument_view = instrument_view
         synth_control.instrument_view = instrument_view
         settings_control.knob_menu.instrument_view = instrument_view
@@ -56,7 +56,6 @@ class BottomMenuController: InstrumentViewController{
             self.current_control.view.removeFromSuperview()
             self.current_control = self.synth_control
         })
-       
 
     }
 
@@ -68,6 +67,6 @@ class BottomMenuController: InstrumentViewController{
                 self.current_control.view.removeFromSuperview()
                 self.current_control = self.settings_control
         })
-
     }
+    
 }
