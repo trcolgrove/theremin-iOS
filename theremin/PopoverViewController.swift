@@ -46,15 +46,16 @@ class PopoverViewController: UITableViewController, UITableViewDataSource, UITab
                 let wave_form = self.options[indexPath.row]
                 let pd_wave_name = parent_vc.getWaveName(indexPath.row)
                 
-                // send new waveform to pd
-                // NOTE: need to do for each osc
-                PdBase.sendList([pd_wave_name], toReceiver: "waveform")
-                
                 if (segue == "wave_osc1") {
+                    println(pd_wave_name)
+                    PdBase.sendList(["osc1", "set", pd_wave_name], toReceiver: "all")
                     parent_vc.wave_button_1.setTitle(wave_form, forState: UIControlState.Normal)
                 } else if (segue == "wave_osc2") {
+                    PdBase.sendList(["osc2", "set", pd_wave_name], toReceiver: "all")
                     parent_vc.wave_button_2.setTitle(wave_form, forState: UIControlState.Normal)
                 } else if (segue == "wave_osc3") {
+                    PdBase.sendList(["osc3", "set", pd_wave_name], toReceiver: "all")
+                    println(pd_wave_name)
                     parent_vc.wave_button_3.setTitle(wave_form, forState: UIControlState.Normal)
                 }
             }

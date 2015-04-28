@@ -9,15 +9,14 @@
 import Foundation
 
 
-
-struct synth_setting{
-    var osc1: oscillator
-    var osc2: oscillator
-    var osc3: oscillator
-}
-
 class subsynth{
-    init(){
-        
+    var osc1 : oscillator
+    var osc2 : oscillator
+    var osc3 : oscillator
+    
+    init(osc1 : oscillator, osc2 : oscillator, osc3: oscillator){
+        self.osc1 = osc1
+        self.osc2 = osc2
+        self.osc3 = osc3
     }
 }

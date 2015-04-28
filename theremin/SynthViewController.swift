@@ -14,9 +14,6 @@ class SynthViewController: UIViewController {
     var container_view: BottomMenuController!
     var instrument_view: InstrumentViewController!
     
-    var mix1 : Float = 10
-    var mix2 : Float = 0
-    var mix3 : Float = 0
     
     var low_index = 0 //the lowest channel being effected by synth change
     var high_index = 9
@@ -55,7 +52,7 @@ class SynthViewController: UIViewController {
     let waveforms = ["sine", "triangle", "sawtooth", "square", "bright", "ivory", "glass", "clav", "bass 1", "bass 2", "deep", "metallic", "organ 1", "organ 2", "bow 1", "bow 2", "bow 3", "steel", "brass 1", "brass 2", "sax", "trump", "wood 1", "wood 2"]
     
     /* Associative array for waveform names -> pd values */
-    let pd_waveforms = ["sine_table", "triangle_table", "6_table", "10_table", "14_table", "18_table", "22_table", "sawtooth_table", "square_table", "7_table", "11_table", "15_table", "19_table", "23_table", "random_table",  "inverse_sawtooth_table", "8_table", "12_table", "16_table", "20_table", "24_table", "random2_table", "5_table", "9_table"]
+    let pd_waveforms = ["sine_table", "triangle_table",  "sawtooth_table", "square_table", "5_table", "6_table", "7_table", "8_table", "9_table", "10_table", "11_table", "12_table", "13_table", "14_table", "15_table", "16_table", "17_table", "18_table", "19_table", "20_table", "21_table", "21_table",  "22_table", "23_table", "24_table"]
     
     @IBOutlet weak var wave_button_1: UIButton!
     @IBOutlet weak var wave_button_2: UIButton!
@@ -83,12 +80,18 @@ class SynthViewController: UIViewController {
         }
     }
     
-    var osc1 : [Float] = [0, 0, 0]
-    var osc2 : [Float] = [0, 0, 0]
-    var osc3 : [Float] = [0, 0, 0]
+    var mix1 : Float = 1
+    var mix2 : Float = 1
+    var mix3 : Float = 1
+    var phase1 : Float = 0
+    var phase2 : Float = 0
+    var phase3 : Float = 0
+    var pitch1 : Float = 0
+    var pitch2 : Float = 0
+    var pitch3 : Float = 0
     
     var knobs = [String:Knob]()
-    var knob_ids = ["mix1", "phase1", "pitch1", "mix2", "phase2", "pitch2", "mix3", "phase3", "pitch3"]
+    var knob_ids = ["mix1", "mix2", "mix3", "phase1", "phase2", "phase3", "pitch1", "phase2", "pitch3"]
     
 
     required init(coder aDecoder: NSCoder){
@@ -168,23 +171,23 @@ class SynthViewController: UIViewController {
     func getKnobValue(id: String) -> Float? {
         switch id {
         case "mix1":
-            return osc1[0]
+            return mix1
         case "phase1":
-            return osc1[1]
+            return phase1
         case "pitch1":
-            return osc1[2]
+            return pitch1
         case "mix2":
-            return osc2[0]
+            return mix2
         case "phase2":
-            return osc2[1]
+            return phase2
         case "pitch2":
-            return osc2[2]
+            return pitch2
         case "mix3":
-            return osc3[0]
+            return mix3
         case "phase3":
-            return osc3[1]
+            return phase3
         case "pitch3":
-            return osc3[2]
+            return pitch3
         default:
             return nil
         }
@@ -227,10 +230,18 @@ class SynthViewController: UIViewController {
             if let cur_value = getKnobValue(knob.id) {
                 switch knob.id {
                 case "mix1":
-                    println(cur_value)
-                    mix1 = cur_value/10
-                    println(mix1)
+                    mix1 = knob.value/10
                     sendToChannelsInRange(low_index, high: high_index, msg: ["mix", mix1, mix2, mix3])
+                case "mix2":
+                    mix2 = knob.value/10
+                    sendToChannelsInRange(low_index, high: high_index, msg: ["mix", mix1, mix2, mix3])
+                case "mix3":
+                    mix3 = knob.value/10
+                    sendToChannelsInRange(low_index, high: high_index, msg: ["mix", mix1, mix2, mix3])
+                case "pitch1":
+                    pitch1 = knob.value*120
+                    sendToChannelsInRange(low_index, high: high_index, msg: ["osc1", "cent", pitch1])
+                
                 default:
                     println("error: unrecognized id")
                 

@@ -6,7 +6,7 @@
 #X obj 536 242 t b a;
 #X obj 562 405 list;
 #X obj 562 425 list trim;
-#X floatatom 302 239 5 0 0 0 - - -;
+#X floatatom 302 239 5 0 0 0 - - -, f 5;
 #X obj 219 204 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 550 152 square_table;
@@ -14,10 +14,11 @@
 #N canvas 0 75 450 300 presets 1;
 #X obj 41 156 outlet;
 #X obj 35 41 inlet;
-#X msg 36 73 osc1 on 1 \, osc2 on 0 \, osc3 on 0 \, osc3 phase 0.8
+#X msg 36 73 osc1 on 1 \, osc2 on 1 \, osc3 on 1 \, osc3 phase 0.8
 \, pan 0.5 0.5 1 \, mix 0.5 0.5 0.5 \, noise filter 200 \, noise amount
 0 \, osc1 cent 0 \, osc2 cent 0 \, filter frequency 3000 \, volume
-0.5 \, adsr 0 0 1 50 \, vibrato 0 \, tremolo 0 \, tremolo-phase 0;
+0.5 \, adsr 0 0 1 50 \, vibrato 0 \, tremolo 0 \, osc1 set triangle_table
+;
 #X connect 1 0 2 0;
 #X connect 2 0 0 0;
 #X restore 416 173 pd presets;
@@ -26,7 +27,7 @@
 -1;
 #X obj 669 155 r waveform;
 #N canvas 746 130 503 379 vibrato 0;
-#X floatatom 252 211 5 0 0 0 - - -;
+#X floatatom 252 211 5 0 0 0 - - -, f 5;
 #X obj 252 189 +;
 #X obj 209 163 * 2;
 #X text 289 212 <-- Maximum length of the delay line (= added latency!)
@@ -79,7 +80,7 @@
 #X restore 248 540 pd tremolo;
 #X obj 253 643 dac~;
 #X text 740 155 Set waveform;
-#N canvas 36 23 1552 689 waveforms 0;
+#N canvas 0 23 1440 689 waveforms 0;
 #N canvas 0 22 450 278 (subpatch) 0;
 #X array triangle_table 2051 float 5;
 #A 0 -0.0019506 0 0.0019506 0.00390297 0.00585846 0.00781767 0.00978035
@@ -7978,6 +7979,10 @@
 #X msg 287 166 10;
 #X obj 540 208 list prepend osc1 set;
 #X msg 106 437 view;
+#X obj 702 204 r all;
+#X obj 332 475 piano;
+#X obj 332 649 lprepend 3;
+#X msg 755 207 osc1 set square_table;
 #X connect 0 0 15 0;
 #X connect 0 1 15 0;
 #X connect 1 2 28 0;
@@ -8014,3 +8019,7 @@
 #X connect 31 0 7 0;
 #X connect 32 0 4 0;
 #X connect 33 0 0 0;
+#X connect 34 0 4 0;
+#X connect 35 0 36 0;
+#X connect 36 0 0 0;
+#X connect 37 0 4 0;
