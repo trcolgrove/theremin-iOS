@@ -20,6 +20,7 @@ class RangeViewContainerController: InstrumentViewController, RangeSlideParentDe
     var instrument: InstrumentViewController!
     var range_control: RangeSlideController!
     
+    @IBOutlet weak var left_button: UIButton!
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -39,6 +40,7 @@ class RangeViewContainerController: InstrumentViewController, RangeSlideParentDe
     
     override func viewDidLoad() {
         //super.viewDidLoad()
+        left_button.transform = CGAffineTransformMakeRotation(CGFloat((180*M_PI)/180));
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!){

@@ -458,6 +458,7 @@
 		F84BF24A1A83CD990007686D /* KnobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84BF2491A83CD990007686D /* KnobViewController.swift */; };
 		F8548AFB1A9150DD00DDE538 /* theremin-grid.png in Resources */ = {isa = PBXBuildFile; fileRef = F8548AFA1A9150DD00DDE538 /* theremin-grid.png */; };
 		F8548AFF1A92774300DDE538 /* KeyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8548AFE1A92774300DDE538 /* KeyTableViewController.swift */; };
+		F86686081AEF183B00CE0B60 /* shrink.png in Resources */ = {isa = PBXBuildFile; fileRef = F86686071AEF183B00CE0B60 /* shrink.png */; };
 		F8854EC91AA1096B00B312C2 /* theremin-long-grid.png in Resources */ = {isa = PBXBuildFile; fileRef = F8854EC81AA1096B00B312C2 /* theremin-long-grid.png */; };
 		F8B10C241AA7B54F00ED7169 /* theremin-mid-grid.png in Resources */ = {isa = PBXBuildFile; fileRef = F8B10C231AA7B54F00ED7169 /* theremin-mid-grid.png */; };
 		F8BD45811A7EC47000535821 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BD45801A7EC47000535821 /* main.m */; };
@@ -935,6 +936,7 @@
 		F84BF2491A83CD990007686D /* KnobViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnobViewController.swift; sourceTree = "<group>"; };
 		F8548AFA1A9150DD00DDE538 /* theremin-grid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "theremin-grid.png"; sourceTree = "<group>"; };
 		F8548AFE1A92774300DDE538 /* KeyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyTableViewController.swift; sourceTree = "<group>"; };
+		F86686071AEF183B00CE0B60 /* shrink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shrink.png; sourceTree = "<group>"; };
 		F8854EC81AA1096B00B312C2 /* theremin-long-grid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "theremin-long-grid.png"; sourceTree = "<group>"; };
 		F8B10C231AA7B54F00ED7169 /* theremin-mid-grid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "theremin-mid-grid.png"; sourceTree = "<group>"; };
 		F8BD457B1A7EC47000535821 /* theremin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = theremin.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1424,6 +1426,7 @@
 				E9C57ECC1AE9832A007CF994 /* oscillators.png */,
 				3738E6C01AD42817008CA859 /* record-in-progress.png */,
 				3738E6B81AD3A11D008CA859 /* play-button-free-record.png */,
+				F86686071AEF183B00CE0B60 /* shrink.png */,
 				3738E6BC1AD3A2F3008CA859 /* record-button.png */,
 				3738E6B91AD3A11D008CA859 /* play-button-looper.png */,
 				37A4B0B11AD3606800618244 /* theremin-inst-record.png */,
@@ -1808,6 +1811,7 @@
 				E990F9081AE709BA00B6EE73 /* playground.pd in Resources */,
 				E990F94F1AE709BA00B6EE73 /* switch8.pd in Resources */,
 				E990F8BC1AE709BA00B6EE73 /* ladd3.pd in Resources */,
+				F86686081AEF183B00CE0B60 /* shrink.png in Resources */,
 				E990F7FF1AE709BA00B6EE73 /* cdiv-help.pd in Resources */,
 				E990F86D1AE709BA00B6EE73 /* gate8~.pd in Resources */,
 				E990F8611AE709BA00B6EE73 /* gate5~.pd in Resources */,
