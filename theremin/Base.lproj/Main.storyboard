@@ -218,21 +218,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vibrato" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="68d-aR-eUZ">
-                                <rect key="frame" x="16" y="47" width="55" height="21"/>
+                                <rect key="frame" x="-5" y="47" width="55" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tremolo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="j0s-V9-B4M">
-                                <rect key="frame" x="71" y="47" width="55" height="21"/>
+                                <rect key="frame" x="43" y="47" width="55" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
                             <view contentMode="scaleToFill" id="tcg-oX-JnQ" userLabel="Tremolo Placeholder">
-                                <rect key="frame" x="78" y="10" width="40" height="40"/>
+                                <rect key="frame" x="50" y="10" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="adv-Po-h2O">
@@ -246,7 +246,7 @@
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view contentMode="scaleToFill" id="Gxx-ie-zeN" userLabel="Vibrato Placeholder">
-                                <rect key="frame" x="23" y="10" width="40" height="40"/>
+                                <rect key="frame" x="2" y="10" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZdG-wo-6nQ">
@@ -260,7 +260,7 @@
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view contentMode="scaleToFill" id="H30-eg-aUA" userLabel="Quantize Placeholder">
-                                <rect key="frame" x="133" y="10" width="40" height="40"/>
+                                <rect key="frame" x="105" y="10" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lDc-zN-F3d">
@@ -274,7 +274,28 @@
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quantize" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Gca-Rj-KTY" userLabel="Quantize">
-                                <rect key="frame" x="126" y="47" width="55" height="21"/>
+                                <rect key="frame" x="98" y="47" width="55" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </label>
+                            <view contentMode="scaleToFill" id="S76-LP-JAx" userLabel="Volume Placeholder">
+                                <rect key="frame" x="155" y="10" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KtN-1s-tUP">
+                                        <rect key="frame" x="-1" y="9" width="42" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </label>
+                                </subviews>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Volume" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nPa-Ce-fC4" userLabel="Volume">
+                                <rect key="frame" x="150" y="47" width="55" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -290,12 +311,14 @@
                     </view>
                     <toolbarItems/>
                     <connections>
+                        <outlet property="quantize_label" destination="lDc-zN-F3d" id="2JD-KV-fHu"/>
                         <outlet property="quantize_placeholder" destination="H30-eg-aUA" id="kNN-bJ-ZbA"/>
-                        <outlet property="quantize_value" destination="lDc-zN-F3d" id="GNt-f5-elr"/>
+                        <outlet property="tremolo_label" destination="adv-Po-h2O" id="76j-Ub-ogP"/>
                         <outlet property="tremolo_placeholder" destination="tcg-oX-JnQ" id="SMi-SY-3Ro"/>
-                        <outlet property="tremolo_value" destination="adv-Po-h2O" id="r9d-qO-9tv"/>
+                        <outlet property="vibrato_label" destination="ZdG-wo-6nQ" id="y6V-AS-a9B"/>
                         <outlet property="vibrato_placeholder" destination="Gxx-ie-zeN" id="IAJ-vP-t2M"/>
-                        <outlet property="vibrato_value" destination="ZdG-wo-6nQ" id="u99-1P-hEi"/>
+                        <outlet property="volume_label" destination="KtN-1s-tUP" id="pt6-xE-kKo"/>
+                        <outlet property="volume_placeholder" destination="S76-LP-JAx" id="lMv-vo-maP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ezf-E8-zBK" userLabel="First Responder" sceneMemberID="firstResponder"/>
