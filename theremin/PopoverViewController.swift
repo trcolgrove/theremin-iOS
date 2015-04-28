@@ -35,16 +35,20 @@ class PopoverViewController: UITableViewController, UITableViewDataSource, UITab
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if popoverType == "yeffect" {
             if let parent_vc = parent as? InstrumentViewController {
-                parent_vc.grid.y_axis_string = self.options[indexPath.row]
-                parent_vc.y_effect.setTitle(self.options[indexPath.row], forState: UIControlState.Normal)
+                let y_effect = self.options[indexPath.row]
+                parent_vc.grid.y_axis_string = y_effect
+                parent_vc.updateKnobs(y_effect)
+                parent_vc.y_effect.setTitle(y_effect, forState: UIControlState.Normal)
             }
         } else if popoverType == "wave" {
             if let parent_vc = parent as? SynthViewController {
                 
                 let wave_form = self.options[indexPath.row]
-                //let pd_wave_name = parent.getWaveName(wave_form)
+                let pd_wave_name = parent_vc.getWaveName(indexPath.row)
                 
-                PdBase.sendList([wave_form], toReceiver: "waveform")
+                // send new waveform to pd
+                // NOTE: need to do for each osc
+                PdBase.sendList([pd_wave_name], toReceiver: "waveform")
                 
                 if (segue == "wave_osc1") {
                     parent_vc.wave_button_1.setTitle(wave_form, forState: UIControlState.Normal)

@@ -51,11 +51,23 @@ class SynthViewController: UIViewController {
     @IBOutlet weak var osc2_toggle: UISwitch!
     @IBOutlet weak var osc3_toggle: UISwitch!
     
+    /* Possible choices for waveforms in synth */
     let waveforms = ["sine", "triangle", "sawtooth", "square", "bright", "ivory", "glass", "clav", "bass 1", "bass 2", "deep", "metallic", "organ 1", "organ 2", "bow 1", "bow 2", "bow 3", "steel", "brass 1", "brass 2", "sax", "trump", "wood 1", "wood 2"]
+    
+    /* Associative array for waveform names -> pd values */
+    let pd_waveforms = ["sine_table", "triangle_table", "6_table", "10_table", "14_table", "18_table", "22_table", "sawtooth_table", "square_table", "7_table", "11_table", "15_table", "19_table", "23_table", "random_table",  "inverse_sawtooth_table", "8_table", "12_table", "16_table", "20_table", "24_table", "random2_table", "5_table", "9_table"]
     
     @IBOutlet weak var wave_button_1: UIButton!
     @IBOutlet weak var wave_button_2: UIButton!
-    @IBOutlet weak var wave_button_3: UIButton!    
+    @IBOutlet weak var wave_button_3: UIButton!
+    
+    func getWaveName(id: Int) -> String {
+        if (id < pd_waveforms.count) {
+            return pd_waveforms[id]
+        } else {
+            return ""
+        }
+    }
     
     @IBAction func switchDidMove(sender: UISwitch!) {
         var on_off = 0
@@ -101,6 +113,8 @@ class SynthViewController: UIViewController {
             vc.options = waveforms
             vc.popoverType = "wave"
             vc.segue = segue.identifier
+        } else {
+            println("Internal Error: unknown segue.identifier \(segue.identifier)")
         }
     }
     
