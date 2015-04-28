@@ -1,4 +1,4 @@
-#N canvas 490 23 998 707 10;
+#N canvas 443 28 998 707 10;
 #X obj 235 465 channels~;
 #X obj 263 281 uzi 16;
 #X msg 298 391 init \$1 stereo subtractive_synth;
@@ -6,7 +6,7 @@
 #X obj 536 242 t b a;
 #X obj 562 405 list;
 #X obj 562 425 list trim;
-#X floatatom 302 239 5 0 0 0 - - -, f 5;
+#X floatatom 302 239 5 0 0 0 - - -;
 #X obj 219 204 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 550 152 square_table;
@@ -17,7 +17,8 @@
 #X msg 36 73 osc1 on 1 \, osc2 on 1 \, osc3 on 1 \, osc3 phase 0.8
 \, pan 0.5 0.5 1 \, mix 0.5 0.5 0.5 \, noise filter 200 \, noise amount
 0 \, osc1 cent 0 \, osc2 cent 0 \, filter frequency 3000 \, volume
-0.5 \, adsr 0 0 1 50 \, vibrato 0 \, tremolo 0;
+0.5 \, adsr 0 0 1 50 \, vibrato 0 \, tremolo 0 \, osc1 set triangle_table
+\, tremolo-phase 0;
 #X connect 1 0 2 0;
 #X connect 2 0 0 0;
 #X restore 416 173 pd presets;
@@ -26,7 +27,7 @@
 -1;
 #X obj 669 155 r waveform;
 #N canvas 746 130 503 379 vibrato 0;
-#X floatatom 252 211 5 0 0 0 - - -, f 5;
+#X floatatom 252 211 5 0 0 0 - - -;
 #X obj 252 189 +;
 #X obj 209 163 * 2;
 #X text 289 212 <-- Maximum length of the delay line (= added latency!)
@@ -7979,7 +7980,6 @@
 #X obj 540 208 list prepend osc1 set;
 #X msg 106 437 view;
 #X obj 702 204 r all;
-#X obj 332 475 piano;
 #X obj 332 649 lprepend 3;
 #X msg 755 207 osc1 set square_table;
 #X connect 0 0 15 0;
@@ -8019,6 +8019,5 @@
 #X connect 32 0 4 0;
 #X connect 33 0 0 0;
 #X connect 34 0 4 0;
-#X connect 35 0 36 0;
-#X connect 36 0 0 0;
-#X connect 37 0 4 0;
+#X connect 35 0 0 0;
+#X connect 36 0 4 0;

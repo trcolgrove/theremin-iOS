@@ -1599,10 +1599,11 @@
 				TargetAttributes = {
 					F8BD457A1A7EC47000535821 = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = 67255TZUTK;
 					};
 					F8BD45931A7EC47000535821 = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = 678N83CKYU;
+						DevelopmentTeam = 67255TZUTK;
 					};
 				};
 			};
@@ -2271,8 +2272,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Thomas Colgrove (8NFA8NCL5R)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Thomas Colgrove (8NFA8NCL5R)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Daniel Defossez (JC3DJPK476)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Daniel Defossez (JC3DJPK476)";
 				INFOPLIST_FILE = theremin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2290,8 +2291,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Thomas Colgrove (8NFA8NCL5R)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Thomas Colgrove (8NFA8NCL5R)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Daniel Defossez (JC3DJPK476)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Daniel Defossez (JC3DJPK476)";
 				INFOPLIST_FILE = theremin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
