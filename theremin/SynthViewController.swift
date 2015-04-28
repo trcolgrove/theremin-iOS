@@ -83,9 +83,9 @@ class SynthViewController: UIViewController {
     var mix1 : Float = 1
     var mix2 : Float = 1
     var mix3 : Float = 1
-    var phase1 : Float = 0
-    var phase2 : Float = 0
-    var phase3 : Float = 0
+    var phase1 : Float = 0.5
+    var phase2 : Float = 0.5
+    var phase3 : Float = 0.5
     var pitch1 : Float = 0
     var pitch2 : Float = 0
     var pitch3 : Float = 0
@@ -241,6 +241,17 @@ class SynthViewController: UIViewController {
                 case "pitch1":
                     pitch1 = knob.value*120
                     sendToChannelsInRange(low_index, high: high_index, msg: ["osc1", "cent", pitch1])
+                case "pitch2":
+                    pitch2 = knob.value*120
+                    sendToChannelsInRange(low_index, high: high_index, msg: ["osc1", "cent", pitch2])
+                case "pitch3":
+                    pitch3 = knob.value*120
+                    sendToChannelsInRange(low_index, high: high_index, msg: ["osc1", "cent", pitch3])
+                case "phase1":
+                    phase1 = knob.value/10
+                    sendToChannelsInRange(low_index, high: high_index, msg: ["osc1", "cent", pitch1])
+                
+                    
                 
                 default:
                     println("error: unrecognized id")
