@@ -173,8 +173,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "87"
             endingLineNumber = "87"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "5">
+            landmarkName = "SynthViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -300,7 +300,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "166"
             endingLineNumber = "166"
-            landmarkName = "getKnobLabel(_:)"
+            landmarkName = "getPlaceholder(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -395,9 +395,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "84"
-            endingLineNumber = "84"
-            landmarkName = "prepareForSegue(_:sender:)"
-            landmarkType = "5">
+            endingLineNumber = "84">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -411,9 +409,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "prepareForSegue(_:sender:)"
-            landmarkType = "5">
+            endingLineNumber = "83">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -427,9 +423,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "prepareForSegue(_:sender:)"
-            landmarkType = "5">
+            endingLineNumber = "85">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -459,9 +453,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "94"
-            endingLineNumber = "94"
-            landmarkName = "prepareForSegue(_:sender:)"
-            landmarkType = "5">
+            endingLineNumber = "94">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -492,8 +484,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "59"
             endingLineNumber = "59"
-            landmarkName = "switchDidMove(_:)"
-            landmarkType = "5">
+            landmarkName = "SynthViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -508,8 +500,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "57"
             endingLineNumber = "57"
-            landmarkName = "switchDidMove(_:)"
-            landmarkType = "5">
+            landmarkName = "SynthViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -524,7 +516,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "215"
             endingLineNumber = "215"
-            landmarkName = "sendToChannelsInRange(_:high:msg:)"
+            landmarkName = "getKnobLabel(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -540,7 +532,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "217"
             endingLineNumber = "217"
-            landmarkName = "sendToChannelsInRange(_:high:msg:)"
+            landmarkName = "getKnobLabel(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

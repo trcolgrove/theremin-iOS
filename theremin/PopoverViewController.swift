@@ -14,12 +14,9 @@ class PopoverViewController: UITableViewController, UITableViewDataSource, UITab
     var options: [String]!
     
     var popoverType: String?
+    var segue: String?
     
-    var parent: InstrumentViewController!
-    
-    override func viewDidLoad() {
-        
-    }
+    var parent: AnyObject!
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return options.count
@@ -37,8 +34,30 @@ class PopoverViewController: UITableViewController, UITableViewDataSource, UITab
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if popoverType == "yeffect" {
-            parent.grid.y_axis_string = self.options[indexPath.row]
-            parent.y_effect.setTitle(self.options[indexPath.row], forState: UIControlState.Normal)
+            if let parent_vc = parent as? InstrumentViewController {
+                let y_effect = self.options[indexPath.row]
+                parent_vc.grid.y_axis_string = y_effect
+                parent_vc.updateKnobs(y_effect)
+                parent_vc.y_effect.setTitle(y_effect, forState: UIControlState.Normal)
+            }
+        } else if popoverType == "wave" {
+            if let parent_vc = parent as? SynthViewController {
+                
+                let wave_form = self.options[indexPath.row]
+                let pd_wave_name = parent_vc.getWaveName(indexPath.row)
+                
+                // send new waveform to pd
+                // NOTE: need to do for each osc
+                PdBase.sendList([pd_wave_name], toReceiver: "waveform")
+                
+                if (segue == "wave_osc1") {
+                    parent_vc.wave_button_1.setTitle(wave_form, forState: UIControlState.Normal)
+                } else if (segue == "wave_osc2") {
+                    parent_vc.wave_button_2.setTitle(wave_form, forState: UIControlState.Normal)
+                } else if (segue == "wave_osc3") {
+                    parent_vc.wave_button_3.setTitle(wave_form, forState: UIControlState.Normal)
+                }
+            }
         }
         self.dismissViewController()
     }

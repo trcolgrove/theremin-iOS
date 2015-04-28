@@ -13,12 +13,11 @@ class KnobViewController: InstrumentViewController {
     
     /** The current values of each knob **/
     var vibrato: Float = 0
-    var chorus: Float = 0
     var tremolo: Float = 0
-    var gain: Float = 0
     var quantize: Float = 0
+    var volume: Float = 0
     
-    /** All of the **/
+    /** All of the knobs on the UI **/
     var knobs = [String:Knob]()
     var knob_ids = ["vibrato", "tremolo", "quantize"]
     
@@ -28,7 +27,6 @@ class KnobViewController: InstrumentViewController {
     @IBOutlet var vibrato_placeholder: UIView!
     @IBOutlet var tremolo_placeholder: UIView!
     @IBOutlet var quantize_placeholder: UIView!
-
     
     /** Labels for the current values of each knob **/
     @IBOutlet var vibrato_value: UILabel!
@@ -41,7 +39,7 @@ class KnobViewController: InstrumentViewController {
         updateLabels()
     }
     
-    /** Creates all knobs specified by the knob ids and gives them all the that id **/
+    /** Creates all knobs specified by the knob ids and gives them all that id **/
     func initializeKnobs() {
         var id = ""
         for (var i = 0; i < knob_ids.count; i++) {
@@ -122,6 +120,11 @@ class KnobViewController: InstrumentViewController {
                 }
             }
         }
+    }
+    
+    /* If the y-axis value changes, switch knobs to include new and remove old */
+    func replaceKnob(knob_name: String) {
+        
     }
     
     /** Changes all knob values to a given float **/
