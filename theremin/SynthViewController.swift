@@ -98,7 +98,7 @@ class SynthViewController: UIViewController {
     var pitch3 : Float = 0
     
     var knobs = [String:Knob]()
-    var knob_ids = ["mix1", "mix2", "mix3", "phase1", "phase2", "phase3", "pitch1", "phase2", "pitch3"]
+    var knob_ids = ["mix1", "mix2", "mix3", "phase1", "phase2", "phase3", "pitch1", "pitch2", "pitch3"]
     
 
     required init(coder aDecoder: NSCoder){
@@ -250,7 +250,7 @@ class SynthViewController: UIViewController {
                     sendToChannelsInRange(low_index, high: high_index, msg: ["osc1", "cent", pitch1])
                 
                 default:
-                    println("error: unrecognized id")
+                    println("error: unrecognized id \(knob.id)")
                 
                 }
             }
