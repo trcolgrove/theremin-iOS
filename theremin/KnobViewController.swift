@@ -19,7 +19,7 @@ class KnobViewController: InstrumentViewController {
     
     /** All of the knobs on the UI **/
     var knobs = [String:Knob]()
-    var knob_ids = ["vibrato", "tremolo", "quantize"]
+    var knob_ids = ["vibrato", "tremolo", "quantize", "volume"]
     
     var instrument_view: InstrumentViewController!
     
@@ -27,11 +27,13 @@ class KnobViewController: InstrumentViewController {
     @IBOutlet var vibrato_placeholder: UIView!
     @IBOutlet var tremolo_placeholder: UIView!
     @IBOutlet var quantize_placeholder: UIView!
+    @IBOutlet var volume_placeholder: UIView!
     
     /** Labels for the current values of each knob **/
-    @IBOutlet var vibrato_value: UILabel!
-    @IBOutlet var tremolo_value: UILabel!
-    @IBOutlet var quantize_value: UILabel!
+    @IBOutlet var vibrato_label: UILabel!
+    @IBOutlet var tremolo_label: UILabel!
+    @IBOutlet var quantize_label: UILabel!
+    @IBOutlet var volume_label: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,6 +77,8 @@ class KnobViewController: InstrumentViewController {
                 return tremolo_placeholder
             case "quantize":
                 return quantize_placeholder
+            case "volume":
+                return volume_placeholder
             default:
                 return nil
         }
@@ -88,7 +92,9 @@ class KnobViewController: InstrumentViewController {
             case "tremolo":
                 return tremolo
             case "quantize":
-                return quantize;
+                return quantize
+            case "volume":
+                return volume
             default:
                 return nil
         }
@@ -98,11 +104,13 @@ class KnobViewController: InstrumentViewController {
     func getKnobLabel(id: String) -> UILabel? {
         switch id {
             case "vibrato":
-                return vibrato_value
+                return vibrato_label
             case "tremolo":
-                return tremolo_value
+                return tremolo_label
             case "quantize":
-                return quantize_value
+                return quantize_label
+            case "volume":
+                return volume_label
             default:
                 return nil
         }
@@ -115,6 +123,8 @@ class KnobViewController: InstrumentViewController {
                 switch knob.id {
                 case "quantize":
                     instrument_view.updateQuantizeLevel(knob.value)
+                case "volume":
+                    println("hi")
                 default:
                     PdBase.sendFloat(knob.value, toReceiver: knob.id)
                 }
@@ -123,7 +133,7 @@ class KnobViewController: InstrumentViewController {
     }
     
     /* If the y-axis value changes, switch knobs to include new and remove old */
-    func replaceKnob(knob_name: String) {
+    func replaceKnob(z: String) {
         
     }
     
