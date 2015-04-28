@@ -256,10 +256,13 @@ class SynthViewController: UIViewController {
                     sendToChannelsInRange(low_index, high: high_index, msg: ["osc1", "cent", pitch3])
                 case "phase1":
                     phase1 = knob.value/10
-                    sendToChannelsInRange(low_index, high: high_index, msg: ["osc1", "cent", pitch1])
-                
-                    
-                
+                    sendToChannelsInRange(low_index, high: high_index, msg: ["osc1", "phase", phase1])
+                case "phase2":
+                    phase2 = knob.value/10
+                    sendToChannelsInRange(low_index, high: high_index, msg: ["osc2", "phase", phase2])
+                case "phase3":
+                    phase3 = knob.value/10
+                    sendToChannelsInRange(low_index, high: high_index, msg: ["osc3", "phase", phase3])
                 default:
                     println("error: unrecognized id")
                 

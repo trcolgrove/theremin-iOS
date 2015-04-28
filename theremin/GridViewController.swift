@@ -23,6 +23,8 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     let MAX_NOTES = 10
     let TOTAL_NOTES : Int = 28
     let DEFAULT_VELOCITY: Int = 40
+    var max_playback_index: Int = 0
+    var new_max_playback_index: Int = 0
     
     //var highest_index_used: Int = 0
     

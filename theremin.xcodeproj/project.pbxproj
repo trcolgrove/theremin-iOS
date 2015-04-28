@@ -325,9 +325,8 @@
 		E990F8FB1AE709BA00B6EE73 /* number~.pd in Resources */ = {isa = PBXBuildFile; fileRef = E990F7661AE709B900B6EE73 /* number~.pd */; };
 		E990F8FC1AE709BA00B6EE73 /* number2note.pd in Resources */ = {isa = PBXBuildFile; fileRef = E990F7671AE709B900B6EE73 /* number2note.pd */; };
 		E990F8FD1AE709BA00B6EE73 /* panner~-help.pd in Resources */ = {isa = PBXBuildFile; fileRef = E990F7681AE709B900B6EE73 /* panner~-help.pd */; };
-		E990F8FE1AE709BA00B6EE73 /* panner~.pd in Resources */ = {isa = PBXBuildFile; fileRef = E990F7691AE709B900B6EE73 /* panner~.pd */; };
 		E990F8FF1AE709BA00B6EE73 /* panner~~-help.pd in Resources */ = {isa = PBXBuildFile; fileRef = E990F76A1AE709B900B6EE73 /* panner~~-help.pd */; };
-		E990F9001AE709BA00B6EE73 /* panner~~.pd in Resources */ = {isa = PBXBuildFile; fileRef = E990F76B1AE709B900B6EE73 /* panner~~.pd */; };
+		E990F9001AE709BA00B6EE73 /* panner~.pd in Resources */ = {isa = PBXBuildFile; fileRef = E990F76B1AE709B900B6EE73 /* panner~.pd */; };
 		E990F9011AE709BA00B6EE73 /* pd_for_libpd.pd in Resources */ = {isa = PBXBuildFile; fileRef = E990F76C1AE709B900B6EE73 /* pd_for_libpd.pd */; };
 		E990F9021AE709BA00B6EE73 /* pi.pd in Resources */ = {isa = PBXBuildFile; fileRef = E990F76D1AE709B900B6EE73 /* pi.pd */; };
 		E990F9031AE709BA00B6EE73 /* piano.pd in Resources */ = {isa = PBXBuildFile; fileRef = E990F76E1AE709B900B6EE73 /* piano.pd */; };
@@ -806,7 +805,7 @@
 		E990F7681AE709B900B6EE73 /* panner~-help.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "panner~-help.pd"; path = "pd_for_libpd/panner~-help.pd"; sourceTree = "<group>"; };
 		E990F7691AE709B900B6EE73 /* panner~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "panner~.pd"; path = "pd_for_libpd/panner~.pd"; sourceTree = "<group>"; };
 		E990F76A1AE709B900B6EE73 /* panner~~-help.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "panner~~-help.pd"; path = "pd_for_libpd/panner~~-help.pd"; sourceTree = "<group>"; };
-		E990F76B1AE709B900B6EE73 /* panner~~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "panner~~.pd"; path = "pd_for_libpd/panner~~.pd"; sourceTree = "<group>"; };
+		E990F76B1AE709B900B6EE73 /* panner~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "panner~.pd"; path = "pd_for_libpd/panner~.pd"; sourceTree = "<group>"; };
 		E990F76C1AE709B900B6EE73 /* pd_for_libpd.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = pd_for_libpd.pd; path = pd_for_libpd/pd_for_libpd.pd; sourceTree = "<group>"; };
 		E990F76D1AE709B900B6EE73 /* pi.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = pi.pd; path = pd_for_libpd/pi.pd; sourceTree = "<group>"; };
 		E990F76E1AE709B900B6EE73 /* piano.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = piano.pd; path = pd_for_libpd/piano.pd; sourceTree = "<group>"; };
@@ -1309,7 +1308,7 @@
 				E990F7681AE709B900B6EE73 /* panner~-help.pd */,
 				E990F7691AE709B900B6EE73 /* panner~.pd */,
 				E990F76A1AE709B900B6EE73 /* panner~~-help.pd */,
-				E990F76B1AE709B900B6EE73 /* panner~~.pd */,
+				E990F76B1AE709B900B6EE73 /* panner~.pd */,
 				E990F76C1AE709B900B6EE73 /* pd_for_libpd.pd */,
 				E990F76D1AE709B900B6EE73 /* pi.pd */,
 				E990F76E1AE709B900B6EE73 /* piano.pd */,
@@ -1781,7 +1780,7 @@
 				E990F8A61AE709BA00B6EE73 /* gswitch.pd in Resources */,
 				375D157B1AA81A08004C1100 /* phi hive smaller.png in Resources */,
 				E990F9711AE709F200B6EE73 /* theremin.pd in Resources */,
-				E990F9001AE709BA00B6EE73 /* panner~~.pd in Resources */,
+				E990F9001AE709BA00B6EE73 /* panner~.pd in Resources */,
 				E990F9101AE709BA00B6EE73 /* rev1~.pd in Resources */,
 				E990F9451AE709BA00B6EE73 /* switch5~.pd in Resources */,
 				E990F8941AE709BA00B6EE73 /* gate28-help.pd in Resources */,
@@ -1895,7 +1894,6 @@
 				E9C57ECD1AE9832A007CF994 /* oscillators.png in Resources */,
 				E990F82D1AE709BA00B6EE73 /* csch.pd in Resources */,
 				E990F8191AE709BA00B6EE73 /* complex-help.pd in Resources */,
-				E990F8FE1AE709BA00B6EE73 /* panner~.pd in Resources */,
 				E990F80E1AE709BA00B6EE73 /* circularlist-help.pd in Resources */,
 				E990F8621AE709BA00B6EE73 /* gate6-help.pd in Resources */,
 				E990F8CA1AE709BA00B6EE73 /* lfor.pd in Resources */,
