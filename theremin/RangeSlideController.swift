@@ -89,11 +89,11 @@ class RangeSlideController: InstrumentViewController, UIScrollViewDelegate {
                 let notes_in_key = key_map[key]!
                 let note_name = notes_in_key[sd]
                 let offset = note_positions[note_name]!
-                let label_loc = imageView.frame.origin.x + 120 + CGFloat(oct*oct_width + offset*halfstep_width)
+                let label_loc = imageView.frame.origin.x + 105 + CGFloat(oct*oct_width + offset*halfstep_width)
                 var label = UILabel(frame: CGRectMake(0, 0, label_loc, imageView.frame.height))
-                label.font = UIFont(name: "Helvetica-bold", size: 32.00)
+                label.font = UIFont(name: "Helvetica Neue", size: 32.00)
                 label.textColor = UIColor(white: 1, alpha: 1)
-                label.center = CGPointMake(label_loc, imageView.frame.origin.y + 44)
+                label.center = CGPointMake(label_loc, imageView.frame.origin.y + 38)
                 label.text = (note_name + String(oct+3))
                 imageView.addSubview(label)
                 note_labels.append(label)
