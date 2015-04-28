@@ -15,10 +15,10 @@ class SettingsViewController: InstrumentViewController {
     var instrument_view: InstrumentViewController!
     var knob_menu: KnobViewController!
     var record_control: RecordViewController!
+    
     @IBOutlet weak var grid_lines_btn: UIButton!
     @IBOutlet weak var clear_notes_btn: UIButton!
     
- 
     @IBAction func gridLinesPressed(sender: UIButton!) {
         if (grid_lines_showing) {
             sender.backgroundColor = UIColor(white: 137/255, alpha: 1.0)
@@ -64,8 +64,8 @@ class SettingsViewController: InstrumentViewController {
     
         println("function clearnotes")
         
-    }
-    */
+    } */
+    
     @IBOutlet weak var note_button: UIButton!
     @IBOutlet weak var key_button: UIButton!
     
