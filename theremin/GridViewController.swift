@@ -315,7 +315,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         grid_image.addSubview(new_circle)
         
         if(!isPlayback){
-        recorder?.recordNote(loc, command: recData.command.ON, note_index: new_index)
+            recorder?.recordNote(loc, command: recData.command.ON, note_index: new_index)
         }
         return new_index
     }

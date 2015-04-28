@@ -20,6 +20,7 @@
 		37A4B0B21AD3606800618244 /* theremin-inst-record.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A4B0B11AD3606800618244 /* theremin-inst-record.png */; };
 		B1D07046291BC940EC75CD40 /* libPods-theremin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8004AE9946D819307EE2E6D8 /* libPods-theremin.a */; };
 		E90742571A8AD432009088E0 /* note_slider.png in Resources */ = {isa = PBXBuildFile; fileRef = E90742561A8AD432009088E0 /* note_slider.png */; };
+		E92FABD31AEF16EF00613578 /* oscillator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92FABD21AEF16EF00613578 /* oscillator.swift */; };
 		E93FC0D91AE9955700E3DBF5 /* BottomMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93FC0D81AE9955700E3DBF5 /* BottomMenuController.swift */; };
 		E93FC0DB1AEA213A00E3DBF5 /* theremin-body.png in Resources */ = {isa = PBXBuildFile; fileRef = E93FC0DA1AEA213A00E3DBF5 /* theremin-body.png */; };
 		E947E1611AA676DE004DAA9B /* GridLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E947E1601AA676DE004DAA9B /* GridLineView.swift */; };
@@ -498,6 +499,7 @@
 		8004AE9946D819307EE2E6D8 /* libPods-theremin.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-theremin.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9248A05E5AC8D6B8EE1E5BF /* Pods-theremin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-theremin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-theremin/Pods-theremin.debug.xcconfig"; sourceTree = "<group>"; };
 		E90742561A8AD432009088E0 /* note_slider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = note_slider.png; sourceTree = "<group>"; };
+		E92FABD21AEF16EF00613578 /* oscillator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = oscillator.swift; sourceTree = "<group>"; };
 		E93FC0D81AE9955700E3DBF5 /* BottomMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomMenuController.swift; sourceTree = "<group>"; };
 		E93FC0DA1AEA213A00E3DBF5 /* theremin-body.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "theremin-body.png"; sourceTree = "<group>"; };
 		E947E1601AA676DE004DAA9B /* GridLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridLineView.swift; sourceTree = "<group>"; };
@@ -1508,6 +1510,7 @@
 				E947E1601AA676DE004DAA9B /* GridLineView.swift */,
 				E96B543E1AB622D900A4E34F /* record.swift */,
 				E951EF181ABB6E2100686C57 /* recData.swift */,
+				E92FABD21AEF16EF00613578 /* oscillator.swift */,
 				F83822D81A9E3FEE00DA84CD /* KnobControl.swift */,
 				F84581461A88355300DCBFEA /* ViewControllers */,
 				F8BD45881A7EC47000535821 /* Main.storyboard */,
@@ -1599,7 +1602,7 @@
 					};
 					F8BD45931A7EC47000535821 = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = 67255TZUTK;
+						DevelopmentTeam = 678N83CKYU;
 					};
 				};
 			};
@@ -2137,6 +2140,7 @@
 				F83D4B0D1AD5751B00CEEC90 /* PopoverViewController.swift in Sources */,
 				E94960401ADF8AE3006E23C4 /* looper.swift in Sources */,
 				E95F1E0D1A9255610067536B /* RangeViewContainerController.swift in Sources */,
+				E92FABD31AEF16EF00613578 /* oscillator.swift in Sources */,
 				E94F9F751AED6A130071737D /* subsynth.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
