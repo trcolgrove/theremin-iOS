@@ -34,8 +34,6 @@ class SettingsViewController: InstrumentViewController {
     @IBAction func clearNotesPressed(sender: AnyObject) {
     }
     
-  
-    
     @IBOutlet var loop_toggle: UISwitch!
     @IBOutlet weak var showSynth: UIButton!
 
@@ -66,6 +64,7 @@ class SettingsViewController: InstrumentViewController {
         
     }
     */
+    
     @IBOutlet weak var note_button: UIButton!
     @IBOutlet weak var key_button: UIButton!
     
@@ -80,16 +79,22 @@ class SettingsViewController: InstrumentViewController {
             key_menu.isNote = false
             key_menu.keys = key_names
             key_menu.parent = instrument_view
-        }  else if (segue.identifier == "note_menu") {
+        }
+        
+        else if (segue.identifier == "note_menu") {
             let note_menu = segue.destinationViewController as! KeyTableViewController
             self.key_popover = note_menu
             note_menu.isNote = true
             note_menu.keys = note_names
             note_menu.parent = instrument_view
-        }  else if (segue.identifier == "record_init") {
+        }
+        
+        else if (segue.identifier == "record_init") {
             //nothing to do here
             record_control = segue.destinationViewController as! RecordViewController
-        } else if (segue.identifier == "knob_init") {
+        }
+        
+        else if (segue.identifier == "knob_init") {
             knob_menu = segue.destinationViewController as! KnobViewController
         }
 

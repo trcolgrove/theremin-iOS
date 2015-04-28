@@ -25,8 +25,6 @@ class InstrumentViewController: UIViewController {
     
     let note_positions = ["C" : 0, "C#" : 1, "Db" : 1, "D" : 2, "D#" : 3, "Eb" : 3, "E" : 4, "Fb" : 4, "E#" : 5, "F" : 5, "F#" : 6, "Gb" : 6, "G" : 7, "G#" : 8, "Ab" : 8, "A" : 9, "A#" : 10, "Bb" : 10, "B" : 11, "B#" : 11, "Cb" : 11]
     
-    let yeffects = ["volume", "tremolo", "vibrato"]
-    
     var bottom_menu: BottomMenuController!
     var key_popover: KeyTableViewController?
     var isRecording = false
@@ -36,10 +34,10 @@ class InstrumentViewController: UIViewController {
     var key_type: String = "Major"
     var key: String = "CMajor"
     
-    
-    
     @IBOutlet weak var y_effect: UIButton!
-
+    var y_axis_string: String = "volume"
+    let yeffects = ["volume", "tremolo", "vibrato"]
+    
     let num_oct: Int = 4
     let bottom_note: CGFloat = 59.0
     
@@ -48,10 +46,6 @@ class InstrumentViewController: UIViewController {
     var record_controller: RecordViewController!
     
     var grid_lines_showing: Bool = false
-    
-  
-    
-    var y_axis_string: String = "volume"
     
     override func viewDidLoad() {
         if let y_button = y_effect {
@@ -62,7 +56,69 @@ class InstrumentViewController: UIViewController {
         }*/
 
     }
-     
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        insertKeysToMap()
+    }
+    
+    //set up instrument view as a delegate of subcontrollers
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!){
+        
+        if segue.identifier == "init_range"{
+            range_controller = segue.destinationViewController as! RangeViewContainerController
+            range_controller.instrument = self
+        }
+        
+        else if segue.identifier == "init_grid"{
+            let grid = segue.destinationViewController as! GridViewController
+            self.grid = grid
+        }
+        
+        else if (segue.identifier == "key_menu") {
+            let key_menu = segue.destinationViewController as! KeyTableViewController
+            self.key_popover = key_menu
+            key_menu.isNote = false
+            key_menu.keys = key_names
+            key_menu.parent = self
+        }
+        
+        else if (segue.identifier == "note_menu") {
+            let note_menu = segue.destinationViewController as! KeyTableViewController
+            self.key_popover = note_menu
+            note_menu.isNote = true
+            note_menu.keys = note_names
+            note_menu.parent = self
+        }
+        
+        else if (segue.identifier == "knob_init") {
+            //nothing to do here
+        }
+        
+        else if (segue.identifier == "record_init") {
+            record_controller = segue.destinationViewController as! RecordViewController
+        }
+        
+        else if (segue.identifier == "yeffect_popover"){
+            let yeffect_menu = segue.destinationViewController as! PopoverViewController
+            yeffect_menu.options = yeffects
+            yeffect_menu.popoverType = "yeffect"
+            yeffect_menu.parent = self
+        }
+        
+        else if segue.identifier == "bottom_init"{
+            self.bottom_menu = segue.destinationViewController as! BottomMenuController
+            bottom_menu.instrument_view = self
+        }
+        
+        else {
+            println("Internal Error: unknown segue.identifier \(segue.identifier) in InstrumentViewController.prepareForSegue")
+        }
+    }
+    
+    /* MARK: 
+     * Recording code
+     */
     
     func removeGridLines(){
         grid.removeGridLines()
@@ -107,53 +163,7 @@ class InstrumentViewController: UIViewController {
     func resetPlayButton(){
         bottom_menu.settings_control.record_control.resetPlayButton()
     }
- 
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        insertKeysToMap()
-    }
-        
-    
-    
-    //set up instrument view as a delegate of subcontrollers
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!){
-        
-        if segue.identifier == "init_range"{
-            range_controller = segue.destinationViewController as! RangeViewContainerController
-            range_controller.instrument = self
-        } else if segue.identifier == "init_grid"{
-            let grid = segue.destinationViewController as! GridViewController
-            self.grid = grid
-        } else if (segue.identifier == "key_menu") {
-            let key_menu = segue.destinationViewController as! KeyTableViewController
-            self.key_popover = key_menu
-            key_menu.isNote = false
-            key_menu.keys = key_names
-            key_menu.parent = self
-        } else if (segue.identifier == "note_menu") {
-            let note_menu = segue.destinationViewController as! KeyTableViewController
-            self.key_popover = note_menu
-            note_menu.isNote = true
-            note_menu.keys = note_names
-            note_menu.parent = self
-        } else if (segue.identifier == "knob_init") {
-            //nothing to do here
-        } else if (segue.identifier == "record_init") {
-            record_controller = segue.destinationViewController as! RecordViewController
-        } else if (segue.identifier == "yeffect_popover"){
-            let yeffect_menu = segue.destinationViewController as! PopoverViewController
-            yeffect_menu.options = yeffects
-            yeffect_menu.popoverType = "yeffect"
-            yeffect_menu.parent = self
-        } else if segue.identifier == "bottom_init"{
-            self.bottom_menu = segue.destinationViewController as! BottomMenuController
-            bottom_menu.instrument_view = self
-        } 
-        else {
-            println("Internal Error: unknown segue.identifier \(segue.identifier) in InstrumentViewController.prepareForSegue")
-        }
-    }
-    
+
     /* setRange
      * sets the grid range to that of the leftmost note
      */
@@ -161,6 +171,13 @@ class InstrumentViewController: UIViewController {
         grid.setRange(offset)
     }
 
+    /* updateKnobs
+    * updates knobs if y_effect is changed
+    */
+    func updateKnobs(knob_name: String) {
+        
+    }
+    
     /* updateKey (value, type)
      * changes the key based on a value and updates key of instrument
      */
