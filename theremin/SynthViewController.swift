@@ -257,7 +257,6 @@ class SynthViewController: UIViewController {
         }
     }
     
-    
     /** Send a PdList to a range of Channels **/
     func sendToChannelsInRange(low: Int, high: Int, msg: [AnyObject]){
         for i in low...high {
