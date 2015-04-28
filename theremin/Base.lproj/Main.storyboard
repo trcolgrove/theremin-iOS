@@ -55,11 +55,6 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="gX5-Vs-ikL" kind="embed" identifier="bottom_init" id="Hc6-vm-TzD"/>
-                            <containerView opaque="NO" contentMode="scaleToFill" id="Ogh-Qb-duP" userLabel="GridView">
-                                <rect key="frame" x="77" y="98" width="870" height="547"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <segue destination="ls9-R1-fCC" kind="embed" identifier="init_grid" id="0VQ-Te-cu6"/>
                                 </connections>
                             </containerView>
                         </subviews>
