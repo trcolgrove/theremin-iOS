@@ -2,7 +2,6 @@
 #X obj 235 465 channels~;
 #X obj 263 281 uzi 16;
 #X msg 298 391 init \$1 stereo subtractive_synth;
-#X obj 496 303 uzi 16;
 #X obj 536 242 t b a;
 #X obj 562 405 list;
 #X obj 562 425 list trim;
@@ -17,7 +16,7 @@
 #X msg 36 73 osc1 on 1 \, osc2 on 1 \, osc3 on 1 \, osc3 phase 0.8
 \, pan 0.5 0.5 1 \, mix 0.5 0.5 0.5 \, noise filter 200 \, noise amount
 0 \, osc1 cent 0 \, osc2 cent 0 \, filter frequency 3000 \, volume
-0.5 \, adsr 0 0 1 50 \, vibrato 0 \, tremolo 0 \, osc1 set triangle_table
+0.5 \, adsr 0 0 1 50 \, vibrato 0 \, tremolo 0 \, osc1 set sine_table
 \, tremolo-phase 0;
 #X connect 1 0 2 0;
 #X connect 2 0 0 0;
@@ -2901,7 +2900,7 @@
 -0.130643 -0.104679 -0.108675 -0.1354 -0.144545 -0.118387 -0.080116
 -0.0539044 -0.0389104 -0.0317244 -0.040867 -0.0607941 -0.0624532 -0.0359951
 -0.0168869 -0.0366481 -0.0685051 -0.0457494 -0.00802506 -0.00997691
--0.034244;
+-0.034244 ;
 #A 2000 -0.0351986 -0.0148943 -0.0202815 -0.0656022 -0.110505 -0.126257
 -0.135619 -0.163633 -0.189969 -0.185088 -0.164888 -0.169359 -0.202716
 -0.233373 -0.245694 -0.254703 -0.27079 -0.285473 -0.296652 -0.314217
@@ -7986,45 +7985,46 @@
 #X obj 252 593 *~;
 #X obj 323 577 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
 -262144 -1 -1 1 256;
-#X connect 0 0 15 0;
-#X connect 0 1 15 0;
-#X connect 1 2 28 0;
+#X obj 496 303 uzi 16;
+#X connect 0 0 14 0;
+#X connect 0 1 14 0;
+#X connect 1 2 27 0;
 #X connect 2 0 0 0;
-#X connect 3 2 29 0;
-#X connect 4 0 3 0;
-#X connect 4 1 5 1;
-#X connect 5 0 6 0;
-#X connect 6 0 0 0;
-#X connect 7 0 1 1;
-#X connect 7 0 3 1;
-#X connect 8 0 1 0;
-#X connect 9 0 32 0;
-#X connect 11 0 4 0;
-#X connect 12 0 30 0;
-#X connect 13 0 30 0;
-#X connect 14 0 32 0;
-#X connect 15 0 16 0;
-#X connect 16 0 38 0;
-#X connect 20 0 7 0;
-#X connect 21 0 22 0;
-#X connect 22 0 0 0;
-#X connect 24 0 0 0;
+#X connect 3 0 39 0;
+#X connect 3 1 4 1;
+#X connect 4 0 5 0;
+#X connect 5 0 0 0;
+#X connect 6 0 1 1;
+#X connect 6 0 39 1;
+#X connect 7 0 1 0;
+#X connect 8 0 31 0;
+#X connect 10 0 3 0;
+#X connect 11 0 29 0;
+#X connect 12 0 29 0;
+#X connect 13 0 31 0;
+#X connect 14 0 15 0;
+#X connect 15 0 37 0;
+#X connect 19 0 6 0;
+#X connect 20 0 21 0;
+#X connect 21 0 0 0;
+#X connect 23 0 0 0;
+#X connect 25 0 0 0;
 #X connect 26 0 0 0;
-#X connect 27 0 0 0;
-#X connect 28 0 2 0;
-#X connect 29 0 5 0;
-#X connect 30 0 11 0;
-#X connect 30 1 9 0;
-#X connect 30 2 8 0;
-#X connect 30 3 31 0;
-#X connect 30 4 24 0;
-#X connect 31 0 7 0;
-#X connect 32 0 4 0;
-#X connect 33 0 0 0;
-#X connect 34 0 4 0;
-#X connect 35 0 0 0;
-#X connect 36 0 4 0;
-#X connect 37 0 39 0;
-#X connect 38 0 17 1;
-#X connect 38 0 17 0;
-#X connect 39 0 38 1;
+#X connect 27 0 2 0;
+#X connect 28 0 4 0;
+#X connect 29 0 10 0;
+#X connect 29 1 8 0;
+#X connect 29 2 7 0;
+#X connect 29 3 30 0;
+#X connect 29 4 23 0;
+#X connect 30 0 6 0;
+#X connect 31 0 3 0;
+#X connect 32 0 0 0;
+#X connect 33 0 3 0;
+#X connect 34 0 0 0;
+#X connect 35 0 3 0;
+#X connect 36 0 38 0;
+#X connect 37 0 16 1;
+#X connect 37 0 16 0;
+#X connect 38 0 37 1;
+#X connect 39 2 28 0;

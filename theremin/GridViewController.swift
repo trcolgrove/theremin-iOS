@@ -285,10 +285,9 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         note_index_used[index] = false
         
         var x = circles[index].center.x
-        println(x)
         PdBase.sendList([index, calculatePitch(x), 0], toReceiver: "note")
         PdBase.sendList([index, y_axis_string, default_y_axis_values[y_axis_string]!], toReceiver: "note")
-        PdBase.sendList([index, "tremolo-phase", 0.0], toReceiver: "note")
+        PdBase.sendList([index, "tremolo-phase", CsGFloat(0.0)], toReceiver: "note")
 
         
         circles[index].removeFromSuperview()
