@@ -39,6 +39,13 @@ class KnobViewController: InstrumentViewController {
         super.viewDidLoad()
         initializeKnobs()
         updateLabels()
+        initializeVolume()
+    }
+    
+    func initializeVolume() {
+        knobs["volume"]?.value = 10
+        PdBase.sendFloat(1.0, toReceiver: "global_volume")
+        updateLabel(knobs["volume"]!, label: getKnobLabel("volume")!)
     }
     
     /** Creates all knobs specified by the knob ids and gives them all that id **/
@@ -124,7 +131,7 @@ class KnobViewController: InstrumentViewController {
                 case "quantize":
                     instrument_view.updateQuantizeLevel(knob.value)
                 case "volume":
-                    println("hi")
+                    PdBase.sendFloat(knob.value / 10.0, toReceiver: "global_volume")
                 default:
                     PdBase.sendFloat(knob.value, toReceiver: knob.id)
                 }
@@ -133,7 +140,7 @@ class KnobViewController: InstrumentViewController {
     }
     
     /* If the y-axis value changes, switch knobs to include new and remove old */
-    func replaceKnob(z: String) {
+    func replaceKnob(y_axis: String) {
         
     }
     
