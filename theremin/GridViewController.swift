@@ -284,9 +284,12 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         }
         note_index_used[index] = false
         
-        PdBase.sendList([index, 60, 0], toReceiver: "note")
+        var x = circles[index].center.x
+        println(x)
+        PdBase.sendList([index, calculatePitch(x), 0], toReceiver: "note")
         PdBase.sendList([index, y_axis_string, default_y_axis_values[y_axis_string]!], toReceiver: "note")
         PdBase.sendList([index, "tremolo-phase", 0.0], toReceiver: "note")
+
         
         circles[index].removeFromSuperview()
         note_count--
@@ -308,6 +311,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         
         PdBase.sendList([new_index, calculatePitch(loc.x), DEFAULT_VELOCITY], toReceiver: "note")
         PdBase.sendList([new_index, y_axis_string, calculateYValue(loc.y)], toReceiver: "note")
+
         
         // Create a new CircleView for current touch location
         var new_circle = CircleView(frame: CGRectMake(loc.x - (CIRCLE_DIAMETER * 0.5), loc.y - (CIRCLE_DIAMETER * 0.5), CIRCLE_DIAMETER, CIRCLE_DIAMETER), i: new_index, view_controller: self, isPlayback: isPlayback)
@@ -392,6 +396,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         for t in touches {
             let touch = t as! UITouch
             if let index = note_dict[pointerToString(touch)]{
+                println(touch.locationInView(grid_image).x)
                 deleteNote(index, isPlayback: false)
             }
         }
