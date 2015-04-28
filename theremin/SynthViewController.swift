@@ -48,6 +48,10 @@ class SynthViewController: UIViewController {
     @IBOutlet weak var osc2_toggle: UISwitch!
     @IBOutlet weak var osc3_toggle: UISwitch!
     
+    @IBOutlet weak var osc1_on: UILabel!
+    @IBOutlet weak var osc2_on: UILabel!
+    @IBOutlet weak var osc3_on: UILabel!
+    
     /* Possible choices for waveforms in synth */
     let waveforms = ["sine", "triangle", "sawtooth", "square", "bright", "ivory", "glass", "clav", "bass 1", "bass 2", "deep", "metallic", "organ 1", "organ 2", "bow 1", "bow 2", "bow 3", "steel", "brass 1", "brass 2", "sax", "trump", "wood 1", "wood 2"]
     
@@ -73,10 +77,13 @@ class SynthViewController: UIViewController {
         }
         if(sender == osc1_toggle){
             sendToChannelsInRange(low_index, high: high_index, msg: ["osc1", "on", on_off])
+            osc1_on.text = osc1_toggle.on ? "ON" : "OFF"
         } else if(sender == osc2_toggle){
             sendToChannelsInRange(low_index, high: high_index, msg: ["osc2", "on", on_off])
+            osc2_on.text = osc2_toggle.on ? "ON" : "OFF"
         } else if(sender == osc3_toggle){
             sendToChannelsInRange(low_index, high: high_index, msg: ["osc3", "on", on_off])
+            osc3_on.text = osc2_toggle.on ? "ON" : "OFF"
         }
     }
     
