@@ -1,4 +1,4 @@
-#N canvas 341 23 1260 769 10;
+#N canvas 406 39 998 707 10;
 #X obj 235 465 channels~;
 #X obj 263 281 uzi 16;
 #X msg 298 391 init \$1 stereo subtractive_synth;
@@ -11,13 +11,14 @@
 -1 -1;
 #X obj 550 152 square_table;
 #X text 260 210 # of voices;
-#N canvas 0 75 450 300 presets 1;
+#N canvas 339 23 450 300 presets 1;
 #X obj 41 156 outlet;
 #X obj 35 41 inlet;
-#X msg 36 73 osc1 on 1 \, osc2 on 1 \, osc3 on 1 \, osc3 phase 0.8
-\, pan 0.5 0.5 1 \, mix 0.5 0.5 0.5 \, noise filter 200 \, noise amount
-0 \, osc1 cent 0 \, osc2 cent 0 \, filter frequency 3000 \, volume
-0.5 \, adsr 0 0 1 50 \, vibrato 0 \, tremolo 0;
+#X msg 36 73 osc1 on 1 \, osc2 off 1 \, osc3 off 1 \, pan 0.5 0.5 1
+\, mix 0.5 0.5 0.5 \, noise filter 200 \, noise amount 0 \, osc1 cent
+0 \, osc2 cent 0 \, filter frequency 3000 \, volume 0.5 \, adsr 0 0
+1 50 \, vibrato 0 \, tremolo 0 \, osc1 set triangle_table \, tremolo-phase
+0;
 #X connect 1 0 2 0;
 #X connect 2 0 0 0;
 #X restore 416 173 pd presets;
@@ -25,7 +26,59 @@
 #X obj 323 58 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 669 155 r waveform;
-#X obj 246 619 dac~;
+#N canvas 746 130 503 379 vibrato 0;
+#X floatatom 252 211 5 0 0 0 - - -, f 5;
+#X obj 252 189 +;
+#X obj 209 163 * 2;
+#X text 289 212 <-- Maximum length of the delay line (= added latency!)
+;
+#X text 273 133 <-- Depth (change the length of the delay line);
+#X text 161 86 <-- Speed (frequency of the LFO);
+#X obj 54 278 outlet~;
+#X text 369 87 0 to 5;
+#X obj 97 88 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 0 256;
+#X obj 97 52 r vibrato;
+#X obj 40 -11 inlet~;
+#X obj 97 185 +~ 2;
+#X obj 98 154 *~ 1;
+#X obj 97 117 osc~;
+#X msg 221 126 1;
+#X obj 70 19 delwrite~ delay 50;
+#X obj 97 216 vd~ delay;
+#X msg 37 37;
+#X msg 37 37;
+#X connect 1 0 0 0;
+#X connect 2 0 1 0;
+#X connect 2 0 11 1;
+#X connect 8 0 13 0;
+#X connect 9 0 8 0;
+#X connect 10 0 15 0;
+#X connect 11 0 16 0;
+#X connect 12 0 11 0;
+#X connect 13 0 12 0;
+#X connect 14 0 2 0;
+#X connect 14 0 12 1;
+#X connect 14 0 1 0;
+#X connect 16 0 6 0;
+#X restore 248 518 pd vibrato;
+#N canvas 861 374 450 300 tremolo 0;
+#X obj 121 117 osc~;
+#X obj 50 162 *~;
+#X obj 50 195 outlet~;
+#X obj 49 30 inlet~;
+#X obj 114 30 r tremolo;
+#X obj 113 70 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 0 256;
+#X obj 184 60 r tremolo_phase;
+#X connect 0 0 1 1;
+#X connect 1 0 2 0;
+#X connect 3 0 1 0;
+#X connect 4 0 5 0;
+#X connect 5 0 0 0;
+#X connect 6 0 0 1;
+#X restore 248 540 pd tremolo;
+#X obj 253 643 dac~;
 #X text 740 155 Set waveform;
 #N canvas 0 23 1440 689 waveforms 0;
 #N canvas 0 22 450 278 (subpatch) 0;
@@ -1300,7 +1353,7 @@
 -0.0366984 -0.036011 -0.0354498 -0.0350079 -0.0346758 -0.0344412 -0.0342895
 -0.0342041 -0.034167 -0.0341588 -0.0341596 -0.0341491 -0.0341074 -0.0340153
 -0.0338549 -0.0336099 -0.033266 -0.0328112 -0.0322362 -0.0315348 -0.0307035
--0.029742 -0.0286534 -0.0274434 -0.0261208 ;
+-0.029742 -0.0286534 -0.0274434 -0.0261208;
 #A 1000 -0.0246973 -0.0231868 -0.0216051 -0.0199702 -0.0183009 -0.016617
 -0.0149388 -0.0132862 -0.0116786 -0.0101345 -0.00867046 -0.00730152
 -0.00604023 -0.00489664 -0.00387794 -0.00298836 -0.00222901 -0.00159791
@@ -2848,7 +2901,7 @@
 -0.130643 -0.104679 -0.108675 -0.1354 -0.144545 -0.118387 -0.080116
 -0.0539044 -0.0389104 -0.0317244 -0.040867 -0.0607941 -0.0624532 -0.0359951
 -0.0168869 -0.0366481 -0.0685051 -0.0457494 -0.00802506 -0.00997691
--0.034244;
+-0.034244 ;
 #A 2000 -0.0351986 -0.0148943 -0.0202815 -0.0656022 -0.110505 -0.126257
 -0.135619 -0.163633 -0.189969 -0.185088 -0.164888 -0.169359 -0.202716
 -0.233373 -0.245694 -0.254703 -0.27079 -0.285473 -0.296652 -0.314217
@@ -7919,6 +7972,7 @@
 #X text 341 79 reset \, set #voices \, initialize \, set square table
 \, initialize preset;
 #X msg 155 147 1 60 0;
+#X msg 106 170 1 60 127;
 #X obj 279 336 - 1;
 #X obj 525 353 - 1;
 #X obj 265 83 t b b b b b;
@@ -7926,66 +7980,12 @@
 #X obj 540 208 list prepend osc1 set;
 #X msg 106 437 view;
 #X obj 702 204 r all;
-#X msg 755 207 osc1 set square_table;
-#N canvas 861 374 450 300 tremolo 0;
-#X obj 121 117 osc~;
-#X obj 50 162 *~;
-#X obj 50 195 outlet~;
-#X obj 49 30 inlet~;
-#X obj 114 30 r tremolo;
-#X obj 113 70 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 0 256;
-#X obj 184 60 r tremolo_phase;
-#X connect 0 0 1 1;
-#X connect 1 0 2 0;
-#X connect 3 0 1 0;
-#X connect 4 0 5 0;
-#X connect 5 0 0 0;
-#X connect 6 0 0 1;
-#X restore 242 540 pd tremolo;
-#N canvas 746 130 503 379 vibrato 0;
-#X floatatom 252 211 5 0 0 0 - - -, f 5;
-#X obj 252 189 +;
-#X obj 209 163 * 2;
-#X text 289 212 <-- Maximum length of the delay line (= added latency!)
-;
-#X text 273 133 <-- Depth (change the length of the delay line);
-#X text 161 86 <-- Speed (frequency of the LFO);
-#X obj 54 278 outlet~;
-#X text 369 87 0 to 5;
-#X obj 97 88 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
--262144 -1 -1 0 256;
-#X obj 97 52 r vibrato;
-#X obj 40 -11 inlet~;
-#X obj 97 185 +~ 2;
-#X obj 98 154 *~ 1;
-#X obj 97 117 osc~;
-#X msg 221 126 1;
-#X obj 70 19 delwrite~ delay 50;
-#X obj 97 216 vd~ delay;
-#X msg 37 37;
-#X msg 37 37;
-#X connect 1 0 0 0;
-#X connect 2 0 1 0;
-#X connect 2 0 11 1;
-#X connect 8 0 13 0;
-#X connect 9 0 8 0;
-#X connect 10 0 15 0;
-#X connect 11 0 16 0;
-#X connect 12 0 11 0;
-#X connect 13 0 12 0;
-#X connect 14 0 2 0;
-#X connect 14 0 12 1;
-#X connect 14 0 1 0;
-#X connect 16 0 6 0;
-#X restore 238 506 pd vibrato;
-#X obj 245 595 lop~;
-#X msg 316 577 4000;
-#X obj 355 545 loadbang;
-#X connect 0 0 34 0;
-#X connect 1 2 25 0;
+#X obj 332 649 lprepend 3;
+#X connect 0 0 15 0;
+#X connect 0 1 15 0;
+#X connect 1 2 28 0;
 #X connect 2 0 0 0;
-#X connect 3 2 26 0;
+#X connect 3 2 29 0;
 #X connect 4 0 3 0;
 #X connect 4 1 5 1;
 #X connect 5 0 6 0;
@@ -7993,30 +7993,29 @@
 #X connect 7 0 1 1;
 #X connect 7 0 3 1;
 #X connect 8 0 1 0;
-#X connect 9 0 29 0;
+#X connect 9 0 32 0;
 #X connect 11 0 4 0;
-#X connect 12 0 27 0;
-#X connect 13 0 27 0;
-#X connect 14 0 29 0;
-#X connect 18 0 7 0;
-#X connect 19 0 20 0;
-#X connect 20 0 0 0;
+#X connect 12 0 30 0;
+#X connect 13 0 30 0;
+#X connect 14 0 32 0;
+#X connect 15 0 16 0;
+#X connect 16 0 17 0;
+#X connect 16 0 17 1;
+#X connect 20 0 7 0;
+#X connect 21 0 22 0;
 #X connect 22 0 0 0;
 #X connect 24 0 0 0;
-#X connect 25 0 2 0;
-#X connect 26 0 5 0;
-#X connect 27 0 11 0;
-#X connect 27 1 9 0;
-#X connect 27 2 8 0;
-#X connect 27 3 28 0;
-#X connect 27 4 22 0;
-#X connect 28 0 7 0;
-#X connect 29 0 4 0;
-#X connect 30 0 0 0;
-#X connect 31 0 4 0;
+#X connect 26 0 0 0;
+#X connect 27 0 0 0;
+#X connect 28 0 2 0;
+#X connect 29 0 5 0;
+#X connect 30 0 11 0;
+#X connect 30 1 9 0;
+#X connect 30 2 8 0;
+#X connect 30 3 31 0;
+#X connect 30 4 24 0;
+#X connect 31 0 7 0;
 #X connect 32 0 4 0;
-#X connect 33 0 35 0;
-#X connect 34 0 33 0;
-#X connect 35 0 15 0;
-#X connect 36 0 35 1;
-#X connect 37 0 36 0;
+#X connect 33 0 0 0;
+#X connect 34 0 4 0;
+#X connect 35 0 0 0;
