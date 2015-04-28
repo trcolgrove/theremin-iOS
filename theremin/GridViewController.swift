@@ -20,11 +20,12 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     
     let CIRCLE_DIAMETER: CGFloat = 50
     let MAX_QUANTIZE_LEVEL: CGFloat = 10
-    let MAX_NOTES = 10
+    let MAX_NOTES = 5
     let TOTAL_NOTES : Int = 28
     let DEFAULT_VELOCITY: Int = 40
     var max_playback_index: Int = 0
-    var new_max_playback_index: Int = 0
+    
+
     
     //var highest_index_used: Int = 0
     
@@ -32,7 +33,8 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     var inPlayback = false;
     // Invariant: If the bool at index i is true if index i is currently being used, otherwise false
     var note_index_used: [Bool] = []
-   
+    var note_isPlayback: [Bool] = [false, false, false, false, false, false, false, false, false, false]
+    
     var loop_timer : NSTimer?
     // Invariant: If the bool at index i is true if note i is a sustain and currently being dragged,
     //            so we shouldn't delete it on touchesEnded
@@ -127,10 +129,12 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
      * moves grid image to the left based on note view controller offset
      */
     override func setRange(note_offset: CGFloat) {
+        
+        
         grid_image.frame = CGRectMake(grid_image.frame.origin.x - note_offset, grid_image.frame.origin.y, grid_image.frame.width, grid_image.frame.height)
         for i in 0..<MAX_NOTES{
             if(note_index_used[i]){
-                updateNote(i, loc: CGPoint(x: circles[i].center.x + note_offset, y: circles[i].center.y) , isPlayback: false)
+                updateNote(i, loc: CGPoint(x: circles[i].center.x + note_offset, y: circles[i].center.y) , isPlayback: note_isPlayback[i])
             }
         }
     }
@@ -302,15 +306,23 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     }
 
     // Creates a new note based on the location of the touch
-    func createNote(loc: CGPoint, isPlayback: Bool) -> Int {
+    func createNote(loc: CGPoint, isPlayback: Bool, index: Int?) -> Int {
         if note_count == MAX_NOTES {
             return -1
         }
         
-        //Create current note
-        var new_index = getNextNoteIndex()
-        note_count++
         
+        //Create current note
+        
+        var new_index = 0
+        if(isPlayback) {
+            new_index = index!
+            note_index_used[index!] = true
+        }
+        else{
+            new_index = getNextNoteIndex()
+            note_count++
+        }
         PdBase.sendList([new_index, calculatePitch(loc.x), DEFAULT_VELOCITY], toReceiver: "note")
         PdBase.sendList([new_index, y_axis_string, calculateYValue(loc.y)], toReceiver: "note")
 
@@ -373,7 +385,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
             let touch = t as! UITouch
             var loc: CGPoint
             loc = touch.locationInView(grid_image)
-            let index = createNote(loc, isPlayback: false)
+            let index = createNote(loc, isPlayback: false, index: nil)
             if (index != -1) {
                 note_dict[pointerToString(touch)] = index
             }
@@ -507,7 +519,9 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
     func createNoteWithIndex(timer: NSTimer){
         var userInfo = timer.userInfo as! NSDictionary
         let pt = CGPoint(x: userInfo["x"] as! CGFloat,y: userInfo["y"] as! CGFloat)
-        createNote(pt, isPlayback: true)
+        let index = userInfo["index"] as? Int
+        note_isPlayback[index!] = true
+        createNote(pt, isPlayback: true, index: index)
         recordingIndex++
         if(recordingIndex == rec_length){
             recordingIndex = 0
@@ -523,6 +537,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         let to_delete = userInfo["index"] as! Int
         deleteNote(to_delete, isPlayback: true)
         recordingIndex++
+        note_isPlayback[to_delete] = false
         if(recordingIndex == rec_length){
             recordingIndex = 0
             inPlayback = false
@@ -567,7 +582,7 @@ class GridViewController: InstrumentViewController, UIScrollViewDelegate {
         deleteAllNotes()
         inPlayback = true
         for loc in pause_state {
-            createNote(loc, isPlayback : true)
+            createNote(loc, isPlayback : true, index: nil)
         }
         pause_state = []
         rec_length = recording!.count
