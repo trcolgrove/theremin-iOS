@@ -45,8 +45,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "445"
             endingLineNumber = "445"
-            landmarkName = "removeGridLines()"
-            landmarkType = "5">
+            landmarkName = "GridViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -61,8 +61,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "464"
             endingLineNumber = "464"
-            landmarkName = "drawGridLines()"
-            landmarkType = "5">
+            landmarkName = "GridViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -93,8 +93,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "447"
             endingLineNumber = "447"
-            landmarkName = "GridViewController"
-            landmarkType = "3">
+            landmarkName = "drawGridLines()"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

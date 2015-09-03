@@ -39,7 +39,7 @@ class InstrumentViewController: UIViewController {
     let yeffects = ["volume", "tremolo", "vibrato"]
     
     let num_oct: Int = 4
-    let bottom_note: CGFloat = 59.0
+    let bottom_note: CGFloat = 47.0
     
     var grid: GridViewController!
     var range_controller: RangeViewContainerController!

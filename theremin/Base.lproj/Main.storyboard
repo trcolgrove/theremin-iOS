@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="BYZ-38-t0r">
+
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="BYZ-38-t0r">
+
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
@@ -34,10 +36,9 @@
                                 <rect key="frame" x="927" y="372" width="112" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.80226128484981374" green="0.79719111771406415" blue="0.82349537037037035" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
                                 <state key="normal" title="volume">
                                     <color key="titleColor" red="0.14901960780000001" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -218,21 +219,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vibrato" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="68d-aR-eUZ">
-                                <rect key="frame" x="-5" y="47" width="55" height="21"/>
+                                <rect key="frame" x="6" y="46" width="55" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tremolo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="j0s-V9-B4M">
-                                <rect key="frame" x="43" y="47" width="55" height="21"/>
+                                <rect key="frame" x="56" y="46" width="55" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
                             <view contentMode="scaleToFill" id="tcg-oX-JnQ" userLabel="Tremolo Placeholder">
-                                <rect key="frame" x="50" y="10" width="40" height="40"/>
+                                <rect key="frame" x="63" y="9" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="adv-Po-h2O">
@@ -246,7 +247,7 @@
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view contentMode="scaleToFill" id="Gxx-ie-zeN" userLabel="Vibrato Placeholder">
-                                <rect key="frame" x="2" y="10" width="40" height="40"/>
+                                <rect key="frame" x="13" y="9" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZdG-wo-6nQ">
@@ -260,7 +261,7 @@
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view contentMode="scaleToFill" id="H30-eg-aUA" userLabel="Quantize Placeholder">
-                                <rect key="frame" x="105" y="10" width="40" height="40"/>
+                                <rect key="frame" x="116" y="9" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lDc-zN-F3d">
@@ -274,14 +275,14 @@
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quantize" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Gca-Rj-KTY" userLabel="Quantize">
-                                <rect key="frame" x="98" y="47" width="55" height="21"/>
+                                <rect key="frame" x="109" y="46" width="55" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
                             <view contentMode="scaleToFill" id="S76-LP-JAx" userLabel="Volume Placeholder">
-                                <rect key="frame" x="155" y="10" width="40" height="40"/>
+                                <rect key="frame" x="166" y="9" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KtN-1s-tUP">
@@ -295,7 +296,7 @@
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Volume" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nPa-Ce-fC4" userLabel="Volume">
-                                <rect key="frame" x="150" y="47" width="55" height="21"/>
+                                <rect key="frame" x="161" y="46" width="55" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -676,11 +677,11 @@
                                         </subviews>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
-                                    <view contentMode="scaleToFill" id="lQ6-eL-YVo" userLabel="osc2_pitch_temp">
+                                    <view contentMode="scaleToFill" id="ZCV-1G-Xux" userLabel="osc2_pitch_temp">
                                         <rect key="frame" x="234" y="12" width="40" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7yU-e6-fu1">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Bee-WL-KLb">
                                                 <rect key="frame" x="-1" y="9" width="42" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
@@ -730,9 +731,9 @@
                         <outlet property="osc2_mix_temp" destination="jBd-Zu-zBe" id="N80-KW-NyQ"/>
                         <outlet property="osc2_on" destination="8Nz-yp-cpn" id="QpN-YO-Edy"/>
                         <outlet property="osc2_phase_label" destination="aC8-Nx-kv7" id="bum-2B-ewQ"/>
-                        <outlet property="osc2_phase_temp" destination="Ivc-XX-FRs" id="bWM-55-ycn"/>
-                        <outlet property="osc2_pitch_label" destination="7yU-e6-fu1" id="evH-IZ-FX9"/>
-                        <outlet property="osc2_pitch_temp" destination="lQ6-eL-YVo" id="PZg-XM-LYK"/>
+                        <outlet property="osc2_phase_temp" destination="Ivc-XX-FRs" id="q61-5j-s9x"/>
+                        <outlet property="osc2_pitch_label" destination="Bee-WL-KLb" id="ISD-bd-Fbd"/>
+                        <outlet property="osc2_pitch_temp" destination="ZCV-1G-Xux" id="4Rw-Za-z7f"/>
                         <outlet property="osc2_toggle" destination="RUf-Eq-Z9w" id="i99-2L-k4c"/>
                         <outlet property="osc3_mix_label" destination="fwB-Zy-2hh" id="qlN-EC-ItE"/>
                         <outlet property="osc3_mix_temp" destination="LB8-EI-gfj" id="9WK-SN-LQI"/>
@@ -897,21 +898,21 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" id="GeQ-GH-2Dz" userLabel="KnobView">
-                                <rect key="frame" x="574" y="10" width="377" height="75"/>
+                                <rect key="frame" x="571" y="10" width="377" height="75"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <segue destination="wgk-zg-vAu" kind="embed" identifier="knob_init" id="gHe-sg-HLx"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" id="KIk-fv-rQ8" userLabel="RecordView">
-                                <rect key="frame" x="329" y="10" width="149" height="75"/>
+                                <rect key="frame" x="333" y="10" width="149" height="75"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <segue destination="vtu-kk-1RY" kind="embed" identifier="record_init" id="SMU-Ic-071"/>
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="J0q-GT-Kbf">
-                                <rect key="frame" x="779" y="32" width="28" height="31"/>
+                                <rect key="frame" x="789" y="32" width="28" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.46274509800000002" green="0.46274509800000002" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -932,7 +933,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="N3d-H6-SUl">
-                                <rect key="frame" x="797" y="32" width="43" height="31"/>
+                                <rect key="frame" x="807" y="32" width="43" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.46274509800000002" green="0.46274509800000002" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -952,42 +953,8 @@
                                     </segue>
                                 </connections>
                             </button>
-                            <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0Ft-Yu-n8j" userLabel="Clear Notes">
-                                <rect key="frame" x="485" y="54" width="81" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.54053198749999998" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <state key="normal" title="Clear Notes">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="6"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="clearNotesPressed:" destination="Zl4-56-TPD" eventType="touchUpInside" id="zjL-Lx-hU1"/>
-                                </connections>
-                            </button>
-                            <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="iub-ja-myt">
-                                <rect key="frame" x="485" y="10" width="81" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.53162650600000005" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <state key="normal" title="Grid Lines">
-                                    <color key="titleShadowColor" white="0.53645510699999999" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="6"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="gridLinesPressed:" destination="Zl4-56-TPD" eventType="touchUpInside" id="K8N-t8-dUc"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="c89-3P-ytu">
-                                <rect key="frame" x="858" y="32" width="80" height="30"/>
+                                <rect key="frame" x="859" y="32" width="80" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.090922589254577746" green="0.50478819258286045" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -1003,6 +970,23 @@
                                     <action selector="synthButtonPressed:" destination="Zl4-56-TPD" eventType="touchUpInside" id="AUL-sP-Kxo"/>
                                 </connections>
                             </button>
+                            <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="iub-ja-myt">
+                                <rect key="frame" x="490" y="10" width="73" height="75"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.53162650600000005" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="Grid Lines">
+                                    <color key="titleShadowColor" white="0.53645510699999999" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="gridLinesPressed:" destination="Zl4-56-TPD" eventType="touchUpInside" id="K8N-t8-dUc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1010,7 +994,6 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="1024" height="100"/>
                     <connections>
-                        <outlet property="clear_notes_btn" destination="0Ft-Yu-n8j" id="Ti8-TQ-Xb6"/>
                         <outlet property="grid_lines_btn" destination="iub-ja-myt" id="Vca-dN-1Ho"/>
                         <outlet property="key_button" destination="N3d-H6-SUl" id="QJH-QK-3Sw"/>
                         <outlet property="note_button" destination="J0q-GT-Kbf" id="htL-uT-gU1"/>
